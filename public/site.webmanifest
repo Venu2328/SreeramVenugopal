@@ -1,0 +1,24 @@
+{
+  "name": "Sreeram Venugopal | Student Founder & Interactive Physics Builder",
+  "short_name": "Sreeram Venugopal",
+  "description": "Founder of SCI-PHY Lab — interactive physics simulations and immersive education systems for STEM learners.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0c",
+  "theme_color": "#0a0a0c",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

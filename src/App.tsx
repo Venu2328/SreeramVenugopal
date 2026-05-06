@@ -12,19 +12,18 @@ import { Journey } from './components/Journey';
 import { Resources } from './components/Resources';
 import { Contact } from './components/Contact';
 import { SpaceBackground } from './components/SpaceBackground';
-import { SEOSchema } from './components/SEOSchema';
 import { Recognition } from './components/Recognition';
+import { Footer } from './components/Footer';
 
 export default function App() {
   return (
-    <div className="relative min-h-screen selection:bg-lavender-haze/30 scroll-smooth">
-      <SEOSchema />
+    <div className="relative min-h-screen selection:bg-lavender-haze/30">
       <SpaceBackground />
-      
+
       <div className="relative z-10">
         <Navbar />
-        
-        <main>
+
+        <main id="main-content" tabIndex={-1}>
           <Hero />
           <Profile />
           <SciPhyLabs />
@@ -34,8 +33,9 @@ export default function App() {
           <Resources />
           <Contact />
         </main>
+
+        <Footer />
       </div>
     </div>
   );
 }
-
