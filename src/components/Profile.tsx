@@ -52,7 +52,7 @@ export const Profile = () => {
           <div className="absolute inset-0 bg-lavender-haze/10 rounded-3xl blur-[40px] group-hover:blur-[60px] transition-all" />
           <div className="relative h-full w-full glass rounded-3xl overflow-hidden border-white/5">
             <img
-              src="/sreeram-portrait.jpg"
+              src="/sreeram-portrait.png"
               alt="Sreeram Venugopal"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
