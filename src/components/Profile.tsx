@@ -11,34 +11,34 @@ export const Profile = () => {
           className="flex-1 space-y-8"
         >
           <div className="space-y-4">
-            <span className="text-lavender-haze font-bold uppercase tracking-widest text-xs">Entrepreneur & Developer</span>
+            <span className="text-lavender-haze font-bold uppercase tracking-widest text-xs">Founder · Researcher · Educator</span>
             <h2 className="text-4xl md:text-6xl font-display font-medium tracking-tight text-white leading-tight">
-              Building learning systems, <br />
-              <span className="text-white/40 italic font-serif">and scalable digital brands.</span>
+              Engineering how a generation <br />
+              <span className="text-white/40 italic font-serif">learns physics.</span>
             </h2>
           </div>
-          
+
           <div className="space-y-6 text-xl text-white/60 font-light leading-relaxed">
             <p>
-              As an <span className="text-white">entrepreneur and student developer</span>, he bridges the gap between technical rigor and business impact. His work focuses on developing an andragogy style of teaching—shifting focus from passive instruction to self-directed exploration.
+              As a <span className="text-white">founder and scientific researcher</span>, Sreeram studies how cognitive development unfolds when learners are placed at the centre of their own discovery — drawing on <span className="text-white">andragogical principles</span> of self-direction, intrinsic motivation, and intuition-first reasoning to redesign how STEM concepts are introduced, internalised, and mastered.
             </p>
             <p>
-              Through his agency, he currently leads digital transformation for <span className="text-white">Swaminathan Enterprises</span>, while building EdTech systems that empower students to master complex physics through intuition-first simulation design.
+              Through <span className="text-white">SciPhyLabs</span>, he is building that thesis into product: an interactive physics ecosystem where every concept is a system to be played with, not a paragraph to be memorised. The mission is to change the cognitive trajectory of how the next generation learns STEM — proving that simulation-led pedagogy is the future of education.
             </p>
           </div>
 
           <div className="pt-4 flex gap-8">
             <div className="space-y-1">
               <div className="text-3xl font-display font-bold text-white tracking-tighter">04+</div>
-              <div className="text-xs uppercase tracking-wider text-white/40 font-bold">Years Building</div>
+              <div className="text-xs uppercase tracking-wider text-white/40 font-bold">Years Researching</div>
             </div>
             <div className="space-y-1">
-              <div className="text-3xl font-display font-bold text-white tracking-tighter">10k+</div>
-              <div className="text-xs uppercase tracking-wider text-white/40 font-bold">Concept Views</div>
+              <div className="text-3xl font-display font-bold text-white tracking-tighter">347+</div>
+              <div className="text-xs uppercase tracking-wider text-white/40 font-bold">Simulations Built</div>
             </div>
             <div className="space-y-1">
-              <div className="text-3xl font-display font-bold text-white tracking-tighter">01</div>
-              <div className="text-xs uppercase tracking-wider text-white/40 font-bold">Clear Vision</div>
+              <div className="text-3xl font-display font-bold text-white tracking-tighter">10+</div>
+              <div className="text-xs uppercase tracking-wider text-white/40 font-bold">STEM Domains</div>
             </div>
           </div>
         </motion.div>

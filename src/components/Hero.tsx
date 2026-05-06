@@ -1,11 +1,11 @@
 import { motion } from 'motion/react';
-import { ArrowRight, Sparkles, Binary, Lightbulb, Rocket } from 'lucide-react';
+import { ArrowRight, FlaskConical, Brain, BookOpen, Rocket } from 'lucide-react';
 
 const chips = [
   { icon: Rocket, text: 'Founder, SciPhyLabs' },
-  { icon: Binary, text: '347+ Physics Simulations' },
-  { icon: Sparkles, text: 'Fellowship Candidate, CS/AI' },
-  { icon: Lightbulb, text: 'Hackathon Competitor, Fintech' },
+  { icon: FlaskConical, text: 'Scientific Researcher' },
+  { icon: BookOpen, text: 'STEM Educator · Andragogist' },
+  { icon: Brain, text: 'Cognitive Development Research' },
 ];
 
 export const Hero = () => {
@@ -32,8 +32,8 @@ export const Hero = () => {
           </h1>
           
           <p className="text-xl md:text-2xl text-white/50 max-w-2xl mx-auto font-light leading-relaxed mb-12">
-            Student founder building interactive physics education systems through 
-            <span className="text-white"> simulations, design, and AI-assisted learning.</span>
+            Founder, scientific researcher and educator advancing
+            <span className="text-white"> andragogical STEM learning</span> — studying cognitive development through interactive physics simulations at SciPhyLabs.
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 mb-16">

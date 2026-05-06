@@ -14,9 +14,9 @@ export const Contact = () => {
           <div className="inline-flex p-4 rounded-full bg-lavender-haze/10 border border-lavender-haze/20 mb-4 animate-bounce">
             <MessageSquareCode className="text-lavender-haze" size={32} />
           </div>
-          <h2 className="text-5xl md:text-7xl font-display font-bold text-white tracking-tight">Let's build <br /> <span className="text-lavender-haze">something serious.</span></h2>
+          <h2 className="text-5xl md:text-7xl font-display font-bold text-white tracking-tight">Let's redefine <br /> <span className="text-lavender-haze">how we learn.</span></h2>
           <p className="text-xl text-white/50 max-w-2xl mx-auto font-light leading-relaxed">
-            Open to mentorship, collaborations, technical research guidance, and education-technology opportunities.
+            Open to research collaborations, fellowships, and serious conversations on andragogy, cognitive development, and the future of STEM education.
           </p>
         </motion.div>
 

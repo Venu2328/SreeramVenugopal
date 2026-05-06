@@ -4,12 +4,13 @@ export const SEOSchema = () => {
     "@type": "Person",
     "name": "Sreeram Venugopal",
     "url": "https://sreeramvenugopal.com",
-    "jobTitle": "Student Founder & EdTech Builder",
+    "jobTitle": "Founder, Scientific Researcher & STEM Educator",
     "knowsAbout": [
-      "Physics Education",
-      "Interactive Simulations",
-      "Product Design",
-      "Computer Science"
+      "Andragogy",
+      "Cognitive Development",
+      "STEM Education",
+      "Physics Simulations",
+      "Educational Technology Research"
     ],
     "founderOf": {
       "@type": "Organization",

@@ -4,22 +4,22 @@ const timelineData = [
   {
     year: '2022',
     title: 'Foundations',
-    desc: 'Began exploring simulation engines and identifying gaps in traditional physics pedagogy.',
+    desc: 'Began researching the gap between mathematical rigour and physical intuition in conventional STEM pedagogy.',
   },
   {
     year: '2023',
-    title: 'SciPhy Lab Launch',
-    desc: 'Officially started SciPhy Labs, reaching the 100+ simulation milestone and defining the core interactive engine.',
+    title: 'SciPhyLabs Founded',
+    desc: 'Translated cognitive-development research into a self-directed simulation engine, crossing the 100-simulation milestone.',
   },
   {
     year: '2024',
-    title: 'Systems & Strategy',
-    desc: 'Scaled to 347+ simulations while studying startup ideation and product-led growth frameworks.',
+    title: 'Andragogical Framework',
+    desc: 'Scaled to 347+ simulations across 10+ STEM domains and formalised the andragogical framework behind the platform.',
   },
   {
     year: 'Present',
-    title: 'Research & Fellowships',
-    desc: 'Conducting outreach for global CS/AI fellowships and bridging simulations with AI-native learning.',
+    title: 'Research & Leadership',
+    desc: 'Leading research on simulation-led learning and AI-native pedagogy — building SciPhyLabs as the foundation for a new model of STEM education.',
   },
 ];
 
@@ -29,7 +29,7 @@ export const Journey = () => {
       <div className="max-w-4xl mx-auto">
         <header className="mb-20">
           <h2 className="text-4xl md:text-5xl font-display font-bold text-white tracking-tight mb-4">The Evolution</h2>
-          <p className="text-white/40 font-light">Documenting the progress from a student project to a scalable educational ecosystem.</p>
+          <p className="text-white/40 font-light">From early research into cognitive development to leading a new model of STEM education.</p>
         </header>
 
         <div className="relative space-y-12">

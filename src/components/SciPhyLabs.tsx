@@ -30,9 +30,7 @@ export const SciPhyLabs = () => {
                 <span className="text-lavender-haze text-3xl md:text-4xl lg:text-5xl block mt-2">Master Physics through Simulations</span>
               </h2>
               <p className="text-lg text-white/50 leading-relaxed max-w-xl">
-                An immersive physics learning platform rooted in <span className="text-white">andragogical principles</span>. 
-                Instead of rigid curriculum delivery, it bridges the gap between abstract formulas 
-                and physical intuition through self-directed interactive simulations for JEE, NEET, and AP students.
+                An interactive physics ecosystem engineered around <span className="text-white">andragogical principles</span> and cognitive-development research. SciPhyLabs replaces rigid curriculum delivery with self-directed simulation — turning every concept into something a learner builds intuition for, not just memorises. Designed for JEE, NEET, SAT and AP, built as a thesis on the future of STEM education.
               </p>
             </div>
 
