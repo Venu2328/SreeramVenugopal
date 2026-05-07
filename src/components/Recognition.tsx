@@ -4,38 +4,14 @@ const certs = [
   {
     title: 'CS in Data Science & AI',
     issuer: 'IIT Madras · School Connect',
-    logo: '/logos/iit-madras.svg',
+    logo: '/logos/iit-madras.png',
     alt: 'Indian Institute of Technology Madras logo',
   },
   {
     title: 'Economic Finance & Money Matters',
     issuer: 'IIT Madras · School Connect',
-    logo: '/logos/iit-madras.svg',
+    logo: '/logos/iit-madras.png',
     alt: 'Indian Institute of Technology Madras logo',
-  },
-  {
-    title: 'Python Fundamentals & NumPy',
-    issuer: 'Saylor Academy · Data Science',
-    logo: '/logos/saylor.svg',
-    alt: 'Saylor Academy logo',
-  },
-  {
-    title: 'Python & Applications',
-    issuer: 'Saylor Academy',
-    logo: '/logos/saylor.svg',
-    alt: 'Saylor Academy logo',
-  },
-  {
-    title: 'English as a Second Language',
-    issuer: 'Saylor Academy',
-    logo: '/logos/saylor.svg',
-    alt: 'Saylor Academy logo',
-  },
-  {
-    title: 'Web Development (HTML, CSS, JS)',
-    issuer: 'Full-Stack Web Development Track',
-    logo: '/logos/web-dev.svg',
-    alt: 'HTML, CSS, JavaScript logos',
   },
   {
     title: 'Fundamentals of Digital Marketing',
@@ -65,7 +41,7 @@ export const Recognition = () => {
           </h2>
         </header>
 
-        <ul className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 list-none p-0">
+        <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 list-none p-0 max-w-4xl mx-auto">
           {certs.map((cert, i) => (
             <motion.li
               key={cert.title + cert.issuer}
@@ -78,7 +54,7 @@ export const Recognition = () => {
               }}
               viewport={{ once: true }}
               transition={{
-                delay: i * 0.06,
+                delay: i * 0.08,
                 duration: 0.5,
               }}
               className="p-6 rounded-3xl glass border-white/5 flex flex-col items-center text-center gap-4 hover:border-lavender-haze/30 hover:bg-white/[0.05] transition-all group relative overflow-hidden"
@@ -95,7 +71,7 @@ export const Recognition = () => {
                   height="56"
                   loading="lazy"
                   decoding="async"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
               </div>
               <div className="space-y-1">
