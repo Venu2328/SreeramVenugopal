@@ -8,36 +8,49 @@ const timelineData = [
   },
   {
     year: '2023',
-    title: 'SciPhyLabs Founded',
-    desc: 'Translated cognitive-development research into a self-directed simulation engine, crossing the 100-simulation milestone.',
+    title: 'SCI-PHY Lab Founded',
+    desc: 'Translated cognitive-development research into a self-directed simulation engine — crossing the 100-simulation milestone.',
   },
   {
     year: '2024',
     title: 'Andragogical Framework',
-    desc: 'Scaled to 347+ simulations across 10+ STEM domains and formalised the andragogical framework behind the platform.',
+    desc: 'Scaled to 347+ interactive physics simulations across 10+ STEM domains and formalised the andragogical framework behind the platform.',
   },
   {
     year: 'Present',
     title: 'Research & Leadership',
-    desc: 'Leading research on simulation-led learning and AI-native pedagogy — building SciPhyLabs as the foundation for a new model of STEM education.',
+    desc: 'Leading research on simulation-led learning and AI-native pedagogy — building SCI-PHY Lab as the foundation for a new model of STEM education.',
   },
 ];
 
 export const Journey = () => {
   return (
-    <section id="journey" className="py-24 px-6 relative overflow-hidden">
+    <section
+      id="journey"
+      aria-labelledby="journey-heading"
+      className="py-24 px-6 relative overflow-hidden"
+    >
       <div className="max-w-4xl mx-auto">
         <header className="mb-20">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-white tracking-tight mb-4">The Evolution</h2>
-          <p className="text-white/40 font-light">From early research into cognitive development to leading a new model of STEM education.</p>
+          <h2
+            id="journey-heading"
+            className="text-4xl md:text-5xl font-display font-bold text-white tracking-tight mb-4"
+          >
+            The Evolution
+          </h2>
+          <p className="text-white/40 font-light">
+            From early research into cognitive development to leading a new model of STEM education.
+          </p>
         </header>
 
-        <div className="relative space-y-12">
-          {/* Vertical Line */}
-          <div className="absolute left-[7px] top-4 bottom-4 w-[2px] bg-gradient-to-b from-lavender-haze/40 via-lavender-haze/10 to-transparent" />
+        <ol className="relative space-y-12 list-none p-0">
+          <div
+            aria-hidden="true"
+            className="absolute left-[7px] top-4 bottom-4 w-[2px] bg-gradient-to-b from-lavender-haze/40 via-lavender-haze/10 to-transparent"
+          />
 
           {timelineData.map((item, i) => (
-            <motion.div 
+            <motion.li
               key={item.year}
               initial={{ opacity: 0, x: -10 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -45,17 +58,19 @@ export const Journey = () => {
               transition={{ delay: i * 0.1 }}
               className="relative pl-12 group"
             >
-              {/* Dot */}
-              <div className="absolute left-0 top-3 w-4 h-4 rounded-full glass border-lavender-haze/40 group-hover:bg-lavender-haze transition-all duration-500" />
-              
-              <div className="space-y-2">
-                <span className="text-lavender-haze font-display font-bold text-lg">{item.year}</span>
+              <span
+                aria-hidden="true"
+                className="absolute left-0 top-3 w-4 h-4 rounded-full glass border-lavender-haze/40 group-hover:bg-lavender-haze transition-all duration-500"
+              />
+
+              <article className="space-y-2">
+                <time className="text-lavender-haze font-display font-bold text-lg block">{item.year}</time>
                 <h3 className="text-xl font-bold text-white tracking-tight">{item.title}</h3>
                 <p className="text-white/50 leading-relaxed max-w-lg italic">{item.desc}</p>
-              </div>
-            </motion.div>
+              </article>
+            </motion.li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   );
