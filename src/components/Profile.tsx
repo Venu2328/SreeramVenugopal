@@ -32,7 +32,7 @@ export const Profile = () => {
               As a <span className="text-white">student founder and scientific researcher</span>, Sreeram studies how cognitive development unfolds when learners are placed at the centre of their own discovery — drawing on <span className="text-white">andragogical principles</span> of self-direction, intrinsic motivation, and intuition-first reasoning to redesign how STEM concepts are introduced, internalised, and mastered.
             </p>
             <p>
-              Through <span className="text-white">SCI-PHY Lab</span>, he is building that thesis into product: an <span className="text-white">interactive physics learning</span> ecosystem where every concept is a system to be played with, not a paragraph to be memorised. The mission is to change the cognitive trajectory of how the next generation learns STEM — proving that simulation-led pedagogy and immersive educational technology are the future of education.
+              Through <span className="text-white">SciPhyLabs</span>, he is building that thesis into product: an <span className="text-white">interactive physics learning</span> ecosystem where every concept is a system to be played with, not a paragraph to be memorised. The mission is to change the cognitive trajectory of how the next generation learns STEM — proving that simulation-led pedagogy and immersive educational technology are the future of education.
             </p>
           </div>
 
@@ -68,7 +68,7 @@ export const Profile = () => {
           <div className="relative h-full w-full glass rounded-3xl overflow-hidden border-white/5">
             <img
               src="/sreeram-portrait.png"
-              alt="Portrait of Sreeram Venugopal — student founder of SCI-PHY Lab and researcher in interactive physics learning."
+              alt="Portrait of Sreeram Venugopal — student founder of SciPhyLabs and researcher in interactive physics learning."
               width="800"
               height="800"
               loading="eager"
@@ -86,7 +86,7 @@ export const Profile = () => {
                 <span className="text-lg font-display font-bold text-white tracking-tight block">Sreeram Venugopal</span>
               </div>
               <span className="px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-[10px] uppercase tracking-widest font-bold text-white/80">
-                SCI-PHY Lab
+                SciPhyLabs
               </span>
             </figcaption>
           </div>

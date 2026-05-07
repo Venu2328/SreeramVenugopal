@@ -8,7 +8,7 @@ const timelineData = [
   },
   {
     year: '2023',
-    title: 'SCI-PHY Lab Founded',
+    title: 'SciPhyLabs Founded',
     desc: 'Translated cognitive-development research into a self-directed simulation engine — crossing the 100-simulation milestone.',
   },
   {
@@ -19,7 +19,7 @@ const timelineData = [
   {
     year: 'Present',
     title: 'Research & Leadership',
-    desc: 'Leading research on simulation-led learning and AI-native pedagogy — building SCI-PHY Lab as the foundation for a new model of STEM education.',
+    desc: 'Leading research on simulation-led learning and AI-native pedagogy — building SciPhyLabs as the foundation for a new model of STEM education.',
   },
 ];
 

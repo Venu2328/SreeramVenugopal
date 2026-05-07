@@ -2,7 +2,7 @@ import { motion } from 'motion/react';
 
 const navLinks = [
   { name: 'About', href: '#profile' },
-  { name: 'SCI-PHY Lab', href: '#sciphylabs' },
+  { name: 'SciPhyLabs', href: '#sciphylabs' },
   { name: 'Projects', href: '#projects' },
   { name: 'Journey', href: '#journey' },
   { name: 'Writing', href: '#writing' },

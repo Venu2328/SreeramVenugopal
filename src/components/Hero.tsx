@@ -2,7 +2,7 @@ import { motion } from 'motion/react';
 import { ArrowRight, FlaskConical, Brain, BookOpen, Rocket } from 'lucide-react';
 
 const chips = [
-  { icon: Rocket, text: 'Founder, SCI-PHY Lab' },
+  { icon: Rocket, text: 'Founder, SciPhyLabs' },
   { icon: FlaskConical, text: 'Scientific Researcher' },
   { icon: BookOpen, text: 'STEM Educator · Andragogist' },
   { icon: Brain, text: 'Cognitive Development Research' },
@@ -43,7 +43,7 @@ export const Hero = () => {
 
           <p className="text-xl md:text-2xl text-white/50 max-w-2xl mx-auto font-light leading-relaxed mb-12">
             Student founder, scientific researcher and educator advancing
-            <span className="text-white"> andragogical STEM learning</span> — building <span className="text-white">SCI-PHY Lab</span>, an interactive physics simulation platform that turns cognitive development research into immersive, simulation-led education.
+            <span className="text-white"> andragogical STEM learning</span> — building <span className="text-white">SciPhyLabs</span>, an interactive physics simulation platform that turns cognitive development research into immersive, simulation-led education.
           </p>
 
           <ul className="flex flex-wrap justify-center gap-4 mb-16 list-none p-0">
@@ -67,7 +67,7 @@ export const Hero = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="group relative px-8 py-4 rounded-full bg-white text-graphite font-bold overflow-hidden transition-all"
-              aria-label="View SCI-PHY Lab and other projects"
+              aria-label="View SciPhyLabs and other projects"
             >
               <span className="relative z-10 flex items-center gap-2">
                 View Projects

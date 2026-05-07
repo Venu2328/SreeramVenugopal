@@ -8,13 +8,13 @@
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://sreeramvenugopal.vercel.app/sreeram-portrait.png</image:loc>
-      <image:title>Sreeram Venugopal — Founder, SCI-PHY Lab</image:title>
+      <image:title>Sreeram Venugopal — Founder, SciPhyLabs</image:title>
       <image:caption>Student founder building interactive physics simulations and immersive education systems.</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://sreeramvenugopal.vercel.app/sciphylabs-preview.png</image:loc>
-      <image:title>SCI-PHY Lab — Interactive Physics Simulations</image:title>
-      <image:caption>SCI-PHY Lab platform — 347+ interactive physics simulations across 10+ STEM domains.</image:caption>
+      <image:title>SciPhyLabs — Interactive Physics Simulations</image:title>
+      <image:caption>SciPhyLabs platform — 347+ interactive physics simulations across 10+ STEM domains.</image:caption>
     </image:image>
   </url>
 </urlset>

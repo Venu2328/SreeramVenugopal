@@ -40,17 +40,17 @@ export const SciPhyLabs = () => {
                 id="sciphylabs-heading"
                 className="text-5xl md:text-7xl font-display font-bold tracking-tight text-white leading-tight"
               >
-                SCI-PHY Lab <br />
+                SciPhyLabs <br />
                 <span className="text-lavender-haze text-3xl md:text-4xl lg:text-5xl block mt-2">
                   Master physics through interactive simulations
                 </span>
               </h2>
               <p className="text-lg text-white/50 leading-relaxed max-w-xl">
-                SCI-PHY Lab is an <span className="text-white">interactive physics learning</span> ecosystem engineered around <span className="text-white">andragogical principles</span> and cognitive-development research. It replaces rigid curriculum delivery with self-directed simulation — turning every concept into something a learner builds intuition for, not just memorises. Designed for JEE, NEET, SAT and AP, built as a thesis on the future of <span className="text-white">STEM education and educational technology</span>.
+                SciPhyLabs is an <span className="text-white">interactive physics learning</span> ecosystem engineered around <span className="text-white">andragogical principles</span> and cognitive-development research. It replaces rigid curriculum delivery with self-directed simulation — turning every concept into something a learner builds intuition for, not just memorises. Designed for JEE, NEET, SAT and AP, built as a thesis on the future of <span className="text-white">STEM education and educational technology</span>.
               </p>
             </div>
 
-            <ul className="grid grid-cols-2 gap-6 list-none p-0" aria-label="SCI-PHY Lab platform metrics">
+            <ul className="grid grid-cols-2 gap-6 list-none p-0" aria-label="SciPhyLabs platform metrics">
               {metrics.map((m) => (
                 <li key={m.label} className="p-6 rounded-2xl glass space-y-2 group hover:bg-white/10 transition-all">
                   <m.icon size={20} className="text-lavender-haze" aria-hidden="true" />
@@ -75,10 +75,10 @@ export const SciPhyLabs = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 px-10 py-5 rounded-full bg-white text-graphite font-bold hover:scale-105 active:scale-95 transition-all text-center w-fit"
-                aria-label="Explore SCI-PHY Lab — opens in a new tab"
+                aria-label="Explore SciPhyLabs — opens in a new tab"
               >
                 <Rocket size={20} aria-hidden="true" />
-                Explore SCI-PHY Lab
+                Explore SciPhyLabs
               </a>
 
               <div className="flex items-center gap-3">
@@ -108,7 +108,7 @@ export const SciPhyLabs = () => {
               <div className="relative glass aspect-video rounded-[32px] overflow-hidden shadow-2xl border-white/5 flex items-center justify-center bg-graphite-light">
                 <img
                   src="/sciphylabs-preview.png"
-                  alt="SCI-PHY Lab landing page preview — interactive physics simulations for JEE, NEET, SAT and AP."
+                  alt="SciPhyLabs landing page preview — interactive physics simulations for JEE, NEET, SAT and AP."
                   width="1280"
                   height="720"
                   loading="lazy"

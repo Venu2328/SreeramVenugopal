@@ -2,7 +2,7 @@ import { Linkedin, BookOpen, Youtube, Instagram, Mail } from 'lucide-react';
 
 const sitemap = [
   { name: 'About', href: '#profile' },
-  { name: 'SCI-PHY Lab', href: '#sciphylabs' },
+  { name: 'SciPhyLabs', href: '#sciphylabs' },
   { name: 'Projects', href: '#projects' },
   { name: 'Journey', href: '#journey' },
   { name: 'Writing', href: '#writing' },
@@ -39,7 +39,7 @@ export const Footer = () => {
             </span>
           </div>
           <p className="text-sm text-white/40 leading-relaxed max-w-sm">
-            Student founder of <span className="text-white/70">SCI-PHY Lab</span> — building interactive physics simulations and immersive education systems engineered around andragogical principles and cognitive development research.
+            Student founder of <span className="text-white/70">SciPhyLabs</span> — building interactive physics simulations and immersive education systems engineered around andragogical principles and cognitive development research.
           </p>
         </div>
 
@@ -92,7 +92,7 @@ export const Footer = () => {
       </div>
 
       <div className="max-w-6xl mx-auto mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4 text-[10px] uppercase tracking-[0.2em] font-bold text-white/30">
-        <p>© {year} Sreeram Venugopal · SCI-PHY Lab</p>
+        <p>© {year} Sreeram Venugopal · SciPhyLabs</p>
         <p>
           Built with intent. <span className="text-white/40">Designed to teach.</span>
         </p>
