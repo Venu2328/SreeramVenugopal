@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { ExternalLink, Tag } from 'lucide-react';
+import { MagicCard } from './effects/MagicCard';
 
 const otherProjects = [
   {
@@ -60,11 +61,6 @@ export const Projects = () => {
               key={project.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{
-                y: -12,
-                scale: 1.01,
-                transition: { type: 'spring', stiffness: 400, damping: 25 },
-              }}
               viewport={{ once: true }}
               transition={{
                 delay: i * 0.1,
@@ -77,6 +73,7 @@ export const Projects = () => {
                 aria-hidden="true"
                 className="absolute -inset-1 bg-gradient-to-r from-lavender-haze/20 to-transparent rounded-[32px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl -z-10"
               />
+              <MagicCard maxTilt={5} spotlightRadius={320} spotlightOpacity={0.14} className="rounded-[32px] h-full">
               <article className="relative p-10 glass rounded-[32px] border-white/5 h-full flex flex-col justify-between hover:border-lavender-haze/40 hover:bg-white/[0.08] transition-all duration-500 hover:shadow-[0_20px_50px_rgba(176,168,204,0.15)]">
                 <div className="space-y-6">
                   <div className="flex items-center justify-between">
@@ -110,6 +107,7 @@ export const Projects = () => {
                   ))}
                 </ul>
               </article>
+              </MagicCard>
             </motion.li>
           ))}
         </ul>

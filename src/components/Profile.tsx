@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import { CountUp } from './effects/CountUp';
 
 export const Profile = () => {
   return (
@@ -39,17 +40,23 @@ export const Profile = () => {
           <dl className="pt-4 flex gap-8" aria-label="Key statistics">
             <div className="space-y-1">
               <dt className="sr-only">Years Researching</dt>
-              <dd className="text-3xl font-display font-bold text-white tracking-tighter">04+</dd>
+              <dd className="text-3xl font-display font-bold text-white tracking-tighter">
+                <CountUp target={4} pad={2} suffix="+" />
+              </dd>
               <p className="text-xs uppercase tracking-wider text-white/40 font-bold" aria-hidden="true">Years Researching</p>
             </div>
             <div className="space-y-1">
               <dt className="sr-only">Simulations Built</dt>
-              <dd className="text-3xl font-display font-bold text-white tracking-tighter">347+</dd>
+              <dd className="text-3xl font-display font-bold text-white tracking-tighter">
+                <CountUp target={347} suffix="+" duration={1800} />
+              </dd>
               <p className="text-xs uppercase tracking-wider text-white/40 font-bold" aria-hidden="true">Simulations Built</p>
             </div>
             <div className="space-y-1">
               <dt className="sr-only">STEM Domains</dt>
-              <dd className="text-3xl font-display font-bold text-white tracking-tighter">10+</dd>
+              <dd className="text-3xl font-display font-bold text-white tracking-tighter">
+                <CountUp target={10} suffix="+" />
+              </dd>
               <p className="text-xs uppercase tracking-wider text-white/40 font-bold" aria-hidden="true">STEM Domains</p>
             </div>
           </dl>

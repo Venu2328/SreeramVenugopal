@@ -1,11 +1,21 @@
 import { motion } from 'motion/react';
 import { Layers, Rocket, Zap, Book, ChartArea } from 'lucide-react';
+import { type ReactNode } from 'react';
+import { CountUp } from './effects/CountUp';
+import { MagneticButton } from './effects/MagneticButton';
+import { MagicCard } from './effects/MagicCard';
 
-const metrics = [
-  { icon: Layers, label: 'Simulations', value: '347+' },
-  { icon: Zap, label: 'Domains', value: '10+' },
-  { icon: Book, label: 'Curriculum', value: 'AP/JEE' },
-  { icon: ChartArea, label: 'Approach', value: 'AI Native' },
+type Metric = {
+  icon: typeof Layers;
+  label: string;
+  display: ReactNode;
+};
+
+const metrics: Metric[] = [
+  { icon: Layers, label: 'Simulations', display: <CountUp target={347} suffix="+" duration={1800} /> },
+  { icon: Zap, label: 'Domains', display: <CountUp target={10} suffix="+" /> },
+  { icon: Book, label: 'Curriculum', display: 'AP/JEE' },
+  { icon: ChartArea, label: 'Approach', display: 'AI Native' },
 ];
 
 const features = [
@@ -52,10 +62,14 @@ export const SciPhyLabs = () => {
 
             <ul className="grid grid-cols-2 gap-6 list-none p-0" aria-label="SciPhyLabs platform metrics">
               {metrics.map((m) => (
-                <li key={m.label} className="p-6 rounded-2xl glass space-y-2 group hover:bg-white/10 transition-all">
-                  <m.icon size={20} className="text-lavender-haze" aria-hidden="true" />
-                  <div className="text-2xl font-bold text-white tracking-tight">{m.value}</div>
-                  <div className="text-[10px] uppercase tracking-widest text-white/30 font-bold">{m.label}</div>
+                <li key={m.label}>
+                  <MagicCard maxTilt={4} spotlightRadius={220} className="rounded-2xl">
+                    <div className="p-6 rounded-2xl glass space-y-2 group hover:bg-white/10 transition-all">
+                      <m.icon size={20} className="text-lavender-haze" aria-hidden="true" />
+                      <div className="text-2xl font-bold text-white tracking-tight">{m.display}</div>
+                      <div className="text-[10px] uppercase tracking-widest text-white/30 font-bold">{m.label}</div>
+                    </div>
+                  </MagicCard>
                 </li>
               ))}
             </ul>
@@ -70,16 +84,18 @@ export const SciPhyLabs = () => {
             </ul>
 
             <div className="flex flex-col gap-6">
-              <a
-                href="https://sciphylabs.vercel.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 px-10 py-5 rounded-full bg-white text-graphite font-bold hover:scale-105 active:scale-95 transition-all text-center w-fit"
-                aria-label="Explore SciPhyLabs — opens in a new tab"
-              >
-                <Rocket size={20} aria-hidden="true" />
-                Explore SciPhyLabs
-              </a>
+              <MagneticButton strength={0.4}>
+                <a
+                  href="https://sciphylabs.vercel.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 px-10 py-5 rounded-full bg-white text-graphite font-bold hover:scale-105 active:scale-95 transition-all text-center w-fit"
+                  aria-label="Explore SciPhyLabs — opens in a new tab"
+                >
+                  <Rocket size={20} aria-hidden="true" />
+                  Explore SciPhyLabs
+                </a>
+              </MagneticButton>
 
               <div className="flex items-center gap-3">
                 <div className="flex -space-x-2" aria-hidden="true">
@@ -100,10 +116,10 @@ export const SciPhyLabs = () => {
             viewport={{ once: true }}
             className="order-1 lg:order-2 m-0"
           >
-            <div className="relative group">
+            <MagicCard maxTilt={7} spotlightRadius={420} spotlightOpacity={0.16} className="rounded-[32px] group">
               <div
                 aria-hidden="true"
-                className="absolute -inset-4 bg-lavender-haze/10 blur-[80px] opacity-50 rounded-[40px] group-hover:opacity-100 transition-all"
+                className="absolute -inset-4 bg-lavender-haze/10 blur-[80px] opacity-50 rounded-[40px] group-hover:opacity-100 transition-all -z-10"
               />
               <div className="relative glass aspect-video rounded-[32px] overflow-hidden shadow-2xl border-white/5 flex items-center justify-center bg-graphite-light">
                 <img
@@ -128,7 +144,7 @@ export const SciPhyLabs = () => {
                   </span>
                 </figcaption>
               </div>
-            </div>
+            </MagicCard>
           </motion.figure>
 
         </div>

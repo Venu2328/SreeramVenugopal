@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { Mail, ArrowRight, MessageSquareCode } from 'lucide-react';
+import { MagneticButton } from './effects/MagneticButton';
 
 export const Contact = () => {
   return (
@@ -39,25 +40,29 @@ export const Contact = () => {
           viewport={{ once: true }}
           className="flex flex-col sm:flex-row items-center justify-center gap-6"
         >
-          <a
-            href="mailto:sreeram23db@gmail.com"
-            className="group flex items-center gap-3 px-10 py-5 rounded-full bg-white text-graphite font-bold hover:scale-105 active:scale-95 transition-all w-full sm:w-auto"
-            aria-label="Email Sreeram Venugopal at sreeram23db@gmail.com"
-          >
-            <Mail size={20} aria-hidden="true" />
-            Email Sreeram
-            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" aria-hidden="true" />
-          </a>
+          <MagneticButton strength={0.4} className="w-full sm:w-auto">
+            <a
+              href="mailto:sreeram23db@gmail.com"
+              className="group flex items-center gap-3 px-10 py-5 rounded-full bg-white text-graphite font-bold hover:scale-105 active:scale-95 transition-all w-full sm:w-auto"
+              aria-label="Email Sreeram Venugopal at sreeram23db@gmail.com"
+            >
+              <Mail size={20} aria-hidden="true" />
+              Email Sreeram
+              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+            </a>
+          </MagneticButton>
 
-          <a
-            href="https://www.linkedin.com/in/sreeram-venugopal-701531376/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-10 py-5 rounded-full border border-white/10 hover:bg-white/5 transition-all text-white font-medium w-full sm:w-auto inline-flex items-center justify-center"
-            aria-label="Connect on LinkedIn — opens in a new tab"
-          >
-            Connect on LinkedIn
-          </a>
+          <MagneticButton strength={0.3} className="w-full sm:w-auto">
+            <a
+              href="https://www.linkedin.com/in/sreeram-venugopal-701531376/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-10 py-5 rounded-full border border-white/10 hover:bg-white/5 transition-all text-white font-medium w-full sm:w-auto inline-flex items-center justify-center"
+              aria-label="Connect on LinkedIn — opens in a new tab"
+            >
+              Connect on LinkedIn
+            </a>
+          </MagneticButton>
         </motion.div>
       </div>
 
