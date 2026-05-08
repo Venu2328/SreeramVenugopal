@@ -35,10 +35,12 @@ export const Hero = () => {
 
           <h1
             id="hero-heading"
+            aria-label="Sreeram Venugopal"
             className="text-7xl md:text-9xl font-display font-bold tracking-tight mb-8 text-white text-glow leading-[1.1]"
           >
-            Sreeram <br />
-            <span className="text-white/60">Venugopal</span>
+            <AnimatedWord word="Sreeram" />
+            <br />
+            <AnimatedWord word="Venugopal" muted />
           </h1>
 
           <p className="text-xl md:text-2xl text-white/50 max-w-2xl mx-auto font-light leading-relaxed mb-12">
@@ -95,3 +97,16 @@ export const Hero = () => {
     </section>
   );
 };
+
+const AnimatedWord = ({ word, muted = false }: { word: string; muted?: boolean }) => (
+  <span aria-hidden="true" className={muted ? 'text-white/60' : ''}>
+    {word.split('').map((ch, i) => (
+      <span
+        key={i}
+        className="inline-block cursor-default transition-[transform,color,text-shadow] duration-300 ease-out hover:scale-[1.18] hover:text-lavender-haze hover:[text-shadow:0_0_40px_rgba(176,168,204,0.65)]"
+      >
+        {ch}
+      </span>
+    ))}
+  </span>
+);
