@@ -15,12 +15,15 @@
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
+    overflow-x: hidden;
   }
 
   body {
     @apply bg-graphite text-white font-sans selection:bg-lavender-haze/30;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    min-width: 320px;
   }
 
   :focus-visible {
@@ -29,9 +32,16 @@
     border-radius: 4px;
   }
 
-  img {
+  img,
+  svg {
     max-width: 100%;
     height: auto;
+  }
+
+  /* Prevent flex/grid children from blowing out on small viewports */
+  section,
+  main {
+    min-width: 0;
   }
 }
 

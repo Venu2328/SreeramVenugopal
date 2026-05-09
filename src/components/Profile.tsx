@@ -6,29 +6,29 @@ export const Profile = () => {
     <section
       id="profile"
       aria-labelledby="profile-heading"
-      className="py-24 px-6"
+      className="py-16 sm:py-20 md:py-24 px-4 sm:px-6"
     >
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-20 items-center">
+      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-12 md:gap-16 lg:gap-20 items-center">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="flex-1 space-y-8"
+          className="flex-1 space-y-6 sm:space-y-8 w-full"
         >
-          <div className="space-y-4">
-            <p className="text-lavender-haze font-bold uppercase tracking-widest text-xs">
+          <div className="space-y-3 sm:space-y-4">
+            <p className="text-lavender-haze font-bold uppercase tracking-widest text-[10px] sm:text-xs">
               Founder · Researcher · Educator
             </p>
             <h2
               id="profile-heading"
-              className="text-4xl md:text-6xl font-display font-medium tracking-tight text-white leading-tight"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-medium tracking-tight text-white leading-tight"
             >
-              Engineering how a generation <br />
-              <span className="text-white/40 italic font-serif">learns physics.</span>
+              Engineering how a generation <br className="hidden sm:inline" />
+              <span className="text-white/40 italic font-serif"> learns physics.</span>
             </h2>
           </div>
 
-          <div className="space-y-6 text-xl text-white/60 font-light leading-relaxed">
+          <div className="space-y-5 sm:space-y-6 text-base sm:text-lg md:text-xl text-white/60 font-light leading-relaxed">
             <p>
               As a <span className="text-white">student founder and scientific researcher</span>, Sreeram studies how cognitive development unfolds when learners are placed at the centre of their own discovery — drawing on <span className="text-white">andragogical principles</span> of self-direction, intrinsic motivation, and intuition-first reasoning to redesign how STEM concepts are introduced, internalised, and mastered.
             </p>
@@ -37,27 +37,27 @@ export const Profile = () => {
             </p>
           </div>
 
-          <dl className="pt-4 flex gap-8" aria-label="Key statistics">
+          <dl className="pt-2 sm:pt-4 flex flex-wrap gap-x-6 gap-y-4 sm:gap-x-8 sm:gap-y-6" aria-label="Key statistics">
             <div className="space-y-1">
               <dt className="sr-only">Years Researching</dt>
-              <dd className="text-3xl font-display font-bold text-white tracking-tighter">
+              <dd className="text-2xl sm:text-3xl font-display font-bold text-white tracking-tighter">
                 <CountUp target={4} pad={2} suffix="+" />
               </dd>
-              <p className="text-xs uppercase tracking-wider text-white/40 font-bold" aria-hidden="true">Years Researching</p>
+              <p className="text-[10px] sm:text-xs uppercase tracking-wider text-white/40 font-bold" aria-hidden="true">Years Researching</p>
             </div>
             <div className="space-y-1">
               <dt className="sr-only">Simulations Built</dt>
-              <dd className="text-3xl font-display font-bold text-white tracking-tighter">
+              <dd className="text-2xl sm:text-3xl font-display font-bold text-white tracking-tighter">
                 <CountUp target={347} suffix="+" duration={1800} />
               </dd>
-              <p className="text-xs uppercase tracking-wider text-white/40 font-bold" aria-hidden="true">Simulations Built</p>
+              <p className="text-[10px] sm:text-xs uppercase tracking-wider text-white/40 font-bold" aria-hidden="true">Simulations Built</p>
             </div>
             <div className="space-y-1">
               <dt className="sr-only">STEM Domains</dt>
-              <dd className="text-3xl font-display font-bold text-white tracking-tighter">
+              <dd className="text-2xl sm:text-3xl font-display font-bold text-white tracking-tighter">
                 <CountUp target={10} suffix="+" />
               </dd>
-              <p className="text-xs uppercase tracking-wider text-white/40 font-bold" aria-hidden="true">STEM Domains</p>
+              <p className="text-[10px] sm:text-xs uppercase tracking-wider text-white/40 font-bold" aria-hidden="true">STEM Domains</p>
             </div>
           </dl>
         </motion.div>
@@ -66,7 +66,7 @@ export const Profile = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="flex-1 relative aspect-square w-full max-w-md group m-0"
+          className="flex-1 relative aspect-square w-full max-w-xs sm:max-w-sm md:max-w-md group m-0"
         >
           <div
             aria-hidden="true"

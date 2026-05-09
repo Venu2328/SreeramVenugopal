@@ -34,7 +34,7 @@ export const Hero = () => {
     <section
       id="home"
       aria-labelledby="hero-heading"
-      className="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-20 px-6 overflow-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-center pt-28 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 overflow-hidden"
     >
       <div className="max-w-5xl w-full text-center relative z-10">
         <motion.div
@@ -57,7 +57,7 @@ export const Hero = () => {
           <h1
             id="hero-heading"
             aria-label="Sreeram Venugopal"
-            className="text-7xl md:text-9xl font-display font-bold tracking-tight mb-8 text-white text-glow leading-[1.1]"
+            className="text-[clamp(3rem,12vw,9rem)] font-display font-bold tracking-tight mb-6 sm:mb-8 text-white text-glow leading-[1.05] sm:leading-[1.1]"
           >
             <AnimatedWord word="Sreeram" />
             <br />
@@ -65,7 +65,7 @@ export const Hero = () => {
           </h1>
 
           <p
-            className="text-xl md:text-2xl text-white/50 max-w-2xl mx-auto font-light leading-relaxed mb-12"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/50 max-w-2xl mx-auto font-light leading-relaxed mb-10 sm:mb-12 px-2"
             aria-label="Student founder, scientific researcher and educator advancing andragogical STEM learning — building SciPhyLabs, an interactive physics simulation platform that turns cognitive development research into immersive, simulation-led education."
           >
             <span aria-hidden="true">
@@ -91,14 +91,14 @@ export const Hero = () => {
             </span>
           </p>
 
-          <ul className="flex flex-wrap justify-center gap-4 mb-16 list-none p-0">
+          <ul className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 mb-12 sm:mb-16 list-none p-0">
             {chips.map((chip, i) => (
               <motion.li
                 key={chip.text}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 + i * 0.1 }}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-2xl glass text-sm font-medium text-white/70"
+                className="flex items-center gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-2xl glass text-xs sm:text-sm font-medium text-white/70"
               >
                 <chip.icon size={16} className="text-lavender-haze" aria-hidden="true" />
                 {chip.text}
@@ -106,13 +106,13 @@ export const Hero = () => {
             ))}
           </ul>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <MagneticButton strength={0.4}>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 w-full">
+            <MagneticButton strength={0.4} className="w-full sm:w-auto">
               <motion.a
                 href="#sciphylabs"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="group relative px-8 py-4 rounded-full bg-white text-graphite font-bold overflow-hidden transition-all"
+                className="group relative px-7 sm:px-8 py-3.5 sm:py-4 rounded-full bg-white text-graphite font-bold overflow-hidden transition-all w-full sm:w-auto inline-flex items-center justify-center"
                 aria-label="View SciPhyLabs and other projects"
               >
                 <span className="relative z-10 flex items-center gap-2">
@@ -122,12 +122,12 @@ export const Hero = () => {
               </motion.a>
             </MagneticButton>
 
-            <MagneticButton strength={0.3}>
+            <MagneticButton strength={0.3} className="w-full sm:w-auto">
               <motion.a
                 href="#writing"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 rounded-full border border-white/10 hover:bg-white/5 transition-all text-white font-medium"
+                className="px-7 sm:px-8 py-3.5 sm:py-4 rounded-full border border-white/10 hover:bg-white/5 transition-all text-white font-medium w-full sm:w-auto inline-flex items-center justify-center"
                 aria-label="Read writing and technical notes"
               >
                 Read Writing
@@ -139,7 +139,7 @@ export const Hero = () => {
 
       <div
         aria-hidden="true"
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-lavender-haze/5 blur-[150px] rounded-full pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] max-w-[600px] max-h-[600px] bg-lavender-haze/5 blur-[120px] sm:blur-[150px] rounded-full pointer-events-none"
       />
     </section>
   );

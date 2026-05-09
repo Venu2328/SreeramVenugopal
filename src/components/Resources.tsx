@@ -32,15 +32,15 @@ export const Resources = () => {
     <div id="writing">
       <section
         aria-labelledby="writing-heading"
-        className="py-24 px-6 border-t border-white/[0.05]"
+        className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 border-t border-white/[0.05]"
       >
         <div className="max-w-6xl mx-auto">
-          <header className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
-            <div className="space-y-4">
-              <p className="text-white/40 font-bold uppercase tracking-widest text-xs">Knowledge Base</p>
+          <header className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-10 sm:mb-12 md:mb-16">
+            <div className="space-y-3 sm:space-y-4">
+              <p className="text-white/40 font-bold uppercase tracking-widest text-[10px] sm:text-xs">Knowledge Base</p>
               <h2
                 id="writing-heading"
-                className="text-4xl font-display font-medium text-white tracking-tight leading-tight"
+                className="text-3xl sm:text-4xl font-display font-medium text-white tracking-tight leading-tight"
               >
                 Ideas and <span className="text-white/40 italic">technical notes.</span>
               </h2>
@@ -56,7 +56,7 @@ export const Resources = () => {
             </a>
           </header>
 
-          <ul className="grid md:grid-cols-3 gap-8 list-none p-0">
+          <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-8 list-none p-0">
             {blogPosts.map((post, i) => (
               <motion.li
                 key={post.title}
@@ -65,14 +65,14 @@ export const Resources = () => {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
               >
-                <article className="group p-8 rounded-3xl glass border-white/5 hover:bg-white/[0.08] transition-all flex flex-col justify-between h-full cursor-pointer overflow-hidden relative">
+                <article className="group p-6 sm:p-7 md:p-8 rounded-3xl glass border-white/5 hover:bg-white/[0.08] transition-all flex flex-col justify-between h-full cursor-pointer overflow-hidden relative">
                   <span className="absolute top-4 right-4 text-[10px] uppercase font-bold tracking-widest text-white/20">
                     Coming Soon
                   </span>
 
-                  <div className="space-y-4 relative z-10">
+                  <div className="space-y-3 sm:space-y-4 relative z-10">
                     <span className="text-[10px] font-bold text-lavender-haze uppercase tracking-widest">{post.category}</span>
-                    <h3 className="text-xl font-bold text-white group-hover:text-lavender-haze transition-colors leading-tight">
+                    <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-lavender-haze transition-colors leading-tight">
                       {post.title}
                     </h3>
                     <p className="text-white/40 text-sm italic">{post.description}</p>
@@ -91,16 +91,16 @@ export const Resources = () => {
 
       <section
         aria-labelledby="social-heading"
-        className="py-24 px-6 glass rounded-t-[100px] border-x-0 border-b-0"
+        className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 glass rounded-t-[60px] sm:rounded-t-[80px] md:rounded-t-[100px] border-x-0 border-b-0"
       >
         <div className="max-w-6xl mx-auto text-center">
           <h2
             id="social-heading"
-            className="text-3xl font-display font-bold text-white mb-12 tracking-tight"
+            className="text-2xl sm:text-3xl font-display font-bold text-white mb-8 sm:mb-12 tracking-tight"
           >
             Digital Footprint
           </h2>
-          <ul className="flex flex-wrap justify-center gap-6 list-none p-0">
+          <ul className="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 list-none p-0">
             {socialLinks.map((link) => (
               <li key={link.name}>
                 <motion.a
@@ -108,7 +108,7 @@ export const Resources = () => {
                   target={link.href.startsWith('mailto:') ? undefined : '_blank'}
                   rel={link.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
                   whileHover={{ y: -5 }}
-                  className="group flex flex-col items-center gap-3 w-40 p-6 rounded-3xl bg-white/5 border border-white/5 hover:bg-white/10 transition-all"
+                  className="group flex flex-col items-center gap-3 w-32 sm:w-36 md:w-40 p-4 sm:p-5 md:p-6 rounded-3xl bg-white/5 border border-white/5 hover:bg-white/10 transition-all"
                   aria-label={`${link.name} — ${link.label}`}
                 >
                   <span className="w-12 h-12 rounded-full bg-graphite flex items-center justify-center text-white group-hover:bg-lavender-haze group-hover:text-graphite transition-all">

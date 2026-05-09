@@ -4,7 +4,7 @@ import { MagicCard } from './effects/MagicCard';
 
 const otherProjects = [
   {
-    title: 'SciPhy Master Physics',
+    title: 'SciPhyLabs Master Physics',
     desc: 'An interactive system book linking physical text with simulation-based learning for STEM students.',
     status: 'In Progress',
     tags: ['Education', 'HCI', 'Book Design'],
@@ -40,22 +40,22 @@ export const Projects = () => {
     <section
       id="projects"
       aria-labelledby="projects-heading"
-      className="py-24 px-6"
+      className="py-16 sm:py-20 md:py-24 px-4 sm:px-6"
     >
       <div className="max-w-6xl mx-auto">
-        <header className="mb-20 text-center">
+        <header className="mb-12 sm:mb-16 md:mb-20 text-center">
           <h2
             id="projects-heading"
-            className="text-4xl md:text-5xl font-display font-bold text-white mb-4 tracking-tight"
+            className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white mb-3 sm:mb-4 tracking-tight"
           >
             Active Ecosystem
           </h2>
-          <p className="text-white/40 max-w-xl mx-auto font-light">
+          <p className="text-sm sm:text-base text-white/40 max-w-xl mx-auto font-light px-2">
             Beyond simulations, Sreeram builds tools and research systems that rethink how technical knowledge is transferred — from interactive learning platforms to AI-native study assistants.
           </p>
         </header>
 
-        <ul className="grid md:grid-cols-2 gap-8 list-none p-0">
+        <ul className="grid sm:grid-cols-2 gap-5 sm:gap-6 md:gap-8 list-none p-0">
           {otherProjects.map((project, i) => (
             <motion.li
               key={project.title}
@@ -73,8 +73,8 @@ export const Projects = () => {
                 aria-hidden="true"
                 className="absolute -inset-1 bg-gradient-to-r from-lavender-haze/20 to-transparent rounded-[32px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl -z-10"
               />
-              <MagicCard maxTilt={5} spotlightRadius={320} spotlightOpacity={0.14} className="rounded-[32px] h-full">
-              <article className="relative p-10 glass rounded-[32px] border-white/5 h-full flex flex-col justify-between hover:border-lavender-haze/40 hover:bg-white/[0.08] transition-all duration-500 hover:shadow-[0_20px_50px_rgba(176,168,204,0.15)]">
+              <MagicCard maxTilt={5} spotlightRadius={320} spotlightOpacity={0.14} className="rounded-[28px] sm:rounded-[32px] h-full">
+              <article className="relative p-6 sm:p-8 md:p-10 glass rounded-[28px] sm:rounded-[32px] border-white/5 h-full flex flex-col justify-between hover:border-lavender-haze/40 hover:bg-white/[0.08] transition-all duration-500 hover:shadow-[0_20px_50px_rgba(176,168,204,0.15)]">
                 <div className="space-y-6">
                   <div className="flex items-center justify-between">
                     <span className="px-3 py-1 rounded-full bg-lavender-haze/10 text-lavender-haze text-[10px] font-bold uppercase tracking-widest border border-lavender-haze/20">
@@ -88,7 +88,7 @@ export const Projects = () => {
                   </div>
 
                   <div className="space-y-3">
-                    <h3 className="text-2xl font-display font-bold text-white tracking-tight">
+                    <h3 className="text-xl sm:text-2xl font-display font-bold text-white tracking-tight">
                       {project.title}
                     </h3>
                     <p className="text-white/50 text-sm leading-relaxed">{project.desc}</p>

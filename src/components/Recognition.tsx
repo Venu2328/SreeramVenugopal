@@ -27,22 +27,22 @@ export const Recognition = () => {
     <section
       id="recognition"
       aria-labelledby="recognition-heading"
-      className="py-24 px-6 bg-white/[0.01]"
+      className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 bg-white/[0.01]"
     >
       <div className="max-w-6xl mx-auto">
-        <header className="mb-12 text-center">
+        <header className="mb-10 sm:mb-12 text-center">
           <p className="text-lavender-haze font-bold uppercase tracking-widest text-[10px] mb-3">
             Credentials
           </p>
           <h2
             id="recognition-heading"
-            className="text-3xl md:text-4xl font-display font-bold text-white tracking-tight"
+            className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-white tracking-tight"
           >
             Certifications & Recognition
           </h2>
         </header>
 
-        <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 list-none p-0 max-w-4xl mx-auto">
+        <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 list-none p-0 max-w-4xl mx-auto">
           {certs.map((cert, i) => (
             <motion.li
               key={cert.title + cert.issuer}

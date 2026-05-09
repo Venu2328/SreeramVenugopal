@@ -28,22 +28,22 @@ export const Journey = () => {
     <section
       id="journey"
       aria-labelledby="journey-heading"
-      className="py-24 px-6 relative overflow-hidden"
+      className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 relative overflow-hidden"
     >
       <div className="max-w-4xl mx-auto">
-        <header className="mb-20">
+        <header className="mb-12 sm:mb-16 md:mb-20">
           <h2
             id="journey-heading"
-            className="text-4xl md:text-5xl font-display font-bold text-white tracking-tight mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white tracking-tight mb-3 sm:mb-4"
           >
             The Evolution
           </h2>
-          <p className="text-white/40 font-light">
+          <p className="text-sm sm:text-base text-white/40 font-light">
             From early research into cognitive development to leading a new model of STEM education.
           </p>
         </header>
 
-        <ol className="relative space-y-12 list-none p-0">
+        <ol className="relative space-y-10 sm:space-y-12 list-none p-0">
           <div
             aria-hidden="true"
             className="absolute left-[7px] top-4 bottom-4 w-[2px] bg-gradient-to-b from-lavender-haze/40 via-lavender-haze/10 to-transparent"
@@ -64,9 +64,9 @@ export const Journey = () => {
               />
 
               <article className="space-y-2">
-                <time className="text-lavender-haze font-display font-bold text-lg block">{item.year}</time>
-                <h3 className="text-xl font-bold text-white tracking-tight">{item.title}</h3>
-                <p className="text-white/50 leading-relaxed max-w-lg italic">{item.desc}</p>
+                <time className="text-lavender-haze font-display font-bold text-base sm:text-lg block">{item.year}</time>
+                <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight">{item.title}</h3>
+                <p className="text-sm sm:text-base text-white/50 leading-relaxed max-w-lg italic">{item.desc}</p>
               </article>
             </motion.li>
           ))}

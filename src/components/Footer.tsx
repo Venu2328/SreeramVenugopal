@@ -23,10 +23,10 @@ export const Footer = () => {
   return (
     <footer
       role="contentinfo"
-      className="relative z-10 px-6 pt-16 pb-12 border-t border-white/5 bg-graphite/40 backdrop-blur-sm"
+      className="relative z-10 px-4 sm:px-6 pt-12 sm:pt-16 pb-10 sm:pb-12 border-t border-white/5 bg-graphite/40 backdrop-blur-sm"
     >
-      <div className="max-w-6xl mx-auto grid gap-12 md:grid-cols-3">
-        <div className="space-y-4">
+      <div className="max-w-6xl mx-auto grid gap-10 sm:gap-12 sm:grid-cols-2 md:grid-cols-3">
+        <div className="space-y-4 sm:col-span-2 md:col-span-1">
           <div className="flex items-center gap-3">
             <span
               aria-hidden="true"
@@ -34,7 +34,7 @@ export const Footer = () => {
             >
               SV
             </span>
-            <span className="text-lg font-display font-bold tracking-tight text-white">
+            <span className="text-base sm:text-lg font-display font-bold tracking-tight text-white">
               Sreeram Venugopal
             </span>
           </div>
