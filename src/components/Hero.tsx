@@ -1,182 +1,96 @@
 import { motion } from 'motion/react';
-import { ChevronDown } from 'lucide-react';
-import { MagneticButton } from './effects/MagneticButton';
+import { ArrowDownRight } from 'lucide-react';
 
-const services = [
-  'Physics Simulations',
-  'Andragogy',
-  'Cognitive Research',
-  'EdTech Product',
-  'STEM Leadership',
+const facts = [
+  ['Role', 'Founder & Researcher'],
+  ['Building', 'SciPhyLabs'],
+  ['Based in', 'India'],
 ];
+
+const ease = [0.22, 1, 0.36, 1] as const;
 
 export const Hero = () => {
   return (
     <section
-      id="home"
+      id="top"
       aria-labelledby="hero-heading"
-      className="relative min-h-screen flex items-center pt-24 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-center pt-24 pb-16 px-5 sm:px-8"
     >
-      <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-12 items-center">
-        {/* ── Spotlight portrait ─────────────────────────────────────── */}
-        <motion.figure
-          initial={{ opacity: 0, scale: 0.92 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-          className="relative mx-auto w-[78vw] max-w-[360px] sm:max-w-[420px] lg:max-w-none aspect-square m-0 order-1 lg:order-none"
+      <div className="max-w-6xl mx-auto w-full">
+        {/* masthead label */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease }}
+          className="flex items-center gap-4 mb-8 sm:mb-10"
         >
-          {/* the cone of light */}
-          <div
-            aria-hidden="true"
-            className="absolute inset-[-18%] rounded-full spotlight blur-2xl"
-            style={{ ['--sx' as string]: '50%', ['--sy' as string]: '46%' }}
-          />
-          <div
-            className="relative h-full w-full rounded-full overflow-hidden ring-1 ring-gold/20 flex items-center justify-center"
-            data-portrait-slot
-            style={{ background: 'radial-gradient(circle at 50% 38%, rgba(217,182,95,0.14), rgba(10,10,11,0.96) 72%)' }}
-          >
-            {/* image-free spotlight stage — drop a portrait here later */}
-            <span
-              aria-hidden="true"
-              className="brush brush-rough text-[clamp(5rem,18vw,11rem)] leading-none text-gold/80 text-gold-glow"
-            >
-              SV
+          <span className="crimson-rule" aria-hidden="true" />
+          <span className="eyebrow text-crimson">Founder · Researcher · Student</span>
+        </motion.div>
+
+        <h1 id="hero-heading" className="display font-semibold text-ink leading-[0.92] tracking-[-0.02em]">
+          {['Sreeram', 'Venugopal'].map((word, i) => (
+            <span key={word} className="block overflow-hidden">
+              <motion.span
+                initial={{ y: '110%' }}
+                animate={{ y: '0%' }}
+                transition={{ duration: 0.9, delay: 0.15 + i * 0.12, ease }}
+                className="block text-[clamp(3.5rem,13vw,11rem)]"
+              >
+                {word}
+              </motion.span>
             </span>
-            {/* vignette into black */}
-            <div
-              aria-hidden="true"
-              className="absolute inset-0"
-              style={{ background: 'radial-gradient(circle at 50% 42%, transparent 40%, rgba(8,8,9,0.9) 80%)' }}
-            />
-          </div>
-          {/* breathing key-light halo */}
-          <motion.div
-            aria-hidden="true"
-            animate={{ opacity: [0.5, 0.8, 0.5] }}
-            transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute inset-[-6%] rounded-full pointer-events-none"
-            style={{ boxShadow: '0 0 120px 10px rgba(217,182,95,0.18) inset' }}
-          />
-          <figcaption className="sr-only">Portrait of Sreeram Venugopal under a spotlight.</figcaption>
-        </motion.figure>
+          ))}
+        </h1>
 
-        {/* ── Painted billing ────────────────────────────────────────── */}
-        <div className="relative text-center lg:text-left order-2 lg:order-none">
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="eyebrow text-gold/70 mb-5 flex items-center gap-2.5 justify-center lg:justify-start"
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.5, ease }}
+          className="mt-8 sm:mt-10 max-w-2xl text-lg sm:text-xl text-ink-soft leading-relaxed"
+        >
+          I'm a student and the founder of{' '}
+          <span className="text-ink font-medium">SciPhyLabs</span>, where I build interactive physics
+          simulations that help students truly understand the subject rather than memorise it. I also
+          research and write about how people learn.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.62, ease }}
+          className="mt-10 flex flex-col sm:flex-row sm:items-center gap-4"
+        >
+          <a
+            href="#work"
+            className="group inline-flex items-center justify-center gap-2 bg-crimson text-white px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-crimson-deep transition-colors"
           >
-            <span className="relative flex h-2 w-2" aria-hidden="true">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold/70" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-gold" />
-            </span>
-            Open for collaborations — 2026
-          </motion.p>
-
-          <h1 id="hero-heading" aria-label="Sreeram Venugopal" className="mb-3">
-            <motion.span
-              aria-hidden="true"
-              initial={{ clipPath: 'inset(0 100% 0 0)', opacity: 0.3 }}
-              animate={{ clipPath: 'inset(0 0% 0 0)', opacity: 1 }}
-              transition={{ duration: 1, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-              className="brush brush-rough block text-chalk text-gold-glow leading-[0.92] text-[clamp(3.4rem,11vw,9rem)]"
-            >
-              Sreeram
-            </motion.span>
-            <motion.span
-              aria-hidden="true"
-              initial={{ clipPath: 'inset(0 100% 0 0)', opacity: 0.3 }}
-              animate={{ clipPath: 'inset(0 0% 0 0)', opacity: 1 }}
-              transition={{ duration: 1, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
-              className="brush brush-rough block text-chalk/85 leading-[0.92] text-[clamp(3.4rem,11vw,9rem)]"
-            >
-              Venugopal
-            </motion.span>
-          </h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8 }}
-            className="serif italic text-ember text-ember-glow text-2xl sm:text-3xl md:text-4xl mb-6"
+            View selected work
+            <ArrowDownRight size={17} className="group-hover:translate-x-0.5 group-hover:translate-y-0.5 transition-transform" aria-hidden="true" />
+          </a>
+          <a
+            href="#contact"
+            className="inline-flex items-center justify-center px-7 py-3.5 rounded-full text-sm font-semibold text-ink border border-line hover:border-ink/40 transition-colors"
           >
-            Founder &amp; Researcher
-          </motion.p>
-
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.95 }}
-            className="font-body text-lg sm:text-xl text-chalk/65 max-w-xl mx-auto lg:mx-0 leading-relaxed mb-8"
-          >
-            I help a generation learn physics the way it's meant to be felt — building{' '}
-            <span className="text-chalk italic">SciPhyLabs</span>, an immersive, simulation-led
-            ecosystem engineered around how the mind actually learns.
-          </motion.p>
-
-          <motion.ul
-            initial="hidden"
-            animate="show"
-            variants={{ show: { transition: { staggerChildren: 0.07, delayChildren: 1.05 } } }}
-            className="flex flex-wrap gap-x-5 gap-y-2 justify-center lg:justify-start mb-10 list-none p-0"
-            aria-label="Areas of focus"
-          >
-            {services.map((s) => (
-              <motion.li
-                key={s}
-                variants={{ hidden: { opacity: 0, y: 8 }, show: { opacity: 1, y: 0 } }}
-                className="hand text-xl sm:text-2xl text-chalk/55 hover:text-gold transition-colors -rotate-1 even:rotate-1"
-              >
-                {s}
-              </motion.li>
-            ))}
-          </motion.ul>
-
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2 }}
-            className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4"
-          >
-            <MagneticButton strength={0.4} className="w-full sm:w-auto">
-              <a
-                href="#sciphylabs"
-                className="ui inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gold text-ink font-bold text-sm uppercase tracking-[0.16em] hover:bg-chalk transition-colors w-full"
-              >
-                See the work
-              </a>
-            </MagneticButton>
-            <MagneticButton strength={0.3} className="w-full sm:w-auto">
-              <a
-                href="#contact"
-                className="ui inline-flex items-center justify-center px-8 py-4 rounded-full border border-chalk/15 text-chalk font-medium text-sm uppercase tracking-[0.16em] hover:border-gold/50 hover:text-gold transition-colors w-full"
-              >
-                Get in touch
-              </a>
-            </MagneticButton>
-          </motion.div>
-        </div>
+            Get in touch
+          </a>
+        </motion.div>
       </div>
 
-      <motion.a
-        href="#profile"
-        aria-label="Scroll to learn more"
+      {/* quick facts strip, anchored low */}
+      <motion.dl
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.6 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-1 text-chalk/40 hover:text-gold transition-colors"
+        transition={{ duration: 0.8, delay: 0.8 }}
+        className="max-w-6xl mx-auto w-full mt-16 sm:mt-20 grid grid-cols-1 sm:grid-cols-3 border-t border-line"
       >
-        <span className="eyebrow">Who am I</span>
-        <motion.span
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          <ChevronDown size={20} aria-hidden="true" />
-        </motion.span>
-      </motion.a>
+        {facts.map(([k, v]) => (
+          <div key={k} className="py-5 sm:pr-8 border-b sm:border-b-0 border-line sm:[&:not(:last-child)]:border-r sm:[&:not(:last-child)]:pr-8">
+            <dt className="eyebrow text-stone mb-1.5">{k}</dt>
+            <dd className="display text-xl text-ink">{v}</dd>
+          </div>
+        ))}
+      </motion.dl>
     </section>
   );
 };

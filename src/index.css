@@ -2,31 +2,25 @@
 
 /*
  * ─────────────────────────────────────────────────────────────────────────
- *  SREERAM VENUGOPAL — cinematic portfolio theme
- *  A near-black auteur stage: a warm golden spotlight, hand-painted brush
- *  headlines, an elegant ember-red editorial serif, and a quiet starfield.
- *  Physics meets cinema — a mind under the spotlight.
+ *  SREERAM VENUGOPAL — editorial portfolio
+ *  Letterhead restraint: warm paper, near-black ink, a single Harvard
+ *  crimson accent. Strong display serif, clean grotesque body, hairline
+ *  rules, generous margins. Authority through typography, not colour.
  * ─────────────────────────────────────────────────────────────────────────
  */
 
 @theme {
-  /* Type roles */
-  --font-body: "Cormorant Garamond", ui-serif, Georgia, serif;
-  --font-serif: "Playfair Display", ui-serif, Georgia, serif;   /* elegant ember accent */
-  --font-brush: "Permanent Marker", "Caveat", ui-sans-serif, cursive; /* painted display */
-  --font-hand: "Caveat", ui-sans-serif, cursive;                /* handwritten accents */
-  --font-ui: "Inter", ui-sans-serif, system-ui, sans-serif;     /* nav, labels, data */
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 
-  /* Palette */
-  --color-ink: #0a0a0b;        /* base stage */
-  --color-ink-2: #111014;      /* raised panel */
-  --color-ink-3: #17151b;      /* card */
-  --color-chalk: #f2efe6;      /* warm off-white */
-  --color-ember: #d6402f;      /* vermilion — the signature serif accent */
-  --color-ember-soft: #e0664f;
-  --color-gold: #d9b65f;       /* warm spotlight gold */
-  --color-gold-deep: #b8923a;
-  --color-cosmos: #6f63a6;     /* faint cosmic violet — texture only */
+  --color-paper: #faf8f5;       /* warm near-white page */
+  --color-paper-2: #f2efe9;     /* alternating panel */
+  --color-ink: #181614;         /* near-black text */
+  --color-ink-soft: #4a463f;    /* secondary text */
+  --color-stone: #8b857b;       /* muted / captions */
+  --color-line: #e3ded4;        /* hairline borders */
+  --color-crimson: #a51c30;     /* Harvard crimson — the single accent */
+  --color-crimson-deep: #7c1421;
 }
 
 @layer base {
@@ -38,171 +32,91 @@
   }
 
   body {
-    @apply bg-ink text-chalk font-body;
+    @apply bg-paper text-ink font-sans;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
     min-width: 320px;
-    font-size: 1.05rem;
+    font-feature-settings: "ss01", "cv05";
   }
 
   ::selection {
-    background: rgba(214, 64, 47, 0.32);
-    color: #fff;
+    background: rgba(165, 28, 48, 0.16);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-gold);
+    outline: 2px solid var(--color-crimson);
     outline-offset: 3px;
-    border-radius: 3px;
+    border-radius: 2px;
   }
 
-  img,
-  svg {
-    max-width: 100%;
-    height: auto;
-  }
-
-  section,
-  main {
-    min-width: 0;
-  }
+  img, svg { max-width: 100%; height: auto; }
+  section, main { min-width: 0; }
 }
 
 @layer utilities {
-  /* ── Painted display text ─────────────────────────────────────────── */
-  .brush {
-    font-family: var(--font-brush);
-    letter-spacing: 0.01em;
-    line-height: 0.95;
-  }
-  /* Dry-brush roughen — only safe on large display sizes */
-  .brush-rough {
-    filter: url(#roughen);
+  .display {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
   }
 
-  .hand {
-    font-family: var(--font-hand);
-    font-weight: 700;
-    letter-spacing: 0.01em;
-  }
-
-  .serif {
-    font-family: var(--font-serif);
-  }
-
-  .ui {
-    font-family: var(--font-ui);
-  }
-
-  /* Eyebrow / label */
+  /* Small institutional label */
   .eyebrow {
-    font-family: var(--font-ui);
-    font-weight: 700;
+    font-family: var(--font-sans);
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.32em;
-    font-size: 0.625rem;
+    letter-spacing: 0.2em;
+    font-size: 0.6875rem;
   }
 
-  /* ── The spotlight glow ───────────────────────────────────────────── */
-  .spotlight {
-    background:
-      radial-gradient(60% 50% at var(--sx, 50%) var(--sy, 38%),
-        rgba(217, 182, 95, 0.22) 0%,
-        rgba(184, 146, 58, 0.10) 28%,
-        rgba(10, 10, 11, 0) 64%);
+  /* Mono-ish index numerals using tabular Inter */
+  .index-num {
+    font-family: var(--font-sans);
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
   }
 
-  .glass {
-    background: rgba(255, 255, 255, 0.035);
-    backdrop-filter: blur(14px);
-    border: 1px solid rgba(242, 239, 230, 0.08);
+  .crimson-rule {
+    height: 3px;
+    width: 56px;
+    background: var(--color-crimson);
   }
 
-  .glass-gold {
-    background: rgba(217, 182, 95, 0.06);
-    border: 1px solid rgba(217, 182, 95, 0.18);
-  }
-
-  .text-gold-glow {
-    text-shadow: 0 0 32px rgba(217, 182, 95, 0.45);
-  }
-  .text-ember-glow {
-    text-shadow: 0 0 26px rgba(214, 64, 47, 0.4);
-  }
-
-  /* Hand-drawn underline used on links / awards */
-  .ink-underline {
-    background-image: linear-gradient(var(--color-ember), var(--color-ember));
+  .link-underline {
+    background-image: linear-gradient(var(--color-crimson), var(--color-crimson));
     background-repeat: no-repeat;
     background-position: 0 100%;
-    background-size: 0% 2px;
+    background-size: 0% 1.5px;
     transition: background-size 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    padding-bottom: 1px;
   }
-  .ink-underline:hover {
-    background-size: 100% 2px;
-  }
+  .link-underline:hover { background-size: 100% 1.5px; }
 
   .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
-}
-
-/* Clip-wipe reveal for painted headlines */
-@keyframes paint-in {
-  from {
-    clip-path: inset(0 100% 0 0);
-  }
-  to {
-    clip-path: inset(0 0 0 0);
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
   }
 }
 
 .skip-link {
-  position: absolute;
-  top: -100px;
-  left: 1rem;
-  z-index: 100;
+  position: absolute; top: -100px; left: 1rem; z-index: 100;
   padding: 0.75rem 1.25rem;
-  background: var(--color-gold);
-  color: var(--color-ink);
-  font-family: var(--font-ui);
-  font-weight: 700;
-  font-size: 0.875rem;
-  border-radius: 9999px;
-  text-decoration: none;
-  transition: top 0.2s ease;
+  background: var(--color-crimson); color: #fff;
+  font-family: var(--font-sans); font-weight: 600; font-size: 0.875rem;
+  border-radius: 4px; text-decoration: none; transition: top 0.2s ease;
 }
-.skip-link:focus {
-  top: 1rem;
-}
+.skip-link:focus { top: 1rem; }
 
-::-webkit-scrollbar {
-  width: 7px;
-}
-::-webkit-scrollbar-track {
-  background: var(--color-ink);
-}
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--color-paper); }
 ::-webkit-scrollbar-thumb {
-  background: rgba(217, 182, 95, 0.25);
-  border-radius: 9999px;
+  background: var(--color-line); border-radius: 9999px;
+  border: 3px solid var(--color-paper);
 }
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(217, 182, 95, 0.45);
-}
+::-webkit-scrollbar-thumb:hover { background: #d2ccbf; }
 
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

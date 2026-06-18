@@ -1,82 +1,65 @@
-import { Linkedin, BookOpen, Youtube, Instagram, Mail } from 'lucide-react';
-
 const sitemap = [
-  { name: 'About', href: '#profile' },
+  { name: 'About', href: '#about' },
   { name: 'SciPhyLabs', href: '#sciphylabs' },
-  { name: 'Work', href: '#projects' },
-  { name: 'Journey', href: '#journey' },
+  { name: 'Work', href: '#work' },
+  { name: 'Credentials', href: '#credentials' },
   { name: 'Writing', href: '#writing' },
   { name: 'Contact', href: '#contact' },
 ];
 
-const socials = [
-  { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/in/sreeram-venugopal-701531376/' },
-  { name: 'Medium', icon: BookOpen, href: 'https://medium.com/@sreeram23db' },
-  { name: 'YouTube', icon: Youtube, href: 'https://www.youtube.com/channel/UCMww2T1ZzUvdUMowVRyANGA' },
-  { name: 'Instagram', icon: Instagram, href: 'https://www.instagram.com/venuuu7_' },
-  { name: 'Email', icon: Mail, href: 'mailto:sreeram23db@gmail.com' },
+const elsewhere = [
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/sreeram-venugopal-701531376/' },
+  { name: 'Medium', href: 'https://medium.com/@sreeram23db' },
+  { name: 'YouTube', href: 'https://www.youtube.com/channel/UCMww2T1ZzUvdUMowVRyANGA' },
+  { name: 'Instagram', href: 'https://www.instagram.com/venuuu7_' },
 ];
 
 export const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer
-      role="contentinfo"
-      className="relative z-10 px-4 sm:px-6 pt-16 pb-10 border-t border-chalk/[0.06] bg-ink/60 backdrop-blur-sm"
-    >
-      <div className="max-w-6xl mx-auto grid gap-10 sm:grid-cols-2 md:grid-cols-3">
-        <div className="space-y-4 sm:col-span-2 md:col-span-1">
-          <div className="flex items-center gap-2.5">
-            <span aria-hidden="true" className="brush text-gold text-3xl -rotate-6 leading-none">SV</span>
-            <span className="ui text-base font-semibold tracking-tight text-chalk">Sreeram Venugopal</span>
-          </div>
-          <p className="font-body text-base text-chalk/50 leading-relaxed max-w-sm">
-            Founder of <span className="text-chalk/80">SciPhyLabs</span> — building interactive physics
-            simulations and immersive education systems engineered around andragogical principles and
-            cognitive-development research.
+    <footer role="contentinfo" className="px-5 sm:px-8 py-14 border-t-[3px] border-crimson bg-paper">
+      <div className="max-w-6xl mx-auto grid gap-10 md:grid-cols-[1.5fr_1fr_1fr]">
+        <div className="space-y-3">
+          <p className="display text-xl font-semibold text-ink">Sreeram Venugopal</p>
+          <p className="text-sm text-ink-soft leading-relaxed max-w-xs">
+            Founder of SciPhyLabs. Building interactive physics and writing about how people learn.
           </p>
         </div>
 
-        <nav aria-label="Footer sitemap" className="space-y-4">
-          <h2 className="ui text-[10px] uppercase tracking-[0.22em] font-bold text-chalk/40">Sitemap</h2>
-          <ul className="grid grid-cols-2 gap-y-2 list-none p-0 ui text-sm">
-            {sitemap.map((item) => (
-              <li key={item.name}>
-                <a href={item.href} className="text-chalk/55 hover:text-gold transition-colors">{item.name}</a>
+        <nav aria-label="Sitemap" className="space-y-3">
+          <h2 className="eyebrow text-stone">Sitemap</h2>
+          <ul className="grid grid-cols-2 gap-y-1.5 list-none p-0 text-sm">
+            {sitemap.map((s) => (
+              <li key={s.name}>
+                <a href={s.href} className="text-ink-soft hover:text-crimson transition-colors">{s.name}</a>
               </li>
             ))}
           </ul>
         </nav>
 
-        <div className="space-y-4">
-          <h2 className="ui text-[10px] uppercase tracking-[0.22em] font-bold text-chalk/40">Elsewhere</h2>
-          <ul className="flex gap-3 list-none p-0">
-            {socials.map((social) => (
-              <li key={social.name}>
+        <div className="space-y-3">
+          <h2 className="eyebrow text-stone">Elsewhere</h2>
+          <ul className="space-y-1.5 list-none p-0 text-sm">
+            {elsewhere.map((e) => (
+              <li key={e.name}>
                 <a
-                  href={social.href}
-                  target={social.href.startsWith('mailto:') ? undefined : '_blank'}
-                  rel={social.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
-                  aria-label={`${social.name} — Sreeram Venugopal`}
-                  className="w-10 h-10 rounded-full glass flex items-center justify-center text-chalk/55 hover:text-gold hover:border-gold/30 transition-colors"
+                  href={e.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-ink-soft hover:text-crimson transition-colors"
                 >
-                  <social.icon size={16} aria-hidden="true" />
+                  {e.name}
                 </a>
               </li>
             ))}
           </ul>
-          <p className="ui text-xs text-chalk/30 pt-1">
-            <a href="mailto:sreeram23db@gmail.com" className="hover:text-chalk/60 transition-colors">
-              sreeram23db@gmail.com
-            </a>
-          </p>
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto mt-12 pt-7 border-t border-chalk/[0.06] flex flex-col md:flex-row items-center justify-between gap-3 ui text-[10px] uppercase tracking-[0.22em] font-bold text-chalk/30">
-        <p>© {year} Sreeram Venugopal · SciPhyLabs</p>
-        <p>Built with intent. <span className="text-chalk/45">Designed to teach.</span></p>
+      <div className="max-w-6xl mx-auto mt-12 pt-6 border-t border-line flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-stone">
+        <p>© {year} Sreeram Venugopal</p>
+        <a href="mailto:sreeram23db@gmail.com" className="hover:text-crimson transition-colors">sreeram23db@gmail.com</a>
       </div>
     </footer>
   );

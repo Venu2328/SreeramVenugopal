@@ -1,19 +1,11 @@
-import { motion } from 'motion/react';
-import { Home, Instagram, Linkedin, Youtube, BookOpen } from 'lucide-react';
-import { Starfield } from './atmosphere/Starfield';
-import { MagneticButton } from './effects/MagneticButton';
+import { ArrowUpRight, Mail } from 'lucide-react';
+import { Reveal } from './motion/Reveal';
 
-const footerNav = [
-  { label: 'Work', href: '#projects' },
-  { label: 'Contact', href: '#contact' },
-  { label: 'Writing', href: '#writing' },
-];
-
-const socials = [
-  { name: 'Instagram', icon: Instagram, href: 'https://www.instagram.com/venuuu7_' },
-  { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/in/sreeram-venugopal-701531376/' },
-  { name: 'YouTube', icon: Youtube, href: 'https://www.youtube.com/channel/UCMww2T1ZzUvdUMowVRyANGA' },
-  { name: 'Medium', icon: BookOpen, href: 'https://medium.com/@sreeram23db' },
+const links = [
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/sreeram-venugopal-701531376/' },
+  { name: 'Medium', href: 'https://medium.com/@sreeram23db' },
+  { name: 'YouTube', href: 'https://www.youtube.com/channel/UCMww2T1ZzUvdUMowVRyANGA' },
+  { name: 'Instagram', href: 'https://www.instagram.com/venuuu7_' },
 ];
 
 export const Contact = () => {
@@ -21,99 +13,61 @@ export const Contact = () => {
     <section
       id="contact"
       aria-labelledby="contact-heading"
-      className="relative min-h-[90vh] flex flex-col justify-center overflow-hidden px-4 sm:px-6 py-24 bg-black"
+      className="py-28 sm:py-36 px-5 sm:px-8 bg-ink text-paper scroll-mt-16"
     >
-      <Starfield className="absolute inset-0 w-full h-full" />
-      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-ink via-transparent to-black pointer-events-none" />
+      <div className="max-w-6xl mx-auto">
+        <Reveal>
+          <div className="flex items-center gap-4 mb-8">
+            <span className="crimson-rule" aria-hidden="true" />
+            <span className="eyebrow text-paper/60">Contact</span>
+          </div>
+        </Reveal>
 
-      <div className="relative max-w-4xl mx-auto text-center">
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="hand text-gold text-2xl sm:text-3xl mb-4"
-        >
-          Want to collaborate
-        </motion.p>
+        <Reveal delay={0.05}>
+          <h2
+            id="contact-heading"
+            className="display font-semibold leading-[0.95] tracking-[-0.02em] text-[clamp(2.6rem,8vw,6rem)]"
+          >
+            Let's work
+            <br />
+            <span className="text-paper/55">together.</span>
+          </h2>
+        </Reveal>
 
-        <motion.h2
-          id="contact-heading"
-          initial={{ clipPath: 'inset(0 100% 0 0)', opacity: 0.3 }}
-          whileInView={{ clipPath: 'inset(0 0% 0 0)', opacity: 1 }}
-          viewport={{ once: true, margin: '-12%' }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="brush brush-rough text-chalk text-gold-glow text-[clamp(2.8rem,11vw,8rem)] leading-[0.92]"
-        >
-          Let's build
-          <br />
-          something.
-        </motion.h2>
+        <Reveal delay={0.1}>
+          <p className="mt-8 max-w-xl text-lg text-paper/65 leading-relaxed">
+            Open to collaborations, consulting, and conversations about education and building useful
+            things. The fastest way to reach me is email.
+          </p>
+        </Reveal>
 
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="font-body text-lg sm:text-xl text-chalk/60 max-w-xl mx-auto mt-6"
-        >
-          Open to research collaborations, fellowships, and serious conversations on andragogy,
-          cognitive development and the future of STEM education. I'd love to hear from you.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-          className="mt-10"
-        >
-          <MagneticButton strength={0.4}>
-            <a
-              href="mailto:sreeram23db@gmail.com"
-              className="hand inline-flex items-center gap-2 text-3xl sm:text-4xl text-ink bg-gold px-9 py-3 rounded-full hover:bg-chalk transition-colors"
-            >
-              This way →
-            </a>
-          </MagneticButton>
-        </motion.div>
-
-        <div className="mt-8 ui text-chalk/50 text-sm uppercase tracking-[0.18em]">
-          <a href="mailto:sreeram23db@gmail.com" className="hover:text-gold transition-colors">
+        <Reveal delay={0.15}>
+          <a
+            href="mailto:sreeram23db@gmail.com"
+            className="group mt-10 inline-flex items-center gap-3 bg-crimson text-white px-8 py-4 rounded-full text-base font-semibold hover:bg-white hover:text-ink transition-colors"
+          >
+            <Mail size={18} aria-hidden="true" />
             sreeram23db@gmail.com
+            <ArrowUpRight size={18} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" aria-hidden="true" />
           </a>
-        </div>
+        </Reveal>
 
-        {/* footer nav row, echoing the reference's bottom bar */}
-        <nav
-          aria-label="Footer"
-          className="mt-14 flex flex-wrap items-center justify-center gap-x-7 gap-y-4"
-        >
-          <a href="#home" aria-label="Home" className="text-chalk/60 hover:text-gold transition-colors">
-            <Home size={20} aria-hidden="true" />
-          </a>
-          {footerNav.map((n) => (
-            <a
-              key={n.label}
-              href={n.href}
-              className="ui text-[11px] uppercase tracking-[0.22em] font-bold text-chalk/60 hover:text-gold transition-colors"
-            >
-              {n.label}
-            </a>
-          ))}
-          <span aria-hidden="true" className="hidden sm:block w-px h-4 bg-chalk/15" />
-          {socials.map((s) => (
-            <a
-              key={s.name}
-              href={s.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={s.name}
-              className="text-chalk/60 hover:text-gold transition-colors"
-            >
-              <s.icon size={18} aria-hidden="true" />
-            </a>
-          ))}
-        </nav>
+        <Reveal delay={0.2}>
+          <ul className="mt-14 pt-8 border-t border-paper/15 flex flex-wrap gap-x-8 gap-y-3 list-none p-0">
+            {links.map((l) => (
+              <li key={l.name}>
+                <a
+                  href={l.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="eyebrow text-paper/60 hover:text-white link-underline"
+                >
+                  {l.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
       </div>
     </section>
   );

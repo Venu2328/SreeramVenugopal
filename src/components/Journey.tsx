@@ -1,67 +1,67 @@
-import { motion } from 'motion/react';
+import { useRef } from 'react';
+import { motion, useScroll, useSpring, useTransform } from 'motion/react';
+import { SectionHeading } from './SectionHeading';
+import { Reveal } from './motion/Reveal';
 
-const acts = [
+const timeline = [
   {
     year: '2022',
-    title: 'Foundations',
-    desc: 'Began researching the gap between mathematical rigour and physical intuition in conventional STEM pedagogy.',
+    title: 'Started the research',
+    desc: 'Began looking closely at why physics felt harder than it needed to be, and where conventional teaching loses people.',
   },
   {
     year: '2023',
-    title: 'SciPhyLabs Founded',
-    desc: 'Translated cognitive-development research into a self-directed simulation engine — crossing the 100-simulation milestone.',
+    title: 'Founded SciPhyLabs',
+    desc: 'Turned that into a product — the first interactive simulations, and the first hundred built.',
   },
   {
     year: '2024',
-    title: 'Andragogical Framework',
-    desc: 'Scaled to 347+ interactive simulations across 10+ STEM domains and formalised the andragogical framework behind the platform.',
+    title: 'Scaled the library',
+    desc: 'Grew to 347+ simulations across 10+ topics and tightened the platform around self-directed practice.',
   },
   {
     year: 'Now',
-    title: 'Research & Leadership',
-    desc: 'Leading research on simulation-led learning and AI-native pedagogy — building SciPhyLabs as the foundation for a new model of STEM education.',
+    title: 'Building and writing',
+    desc: 'Expanding SciPhyLabs, taking on selected client work through Venice, and writing about how people learn.',
   },
 ];
 
 export const Journey = () => {
-  return (
-    <section
-      id="journey"
-      aria-labelledby="journey-heading"
-      className="relative py-20 sm:py-28 px-4 sm:px-6 border-t border-chalk/[0.06]"
-    >
-      <div className="max-w-4xl mx-auto">
-        <header className="mb-14 sm:mb-20">
-          <p className="eyebrow text-gold/70 mb-4">In four acts</p>
-          <h2 id="journey-heading" className="serif text-4xl sm:text-5xl md:text-6xl text-chalk">
-            The <span className="italic text-ember">evolution.</span>
-          </h2>
-        </header>
+  const ref = useRef<HTMLOListElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start 70%', 'end 60%'],
+  });
+  const lineScale = useSpring(scrollYProgress, { stiffness: 120, damping: 30, mass: 0.4 });
 
-        <ol className="relative space-y-12 list-none p-0">
-          <span
+  return (
+    <section id="journey" aria-labelledby="journey-heading" className="py-24 sm:py-32 px-5 sm:px-8 scroll-mt-16">
+      <div className="max-w-3xl mx-auto">
+        <SectionHeading
+          index="05"
+          kicker="Timeline"
+          title={<span id="journey-heading">How it has gone so far.</span>}
+        />
+
+        <ol ref={ref} className="mt-14 relative list-none p-0">
+          {/* track + scroll-drawn fill */}
+          <span aria-hidden="true" className="absolute left-[5px] top-2 bottom-2 w-px bg-line" />
+          <motion.span
             aria-hidden="true"
-            className="absolute left-[6px] top-3 bottom-3 w-px bg-gradient-to-b from-gold/50 via-gold/15 to-transparent"
+            style={{ scaleY: lineScale }}
+            className="absolute left-[5px] top-2 bottom-2 w-px bg-crimson origin-top"
           />
-          {acts.map((a, i) => (
-            <motion.li
-              key={a.year}
-              initial={{ opacity: 0, x: -16 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-10%' }}
-              transition={{ delay: i * 0.1, duration: 0.6 }}
-              className="relative pl-12 group"
-            >
+
+          {timeline.map((t, i) => (
+            <Reveal as="li" key={t.year} delay={i * 0.05} className="relative pl-10 pb-12 last:pb-0">
               <span
                 aria-hidden="true"
-                className="absolute left-0 top-2 w-[13px] h-[13px] rounded-full bg-ink border border-gold/50 group-hover:bg-gold transition-colors duration-500"
+                className="absolute left-0 top-1.5 w-[11px] h-[11px] rounded-full bg-paper border-2 border-crimson"
               />
-              <article className="space-y-2">
-                <span className="brush text-gold text-3xl leading-none block">{a.year}</span>
-                <h3 className="serif text-2xl text-chalk">{a.title}</h3>
-                <p className="font-body text-lg text-chalk/55 leading-relaxed max-w-xl">{a.desc}</p>
-              </article>
-            </motion.li>
+              <span className="index-num text-sm text-crimson">{t.year}</span>
+              <h3 className="display text-2xl text-ink mt-1 mb-2">{t.title}</h3>
+              <p className="text-ink-soft leading-relaxed">{t.desc}</p>
+            </Reveal>
           ))}
         </ol>
       </div>

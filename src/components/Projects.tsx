@@ -1,86 +1,67 @@
-import { motion } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
-import { MagicCard } from './effects/MagicCard';
+import { SectionHeading } from './SectionHeading';
+import { Reveal } from './motion/Reveal';
 
 const projects = [
   {
     title: 'SciPhyLabs — Master Physics',
-    desc: 'An interactive system book linking physical text with simulation-based learning for STEM students.',
-    status: 'In Progress',
-    tags: ['Education', 'HCI', 'Book Design'],
+    desc: 'A companion text that pairs written explanation with the interactive simulations it describes.',
+    meta: ['Education', 'Product', 'In progress'],
   },
   {
     title: 'Sutra AI',
-    desc: 'Researching AI-native educational assistants for high-school physics — bridging conceptual reasoning and curriculum mastery.',
-    status: 'Prototype',
-    tags: ['AI', 'GPT-4o', 'Prompt Engineering'],
+    desc: 'An experimental AI study assistant for high-school physics, focused on conceptual reasoning over rote answers.',
+    meta: ['AI', 'Prototype'],
   },
   {
-    title: 'Venice — Agency',
-    desc: 'Entrepreneurial venture providing digital transformation, branding and marketing for large-scale enterprises.',
-    status: 'Active',
-    tags: ['Agency', 'Entrepreneurship', 'Branding'],
+    title: 'Venice',
+    desc: 'A small studio delivering branding, web and digital work for businesses that need a clearer presence.',
+    meta: ['Studio', 'Client work', 'Active'],
   },
   {
     title: 'Swaminathan Enterprises',
-    desc: 'Lead digital partner through Venice — driving systems operations, modernization and growth strategy.',
-    status: 'Client Strategy',
-    tags: ['Partnership', 'Ops', 'Modernization'],
-  },
-  {
-    title: 'Experimental Research',
-    desc: 'Independent writing and technical research on learning efficiency, visual mnemonics and immersive education systems.',
-    status: 'Ongoing',
-    tags: ['Research', 'Writing'],
+    desc: 'Digital partner through Venice — operations, modernization and growth strategy for an established business.',
+    meta: ['Consulting', 'Ops'],
   },
 ];
 
 export const Projects = () => {
   return (
-    <section id="projects" aria-labelledby="projects-heading" className="relative py-24 sm:py-32 px-4 sm:px-6">
+    <section id="work" aria-labelledby="work-heading" className="py-24 sm:py-32 px-5 sm:px-8 scroll-mt-16">
       <div className="max-w-6xl mx-auto">
-        <header className="mb-14 sm:mb-20 text-center">
-          <p className="eyebrow text-gold/70 mb-4">The body of work</p>
-          <h2 id="projects-heading" className="serif text-4xl sm:text-5xl md:text-6xl text-chalk">
-            Beyond the <span className="italic text-ember">lab.</span>
-          </h2>
-          <p className="font-body text-lg text-chalk/55 max-w-xl mx-auto mt-4">
-            Ventures and research systems that rethink how technical knowledge is built, transferred and led.
-          </p>
-        </header>
+        <SectionHeading
+          index="03"
+          kicker="Selected work"
+          title={<span id="work-heading">Beyond the lab.</span>}
+          className="max-w-3xl"
+        />
 
-        <ul className="grid sm:grid-cols-2 gap-5 sm:gap-6 list-none p-0">
+        <ul className="mt-14 list-none p-0 border-t border-line">
           {projects.map((p, i) => (
-            <motion.li
-              key={p.title}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-8%' }}
-              transition={{ delay: (i % 2) * 0.08, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <MagicCard maxTilt={4} spotlightRadius={320} spotlightOpacity={0.12} className="rounded-2xl h-full">
-                <article className="relative h-full p-7 sm:p-9 rounded-2xl glass hover:border-gold/30 transition-colors flex flex-col justify-between group overflow-hidden">
-                  <span aria-hidden="true" className="brush absolute -top-3 -left-1 text-chalk/[0.04] text-7xl select-none">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <div className="relative space-y-4">
-                    <div className="flex items-center justify-between">
-                      <span className="ui glass-gold text-gold text-[10px] uppercase tracking-[0.18em] font-bold px-3 py-1 rounded-full">
-                        {p.status}
-                      </span>
-                      <ArrowUpRight size={20} className="text-chalk/25 group-hover:text-gold transition-colors" aria-hidden="true" />
-                    </div>
-                    <h3 className="serif text-2xl sm:text-3xl text-chalk leading-snug">{p.title}</h3>
-                    <p className="font-body text-base sm:text-lg text-chalk/55 leading-relaxed">{p.desc}</p>
-                  </div>
-                  <ul className="relative pt-7 flex flex-wrap gap-x-4 gap-y-1.5 list-none p-0" aria-label={`${p.title} tags`}>
-                    {p.tags.map((t) => (
-                      <li key={t} className="hand text-lg text-chalk/40">#{t}</li>
-                    ))}
-                  </ul>
-                </article>
-              </MagicCard>
-            </motion.li>
+            <Reveal as="li" key={p.title} delay={(i % 2) * 0.05}>
+              <a
+                href="#contact"
+                className="group grid sm:grid-cols-[auto_1fr_auto] items-baseline gap-x-6 gap-y-2 py-7 sm:py-8 border-b border-line hover:bg-paper-2/60 -mx-4 sm:-mx-6 px-4 sm:px-6 transition-colors rounded-sm"
+              >
+                <span className="index-num text-sm text-crimson">{String(i + 1).padStart(2, '0')}</span>
+                <div className="space-y-2">
+                  <h3 className="display text-2xl sm:text-3xl text-ink leading-tight flex items-center gap-2">
+                    {p.title}
+                    <ArrowUpRight
+                      size={20}
+                      className="text-stone opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                      aria-hidden="true"
+                    />
+                  </h3>
+                  <p className="text-ink-soft leading-relaxed max-w-xl">{p.desc}</p>
+                </div>
+                <ul className="flex sm:flex-col sm:items-end flex-wrap gap-x-3 gap-y-1 list-none p-0">
+                  {p.meta.map((m) => (
+                    <li key={m} className="eyebrow text-stone">{m}</li>
+                  ))}
+                </ul>
+              </a>
+            </Reveal>
           ))}
         </ul>
       </div>

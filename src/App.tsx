@@ -4,43 +4,36 @@
  */
 
 import { MotionConfig } from 'motion/react';
+import { ScrollProgress } from './components/motion/ScrollProgress';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { Quote } from './components/Quote';
 import { Profile } from './components/Profile';
 import { SciPhyLabs } from './components/SciPhyLabs';
 import { Projects } from './components/Projects';
+import { Recognition } from './components/Recognition';
 import { Journey } from './components/Journey';
 import { Resources } from './components/Resources';
 import { Contact } from './components/Contact';
-import { Recognition } from './components/Recognition';
 import { Footer } from './components/Footer';
-import { Atmosphere } from './components/atmosphere/Atmosphere';
 
 export default function App() {
   return (
     <MotionConfig reducedMotion="user">
-      <div className="relative min-h-screen">
-        <Atmosphere />
+      <ScrollProgress />
+      <Navbar />
 
-        <div className="relative z-10">
-          <Navbar />
+      <main id="main-content" tabIndex={-1}>
+        <Hero />
+        <Profile />
+        <SciPhyLabs />
+        <Projects />
+        <Recognition />
+        <Journey />
+        <Resources />
+        <Contact />
+      </main>
 
-          <main id="main-content" tabIndex={-1}>
-            <Hero />
-            <Quote />
-            <Profile />
-            <SciPhyLabs />
-            <Projects />
-            <Recognition />
-            <Journey />
-            <Resources />
-            <Contact />
-          </main>
-
-          <Footer />
-        </div>
-      </div>
+      <Footer />
     </MotionConfig>
   );
 }
