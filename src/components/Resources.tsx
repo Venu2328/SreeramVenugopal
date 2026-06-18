@@ -1,4 +1,5 @@
 import { ArrowUpRight, ExternalLink } from 'lucide-react';
+import { motion } from 'motion/react';
 import { SectionHeading } from './SectionHeading';
 import { Reveal } from './motion/Reveal';
 
@@ -20,10 +21,12 @@ const posts = [
   },
 ];
 
+const ease = [0.22, 1, 0.36, 1] as const;
+
 export const Resources = () => {
   return (
     <section id="writing" aria-labelledby="writing-heading" className="py-24 sm:py-32 px-5 sm:px-8 scroll-mt-16">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-3xl mx-auto">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
           <SectionHeading
             index="06"
@@ -42,23 +45,48 @@ export const Resources = () => {
           </Reveal>
         </div>
 
-        <ul className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5 list-none p-0">
+        <ul className="mt-14 space-y-5 list-none p-0">
           {posts.map((post, i) => (
-            <Reveal as="li" key={post.title} delay={i * 0.06}>
-              <article className="group h-full p-7 rounded-lg border border-line bg-paper hover:border-ink/25 transition-colors flex flex-col justify-between min-h-[210px]">
-                <div className="space-y-3">
-                  <span className="eyebrow text-crimson">{post.tag}</span>
-                  <h3 className="display text-xl sm:text-2xl text-ink leading-snug">{post.title}</h3>
-                  <p className="text-ink-soft text-sm leading-relaxed">{post.note}</p>
+            <motion.li
+              key={post.title}
+              initial={{ opacity: 0, y: 48 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, margin: '0px 0px -22% 0px' }}
+              transition={{ duration: 0.6, ease }}
+            >
+              <a
+                href="https://medium.com/@sreeram23db"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative block overflow-hidden rounded-2xl border border-line bg-paper hover:border-crimson transition-colors duration-300"
+              >
+                {/* royal crimson index rail */}
+                <span aria-hidden="true" className="absolute left-0 top-0 bottom-0 w-1.5 bg-crimson" />
+                <div className="pl-7 sm:pl-9 pr-6 py-7 sm:py-8 flex items-start gap-5 sm:gap-8">
+                  <span className="display text-3xl sm:text-4xl text-crimson leading-none shrink-0 tabular-nums">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <span className="eyebrow text-stone">{post.tag}</span>
+                    <h3 className="display text-2xl sm:text-3xl text-ink leading-snug mt-1.5 group-hover:text-crimson transition-colors">
+                      {post.title}
+                    </h3>
+                    <p className="text-ink-soft mt-2 leading-relaxed">{post.note}</p>
+                  </div>
+                  <ArrowUpRight
+                    size={22}
+                    className="text-stone shrink-0 mt-1 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 group-hover:text-crimson transition-all"
+                    aria-hidden="true"
+                  />
                 </div>
-                <div className="pt-6 flex items-center justify-between">
-                  <span className="eyebrow text-stone">Coming soon</span>
-                  <ArrowUpRight size={18} className="text-stone group-hover:text-crimson transition-colors" aria-hidden="true" />
-                </div>
-              </article>
-            </Reveal>
+              </a>
+            </motion.li>
           ))}
         </ul>
+
+        <Reveal delay={0.05} className="mt-8 text-center">
+          <span className="eyebrow text-stone">More essays coming soon</span>
+        </Reveal>
       </div>
     </section>
   );
