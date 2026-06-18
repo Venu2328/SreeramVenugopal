@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 
-const timelineData = [
+const acts = [
   {
     year: '2022',
     title: 'Foundations',
@@ -14,10 +14,10 @@ const timelineData = [
   {
     year: '2024',
     title: 'Andragogical Framework',
-    desc: 'Scaled to 347+ interactive physics simulations across 10+ STEM domains and formalised the andragogical framework behind the platform.',
+    desc: 'Scaled to 347+ interactive simulations across 10+ STEM domains and formalised the andragogical framework behind the platform.',
   },
   {
-    year: 'Present',
+    year: 'Now',
     title: 'Research & Leadership',
     desc: 'Leading research on simulation-led learning and AI-native pedagogy — building SciPhyLabs as the foundation for a new model of STEM education.',
   },
@@ -28,45 +28,38 @@ export const Journey = () => {
     <section
       id="journey"
       aria-labelledby="journey-heading"
-      className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 relative overflow-hidden"
+      className="relative py-20 sm:py-28 px-4 sm:px-6 border-t border-chalk/[0.06]"
     >
       <div className="max-w-4xl mx-auto">
-        <header className="mb-12 sm:mb-16 md:mb-20">
-          <h2
-            id="journey-heading"
-            className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white tracking-tight mb-3 sm:mb-4"
-          >
-            The Evolution
+        <header className="mb-14 sm:mb-20">
+          <p className="eyebrow text-gold/70 mb-4">In four acts</p>
+          <h2 id="journey-heading" className="serif text-4xl sm:text-5xl md:text-6xl text-chalk">
+            The <span className="italic text-ember">evolution.</span>
           </h2>
-          <p className="text-sm sm:text-base text-white/40 font-light">
-            From early research into cognitive development to leading a new model of STEM education.
-          </p>
         </header>
 
-        <ol className="relative space-y-10 sm:space-y-12 list-none p-0">
-          <div
+        <ol className="relative space-y-12 list-none p-0">
+          <span
             aria-hidden="true"
-            className="absolute left-[7px] top-4 bottom-4 w-[2px] bg-gradient-to-b from-lavender-haze/40 via-lavender-haze/10 to-transparent"
+            className="absolute left-[6px] top-3 bottom-3 w-px bg-gradient-to-b from-gold/50 via-gold/15 to-transparent"
           />
-
-          {timelineData.map((item, i) => (
+          {acts.map((a, i) => (
             <motion.li
-              key={item.year}
-              initial={{ opacity: 0, x: -10 }}
+              key={a.year}
+              initial={{ opacity: 0, x: -16 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
+              viewport={{ once: true, margin: '-10%' }}
+              transition={{ delay: i * 0.1, duration: 0.6 }}
               className="relative pl-12 group"
             >
               <span
                 aria-hidden="true"
-                className="absolute left-0 top-3 w-4 h-4 rounded-full glass border-lavender-haze/40 group-hover:bg-lavender-haze transition-all duration-500"
+                className="absolute left-0 top-2 w-[13px] h-[13px] rounded-full bg-ink border border-gold/50 group-hover:bg-gold transition-colors duration-500"
               />
-
               <article className="space-y-2">
-                <time className="text-lavender-haze font-display font-bold text-base sm:text-lg block">{item.year}</time>
-                <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight">{item.title}</h3>
-                <p className="text-sm sm:text-base text-white/50 leading-relaxed max-w-lg italic">{item.desc}</p>
+                <span className="brush text-gold text-3xl leading-none block">{a.year}</span>
+                <h3 className="serif text-2xl text-chalk">{a.title}</h3>
+                <p className="font-body text-lg text-chalk/55 leading-relaxed max-w-xl">{a.desc}</p>
               </article>
             </motion.li>
           ))}

@@ -1,13 +1,32 @@
 @import "tailwindcss";
 
-@theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Outfit", "Inter", ui-sans-serif, system-ui, sans-serif;
+/*
+ * ─────────────────────────────────────────────────────────────────────────
+ *  SREERAM VENUGOPAL — cinematic portfolio theme
+ *  A near-black auteur stage: a warm golden spotlight, hand-painted brush
+ *  headlines, an elegant ember-red editorial serif, and a quiet starfield.
+ *  Physics meets cinema — a mind under the spotlight.
+ * ─────────────────────────────────────────────────────────────────────────
+ */
 
-  --color-graphite: #0a0a0c;
-  --color-graphite-light: #16161a;
-  --color-lavender-haze: #b0a8cc;
-  --color-lavender-haze-muted: rgba(176, 168, 204, 0.4);
+@theme {
+  /* Type roles */
+  --font-body: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;   /* elegant ember accent */
+  --font-brush: "Permanent Marker", "Caveat", ui-sans-serif, cursive; /* painted display */
+  --font-hand: "Caveat", ui-sans-serif, cursive;                /* handwritten accents */
+  --font-ui: "Inter", ui-sans-serif, system-ui, sans-serif;     /* nav, labels, data */
+
+  /* Palette */
+  --color-ink: #0a0a0b;        /* base stage */
+  --color-ink-2: #111014;      /* raised panel */
+  --color-ink-3: #17151b;      /* card */
+  --color-chalk: #f2efe6;      /* warm off-white */
+  --color-ember: #d6402f;      /* vermilion — the signature serif accent */
+  --color-ember-soft: #e0664f;
+  --color-gold: #d9b65f;       /* warm spotlight gold */
+  --color-gold-deep: #b8923a;
+  --color-cosmos: #6f63a6;     /* faint cosmic violet — texture only */
 }
 
 @layer base {
@@ -19,17 +38,23 @@
   }
 
   body {
-    @apply bg-graphite text-white font-sans selection:bg-lavender-haze/30;
+    @apply bg-ink text-chalk font-body;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
     min-width: 320px;
+    font-size: 1.05rem;
+  }
+
+  ::selection {
+    background: rgba(214, 64, 47, 0.32);
+    color: #fff;
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-lavender-haze);
+    outline: 2px solid var(--color-gold);
     outline-offset: 3px;
-    border-radius: 4px;
+    border-radius: 3px;
   }
 
   img,
@@ -38,7 +63,6 @@
     height: auto;
   }
 
-  /* Prevent flex/grid children from blowing out on small viewports */
   section,
   main {
     min-width: 0;
@@ -46,16 +70,77 @@
 }
 
 @layer utilities {
+  /* ── Painted display text ─────────────────────────────────────────── */
+  .brush {
+    font-family: var(--font-brush);
+    letter-spacing: 0.01em;
+    line-height: 0.95;
+  }
+  /* Dry-brush roughen — only safe on large display sizes */
+  .brush-rough {
+    filter: url(#roughen);
+  }
+
+  .hand {
+    font-family: var(--font-hand);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+
+  .serif {
+    font-family: var(--font-serif);
+  }
+
+  .ui {
+    font-family: var(--font-ui);
+  }
+
+  /* Eyebrow / label */
+  .eyebrow {
+    font-family: var(--font-ui);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.32em;
+    font-size: 0.625rem;
+  }
+
+  /* ── The spotlight glow ───────────────────────────────────────────── */
+  .spotlight {
+    background:
+      radial-gradient(60% 50% at var(--sx, 50%) var(--sy, 38%),
+        rgba(217, 182, 95, 0.22) 0%,
+        rgba(184, 146, 58, 0.10) 28%,
+        rgba(10, 10, 11, 0) 64%);
+  }
+
   .glass {
-    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+    background: rgba(255, 255, 255, 0.035);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(242, 239, 230, 0.08);
   }
 
-  .text-glow {
-    text-shadow: 0 0 20px rgba(176, 168, 204, 0.3);
+  .glass-gold {
+    background: rgba(217, 182, 95, 0.06);
+    border: 1px solid rgba(217, 182, 95, 0.18);
   }
 
-  .cosmic-gradient {
-    background: radial-gradient(circle at 50% 50%, rgba(176, 168, 204, 0.05) 0%, transparent 70%);
+  .text-gold-glow {
+    text-shadow: 0 0 32px rgba(217, 182, 95, 0.45);
+  }
+  .text-ember-glow {
+    text-shadow: 0 0 26px rgba(214, 64, 47, 0.4);
+  }
+
+  /* Hand-drawn underline used on links / awards */
+  .ink-underline {
+    background-image: linear-gradient(var(--color-ember), var(--color-ember));
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0% 2px;
+    transition: background-size 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .ink-underline:hover {
+    background-size: 100% 2px;
   }
 
   .sr-only {
@@ -71,35 +156,47 @@
   }
 }
 
+/* Clip-wipe reveal for painted headlines */
+@keyframes paint-in {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
 .skip-link {
   position: absolute;
   top: -100px;
   left: 1rem;
   z-index: 100;
   padding: 0.75rem 1.25rem;
-  background: #b0a8cc;
-  color: #0a0a0c;
+  background: var(--color-gold);
+  color: var(--color-ink);
+  font-family: var(--font-ui);
   font-weight: 700;
   font-size: 0.875rem;
   border-radius: 9999px;
   text-decoration: none;
   transition: top 0.2s ease;
 }
-
 .skip-link:focus {
   top: 1rem;
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 7px;
 }
-
 ::-webkit-scrollbar-track {
-  @apply bg-graphite;
+  background: var(--color-ink);
 }
-
 ::-webkit-scrollbar-thumb {
-  @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
+  background: rgba(217, 182, 95, 0.25);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(217, 182, 95, 0.45);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,10 +1,10 @@
 import { motion } from 'motion/react';
-import { ExternalLink, Tag } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { MagicCard } from './effects/MagicCard';
 
-const otherProjects = [
+const projects = [
   {
-    title: 'SciPhyLabs Master Physics',
+    title: 'SciPhyLabs — Master Physics',
     desc: 'An interactive system book linking physical text with simulation-based learning for STEM students.',
     status: 'In Progress',
     tags: ['Education', 'HCI', 'Book Design'],
@@ -16,14 +16,14 @@ const otherProjects = [
     tags: ['AI', 'GPT-4o', 'Prompt Engineering'],
   },
   {
-    title: 'Venice (Agency)',
+    title: 'Venice — Agency',
     desc: 'Entrepreneurial venture providing digital transformation, branding and marketing for large-scale enterprises.',
     status: 'Active',
     tags: ['Agency', 'Entrepreneurship', 'Branding'],
   },
   {
     title: 'Swaminathan Enterprises',
-    desc: 'Lead digital partner through Venice Agency — driving systems operations, modernization and growth strategy.',
+    desc: 'Lead digital partner through Venice — driving systems operations, modernization and growth strategy.',
     status: 'Client Strategy',
     tags: ['Partnership', 'Ops', 'Modernization'],
   },
@@ -37,76 +37,48 @@ const otherProjects = [
 
 export const Projects = () => {
   return (
-    <section
-      id="projects"
-      aria-labelledby="projects-heading"
-      className="py-16 sm:py-20 md:py-24 px-4 sm:px-6"
-    >
+    <section id="projects" aria-labelledby="projects-heading" className="relative py-24 sm:py-32 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
-        <header className="mb-12 sm:mb-16 md:mb-20 text-center">
-          <h2
-            id="projects-heading"
-            className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white mb-3 sm:mb-4 tracking-tight"
-          >
-            Active Ecosystem
+        <header className="mb-14 sm:mb-20 text-center">
+          <p className="eyebrow text-gold/70 mb-4">The body of work</p>
+          <h2 id="projects-heading" className="serif text-4xl sm:text-5xl md:text-6xl text-chalk">
+            Beyond the <span className="italic text-ember">lab.</span>
           </h2>
-          <p className="text-sm sm:text-base text-white/40 max-w-xl mx-auto font-light px-2">
-            Beyond simulations, Sreeram builds tools and research systems that rethink how technical knowledge is transferred — from interactive learning platforms to AI-native study assistants.
+          <p className="font-body text-lg text-chalk/55 max-w-xl mx-auto mt-4">
+            Ventures and research systems that rethink how technical knowledge is built, transferred and led.
           </p>
         </header>
 
-        <ul className="grid sm:grid-cols-2 gap-5 sm:gap-6 md:gap-8 list-none p-0">
-          {otherProjects.map((project, i) => (
+        <ul className="grid sm:grid-cols-2 gap-5 sm:gap-6 list-none p-0">
+          {projects.map((p, i) => (
             <motion.li
-              key={project.title}
-              initial={{ opacity: 0, y: 20 }}
+              key={p.title}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{
-                delay: i * 0.1,
-                duration: 0.6,
-                ease: [0.23, 1, 0.32, 1],
-              }}
-              className="group relative"
+              viewport={{ once: true, margin: '-8%' }}
+              transition={{ delay: (i % 2) * 0.08, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div
-                aria-hidden="true"
-                className="absolute -inset-1 bg-gradient-to-r from-lavender-haze/20 to-transparent rounded-[32px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl -z-10"
-              />
-              <MagicCard maxTilt={5} spotlightRadius={320} spotlightOpacity={0.14} className="rounded-[28px] sm:rounded-[32px] h-full">
-              <article className="relative p-6 sm:p-8 md:p-10 glass rounded-[28px] sm:rounded-[32px] border-white/5 h-full flex flex-col justify-between hover:border-lavender-haze/40 hover:bg-white/[0.08] transition-all duration-500 hover:shadow-[0_20px_50px_rgba(176,168,204,0.15)]">
-                <div className="space-y-6">
-                  <div className="flex items-center justify-between">
-                    <span className="px-3 py-1 rounded-full bg-lavender-haze/10 text-lavender-haze text-[10px] font-bold uppercase tracking-widest border border-lavender-haze/20">
-                      {project.status}
-                    </span>
-                    <ExternalLink
-                      size={18}
-                      className="text-white/20 group-hover:text-white transition-colors"
-                      aria-hidden="true"
-                    />
+              <MagicCard maxTilt={4} spotlightRadius={320} spotlightOpacity={0.12} className="rounded-2xl h-full">
+                <article className="relative h-full p-7 sm:p-9 rounded-2xl glass hover:border-gold/30 transition-colors flex flex-col justify-between group overflow-hidden">
+                  <span aria-hidden="true" className="brush absolute -top-3 -left-1 text-chalk/[0.04] text-7xl select-none">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <div className="relative space-y-4">
+                    <div className="flex items-center justify-between">
+                      <span className="ui glass-gold text-gold text-[10px] uppercase tracking-[0.18em] font-bold px-3 py-1 rounded-full">
+                        {p.status}
+                      </span>
+                      <ArrowUpRight size={20} className="text-chalk/25 group-hover:text-gold transition-colors" aria-hidden="true" />
+                    </div>
+                    <h3 className="serif text-2xl sm:text-3xl text-chalk leading-snug">{p.title}</h3>
+                    <p className="font-body text-base sm:text-lg text-chalk/55 leading-relaxed">{p.desc}</p>
                   </div>
-
-                  <div className="space-y-3">
-                    <h3 className="text-xl sm:text-2xl font-display font-bold text-white tracking-tight">
-                      {project.title}
-                    </h3>
-                    <p className="text-white/50 text-sm leading-relaxed">{project.desc}</p>
-                  </div>
-                </div>
-
-                <ul className="pt-8 flex flex-wrap gap-2 list-none p-0" aria-label={`${project.title} tags`}>
-                  {project.tags.map((tag) => (
-                    <li
-                      key={tag}
-                      className="flex items-center gap-1.5 text-[10px] text-white/30 font-medium uppercase tracking-wider"
-                    >
-                      <Tag size={10} aria-hidden="true" />
-                      {tag}
-                    </li>
-                  ))}
-                </ul>
-              </article>
+                  <ul className="relative pt-7 flex flex-wrap gap-x-4 gap-y-1.5 list-none p-0" aria-label={`${p.title} tags`}>
+                    {p.tags.map((t) => (
+                      <li key={t} className="hand text-lg text-chalk/40">#{t}</li>
+                    ))}
+                  </ul>
+                </article>
               </MagicCard>
             </motion.li>
           ))}

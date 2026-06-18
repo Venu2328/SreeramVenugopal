@@ -1,75 +1,120 @@
 import { motion } from 'motion/react';
-import { Mail, ArrowRight, MessageSquareCode } from 'lucide-react';
+import { Home, Instagram, Linkedin, Youtube, BookOpen } from 'lucide-react';
+import { Starfield } from './atmosphere/Starfield';
 import { MagneticButton } from './effects/MagneticButton';
+
+const footerNav = [
+  { label: 'Work', href: '#projects' },
+  { label: 'Contact', href: '#contact' },
+  { label: 'Writing', href: '#writing' },
+];
+
+const socials = [
+  { name: 'Instagram', icon: Instagram, href: 'https://www.instagram.com/venuuu7_' },
+  { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/in/sreeram-venugopal-701531376/' },
+  { name: 'YouTube', icon: Youtube, href: 'https://www.youtube.com/channel/UCMww2T1ZzUvdUMowVRyANGA' },
+  { name: 'Medium', icon: BookOpen, href: 'https://medium.com/@sreeram23db' },
+];
 
 export const Contact = () => {
   return (
     <section
       id="contact"
       aria-labelledby="contact-heading"
-      className="py-20 sm:py-24 md:py-32 px-4 sm:px-6 relative"
+      className="relative min-h-[90vh] flex flex-col justify-center overflow-hidden px-4 sm:px-6 py-24 bg-black"
     >
-      <div className="max-w-4xl mx-auto text-center space-y-8 sm:space-y-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
+      <Starfield className="absolute inset-0 w-full h-full" />
+      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-ink via-transparent to-black pointer-events-none" />
+
+      <div className="relative max-w-4xl mx-auto text-center">
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="hand text-gold text-2xl sm:text-3xl mb-4"
+        >
+          Want to collaborate
+        </motion.p>
+
+        <motion.h2
+          id="contact-heading"
+          initial={{ clipPath: 'inset(0 100% 0 0)', opacity: 0.3 }}
+          whileInView={{ clipPath: 'inset(0 0% 0 0)', opacity: 1 }}
+          viewport={{ once: true, margin: '-12%' }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          className="brush brush-rough text-chalk text-gold-glow text-[clamp(2.8rem,11vw,8rem)] leading-[0.92]"
+        >
+          Let's build
+          <br />
+          something.
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="space-y-6"
+          transition={{ delay: 0.3 }}
+          className="font-body text-lg sm:text-xl text-chalk/60 max-w-xl mx-auto mt-6"
         >
-          <div
-            className="inline-flex p-3 sm:p-4 rounded-full bg-lavender-haze/10 border border-lavender-haze/20 mb-3 sm:mb-4 animate-bounce"
-            aria-hidden="true"
-          >
-            <MessageSquareCode className="text-lavender-haze" size={28} />
-          </div>
-          <h2
-            id="contact-heading"
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white tracking-tight leading-[1.05]"
-          >
-            Let's redefine <br />
-            <span className="text-lavender-haze">how we learn.</span>
-          </h2>
-          <p className="text-base sm:text-lg md:text-xl text-white/50 max-w-2xl mx-auto font-light leading-relaxed px-2">
-            Open to research collaborations, fellowships, and serious conversations on andragogy, cognitive development, and the future of STEM education and educational technology.
-          </p>
-        </motion.div>
+          Open to research collaborations, fellowships, and serious conversations on andragogy,
+          cognitive development and the future of STEM education. I'd love to hear from you.
+        </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6"
+          transition={{ delay: 0.4 }}
+          className="mt-10"
         >
-          <MagneticButton strength={0.4} className="w-full sm:w-auto">
+          <MagneticButton strength={0.4}>
             <a
               href="mailto:sreeram23db@gmail.com"
-              className="group flex items-center justify-center gap-3 px-7 sm:px-10 py-4 sm:py-5 rounded-full bg-white text-graphite font-bold text-sm sm:text-base hover:scale-105 active:scale-95 transition-all w-full sm:w-auto"
-              aria-label="Email Sreeram Venugopal at sreeram23db@gmail.com"
+              className="hand inline-flex items-center gap-2 text-3xl sm:text-4xl text-ink bg-gold px-9 py-3 rounded-full hover:bg-chalk transition-colors"
             >
-              <Mail size={18} aria-hidden="true" />
-              Email Sreeram
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" aria-hidden="true" />
-            </a>
-          </MagneticButton>
-
-          <MagneticButton strength={0.3} className="w-full sm:w-auto">
-            <a
-              href="https://www.linkedin.com/in/sreeram-venugopal-701531376/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-7 sm:px-10 py-4 sm:py-5 rounded-full border border-white/10 hover:bg-white/5 transition-all text-white font-medium text-sm sm:text-base w-full sm:w-auto inline-flex items-center justify-center"
-              aria-label="Connect on LinkedIn — opens in a new tab"
-            >
-              Connect on LinkedIn
+              This way →
             </a>
           </MagneticButton>
         </motion.div>
-      </div>
 
-      <div
-        aria-hidden="true"
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-[300px] bg-lavender-haze/5 blur-[100px] rounded-full -z-10 pointer-events-none"
-      />
+        <div className="mt-8 ui text-chalk/50 text-sm uppercase tracking-[0.18em]">
+          <a href="mailto:sreeram23db@gmail.com" className="hover:text-gold transition-colors">
+            sreeram23db@gmail.com
+          </a>
+        </div>
+
+        {/* footer nav row, echoing the reference's bottom bar */}
+        <nav
+          aria-label="Footer"
+          className="mt-14 flex flex-wrap items-center justify-center gap-x-7 gap-y-4"
+        >
+          <a href="#home" aria-label="Home" className="text-chalk/60 hover:text-gold transition-colors">
+            <Home size={20} aria-hidden="true" />
+          </a>
+          {footerNav.map((n) => (
+            <a
+              key={n.label}
+              href={n.href}
+              className="ui text-[11px] uppercase tracking-[0.22em] font-bold text-chalk/60 hover:text-gold transition-colors"
+            >
+              {n.label}
+            </a>
+          ))}
+          <span aria-hidden="true" className="hidden sm:block w-px h-4 bg-chalk/15" />
+          {socials.map((s) => (
+            <a
+              key={s.name}
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={s.name}
+              className="text-chalk/60 hover:text-gold transition-colors"
+            >
+              <s.icon size={18} aria-hidden="true" />
+            </a>
+          ))}
+        </nav>
+      </div>
     </section>
   );
 };

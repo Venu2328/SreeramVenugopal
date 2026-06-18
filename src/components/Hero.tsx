@@ -1,159 +1,182 @@
 import { motion } from 'motion/react';
-import { ArrowRight, FlaskConical, Brain, BookOpen, Rocket } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { MagneticButton } from './effects/MagneticButton';
 
-const chips = [
-  { icon: Rocket, text: 'Founder, SciPhyLabs' },
-  { icon: FlaskConical, text: 'Scientific Researcher' },
-  { icon: BookOpen, text: 'STEM Educator · Andragogist' },
-  { icon: Brain, text: 'Cognitive Development Research' },
+const services = [
+  'Physics Simulations',
+  'Andragogy',
+  'Cognitive Research',
+  'EdTech Product',
+  'STEM Leadership',
 ];
-
-// Subtitle copy split into segments so word-by-word reveal preserves the
-// in-line lavender-haze highlights without manual delay accounting.
-const SUBTITLE_SEGMENTS: { text: string; highlight?: boolean }[] = [
-  { text: 'Student founder, scientific researcher and educator advancing ' },
-  { text: 'andragogical STEM learning', highlight: true },
-  { text: ' — building ' },
-  { text: 'SciPhyLabs', highlight: true },
-  { text: ', an interactive physics simulation platform that turns cognitive development research into immersive, simulation-led education.' },
-];
-
-const SUBTITLE_WORDS = (() => {
-  const out: { text: string; highlight: boolean }[] = [];
-  for (const seg of SUBTITLE_SEGMENTS) {
-    for (const part of seg.text.split(/(\s+)/)) {
-      if (part) out.push({ text: part, highlight: !!seg.highlight });
-    }
-  }
-  return out;
-})();
 
 export const Hero = () => {
   return (
     <section
       id="home"
       aria-labelledby="hero-heading"
-      className="relative min-h-screen flex flex-col items-center justify-center pt-28 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 overflow-hidden"
+      className="relative min-h-screen flex items-center pt-24 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
-      <div className="max-w-5xl w-full text-center relative z-10">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
+      <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-12 items-center">
+        {/* ── Spotlight portrait ─────────────────────────────────────── */}
+        <motion.figure
+          initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          className="mb-8"
+          transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+          className="relative mx-auto w-[78vw] max-w-[360px] sm:max-w-[420px] lg:max-w-none aspect-square m-0 order-1 lg:order-none"
         >
+          {/* the cone of light */}
           <div
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-lavender-haze/20 bg-lavender-haze/5 backdrop-blur-sm text-lavender-haze text-xs font-semibold uppercase tracking-[0.2em] mb-8"
-            role="status"
+            aria-hidden="true"
+            className="absolute inset-[-18%] rounded-full spotlight blur-2xl"
+            style={{ ['--sx' as string]: '50%', ['--sy' as string]: '46%' }}
+          />
+          <div
+            className="relative h-full w-full rounded-full overflow-hidden ring-1 ring-gold/20 flex items-center justify-center"
+            data-portrait-slot
+            style={{ background: 'radial-gradient(circle at 50% 38%, rgba(217,182,95,0.14), rgba(10,10,11,0.96) 72%)' }}
+          >
+            {/* image-free spotlight stage — drop a portrait here later */}
+            <span
+              aria-hidden="true"
+              className="brush brush-rough text-[clamp(5rem,18vw,11rem)] leading-none text-gold/80 text-gold-glow"
+            >
+              SV
+            </span>
+            {/* vignette into black */}
+            <div
+              aria-hidden="true"
+              className="absolute inset-0"
+              style={{ background: 'radial-gradient(circle at 50% 42%, transparent 40%, rgba(8,8,9,0.9) 80%)' }}
+            />
+          </div>
+          {/* breathing key-light halo */}
+          <motion.div
+            aria-hidden="true"
+            animate={{ opacity: [0.5, 0.8, 0.5] }}
+            transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+            className="absolute inset-[-6%] rounded-full pointer-events-none"
+            style={{ boxShadow: '0 0 120px 10px rgba(217,182,95,0.18) inset' }}
+          />
+          <figcaption className="sr-only">Portrait of Sreeram Venugopal under a spotlight.</figcaption>
+        </motion.figure>
+
+        {/* ── Painted billing ────────────────────────────────────────── */}
+        <div className="relative text-center lg:text-left order-2 lg:order-none">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="eyebrow text-gold/70 mb-5 flex items-center gap-2.5 justify-center lg:justify-start"
           >
             <span className="relative flex h-2 w-2" aria-hidden="true">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lavender-haze opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-lavender-haze"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold/70" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-gold" />
             </span>
-            Available for Collaborations
-          </div>
+            Open for collaborations — 2026
+          </motion.p>
 
-          <h1
-            id="hero-heading"
-            aria-label="Sreeram Venugopal"
-            className="text-[clamp(3rem,12vw,9rem)] font-display font-bold tracking-tight mb-6 sm:mb-8 text-white text-glow leading-[1.05] sm:leading-[1.1]"
-          >
-            <AnimatedWord word="Sreeram" />
-            <br />
-            <AnimatedWord word="Venugopal" muted />
+          <h1 id="hero-heading" aria-label="Sreeram Venugopal" className="mb-3">
+            <motion.span
+              aria-hidden="true"
+              initial={{ clipPath: 'inset(0 100% 0 0)', opacity: 0.3 }}
+              animate={{ clipPath: 'inset(0 0% 0 0)', opacity: 1 }}
+              transition={{ duration: 1, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="brush brush-rough block text-chalk text-gold-glow leading-[0.92] text-[clamp(3.4rem,11vw,9rem)]"
+            >
+              Sreeram
+            </motion.span>
+            <motion.span
+              aria-hidden="true"
+              initial={{ clipPath: 'inset(0 100% 0 0)', opacity: 0.3 }}
+              animate={{ clipPath: 'inset(0 0% 0 0)', opacity: 1 }}
+              transition={{ duration: 1, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
+              className="brush brush-rough block text-chalk/85 leading-[0.92] text-[clamp(3.4rem,11vw,9rem)]"
+            >
+              Venugopal
+            </motion.span>
           </h1>
 
-          <p
-            className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/50 max-w-2xl mx-auto font-light leading-relaxed mb-10 sm:mb-12 px-2"
-            aria-label="Student founder, scientific researcher and educator advancing andragogical STEM learning — building SciPhyLabs, an interactive physics simulation platform that turns cognitive development research into immersive, simulation-led education."
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8 }}
+            className="serif italic text-ember text-ember-glow text-2xl sm:text-3xl md:text-4xl mb-6"
           >
-            <span aria-hidden="true">
-              {SUBTITLE_WORDS.map((w, i) =>
-                /^\s+$/.test(w.text) ? (
-                  <span key={i}>{w.text}</span>
-                ) : (
-                  <motion.span
-                    key={i}
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      delay: 0.55 + i * 0.022,
-                      duration: 0.55,
-                      ease: [0.21, 1, 0.32, 1],
-                    }}
-                    className={`inline-block ${w.highlight ? 'text-white' : ''}`}
-                  >
-                    {w.text}
-                  </motion.span>
-                ),
-              )}
-            </span>
-          </p>
+            Founder &amp; Researcher
+          </motion.p>
 
-          <ul className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 mb-12 sm:mb-16 list-none p-0">
-            {chips.map((chip, i) => (
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.95 }}
+            className="font-body text-lg sm:text-xl text-chalk/65 max-w-xl mx-auto lg:mx-0 leading-relaxed mb-8"
+          >
+            I help a generation learn physics the way it's meant to be felt — building{' '}
+            <span className="text-chalk italic">SciPhyLabs</span>, an immersive, simulation-led
+            ecosystem engineered around how the mind actually learns.
+          </motion.p>
+
+          <motion.ul
+            initial="hidden"
+            animate="show"
+            variants={{ show: { transition: { staggerChildren: 0.07, delayChildren: 1.05 } } }}
+            className="flex flex-wrap gap-x-5 gap-y-2 justify-center lg:justify-start mb-10 list-none p-0"
+            aria-label="Areas of focus"
+          >
+            {services.map((s) => (
               <motion.li
-                key={chip.text}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 + i * 0.1 }}
-                className="flex items-center gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-2xl glass text-xs sm:text-sm font-medium text-white/70"
+                key={s}
+                variants={{ hidden: { opacity: 0, y: 8 }, show: { opacity: 1, y: 0 } }}
+                className="hand text-xl sm:text-2xl text-chalk/55 hover:text-gold transition-colors -rotate-1 even:rotate-1"
               >
-                <chip.icon size={16} className="text-lavender-haze" aria-hidden="true" />
-                {chip.text}
+                {s}
               </motion.li>
             ))}
-          </ul>
+          </motion.ul>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 w-full">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2 }}
+            className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4"
+          >
             <MagneticButton strength={0.4} className="w-full sm:w-auto">
-              <motion.a
+              <a
                 href="#sciphylabs"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group relative px-7 sm:px-8 py-3.5 sm:py-4 rounded-full bg-white text-graphite font-bold overflow-hidden transition-all w-full sm:w-auto inline-flex items-center justify-center"
-                aria-label="View SciPhyLabs and other projects"
+                className="ui inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gold text-ink font-bold text-sm uppercase tracking-[0.16em] hover:bg-chalk transition-colors w-full"
               >
-                <span className="relative z-10 flex items-center gap-2">
-                  View Projects
-                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" aria-hidden="true" />
-                </span>
-              </motion.a>
+                See the work
+              </a>
             </MagneticButton>
-
             <MagneticButton strength={0.3} className="w-full sm:w-auto">
-              <motion.a
-                href="#writing"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-7 sm:px-8 py-3.5 sm:py-4 rounded-full border border-white/10 hover:bg-white/5 transition-all text-white font-medium w-full sm:w-auto inline-flex items-center justify-center"
-                aria-label="Read writing and technical notes"
+              <a
+                href="#contact"
+                className="ui inline-flex items-center justify-center px-8 py-4 rounded-full border border-chalk/15 text-chalk font-medium text-sm uppercase tracking-[0.16em] hover:border-gold/50 hover:text-gold transition-colors w-full"
               >
-                Read Writing
-              </motion.a>
+                Get in touch
+              </a>
             </MagneticButton>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
 
-      <div
-        aria-hidden="true"
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] max-w-[600px] max-h-[600px] bg-lavender-haze/5 blur-[120px] sm:blur-[150px] rounded-full pointer-events-none"
-      />
+      <motion.a
+        href="#profile"
+        aria-label="Scroll to learn more"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.6 }}
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-1 text-chalk/40 hover:text-gold transition-colors"
+      >
+        <span className="eyebrow">Who am I</span>
+        <motion.span
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+        >
+          <ChevronDown size={20} aria-hidden="true" />
+        </motion.span>
+      </motion.a>
     </section>
   );
 };
-
-const AnimatedWord = ({ word, muted = false }: { word: string; muted?: boolean }) => (
-  <span aria-hidden="true" className={muted ? 'text-white/60' : ''}>
-    {word.split('').map((ch, i) => (
-      <span
-        key={i}
-        className="inline-block cursor-default transition-[transform,color,text-shadow] duration-300 ease-out hover:scale-[1.18] hover:text-lavender-haze hover:[text-shadow:0_0_40px_rgba(176,168,204,0.65)]"
-      >
-        {ch}
-      </span>
-    ))}
-  </span>
-);

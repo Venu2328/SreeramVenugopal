@@ -7,7 +7,7 @@ import { type ReactNode, type MouseEvent, useRef, useState } from 'react';
  * Premium-feel interactive card wrapper that combines two effects:
  *  1) A subtle 3D tilt on cursor position (max ~6° by default), driven by
  *     spring-damped motion values so it never feels twitchy.
- *  2) A faint lavender-haze radial spotlight that follows the cursor inside
+ *  2) A faint gold radial spotlight that follows the cursor inside
  *     the card on hover. Spotlight position is wired via CSS variables for
  *     near-zero render cost (no per-frame React state churn).
  *
@@ -82,7 +82,7 @@ export const MagicCard = ({
           className="absolute inset-0 rounded-[inherit] pointer-events-none transition-opacity duration-300"
           style={{
             opacity: hovered ? 1 : 0,
-            background: `radial-gradient(circle ${spotlightRadius}px at var(--spot-x, 50%) var(--spot-y, 50%), rgba(176, 168, 204, ${spotlightOpacity}), transparent 60%)`,
+            background: `radial-gradient(circle ${spotlightRadius}px at var(--spot-x, 50%) var(--spot-y, 50%), rgba(217, 182, 95, ${spotlightOpacity}), transparent 60%)`,
           }}
         />
       )}
