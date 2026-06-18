@@ -17,7 +17,7 @@ const timeline = [
   {
     year: '2024',
     title: 'Scaled the library',
-    desc: 'Grew to 347+ simulations across 10+ topics and tightened the platform around self-directed practice.',
+    desc: 'Grew past 500 simulations across 10+ topics and tightened the platform around self-directed practice.',
   },
   {
     year: 'Now',

@@ -9,7 +9,7 @@ const posts = [
     tag: 'Education',
   },
   {
-    title: 'Building 347 simulations',
+    title: 'Building 500 simulations',
     note: 'What I learned shipping a large interactive library at speed.',
     tag: 'Engineering',
   },

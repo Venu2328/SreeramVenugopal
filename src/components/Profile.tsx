@@ -3,7 +3,7 @@ import { Reveal } from './motion/Reveal';
 import { CountUp } from './effects/CountUp';
 
 const stats = [
-  { node: <CountUp target={347} suffix="+" duration={1700} />, label: 'Simulations built' },
+  { node: <CountUp target={500} suffix="+" duration={1700} />, label: 'Simulations built' },
   { node: <CountUp target={10} suffix="+" />, label: 'Topics covered' },
   { node: <>2023</>, label: 'Founded SciPhyLabs' },
 ];

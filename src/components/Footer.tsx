@@ -10,7 +10,7 @@ const sitemap = [
 const elsewhere = [
   { name: 'LinkedIn', href: 'https://www.linkedin.com/in/sreeram-venugopal-701531376/' },
   { name: 'Medium', href: 'https://medium.com/@sreeram23db' },
-  { name: 'YouTube', href: 'https://www.youtube.com/channel/UCMww2T1ZzUvdUMowVRyANGA' },
+  { name: 'Facebook', href: 'https://www.facebook.com/venuuu7' },
   { name: 'Instagram', href: 'https://www.instagram.com/venuuu7_' },
 ];
 

@@ -2,7 +2,7 @@ import { motion } from 'motion/react';
 import { ArrowDownRight } from 'lucide-react';
 
 const facts = [
-  ['Role', 'Founder & Researcher'],
+  ['Role', 'Founder, Author & Researcher'],
   ['Building', 'SciPhyLabs'],
   ['Based in', 'India'],
 ];
@@ -25,7 +25,7 @@ export const Hero = () => {
           className="flex items-center gap-4 mb-8 sm:mb-10"
         >
           <span className="crimson-rule" aria-hidden="true" />
-          <span className="eyebrow text-crimson">Founder · Researcher · Student</span>
+          <span className="eyebrow text-crimson">Founder · Author · Researcher</span>
         </motion.div>
 
         <h1 id="hero-heading" className="display font-semibold text-ink leading-[0.92] tracking-[-0.02em]">
@@ -49,10 +49,10 @@ export const Hero = () => {
           transition={{ duration: 0.7, delay: 0.5, ease }}
           className="mt-8 sm:mt-10 max-w-2xl text-lg sm:text-xl text-ink-soft leading-relaxed"
         >
-          I'm a student and the founder of{' '}
-          <span className="text-ink font-medium">SciPhyLabs</span>, where I build interactive physics
-          simulations that help students truly understand the subject rather than memorise it. I also
-          research and write about how people learn.
+          I'm the founder, author and researcher behind{' '}
+          <span className="text-ink font-medium">SciPhyLabs</span> — an interactive-first, research-backed
+          physics ecosystem of 500+ simulations that help students truly understand the subject rather
+          than memorise it, and that's driving growth in STEM education and schools infrastructure.
         </motion.p>
 
         <motion.div

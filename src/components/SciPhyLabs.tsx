@@ -51,7 +51,7 @@ export const SciPhyLabs = () => {
           <Reveal delay={0.1} className="space-y-8">
             <p className="text-lg text-ink-soft leading-relaxed">
               SciPhyLabs is an interactive physics platform with{' '}
-              <span className="text-ink font-medium">347+ simulations across 10+ topics</span>. Instead of
+              <span className="text-ink font-medium">500+ simulations across 10+ topics</span>. Instead of
               static diagrams, students work with live systems — adjusting variables and seeing the
               physics respond — which is how intuition actually forms.
             </p>
