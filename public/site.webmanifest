@@ -1,12 +1,12 @@
 {
-  "name": "Sreeram Venugopal | Student Founder & Interactive Physics Builder",
+  "name": "Sreeram Venugopal — Founder, Author & Researcher of SciPhyLabs",
   "short_name": "Sreeram Venugopal",
-  "description": "Founder of SciPhyLabs — interactive physics simulations and immersive education systems for STEM learners.",
+  "description": "Founder, author and researcher of SciPhyLabs — an interactive-first, research-backed physics ecosystem of 500+ simulations driving growth in STEM education and schools infrastructure.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#0a0a0c",
-  "theme_color": "#0a0a0c",
+  "background_color": "#faf8f5",
+  "theme_color": "#faf8f5",
   "orientation": "portrait-primary",
   "icons": [
     {

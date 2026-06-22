@@ -3,18 +3,18 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://sreeramvenugopal.com/</loc>
-    <lastmod>2026-05-08</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://sreeramvenugopal.com/sreeram-portrait.png</image:loc>
-      <image:title>Sreeram Venugopal — Founder, SciPhyLabs</image:title>
-      <image:caption>Student founder building interactive physics simulations and immersive education systems.</image:caption>
+      <image:title>Sreeram Venugopal — Founder, Author &amp; Researcher of SciPhyLabs</image:title>
+      <image:caption>Founder, author and researcher of SciPhyLabs — an interactive-first, research-backed physics ecosystem.</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://sreeramvenugopal.com/sciphylabs-preview.png</image:loc>
       <image:title>SciPhyLabs — Interactive Physics Simulations</image:title>
-      <image:caption>SciPhyLabs platform — 347+ interactive physics simulations across 10+ STEM domains.</image:caption>
+      <image:caption>SciPhyLabs platform — 500+ interactive physics simulations across 10+ STEM domains.</image:caption>
     </image:image>
   </url>
 </urlset>

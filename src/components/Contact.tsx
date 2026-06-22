@@ -1,12 +1,11 @@
 import { ArrowUpRight, Mail } from 'lucide-react';
 import { Reveal } from './motion/Reveal';
+import { profiles } from '../data/profiles';
 
-const links = [
-  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/sreeram-venugopal-701531376/' },
-  { name: 'Medium', href: 'https://medium.com/@sreeram23db' },
-  { name: 'Facebook', href: 'https://www.facebook.com/venuuu7' },
-  { name: 'Instagram', href: 'https://www.instagram.com/venuuu7_' },
-];
+const featured = ['LinkedIn', 'ORCID', 'GitHub', 'Medium', 'X', 'Instagram'];
+const links = featured
+  .map((name) => profiles.find((p) => p.name === name))
+  .filter((p): p is NonNullable<typeof p> => Boolean(p));
 
 export const Contact = () => {
   return (
@@ -59,7 +58,7 @@ export const Contact = () => {
                 <a
                   href={l.href}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="me noopener noreferrer"
                   className="eyebrow text-paper/60 hover:text-white link-underline"
                 >
                   {l.name}
