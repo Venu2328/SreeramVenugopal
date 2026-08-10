@@ -1,7 +1,6 @@
 import { type FC, useRef } from 'react';
 import { motion, useReducedMotion, useScroll, useSpring, useTransform } from 'motion/react';
 import { SectionHeading } from './SectionHeading';
-import { Reveal } from './motion/Reveal';
 
 type Credential = {
   title: string;

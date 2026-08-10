@@ -35,7 +35,7 @@ export const Hero = () => {
                 initial={{ y: '110%' }}
                 animate={{ y: '0%' }}
                 transition={{ duration: 0.9, delay: 0.15 + i * 0.12, ease }}
-                className="block text-[clamp(3.5rem,13vw,11rem)]"
+                className="block text-[clamp(3rem,12.5vw,11rem)]"
               >
                 {word}
               </motion.span>

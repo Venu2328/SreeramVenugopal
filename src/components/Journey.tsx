@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { motion, useScroll, useSpring, useTransform } from 'motion/react';
+import { motion, useScroll, useSpring } from 'motion/react';
 import { SectionHeading } from './SectionHeading';
 import { Reveal } from './motion/Reveal';
 
