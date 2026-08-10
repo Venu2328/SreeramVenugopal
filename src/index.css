@@ -2,25 +2,41 @@
 
 /*
  * ─────────────────────────────────────────────────────────────────────────
- *  SREERAM VENUGOPAL — editorial portfolio
- *  Letterhead restraint: warm paper, near-black ink, a single Harvard
- *  crimson accent. Strong display serif, clean grotesque body, hairline
- *  rules, generous margins. Authority through typography, not colour.
+ *  SREERAM VENUGOPAL — dark cinematic
+ *
+ *  A warm near-black ground, one varsity red used as the only source of
+ *  light, and type doing the heavy lifting: Archivo set large and tight,
+ *  Inter for reading, JetBrains Mono for anything that behaves like data.
+ *
+ *  The ground is deliberately warm (#0d0b0a, not #000) — cold black reads
+ *  cheap and makes photography look grey. Depth comes from vignette, grain
+ *  and hairlines, never from blurred drop shadows.
+ *
+ *  Red carries the accent through from the Peacemakers of Puducherry
+ *  Council site so the two properties read as one identity.
  * ─────────────────────────────────────────────────────────────────────────
  */
 
 @theme {
-  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-display: "Archivo", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
-  --color-paper: #faf8f5;       /* warm near-white page */
-  --color-paper-2: #f2efe9;     /* alternating panel */
-  --color-ink: #181614;         /* near-black text */
-  --color-ink-soft: #4a463f;    /* secondary text */
-  --color-stone: #8b857b;       /* muted / captions */
-  --color-line: #e3ded4;        /* hairline borders */
-  --color-crimson: #a51c30;     /* Harvard crimson — the single accent */
-  --color-crimson-deep: #7c1421;
+  --color-ground: #0a0908;      /* deepest — letterbox bands, footer */
+  --color-bg: #0d0b0a;          /* page ground */
+  --color-surface: #131010;     /* raised band */
+  --color-card: #171413;        /* card / panel */
+  --color-line: #272120;        /* hairline */
+  --color-line-strong: #3a312e; /* emphasised hairline */
+
+  --color-ink: #f2ece3;         /* primary text — warm off-white */
+  --color-ink-soft: #b3a99f;    /* secondary text */
+  --color-muted: #7d736c;       /* labels, captions, data */
+
+  --color-red: #e0242a;         /* the single accent */
+  --color-red-bright: #ff3b40;  /* hover / glow */
+  --color-red-deep: #a8161b;    /* pressed */
+  --color-on-red: #fff6f2;      /* text on red */
 }
 
 @layer base {
@@ -29,79 +45,177 @@
     -webkit-text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
+    color-scheme: dark;
+    background: var(--color-bg);
   }
 
   body {
-    @apply bg-paper text-ink font-sans;
+    @apply bg-bg text-ink font-sans;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
     min-width: 320px;
-    font-feature-settings: "ss01", "cv05";
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
   }
 
   ::selection {
-    background: rgba(165, 28, 48, 0.16);
+    background: var(--color-red);
+    color: var(--color-on-red);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-crimson);
+    outline: 2px solid var(--color-red);
     outline-offset: 3px;
     border-radius: 2px;
   }
 
   img, svg { max-width: 100%; height: auto; }
   section, main { min-width: 0; }
+  a, button { -webkit-tap-highlight-color: transparent; }
 
-  /* No grey flash when tapping links/buttons on mobile */
-  a, button {
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  /* Respect notch / home-indicator safe areas */
-  body {
-    padding-left: env(safe-area-inset-left);
-    padding-right: env(safe-area-inset-right);
-  }
+  h1, h2, h3 { text-wrap: balance; }
 }
 
 @layer utilities {
+  /* ── Type ─────────────────────────────────────────────────────────── */
+
   .display {
     font-family: var(--font-display);
-    font-optical-sizing: auto;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.02;
   }
 
-  /* Small institutional label */
+  .display-tight { line-height: 0.94; }
+
+  /* Anything that behaves like data: labels, dates, counters, indices. */
   .eyebrow {
-    font-family: var(--font-sans);
-    font-weight: 600;
+    font-family: var(--font-mono);
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.15em;
     font-size: 0.6875rem;
   }
 
-  /* Mono-ish index numerals using tabular Inter */
-  .index-num {
-    font-family: var(--font-sans);
+  /* Section mastheads only — never definition labels. */
+  .eyebrow-dash::before {
+    content: "— ";
+    opacity: 0.55;
+  }
+
+  .mono {
+    font-family: var(--font-mono);
     font-variant-numeric: tabular-nums;
+  }
+
+  /* ── Structure ────────────────────────────────────────────────────── */
+
+  .shell {
+    max-width: 1152px;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 640px) { .shell { padding-inline: 2rem; } }
+
+  /* A hairline that reads as a film cut rather than a border. */
+  .filmline {
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--color-line-strong) 12%,
+      var(--color-line-strong) 88%,
+      transparent
+    );
+  }
+
+  /* ── Light sources ────────────────────────────────────────────────── */
+
+  .glow-red {
+    box-shadow: 0 0 40px -8px rgb(224 36 42 / 0.55);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 28px rgb(224 36 42 / 0.45);
+  }
+
+  /* Radial pool of warmth — used behind heroes and the contact slab. */
+  .pool {
+    background:
+      radial-gradient(60% 60% at 50% 0%, rgb(224 36 42 / 0.10), transparent 70%),
+      radial-gradient(40% 50% at 85% 20%, rgb(224 36 42 / 0.06), transparent 70%);
+  }
+
+  .vignette {
+    background: radial-gradient(
+      ellipse 110% 85% at 50% 45%,
+      transparent 40%,
+      rgb(10 9 8 / 0.55) 78%,
+      var(--color-bg) 100%
+    );
+  }
+
+  /* 64px technical grid, faded out from the centre. */
+  .grid-lines {
+    background-image:
+      linear-gradient(to right, var(--color-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--color-line) 1px, transparent 1px);
+    background-size: 64px 64px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 10%, transparent 75%);
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 10%, transparent 75%);
+  }
+
+  /* ── Controls ─────────────────────────────────────────────────────── */
+
+  /* Ghost button: a hairline that fills with light on hover. */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    font-family: var(--font-mono);
     font-weight: 500;
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: 1rem 1.75rem;
+    border: 1px solid var(--color-line-strong);
+    color: var(--color-ink);
+    background: transparent;
+    border-radius: 0;
+    transition: background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.35s, color 0.35s, box-shadow 0.35s;
+  }
+  .btn:hover {
+    border-color: var(--color-red);
+    background: rgb(224 36 42 / 0.08);
+    color: var(--color-ink);
   }
 
-  .crimson-rule {
-    height: 3px;
-    width: 56px;
-    background: var(--color-crimson);
+  .btn-solid {
+    background: var(--color-red);
+    border-color: var(--color-red);
+    color: var(--color-on-red);
   }
+  .btn-solid:hover {
+    background: var(--color-red-bright);
+    border-color: var(--color-red-bright);
+    color: var(--color-on-red);
+    box-shadow: 0 0 32px -6px rgb(224 36 42 / 0.6);
+  }
+  .btn-solid:active { background: var(--color-red-deep); }
 
-  .link-underline {
-    background-image: linear-gradient(var(--color-crimson), var(--color-crimson));
+  /* Link with a red rule that draws in from the left. */
+  .link-draw {
+    background-image: linear-gradient(var(--color-red), var(--color-red));
     background-repeat: no-repeat;
     background-position: 0 100%;
-    background-size: 0% 1.5px;
-    transition: background-size 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-    padding-bottom: 1px;
+    background-size: 0% 1px;
+    transition: background-size 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    padding-bottom: 2px;
   }
-  .link-underline:hover { background-size: 100% 1.5px; }
+  .link-draw:hover { background-size: 100% 1px; }
 
   .sr-only {
     position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
@@ -109,22 +223,26 @@
   }
 }
 
+/* ── Chrome ───────────────────────────────────────────────────────────── */
+
 .skip-link {
   position: absolute; top: -100px; left: 1rem; z-index: 100;
   padding: 0.75rem 1.25rem;
-  background: var(--color-crimson); color: #fff;
-  font-family: var(--font-sans); font-weight: 600; font-size: 0.875rem;
-  border-radius: 4px; text-decoration: none; transition: top 0.2s ease;
+  background: var(--color-red); color: var(--color-on-red);
+  font-family: var(--font-mono); font-size: 0.75rem;
+  text-transform: uppercase; letter-spacing: 0.15em;
+  text-decoration: none; transition: top 0.2s ease;
 }
 .skip-link:focus { top: 1rem; }
 
 ::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: var(--color-paper); }
+::-webkit-scrollbar-track { background: var(--color-bg); }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-line); border-radius: 9999px;
-  border: 3px solid var(--color-paper);
+  background: var(--color-line-strong);
+  border: 3px solid var(--color-bg);
+  border-radius: 9999px;
 }
-::-webkit-scrollbar-thumb:hover { background: #d2ccbf; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-red-deep); }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

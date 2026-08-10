@@ -1,30 +1,47 @@
 import { type ReactNode } from 'react';
+import { motion } from 'motion/react';
 import { Reveal } from './motion/Reveal';
 
 /**
- * Consistent editorial section masthead: a numbered index, a crimson rule and
- * an optional kicker, set above a strong display heading. The number reflects
- * the section's real position in the page's running order.
+ * Every section opens the same way: an index, a mono eyebrow, a rule that
+ * draws itself across, then the display heading. The repetition is the point —
+ * it's what makes a long single-page scroll read as one continuous document
+ * rather than a stack of unrelated blocks.
  */
 export const SectionHeading = ({
   index,
   kicker,
   title,
+  lede,
   className = '',
 }: {
   index: string;
   kicker: string;
   title: ReactNode;
+  lede?: ReactNode;
   className?: string;
 }) => (
   <Reveal className={className}>
-    <div className="flex items-center gap-4 mb-5">
-      <span className="index-num text-sm text-crimson">{index}</span>
-      <span className="crimson-rule" aria-hidden="true" />
-      <span className="eyebrow text-stone">{kicker}</span>
+    <div className="flex items-center gap-4">
+      <span className="eyebrow mono text-red">{index}</span>
+      <span className="eyebrow eyebrow-dash text-muted">{kicker}</span>
     </div>
-    <h2 className="display font-semibold text-ink text-[clamp(2rem,5vw,3.5rem)] leading-[1.05] tracking-[-0.01em]">
+
+    <motion.div
+      aria-hidden="true"
+      className="filmline mt-5 origin-left"
+      initial={{ scaleX: 0 }}
+      whileInView={{ scaleX: 1 }}
+      viewport={{ once: true, margin: '0px 0px -15% 0px' }}
+      transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+    />
+
+    <h2 className="display display-tight mt-8 text-[clamp(2rem,5vw,3.5rem)] text-ink">
       {title}
     </h2>
+
+    {lede && (
+      <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-soft">{lede}</p>
+    )}
   </Reveal>
 );

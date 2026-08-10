@@ -1,4 +1,5 @@
 import { ArrowUpRight, Mail } from 'lucide-react';
+import { Accent } from './Accent';
 import { Reveal } from './motion/Reveal';
 import { profiles } from '../data/profiles';
 
@@ -12,54 +13,57 @@ export const Contact = () => {
     <section
       id="contact"
       aria-labelledby="contact-heading"
-      className="py-28 sm:py-36 px-5 sm:px-8 bg-ink text-paper scroll-mt-16"
+      className="relative scroll-mt-24 overflow-hidden border-t border-line bg-ground py-28 sm:py-36"
     >
-      <div className="max-w-6xl mx-auto">
+      <div aria-hidden="true" className="grid-lines absolute inset-0 opacity-50" />
+      <div aria-hidden="true" className="pool pointer-events-none absolute inset-0" />
+
+      <div className="shell relative">
         <Reveal>
-          <div className="flex items-center gap-4 mb-8">
-            <span className="crimson-rule" aria-hidden="true" />
-            <span className="eyebrow text-paper/60">Contact</span>
+          <div className="flex items-center gap-4">
+            <span aria-hidden="true" className="h-px w-10 bg-red" />
+            <span className="eyebrow text-muted">Contact</span>
           </div>
         </Reveal>
 
-        <Reveal delay={0.05}>
+        <Reveal delay={0.06}>
           <h2
             id="contact-heading"
-            className="display font-semibold leading-[0.95] tracking-[-0.02em] text-[clamp(2.6rem,8vw,6rem)]"
+            className="display display-tight mt-8 text-[clamp(2.5rem,8vw,6rem)] text-ink"
           >
             Let's work
             <br />
-            <span className="text-paper/55">together.</span>
+            <Accent>together</Accent>.
           </h2>
         </Reveal>
 
-        <Reveal delay={0.1}>
-          <p className="mt-8 max-w-xl text-lg text-paper/65 leading-relaxed">
-            Open to collaborations, consulting, and conversations about education and building useful
-            things. The fastest way to reach me is email.
+        <Reveal delay={0.12}>
+          <p className="mt-9 max-w-xl text-lg leading-relaxed text-ink-soft">
+            Open to collaborations, consulting, and conversations about education and civic
+            work. Email reaches me fastest.
           </p>
         </Reveal>
 
-        <Reveal delay={0.15}>
-          <a
-            href="mailto:sreeram23db@gmail.com"
-            className="group mt-10 inline-flex items-center gap-3 bg-crimson text-white px-8 py-4 rounded-full text-base font-semibold hover:bg-white hover:text-ink transition-colors"
-          >
-            <Mail size={18} aria-hidden="true" />
+        <Reveal delay={0.18}>
+          <a href="mailto:sreeram23db@gmail.com" className="btn btn-solid group mt-11">
+            <Mail className="size-4" aria-hidden="true" />
             sreeram23db@gmail.com
-            <ArrowUpRight size={18} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" aria-hidden="true" />
+            <ArrowUpRight
+              className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              aria-hidden="true"
+            />
           </a>
         </Reveal>
 
-        <Reveal delay={0.2}>
-          <ul className="mt-14 pt-8 border-t border-paper/15 flex flex-wrap gap-x-8 gap-y-3 list-none p-0">
+        <Reveal delay={0.24}>
+          <ul className="mt-16 flex list-none flex-wrap gap-x-8 gap-y-3 border-t border-line p-0 pt-8">
             {links.map((l) => (
               <li key={l.name}>
                 <a
                   href={l.href}
                   target="_blank"
                   rel="me noopener noreferrer"
-                  className="eyebrow text-paper/60 hover:text-white link-underline"
+                  className="link-draw eyebrow text-muted transition-colors hover:text-ink"
                 >
                   {l.name}
                 </a>

@@ -1,36 +1,41 @@
-# Portfolio Restyle — "The Record"
+# Portfolio Rebuild — Dark Cinematic
 
 **Date:** 2026-08-10
 **Site:** sreeramvenugopal.com
 **Stack:** Vite 6 · React 19 · Tailwind v4 (CSS-first `@theme`) · Framer Motion (`motion` v12) · Lucide · Vercel
 
-Two things happen together: the visual layer is replaced with the POPC warm-editorial
-varsity system, and the content is rebuilt around two real, externally verifiable
-leadership positions. No new tools, no new dependencies, no CMS, no Wix.
+Two things happened together: the content was rebuilt around two real, externally
+verifiable leadership positions, and the visual layer was rebuilt dark and cinematic.
+No new tools, no new dependencies, no CMS, no page builder.
+
+> **Direction history.** This began as a warm cream + varsity red "editorial varsity"
+> restyle modelled on popcindia.vercel.app, then moved to a public-figure brief, then
+> settled on dark cinematic (davidkushnerofficial.com as mood reference, not as a
+> template). The content architecture below survived all three changes unaltered, which
+> is why it is documented first — it is the durable half of this work.
 
 ---
 
-## 1. Why the content changes
+## 1. Why the content changed
 
-An evidence audit of the current site found claims that do not survive scrutiny:
+An evidence audit of the previous site found claims that did not survive scrutiny:
 
 | Claim on site | Finding |
 | --- | --- |
-| Writing section lists three essays | None exist. Two real Medium posts exist; all three cards linked to the profile, not to articles. |
+| Writing section listed three essays | None existed. Two real Medium posts existed; all three cards linked to the profile, not to articles. |
 | "Author & Researcher", "research-backed" | ORCID `0009-0009-2916-7633` returns `"group":[]` — zero registered works. |
 | "500+ simulations across 10+ topics" | Not externally verifiable; `SEO.md` records it replaced an earlier "347". |
-| "Certified by the best" | Two IIT Madras School Connect certs + Google Digital Garage (a free open course). |
-| 4 project rows | All link to `#contact`. No URLs, dates, outcomes, or named clients. |
+| "Certified by the best" | Two IIT Madras School Connect certs + Google Digital Garage, a free open course. |
+| 4 project rows | All linked to `#contact`. No URLs, dates, outcomes, or named clients. |
 | Portrait | Empty slot rendering the letters "SV". |
-| SciPhyLabs preview | Hand-drawn SVG mock, not a screenshot. |
+| SciPhyLabs preview | A hand-drawn SVG mock, not a screenshot. |
 
 Meanwhile the strongest asset was absent entirely: **Peacemakers of Puducherry Council**,
-which the user founded and leads, and whose own site names him in the role. Civic
-leadership (2021) predates the platform (2023), so the real chronology is also a better
-narrative than the one being told.
+which Sreeram founded and leads, and whose own site names him in the role. The council
+(2021) predates the platform (2023), so the true chronology is also the better narrative.
 
-**Governing rule for this work: nothing goes on the page that cannot be checked.**
-Where evidence is missing, the claim is removed rather than softened into vagueness.
+**Governing rule: nothing goes on the page that cannot be checked.** Where evidence is
+missing the claim is removed, not softened into vagueness.
 
 ---
 
@@ -41,21 +46,18 @@ Replaces "Founder, Author & Researcher of SciPhyLabs".
 > **Founder & Committee Leader** — Peacemakers of Puducherry Council
 > **Founder** — SciPhyLabs
 
-Two named positions at named organisations with start dates, one of them corroborated by
-a third-party site. This is the entire basis of the "professional / public figure" read.
+Two named positions at named organisations with start dates, one corroborated by a
+third-party site. This is the entire basis of the professional/public-figure read.
 
-**Retired titles:**
-
-- **Researcher** — retired until ORCID lists works. Explicitly approved by the user.
-- **Author** — retired on the same standard. Evidence is two Medium posts and one book
-  marked "In progress". Flagged to the user, who did not object. *Assumption: this is
-  accepted; reinstating it is a one-line change if the user disagrees.*
+**Retired titles:** *Researcher* (approved by the user — retired until ORCID lists works)
+and *Author* (same standard; evidence is two Medium posts and one book marked "In
+progress"). Flagged to the user, who did not object. Reinstating either is a one-line change.
 
 **Retired claims:** "research-backed", "driving growth in STEM education and schools
-infrastructure", "500+ simulations", "10+ topics". All numeric platform claims are
-dropped per the user's "describe without counting" decision.
+infrastructure", "500+ simulations", "10+ topics". All numeric platform claims dropped per
+the user's "describe without counting" decision.
 
-**Numbers that stay** (all provable): 2021, 2023, six pillars, three initiatives, a
+**Numbers that remain**, all provable: 2021, 2023, six pillars, three initiatives, a
 twelve-week cohort, three certifications. `CountUp` survives, fed only by these.
 
 ---
@@ -71,224 +73,216 @@ Six pillars: Leadership Development · Education · Community Service · Innovat
 Collaboration · Youth Empowerment.
 
 Three initiatives: **Leaders Lab** (twelve-week mentored cohort, proposal to public
-showcase) · **Open Classroom** (free peer-led workshops in coding, design, finance,
-public speaking, on partner campuses) · **Civic Corps** (neighbourhood service teams —
+showcase) · **Open Classroom** (free peer-led workshops in coding, design, finance and
+public speaking on partner campuses) · **Civic Corps** (neighbourhood service teams —
 clean-ups, literacy drives, shelter support).
+
+Transcribed verbatim into `src/data/council.ts` so the two properties cannot drift apart.
 
 **Writing** — both real, both live, replacing three invented cards:
 
-| Date | Title | URL | Tags |
-| --- | --- | --- | --- |
-| 19 May 2026 | The Future of JEE Preparation Isn't More PDFs | `medium.com/@sreeram23db/the-future-of-jee-preparation-isnt-more-pdfs-9d9ebb755315` | AI, Education |
-| 6 May 2026 | SciPhyLabs — The revolution of the Decade. | `medium.com/@sreeram23db/sciphylabs-the-revolution-of-the-decade-072293126ec7` | Education, AI |
+| Date | Title | Tags |
+| --- | --- | --- |
+| 19 May 2026 | The Future of JEE Preparation Isn't More PDFs | AI, Education |
+| 6 May 2026 | SciPhyLabs — The revolution of the Decade. | Education, AI |
 
 **Credentials** — CS in Data Science & AI (IIT Madras School Connect, 2024) · Economic
 Finance & Money Matters (IIT Madras School Connect, 2024) · Fundamentals of Digital
 Marketing (Google Digital Garage, 2023).
 
-**Assets** — `public/logos/iit-madras.png`, `public/logos/google.svg` only. Both are real
-institutional marks and are kept because they substantiate rather than decorate.
+**Assets** — `public/logos/iit-madras.png`, `public/logos/google.svg`, and
+`public/founder15.png`. The logos are real institutional marks and are kept because they
+substantiate rather than decorate.
 
 ---
 
 ## 4. Design tokens — `src/index.css`
 
-Tailwind v4 `@theme` cannot hold two palettes. Standard v4 pattern: raw hex on `:root`
-and `.dark`, then `@theme inline` maps them onto utilities.
+A warm near-black ground, not a cold one. `#000` reads cheap and turns photography grey;
+the ground is `#0d0b0a`. Depth comes from vignette, grain and hairlines — never from
+blurred drop shadows. Red is the only accent and the only source of light, carried across
+from the council's site so the two properties read as one identity.
 
-| Old utility | New utility | Light | Dark |
-| --- | --- | --- | --- |
-| `paper` | `bg` | `#faf6ec` | `#15110e` |
-| `paper-2` | `surface` | `#f3ead7` | `#241d18` |
-| — | `card` | `#fffdf8` | `#1d1814` |
-| — | `accent` | `#f6e6d4` | `#2f251d` |
-| `crimson` | `red` | `#d81f26` | `#ef3f42` |
-| `crimson-deep` | `red-strong` | `#b3161c` | `#b3161c` |
-| — | `red-soft` | `#f0c9ca` | `#f0c9ca` |
-| — | `on-red` | `#fff8f2` | `#fff8f2` |
-| `ink` | `ink` | `#1a1512` | `#f6efe2` |
-| `ink-soft` | `ink-soft` | `#423a33` | `#ece2d2` |
-| `stone` | `muted` | `#6f645a` | `#a89b8b` |
-| `line` | `line` | `#e7dcc7` | `#322922` |
-| — | `ink-shadow` | `#1a1512` | `#000000` |
+| Utility | Hex | Role |
+| --- | --- | --- |
+| `ground` | `#0a0908` | Deepest — contact slab, footer |
+| `bg` | `#0d0b0a` | Page ground |
+| `surface` | `#131010` | Raised band |
+| `card` | `#171413` | Card / hover state |
+| `line` | `#272120` | Hairline |
+| `line-strong` | `#3a312e` | Emphasised hairline, control borders |
+| `ink` | `#f2ece3` | Primary text — warm off-white |
+| `ink-soft` | `#b3a99f` | Secondary text |
+| `muted` | `#7d736c` | Labels, captions, data |
+| `red` | `#e0242a` | The single accent |
+| `red-bright` | `#ff3b40` | Hover / glow |
+| `red-deep` | `#a8161b` | Pressed |
+| `on-red` | `#fff6f2` | Text on red |
 
-`--ink-shadow` flips to pure black in dark so hard offset shadows still read — matching
-POPC's `dark:border-black`.
-
-Red is the only accent. Base radius `0.75rem`. Containers max-width 1152px.
-Section rhythm 6–8rem, separated by a single hairline, never a shadow.
+Containers max-width 1152px via `.shell`. Section rhythm 6–8rem, separated by a single
+hairline. Corners are square — rounding is reserved for nav pills and status badges.
 
 ---
 
 ## 5. Typography
 
-Fraunces is removed entirely. `index.html` swaps to Archivo (700/800/900) + Inter
-(400/500/600) + JetBrains Mono (400/500), preserving the existing preconnect/preload
-structure.
+Archivo (700/800/900) + Inter (400/500/600) + JetBrains Mono (400/500), replacing
+Fraunces. Loaded in `index.html` with the existing preconnect/preload structure.
 
-- `.display` — Archivo, `letter-spacing: -0.02em`, `text-wrap: balance`, leading 0.98–1.15
-- `.eyebrow` — JetBrains Mono, uppercase, `0.15em`, 11px, muted
-- `.eyebrow-dash` — adds the `— ` prefix via `::before`; applied to section mastheads
-  only. Data labels (hero facts, project meta) stay bare, since "— ROLE" reads wrong
-  on a definition list.
-- `.index-num` — JetBrains Mono, tabular
+- `.display` — Archivo 800, `-0.02em`, leading 1.02; `.display-tight` drops to 0.94
+- `.eyebrow` — JetBrains Mono, uppercase, `0.15em`, 11px
+- `.eyebrow-dash` — adds the `— ` prefix; section mastheads only, never definition labels
+- `.mono` — tabular figures for indices and dates
+- `h1/h2/h3` get `text-wrap: balance` globally
 
-**Hero size:** the directive specifies `clamp(2.5rem, 6vw, 4.5rem)`; the current site
-uses `clamp(3rem, 12.5vw, 11rem)`. The directive wins — the name drops to ~72px at
-desktop and is set on one line, with the watermark bleeding behind it. Flagged to the
-user; reversible in one line.
+**Hero size.** The original brief pinned this to `clamp(2.5rem, 6vw, 4.5rem)`. That figure
+came from the cream editorial system; cinematic depends on scale, so the hero is
+`clamp(2.75rem, 10.5vw, 8.5rem)`. This is a deliberate departure and is flagged for the
+user.
 
-**Buttons.** The directive's §4 (`rounded-full`) and §5.3 (hard brutalist) conflict.
-Resolved against the reference implementation, which uses both for different things:
-
-- `.btn-hard` — CTAs. `rounded-lg`, `border-2`, Archivo bold uppercase, `5px 5px 0`
-  hard shadow. Hover `translate(2px,2px)` + `3px 3px 0`; active `translate(5px,5px)` +
-  shadow 0. Variants `--primary` (red) and `--secondary` (card).
-- `rounded-full` — nav pills, badges, tags only.
+**Controls.** The brutalist hard-shadow button belonged to the varsity system and was
+dropped. `.btn` is a hairline ghost control — mono, uppercase, wide tracking, square —
+that fills with red light on hover. `.btn-solid` is the red variant with a bloom.
 
 ---
 
-## 6. "The Record" — the scroll narrative
+## 6. Motion
 
-The page reads as one continuous printed dossier that assembles itself as you scroll.
+Reveals are `opacity 0→1`, `y 22→0`, `whileInView`, `once: true`, `0.85s`, ease
+`[0.16, 1, 0.3, 1]` — longer than typical, because on a dark ground a quick fade reads as
+a flicker while a slow one reads as a camera settling. Children stagger at `0.09s`.
+`prefers-reduced-motion` is honoured globally via `MotionConfig reducedMotion="user"`, and
+individually in every scroll-scrubbed component.
 
-- **Margin rail** — a sticky JetBrains Mono rail on the left edge showing the current
-  section number and label, like a document margin. Updates on scroll. Hidden below `lg`.
-- **Hairlines draw in** — section rules animate width 0→100% on enter rather than fading.
-- **Pillars assemble** — the six POPC pillars land cell by cell, staggered `0.09s`.
-- **Retained motions**, recoloured only: the Recognition credential curtain, the Journey
-  scroll-drawn line, the Resources index rail. All three already satisfy "one signature
-  per section" and are content-appropriate.
-
-Reveals are `opacity 0→1`, `y 22→0`, `whileInView`, `once: true`, ease
-`[0.16, 1, 0.3, 1]`. `prefers-reduced-motion` disables all transforms — already wired
-through the app-level `MotionConfig reducedMotion="user"`.
-
-### Signature devices, one per section
+### One signature per section
 
 | Section | Device |
 | --- | --- |
-| Navbar | Condenses to a floating pill past 12px + theme toggle |
-| Hero | Watermark **S**, masked 64px grid, duotone portrait layer, two hard CTAs |
-| 01 Positions | Hairline record table, rules drawing in |
-| 02 About | Marker highlight |
-| 03 The Council | Six-pillar assembling grid |
-| 04 SciPhyLabs | Marker highlight + typographic data panel |
-| 05 Selected work | Marker highlight + red hover rail |
-| 06 Credentials | *Existing curtain*, recoloured |
-| 07 Timeline | *Existing drawn line*, recoloured |
-| 08 Writing | *Existing index rail*, recoloured |
-| Contact | Grid-lines + marker + hard CTA |
+| Navbar | Condenses into a bordered translucent pill past 12px |
+| Hero | Duotone portrait layer, 64px grid, red pool, vignette, mono facts strip |
+| 01 Positions | Hairline record table with verification links |
+| 02 About | Accent keyword + provable counters |
+| 03 The Council | Six pillars assembling cell by cell, staggered `0.09s` |
+| 04 SciPhyLabs | Spec sheet — the technical register |
+| 05 Selected work | Status badges; rows are only links when a real URL exists |
+| 06 Credentials | *Retained* red curtain, scroll-scrubbed and reversible |
+| 07 Timeline | *Retained* scroll-drawn red line |
+| 08 Writing | *Retained* red index rail, now on real articles |
+| Contact | Grid + red pool + accent keyword |
 
-Global: paper grain, red text selection, recoloured scroll-progress bar.
+Global: film grain, red text selection, red scroll-progress bar, and a fixed **margin rail**
+(xl+) showing the running section number and label like the running head on a printed
+document.
+
+`Accent` is the one repeated flourish: a keyword lit red with a rule that draws in beneath
+it. Used once per heading, never twice.
 
 ---
 
 ## 7. Information architecture
 
-| # | Section | Status | Content |
-| --- | --- | --- | --- |
-| — | Hero | Rewritten | Name, both positions, Puducherry, two CTAs, facts strip |
-| 01 | **Positions** | **New** | Office · organisation · term · mandate · verification link |
-| 02 | About | Rewritten | Civic-first biography |
-| 03 | **The Council** | **New** | Mission, six pillars, three initiatives → popcindia.vercel.app |
-| 04 | SciPhyLabs | Revised | Numbers dropped; SVG mock replaced by type/data panel |
-| 05 | Selected work | Revised | Honest status labels; no fake links |
-| 06 | Credentials | Revised | Heading softened; curtain + logos kept |
-| 07 | Timeline | Rebuilt | Opens 2021 with POPC |
-| 08 | Writing | Rewritten | Two real articles, real dates, deep links |
-| — | Contact | Restyled | Content unchanged |
-| — | Footer | Restyled | `rel="me"` identity hub unchanged |
+| # | Section | Status |
+| --- | --- | --- |
+| — | Hero | Rewritten — name, both positions, facts strip |
+| 01 | **Positions** | **New** — office, term, mandate, verification link |
+| 02 | About | Rewritten civic-first |
+| 03 | **The Council** | **New** — mission, six pillars, three initiatives |
+| 04 | SciPhyLabs | Numbers dropped; SVG mock replaced by a spec sheet |
+| 05 | Selected work | Honest status labels; no fake links |
+| 06 | Credentials | Heading softened; curtain and logos kept |
+| 07 | Timeline | Rebuilt, opens 2021 |
+| 08 | Writing | Two real articles, real dates, deep links |
+| — | Contact / Footer | Restyled; `rel="me"` hub unchanged |
 
-Sections 01 and 03 are additions; nothing is deleted. Routes are unchanged (single page,
-hash anchors). Existing anchors `#about #sciphylabs #work #credentials #writing #contact`
-are preserved so inbound links keep working; `#positions` and `#council` are added.
-
-**Timeline open question:** provable entries are 2021 (POPC founded), 2023 (SciPhyLabs
-founded), May 2026 (began publishing). The 2022 and 2024 entries are removed as
-unsupported. The user should supply real milestones for the gap, or the timeline ships
-with three entries plus "Now".
+Existing anchors are preserved so inbound links keep working; `#positions` and `#council`
+are added.
 
 ---
 
 ## 8. Portrait handling
 
-User decision: **faint background layer only** — never presented as a portrait, never
-scrutinised.
+The source is a casual snapshot, so it is never presented as a portrait. It is cropped
+hard to the head, pushed through an SVG `feComponentTransfer` ramp mapping black to the
+page ground and white to the accent red, held at 30% opacity behind a radial mask, and
+parallaxed on scroll. What survives is a red-lit silhouette; the room falls into shadow.
 
-- Tight crop, live SVG `feColorMatrix` duotone to ink/cream, heavy contrast, ~6–8%
-  opacity, behind the hero grid, typography over it.
-- Rendered with in-browser SVG filters, not a pre-edited asset, so it is tunable live.
-- **Progressive enhancement:** requires `public/portrait.jpg`. If absent, the hero falls
-  back to watermark + grid and reads as intentional. The build must not break without it.
-- The slot is designed so a real headshot can replace it later with no redesign.
+A real `feColorMatrix`/`feComponentTransfer` ramp is used rather than CSS filters because
+CSS can desaturate but cannot re-map the endpoints of the tonal range — and the endpoints
+are the whole effect.
+
+**Progressive enhancement:** if `public/founder15.png` is absent the hero falls back to
+grid and vignette and still reads as intentional. The layer is `aria-hidden` throughout.
 
 ---
 
 ## 9. SEO
 
-**Buildable now (on-page / technical):**
+**Built:**
 
-- `Person` ↔ `Organization` JSON-LD graph — Sreeram as `founder` and `member` of POPC,
-  POPC as a named `Organization` with `foundingDate: 2021` and `location: Puducherry`.
-  This is the high-value change: POPC's site independently names him, so the entity pair
-  is externally corroborated.
-- `Article` schema for both Medium posts with real `datePublished`.
+- **Person ↔ Organization entity graph** — Sreeram as `founder`, `employee` and
+  `memberOf` the council; the council as a named `Organization` with `foundingDate: 2021`
+  and Puducherry as `foundingLocation`. This is the highest-value change, because
+  popcindia.vercel.app names him independently, so the pair is externally corroborated.
+- `Article` schema for both Medium posts with real `datePublished`, wrapped in an `ItemList`.
 - Three-way cross-linking: portfolio ↔ popcindia.vercel.app ↔ sciphylabs.vercel.app.
-- Metadata rewrite dropping "Researcher", "research-backed" and the schools-infrastructure
-  claim; adding POPC. Existing ORCID `identifier` stays (the iD is real) but nothing
-  implies publications.
-- `sitemap.xml`, `robots.txt`, manifest already correct — updated for the new anchors.
+- Metadata rewritten throughout — title, description, OG, Twitter, FAQ, breadcrumbs — with
+  every retired claim removed. ORCID stays as a real `identifier`; nothing implies publications.
+- Dead schema image references (`sreeram-portrait.png`, `sciphylabs-preview.png`, both 404)
+  removed.
 
-**Not buildable — stated plainly:** third-party backlinks cannot be manufactured, and
-purchased ones incur penalties. `SEO.md`'s existing reciprocal-link playbook (set the
-website field on all 13 profiles) is the correct approach and requires the user's logins.
-
----
-
-## 10. Dark mode
-
-- `ThemeToggle` — Sun/Moon in a `rounded-full` pill in the navbar. `localStorage.theme`
-  → `matchMedia('(prefers-color-scheme: dark)')` fallback. Toggles `.dark` on `<html>`.
-- Inline `<head>` script sets the class before first paint to prevent a light flash.
-- `<meta name="color-scheme" content="light dark">`; `theme-color` gains a media query.
-- **Structural fix:** Contact is currently `bg-ink text-paper`, a hardcoded inversion that
-  breaks under dark (light text on light). It gets a dedicated `--invert-bg` /
-  `--invert-fg` pair so the slab stays dark in both themes.
+**Not buildable, stated plainly:** third-party backlinks cannot be manufactured, and
+purchased ones incur penalties. `SEO.md`'s reciprocal-link playbook — set the website field
+on all 13 profiles — is the correct approach and needs the user's logins.
 
 ---
 
-## 11. New files
+## 10. Theme
 
-| File | Purpose |
-| --- | --- |
-| `src/components/Marker.tsx` | Marker highlight. Red block, `on-red` text, `-2deg`, `4px 4px 0` shadow, draws in via `clip-path: inset(0 100% 0 0)` → `inset(0 0 0 0)` on `whileInView`. Reduced motion: no draw, no tilt. |
-| `src/components/ThemeToggle.tsx` | Light/dark control |
-| `src/components/Positions.tsx` | Section 01 |
-| `src/components/Council.tsx` | Section 03 |
-| `src/components/effects/Grain.tsx` | Fixed `feTurbulence` overlay, ~2.5% opacity |
-| `src/components/effects/DuotonePortrait.tsx` | Hero background layer + SVG filter defs |
-| `src/components/motion/MarginRail.tsx` | Sticky dossier rail |
-| `src/data/council.ts` | Pillars, initiatives, mission — single source of truth |
-| `src/data/positions.ts` | Offices held |
-| `src/data/writing.ts` | The two real articles |
+The site is dark-only. An earlier decision added a light/dark toggle, which was dropped
+when the direction changed: cinematic *is* dark, and a light mode would dismantle the
+concept. `color-scheme: dark` is declared on `html`, and `theme-color` is `#0d0b0a`.
 
-Buttons are CSS classes, not a component — every CTA is a plain `<a>`, so a class is the
-lighter fit.
+This also removed the need for the Contact-section fix — the old hardcoded `bg-ink
+text-paper` inversion is gone, replaced by `bg-ground`.
 
 ---
 
-## 12. Out of scope
+## 11. Files
 
-Photography direction, POPC's own site, SciPhyLabs itself, off-page backlink work,
-analytics, and any CMS or hosting change. No dependencies are added.
+**New:** `data/positions.ts` · `data/council.ts` · `data/writing.ts` ·
+`components/Positions.tsx` · `components/Council.tsx` · `components/Accent.tsx` ·
+`components/effects/Grain.tsx` · `components/effects/Portrait.tsx` ·
+`components/motion/MarginRail.tsx`
+
+**Rewritten:** `index.html` · `src/index.css` · `App.tsx` · `Navbar` · `Hero` · `Profile` ·
+`SciPhyLabs` · `Projects` · `Recognition` · `Journey` · `Resources` · `Contact` · `Footer` ·
+`SectionHeading` · `motion/Reveal` · `motion/ScrollProgress`
+
+**Untouched:** `data/profiles.ts` · `effects/CountUp.tsx` · `effects/MagneticButton.tsx`
+
+Buttons are CSS classes rather than a component, because every CTA is a plain `<a>`.
+
+---
+
+## 12. Verification
+
+`tsc --noEmit` clean · `vite build` clean (35.6 kB CSS, 374 kB JS, 118 kB gzipped) ·
+custom utilities and `@theme` variables confirmed present in the built CSS · dev server
+serves 200 for the document, the portrait and both logos.
+
+Not verified: visual rendering in a browser. No browser tooling was available in this
+session, so layout, the duotone result and motion timing need a human look.
 
 ---
 
 ## 13. Open items
 
-1. `public/portrait.jpg` — user must add the file; build tolerates its absence.
-2. Timeline entries between 2023 and 2026 — user to supply, or ships with four entries.
-3. "Author" — assumed retired; reinstating is a one-line change.
-4. Reference site — user opted to send one but did not; POPC's own architecture is the
-   model. Adjustable later.
+1. **"while still at school"** in the About copy is an inference from the 2021 founding
+   date, not a stated fact. Confirm or cut.
+2. **Timeline 2023→2026 gap.** Real dated milestones — cohorts run, workshops hosted,
+   campuses partnered, Civic Corps drives — belong here.
+3. **`og-image.png` is stale** — it was designed for the old cream site and no longer
+   matches. Needs regenerating.
+4. All first-person copy is a draft written on the user's behalf and should be read as
+   such before it ships.
+5. A real headshot would let the portrait be promoted from atmosphere to a portrait proper.

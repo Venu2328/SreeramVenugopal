@@ -1,6 +1,7 @@
 import { type FC, useRef } from 'react';
 import { motion, useReducedMotion, useScroll, useSpring, useTransform } from 'motion/react';
 import { SectionHeading } from './SectionHeading';
+import { Accent } from './Accent';
 
 type Credential = {
   title: string;
@@ -43,17 +44,22 @@ export const Recognition = () => {
     <section
       id="credentials"
       aria-labelledby="credentials-heading"
-      className="py-24 sm:py-32 px-5 sm:px-8 bg-paper-2 border-y border-line scroll-mt-16"
+      className="scroll-mt-24 border-y border-line bg-surface py-24 sm:py-32"
     >
-      <div className="max-w-5xl mx-auto">
+      <div className="shell max-w-5xl">
         <SectionHeading
-          index="04"
+          index="06"
           kicker="Credentials"
-          title={<span id="credentials-heading">Certified by the best.</span>}
+          title={
+            <span id="credentials-heading">
+              Where I've <Accent>trained</Accent>.
+            </span>
+          }
+          lede="Coursework completed outside school, listed with the body that issued it and the year it was awarded."
           className="max-w-3xl"
         />
 
-        <ul className="mt-14 space-y-4 list-none p-0">
+        <ul className="mt-16 list-none space-y-4 p-0">
           {credentials.map((c, i) => (
             <CredentialRow key={c.title + i} c={c} />
           ))}
@@ -63,12 +69,15 @@ export const Recognition = () => {
   );
 };
 
+/**
+ * Each row sits behind a red curtain that slides away as the row rises through
+ * the viewport, revealing the certification underneath. Scrubbed to scroll
+ * position rather than triggered, so it reverses when you scroll back up.
+ */
 const CredentialRow: FC<{ c: Credential }> = ({ c }) => {
   const ref = useRef<HTMLLIElement>(null);
   const reduce = useReducedMotion();
 
-  // Scrub the curtain to scroll position: covered when the row sits low in
-  // the viewport, fully revealed as it rises — and it reverses on scroll-up.
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start 0.82', 'start 0.42'],
@@ -79,25 +88,23 @@ const CredentialRow: FC<{ c: Credential }> = ({ c }) => {
   return (
     <li
       ref={ref}
-      className="relative overflow-hidden rounded-2xl border border-line bg-paper min-h-[112px] sm:min-h-[128px]"
+      className="relative min-h-[112px] overflow-hidden border border-line bg-bg sm:min-h-[128px]"
     >
-      {/* certification — revealed beneath the curtain */}
-      <div className="flex items-center justify-between gap-4 h-[112px] sm:h-[128px] px-6 sm:px-9">
-        <div>
-          <p className="eyebrow text-crimson mb-1.5">{c.short}</p>
-          <h3 className="display text-xl sm:text-2xl text-ink leading-tight">{c.title}</h3>
-          <p className="text-sm text-stone mt-1 hidden sm:block">{c.issuer}</p>
+      <div className="flex h-[112px] items-center justify-between gap-4 px-6 sm:h-[128px] sm:px-9">
+        <div className="min-w-0">
+          <p className="eyebrow mb-2 text-red">{c.short}</p>
+          <h3 className="display text-lg leading-tight text-ink sm:text-2xl">{c.title}</h3>
+          <p className="mt-1.5 hidden text-sm text-muted sm:block">{c.issuer}</p>
         </div>
-        <span className="display text-2xl sm:text-3xl text-crimson shrink-0">{c.year}</span>
+        <span className="display shrink-0 text-2xl text-muted sm:text-3xl">{c.year}</span>
       </div>
 
-      {/* the curtain: a bold crimson panel carrying the logo */}
       <motion.div
         aria-hidden="true"
         style={reduce ? { x: '-103%' } : { x }}
-        className="absolute inset-0 bg-crimson flex items-center gap-5 px-6 sm:px-9"
+        className="absolute inset-0 flex items-center gap-5 bg-red px-6 sm:px-9"
       >
-        <span className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white flex items-center justify-center p-3 shrink-0 shadow-[0_8px_24px_-8px_rgba(0,0,0,0.45)] ring-2 ring-white/40">
+        <span className="flex size-16 shrink-0 items-center justify-center bg-white p-3 sm:size-20">
           <img
             src={c.logo}
             alt={c.alt}
@@ -105,18 +112,14 @@ const CredentialRow: FC<{ c: Credential }> = ({ c }) => {
             height="80"
             loading="lazy"
             decoding="async"
-            className="w-full h-full object-contain"
+            className="size-full object-contain"
           />
         </span>
         <span className="min-w-0">
-          <span className="eyebrow text-white/70 block">Certified by</span>
-          <span className="display text-2xl sm:text-3xl font-semibold text-white leading-tight block truncate">
+          <span className="eyebrow block text-on-red/70">Issued by</span>
+          <span className="display block truncate text-2xl leading-tight text-on-red sm:text-3xl">
             {c.short}
           </span>
-        </span>
-        <span className="eyebrow text-white/60 ml-auto shrink-0 hidden sm:flex items-center gap-2">
-          Scroll
-          <span aria-hidden="true">→</span>
         </span>
       </motion.div>
     </li>

@@ -1,58 +1,83 @@
 import { SectionHeading } from './SectionHeading';
+import { Accent } from './Accent';
 import { Reveal } from './motion/Reveal';
 import { CountUp } from './effects/CountUp';
 
-const stats = [
-  { node: <CountUp target={500} suffix="+" duration={1700} />, label: 'Simulations built' },
-  { node: <CountUp target={10} suffix="+" />, label: 'Topics covered' },
-  { node: <>2023</>, label: 'Founded SciPhyLabs' },
+/**
+ * Biography, civic work first. The council predates the platform by two years,
+ * and telling it in that order is both accurate and the stronger story.
+ *
+ * The figures below are deliberately small and checkable — six pillars, three
+ * initiatives, one founding year. Nothing here is rounded or estimated.
+ */
+const facts = [
+  ['Based in', 'Puducherry, India'],
+  ['Focus', 'Civic leadership, education'],
+  ['Languages', 'English, Tamil'],
+];
+
+const counts = [
+  { node: <CountUp target={6} />, label: 'Pillars in the council framework' },
+  { node: <CountUp target={3} />, label: 'Initiatives currently running' },
+  { node: <>2021</>, label: 'Council founded' },
 ];
 
 export const Profile = () => {
   return (
-    <section id="about" aria-labelledby="about-heading" className="py-24 sm:py-32 px-5 sm:px-8 scroll-mt-16">
-      <div className="max-w-6xl mx-auto">
+    <section id="about" aria-labelledby="about-heading" className="scroll-mt-24 py-24 sm:py-32">
+      <div className="shell">
         <SectionHeading
-          index="01"
+          index="02"
           kicker="About"
-          title={<span id="about-heading">Building tools that make hard ideas click.</span>}
+          title={
+            <span id="about-heading">
+              I started with people, not <Accent>products</Accent>.
+            </span>
+          }
           className="max-w-3xl"
         />
 
-        <div className="mt-14 grid lg:grid-cols-[1.4fr_1fr] gap-12 lg:gap-20 items-start">
-          <Reveal className="space-y-6 text-lg text-ink-soft leading-relaxed">
+        <div className="mt-16 grid items-start gap-12 lg:grid-cols-[1.45fr_1fr] lg:gap-20">
+          <Reveal className="space-y-6 text-lg leading-relaxed text-ink-soft">
             <p>
-              I started SciPhyLabs because most physics is taught as a wall of formulas to memorise.
-              I wanted the opposite: a place where you can change a value, watch the system respond,
-              and build real intuition for why things behave the way they do.
+              I founded the Peacemakers of Puducherry Council in 2021, while still at school,
+              because I kept meeting students with real ambition and nowhere to put it. There
+              was no shortage of talent in Puducherry. There was a shortage of structure —
+              someone to hand you a project, a mentor, and a stage, and then expect something
+              of you.
             </p>
             <p>
-              That work sits at the intersection of three things I care about — software, teaching,
-              and research into how people actually learn. Alongside SciPhyLabs I take on selected
-              consulting and product work, and I write about education when I have something worth
-              saying.
+              The council is deliberately non-partisan. It works through six pillars and three
+              running programmes, and its measure is simple: can a student who walks in with an
+              idea walk out having actually done it, in front of people.
+            </p>
+            <p>
+              SciPhyLabs came out of the same instinct two years later. Physics is taught as a
+              wall of formulas to be memorised, which is exactly backwards — you understand a
+              system by changing it and watching what happens. So I built somewhere you can do
+              that.
             </p>
             <p className="text-ink">
-              The goal is simple: leave students understanding more than they did before, and prove
-              that interactive, self-directed learning is better than rote.
+              Both are the same job in different clothes: give people the tools and the room,
+              then get out of the way.
             </p>
           </Reveal>
 
-          <Reveal delay={0.1} className="lg:pt-2">
-            {/* swappable portrait slot — drop an image in here later */}
-            <div
-              data-portrait-slot
-              className="relative aspect-[4/5] rounded-lg border border-line bg-paper-2 overflow-hidden flex items-center justify-center"
-            >
-              <span aria-hidden="true" className="display text-7xl text-line select-none">SV</span>
-              <span className="absolute bottom-3 left-3 eyebrow text-stone">Portrait</span>
-            </div>
+          <Reveal delay={0.12} className="lg:pt-2">
+            <dl className="list-none border-t border-line">
+              {facts.map(([k, v]) => (
+                <div key={k} className="flex items-baseline justify-between gap-6 border-b border-line py-4">
+                  <dt className="eyebrow text-muted">{k}</dt>
+                  <dd className="text-right text-sm text-ink">{v}</dd>
+                </div>
+              ))}
+            </dl>
 
-            <dl className="mt-8 grid grid-cols-3 gap-4 border-t border-line pt-6">
-              {stats.map((s) => (
-                <div key={s.label}>
-                  <dd className="display text-3xl sm:text-4xl text-ink leading-none">{s.node}</dd>
-                  <dt className="mt-2 text-xs text-stone leading-tight">{s.label}</dt>
+            <dl className="mt-10 grid grid-cols-3 gap-5 border-t border-line pt-7">
+              {counts.map((c) => (
+                <div key={c.label}>
+                  <dd className="display text-3xl leading-none text-red sm:text-4xl">{c.node}</dd>
+                  <dt className="mt-2.5 text-xs leading-tight text-muted">{c.label}</dt>
                 </div>
               ))}
             </dl>

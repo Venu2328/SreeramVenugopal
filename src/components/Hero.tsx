@@ -1,41 +1,51 @@
 import { motion } from 'motion/react';
-import { ArrowDownRight } from 'lucide-react';
+import { ArrowDownRight, ArrowUpRight } from 'lucide-react';
+import { Portrait } from './effects/Portrait';
+import { positions } from '../data/positions';
+
+const ease = [0.16, 1, 0.3, 1] as const;
 
 const facts = [
-  ['Role', 'Founder, Author & Researcher'],
-  ['Building', 'SciPhyLabs'],
-  ['Based in', 'India'],
+  ['Council', 'Est. 2021'],
+  ['Platform', 'Est. 2023'],
+  ['Based in', 'Puducherry, India'],
 ];
-
-const ease = [0.22, 1, 0.36, 1] as const;
 
 export const Hero = () => {
   return (
     <section
       id="top"
       aria-labelledby="hero-heading"
-      className="relative min-h-screen flex flex-col justify-center pt-24 pb-16 px-5 sm:px-8"
+      className="relative flex min-h-svh flex-col justify-center overflow-hidden pt-28 pb-14"
     >
-      <div className="max-w-6xl mx-auto w-full">
-        {/* masthead label */}
+      {/* Atmosphere, back to front: grid, portrait, warmth, vignette */}
+      <div aria-hidden="true" className="grid-lines absolute inset-0 opacity-60" />
+      <Portrait />
+      <div aria-hidden="true" className="pool pointer-events-none absolute inset-0" />
+      <div aria-hidden="true" className="vignette pointer-events-none absolute inset-0" />
+
+      <div className="shell relative w-full">
         <motion.div
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease }}
-          className="flex items-center gap-4 mb-8 sm:mb-10"
+          transition={{ duration: 0.8, ease }}
+          className="flex items-center gap-4"
         >
-          <span className="crimson-rule" aria-hidden="true" />
-          <span className="eyebrow text-crimson">Founder · Author · Researcher</span>
+          <span aria-hidden="true" className="h-px w-10 bg-red" />
+          <span className="eyebrow text-muted">Puducherry, India</span>
         </motion.div>
 
-        <h1 id="hero-heading" className="display font-semibold text-ink leading-[0.92] tracking-[-0.02em]">
+        <h1
+          id="hero-heading"
+          className="display display-tight mt-8 text-[clamp(2.75rem,10.5vw,8.5rem)] text-ink"
+        >
           {['Sreeram', 'Venugopal'].map((word, i) => (
             <span key={word} className="block overflow-hidden">
               <motion.span
                 initial={{ y: '110%' }}
                 animate={{ y: '0%' }}
-                transition={{ duration: 0.9, delay: 0.15 + i * 0.12, ease }}
-                className="block text-[clamp(3rem,12.5vw,11rem)]"
+                transition={{ duration: 1, delay: 0.12 + i * 0.1, ease }}
+                className="block"
               >
                 {word}
               </motion.span>
@@ -43,51 +53,66 @@ export const Hero = () => {
           ))}
         </h1>
 
+        {/* The two positions carry the page — stated plainly, immediately */}
+        <motion.ul
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.45, ease }}
+          className="mt-9 list-none space-y-2.5 border-l border-line-strong p-0 pl-5"
+        >
+          {positions.map((p) => (
+            <li key={p.organisation} className="text-base leading-snug sm:text-lg">
+              <span className="text-ink">{p.office}</span>
+              <span aria-hidden="true" className="mx-2 text-red">
+                /
+              </span>
+              <span className="text-ink-soft">{p.organisation}</span>
+              <span className="eyebrow ml-3 text-muted">{p.since}</span>
+            </li>
+          ))}
+        </motion.ul>
+
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.5, ease }}
-          className="mt-8 sm:mt-10 max-w-2xl text-lg sm:text-xl text-ink-soft leading-relaxed"
+          transition={{ duration: 0.8, delay: 0.58, ease }}
+          className="mt-9 max-w-xl text-lg leading-relaxed text-ink-soft"
         >
-          I'm the founder, author and researcher behind{' '}
-          <span className="text-ink font-medium">SciPhyLabs</span> — an interactive-first, research-backed
-          physics ecosystem of 500+ simulations that help students truly understand the subject rather
-          than memorise it, and that's driving growth in STEM education and schools infrastructure.
+          I build the things I wanted to exist. A council that turns students into
+          leaders, and a platform that makes physics something you can handle rather
+          than memorise.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.62, ease }}
-          className="mt-10 flex flex-col sm:flex-row sm:items-center gap-4"
+          transition={{ duration: 0.8, delay: 0.7, ease }}
+          className="mt-11 flex flex-col gap-3 sm:flex-row sm:items-center"
         >
-          <a
-            href="#work"
-            className="group inline-flex items-center justify-center gap-2 bg-crimson text-white px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-crimson-deep transition-colors"
-          >
-            View selected work
-            <ArrowDownRight size={17} className="group-hover:translate-x-0.5 group-hover:translate-y-0.5 transition-transform" aria-hidden="true" />
+          <a href="#council" className="btn btn-solid group">
+            The Council
+            <ArrowDownRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5" aria-hidden="true" />
           </a>
-          <a
-            href="#contact"
-            className="inline-flex items-center justify-center px-7 py-3.5 rounded-full text-sm font-semibold text-ink border border-line hover:border-ink/40 transition-colors"
-          >
+          <a href="#contact" className="btn group">
             Get in touch
+            <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
           </a>
         </motion.div>
       </div>
 
-      {/* quick facts strip, anchored low */}
       <motion.dl
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.8 }}
-        className="max-w-6xl mx-auto w-full mt-16 sm:mt-20 grid grid-cols-1 sm:grid-cols-3 border-t border-line"
+        transition={{ duration: 1, delay: 0.9 }}
+        className="shell relative mt-16 grid w-full grid-cols-1 border-t border-line sm:mt-20 sm:grid-cols-3"
       >
         {facts.map(([k, v]) => (
-          <div key={k} className="py-5 sm:pr-8 border-b sm:border-b-0 border-line sm:[&:not(:last-child)]:border-r sm:[&:not(:last-child)]:pr-8">
-            <dt className="eyebrow text-stone mb-1.5">{k}</dt>
-            <dd className="display text-xl text-ink">{v}</dd>
+          <div
+            key={k}
+            className="border-b border-line py-5 sm:border-b-0 sm:pr-8 sm:[&:not(:last-child)]:border-r"
+          >
+            <dt className="eyebrow mb-2 text-muted">{k}</dt>
+            <dd className="display text-lg text-ink">{v}</dd>
           </div>
         ))}
       </motion.dl>
