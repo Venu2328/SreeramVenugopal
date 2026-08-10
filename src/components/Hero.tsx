@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { ArrowDownRight, ArrowUpRight } from 'lucide-react';
 import { Portrait } from './effects/Portrait';
 import { positions } from '../data/positions';
@@ -6,12 +6,14 @@ import { positions } from '../data/positions';
 const ease = [0.16, 1, 0.3, 1] as const;
 
 const facts = [
-  ['Council', 'Est. 2021'],
   ['Platform', 'Est. 2023'],
+  ['Council', 'Est. 2026'],
   ['Based in', 'Puducherry, India'],
 ];
 
 export const Hero = () => {
+  const reduce = useReducedMotion();
+
   return (
     <section
       id="top"
@@ -39,18 +41,42 @@ export const Hero = () => {
           id="hero-heading"
           className="display display-tight mt-8 text-[clamp(2.75rem,10.5vw,8.5rem)] text-ink"
         >
-          {['Sreeram', 'Venugopal'].map((word, i) => (
-            <span key={word} className="block overflow-hidden">
-              <motion.span
-                initial={{ y: '110%' }}
-                animate={{ y: '0%' }}
-                transition={{ duration: 1, delay: 0.12 + i * 0.1, ease }}
-                className="block"
-              >
-                {word}
-              </motion.span>
-            </span>
-          ))}
+          <span className="block overflow-hidden">
+            <motion.span
+              initial={{ y: '110%' }}
+              animate={{ y: '0%' }}
+              transition={{ duration: 1, delay: 0.12, ease }}
+              className="block"
+            >
+              Sreeram
+            </motion.span>
+          </span>
+
+          {/*
+            The surname sits on a solid red block. The mask that drives the
+            slide-up would clip that block at the descenders, so the line is
+            padded downward and the padding pulled back out with a negative
+            margin — room to draw into, no change to layout.
+          */}
+          <span className="block overflow-hidden pb-[0.18em] -mb-[0.18em]">
+            <motion.span
+              initial={{ y: '110%' }}
+              animate={{ y: '0%' }}
+              transition={{ duration: 1, delay: 0.22, ease }}
+              className="block"
+            >
+              <span className="relative inline-block">
+                <motion.span
+                  aria-hidden="true"
+                  initial={reduce ? { scaleX: 1 } : { scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ duration: 0.85, delay: 0.95, ease }}
+                  className="absolute -left-[0.05em] -right-[0.05em] bottom-[0.005em] top-[0.075em] origin-left bg-red"
+                />
+                <span className="relative text-on-red">Venugopal</span>
+              </span>
+            </motion.span>
+          </span>
         </h1>
 
         {/* The two positions carry the page — stated plainly, immediately */}

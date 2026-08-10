@@ -14,11 +14,6 @@ import { Reveal } from './motion/Reveal';
  */
 const timeline = [
   {
-    year: '2021',
-    title: 'Founded the council',
-    desc: 'Started the Peacemakers of Puducherry Council to give students in Puducherry structure, mentorship and somewhere to put their ambition.',
-  },
-  {
     year: '2023',
     title: 'Founded SciPhyLabs',
     desc: 'Built the first interactive simulations, and turned them into a platform aimed at students preparing for JEE, NEET, AP, SAT and CUET.',
@@ -26,12 +21,17 @@ const timeline = [
   {
     year: '2024',
     title: 'Coursework at IIT Madras',
-    desc: 'Completed School Connect programmes in Data Science & AI and in Economic Finance, alongside running both organisations.',
+    desc: 'Completed School Connect programmes in Data Science & AI and in Economic Finance, alongside building the platform.',
   },
   {
     year: '2026',
     title: 'Started writing publicly',
     desc: 'Began publishing on what is actually broken in exam preparation, and what interactive-first learning does differently.',
+  },
+  {
+    year: '2026',
+    title: 'Founded the council',
+    desc: 'Started the Peacemakers of Puducherry Council to give students in Puducherry structure, mentorship and somewhere to put their ambition.',
   },
 ];
 

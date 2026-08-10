@@ -31,8 +31,17 @@ An evidence audit of the previous site found claims that did not survive scrutin
 | SciPhyLabs preview | A hand-drawn SVG mock, not a screenshot. |
 
 Meanwhile the strongest asset was absent entirely: **Peacemakers of Puducherry Council**,
-which Sreeram founded and leads, and whose own site names him in the role. The council
-(2021) predates the platform (2023), so the true chronology is also the better narrative.
+which Sreeram founded and leads, and whose own site names him in the role.
+
+**Founding date — corrected 2026-08-11.** The council's site publishes `Est. 2021` both as
+visible text and as `"foundingDate":"2021"` in its JSON-LD. Sreeram confirmed the real
+founding year is **2026** and undertook to correct the council site. This portfolio now
+states 2026 throughout. Until popcindia.vercel.app is updated the two properties
+contradict each other in machine-readable data, which is the one outstanding risk to the
+corroboration strategy in §9.
+
+The correction inverts the narrative: SciPhyLabs (2023) predates the council (2026) by
+three years, so the About section leads with the platform and the timeline opens in 2023.
 
 **Governing rule: nothing goes on the page that cannot be checked.** Where evidence is
 missing the claim is removed, not softened into vagueness.
@@ -57,14 +66,14 @@ progress"). Flagged to the user, who did not object. Reinstating either is a one
 infrastructure", "500+ simulations", "10+ topics". All numeric platform claims dropped per
 the user's "describe without counting" decision.
 
-**Numbers that remain**, all provable: 2021, 2023, six pillars, three initiatives, a
+**Numbers that remain**, all provable: 2023, 2026, six pillars, three initiatives, a
 twelve-week cohort, three certifications. `CountUp` survives, fed only by these.
 
 ---
 
 ## 3. Verified source material
 
-**Peacemakers of Puducherry Council** — est. 2021, Puducherry, India. Non-partisan.
+**Peacemakers of Puducherry Council** — est. 2026, Puducherry, India. Non-partisan.
 
 > "The Peacemakers of Puducherry Council develops principled student leaders through
 > education, service, innovation, and collaboration."
@@ -190,7 +199,7 @@ it. Used once per heading, never twice.
 | 04 | SciPhyLabs | Numbers dropped; SVG mock replaced by a spec sheet |
 | 05 | Selected work | Honest status labels; no fake links |
 | 06 | Credentials | Heading softened; curtain and logos kept |
-| 07 | Timeline | Rebuilt, opens 2021 |
+| 07 | Timeline | Rebuilt, opens 2023 |
 | 08 | Writing | Two real articles, real dates, deep links |
 | — | Contact / Footer | Restyled; `rel="me"` hub unchanged |
 
@@ -220,7 +229,7 @@ grid and vignette and still reads as intentional. The layer is `aria-hidden` thr
 **Built:**
 
 - **Person ↔ Organization entity graph** — Sreeram as `founder`, `employee` and
-  `memberOf` the council; the council as a named `Organization` with `foundingDate: 2021`
+  `memberOf` the council; the council as a named `Organization` with `foundingDate: 2026`
   and Puducherry as `foundingLocation`. This is the highest-value change, because
   popcindia.vercel.app names him independently, so the pair is externally corroborated.
 - `Article` schema for both Medium posts with real `datePublished`, wrapped in an `ItemList`.
@@ -277,12 +286,15 @@ session, so layout, the duotone result and motion timing need a human look.
 
 ## 13. Open items
 
-1. **"while still at school"** in the About copy is an inference from the 2021 founding
-   date, not a stated fact. Confirm or cut.
-2. **Timeline 2023→2026 gap.** Real dated milestones — cohorts run, workshops hosted,
+1. **Correct popcindia.vercel.app to 2026** — visible `Est. 2021` text and the
+   `"foundingDate":"2021"` JSON-LD. Until then the two sites disagree in structured data.
+2. **Confirm the council's founding month.** The timeline carries two 2026 entries —
+   "started writing publicly" (May 2026, known) and "founded the council" (month unknown,
+   currently placed second). Reorder if the council came first.
+3. **Timeline 2024→2026 gap.** Real dated milestones — cohorts run, workshops hosted,
    campuses partnered, Civic Corps drives — belong here.
-3. **`og-image.png` is stale** — it was designed for the old cream site and no longer
+4. **`og-image.png` is stale** — it was designed for the old cream site and no longer
    matches. Needs regenerating.
-4. All first-person copy is a draft written on the user's behalf and should be read as
+5. All first-person copy is a draft written on the user's behalf and should be read as
    such before it ships.
-5. A real headshot would let the portrait be promoted from atmosphere to a portrait proper.
+6. A real headshot would let the portrait be promoted from atmosphere to a portrait proper.

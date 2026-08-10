@@ -1,11 +1,11 @@
 # https://www.robotstxt.org/robotstxt.html
-# Sreeram Venugopal — Personal Portfolio
+# Sreeram Venugopal — sreeramvenugopal.com
 
 User-agent: *
 Allow: /
 Disallow: /api/
 
-# Major search engines — explicit allow
+# ── Search engines ──────────────────────────────────────────────
 User-agent: Googlebot
 Allow: /
 
@@ -24,13 +24,45 @@ Allow: /
 User-agent: Applebot
 Allow: /
 
-# Block common scrapers / AI training crawlers without permission
+# ── AI assistants and answer engines ────────────────────────────
+# Deliberately allowed. A growing share of "who is Sreeram Venugopal"
+# queries is answered by assistants rather than a results page, and a
+# blocked crawler cannot cite what it cannot read. Allowing these is
+# what lets them state the council role correctly rather than guess.
+
 User-agent: GPTBot
-Disallow: /
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
 
 User-agent: CCBot
-Disallow: /
+Allow: /
 
-# Sitemap
+# ── Sitemap ─────────────────────────────────────────────────────
 Sitemap: https://sreeramvenugopal.com/sitemap.xml
 Host: https://sreeramvenugopal.com

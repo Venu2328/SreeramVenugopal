@@ -3,11 +3,15 @@ import { motion, useReducedMotion, useScroll, useSpring, useTransform } from 'mo
 import { SectionHeading } from './SectionHeading';
 import { Accent } from './Accent';
 
+/**
+ * `year` is optional on purpose: a credential with no confirmed date renders
+ * without one rather than carrying a guessed year. Add the year when it's known.
+ */
 type Credential = {
   title: string;
   issuer: string;
   short: string;
-  year: string;
+  year?: string;
   logo: string;
   alt: string;
 };
@@ -36,6 +40,13 @@ const credentials: Credential[] = [
     year: '2023',
     logo: '/logos/google.svg',
     alt: 'Google',
+  },
+  {
+    title: 'Introduction to Robotics & STEM',
+    issuer: 'iRISE',
+    short: 'iRISE',
+    logo: '/logos/Rise-india.png',
+    alt: 'iRISE',
   },
 ];
 
@@ -73,6 +84,12 @@ export const Recognition = () => {
  * Each row sits behind a red curtain that slides away as the row rises through
  * the viewport, revealing the certification underneath. Scrubbed to scroll
  * position rather than triggered, so it reverses when you scroll back up.
+ *
+ * The curtain deliberately holds still for the first stretch of its scroll
+ * range before moving. Without that pause the issuing logo — the whole point of
+ * the panel — is gone before you've had a chance to read it. The range is also
+ * wide (start 0.9 → 0.26, most of a viewport height of scrolling) and the
+ * spring is slack, so the slide reads as a reveal rather than a swipe.
  */
 const CredentialRow: FC<{ c: Credential }> = ({ c }) => {
   const ref = useRef<HTMLLIElement>(null);
@@ -80,10 +97,10 @@ const CredentialRow: FC<{ c: Credential }> = ({ c }) => {
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['start 0.82', 'start 0.42'],
+    offset: ['start 0.9', 'start 0.26'],
   });
-  const xRaw = useTransform(scrollYProgress, [0, 1], ['0%', '-103%']);
-  const x = useSpring(xRaw, { stiffness: 90, damping: 22, mass: 0.4 });
+  const xRaw = useTransform(scrollYProgress, [0, 0.45, 1], ['0%', '0%', '-103%']);
+  const x = useSpring(xRaw, { stiffness: 55, damping: 26, mass: 0.6 });
 
   return (
     <li
@@ -96,7 +113,9 @@ const CredentialRow: FC<{ c: Credential }> = ({ c }) => {
           <h3 className="display text-lg leading-tight text-ink sm:text-2xl">{c.title}</h3>
           <p className="mt-1.5 hidden text-sm text-muted sm:block">{c.issuer}</p>
         </div>
-        <span className="display shrink-0 text-2xl text-muted sm:text-3xl">{c.year}</span>
+        {c.year && (
+          <span className="display shrink-0 text-2xl text-muted sm:text-3xl">{c.year}</span>
+        )}
       </div>
 
       <motion.div

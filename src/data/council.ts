@@ -6,11 +6,17 @@
 export const council = {
   name: 'Peacemakers of Puducherry Council',
   abbr: 'POPC',
-  founded: '2021',
+  founded: '2026',
   location: 'Puducherry, India',
   href: 'https://popcindia.vercel.app',
   mission:
     'The Peacemakers of Puducherry Council develops principled student leaders through education, service, innovation, and collaboration.',
+  /** Standing and backing, as stated by the council. */
+  standing: 'The largest student organisation in Puducherry',
+  backing:
+    'Backed by government, the public and the student community under one name, and supported by partner associations across the region.',
+  members: 112,
+  institutions: 17,
 } as const;
 
 export type Pillar = { n: string; title: string; desc: string };

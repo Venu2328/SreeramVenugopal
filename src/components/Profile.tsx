@@ -16,10 +16,18 @@ const facts = [
   ['Languages', 'English, Tamil'],
 ];
 
+/**
+ * Council traction, stated exactly rather than rounded. A precise figure implies
+ * someone is counting; a rounded one implies someone is estimating.
+ *
+ * These are point-in-time counts, so they need an owner — update them when the
+ * real numbers move, and keep them identical to whatever popcindia.vercel.app
+ * publishes. Two sites quoting different totals is worse than neither quoting any.
+ */
 const counts = [
-  { node: <CountUp target={6} />, label: 'Pillars in the council framework' },
-  { node: <CountUp target={3} />, label: 'Initiatives currently running' },
-  { node: <>2021</>, label: 'Council founded' },
+  { node: <CountUp target={112} />, label: 'Students registered' },
+  { node: <CountUp target={17} />, label: 'Institutions reached' },
+  { node: <>2026</>, label: 'Council founded' },
 ];
 
 export const Profile = () => {
@@ -31,7 +39,7 @@ export const Profile = () => {
           kicker="About"
           title={
             <span id="about-heading">
-              I started with people, not <Accent>products</Accent>.
+              First a platform, then a <Accent>council</Accent>.
             </span>
           }
           className="max-w-3xl"
@@ -40,26 +48,26 @@ export const Profile = () => {
         <div className="mt-16 grid items-start gap-12 lg:grid-cols-[1.45fr_1fr] lg:gap-20">
           <Reveal className="space-y-6 text-lg leading-relaxed text-ink-soft">
             <p>
-              I founded the Peacemakers of Puducherry Council in 2021, while still at school,
-              because I kept meeting students with real ambition and nowhere to put it. There
-              was no shortage of talent in Puducherry. There was a shortage of structure —
-              someone to hand you a project, a mentor, and a stage, and then expect something
-              of you.
+              I built SciPhyLabs in 2023. Physics is taught as a wall of formulas to be
+              memorised, which is exactly backwards — you understand a system by changing it
+              and watching what happens. So I built somewhere you can do that, aimed at the
+              students sitting JEE, NEET, AP, SAT and CUET.
             </p>
             <p>
-              The council is deliberately non-partisan. It works through six pillars and three
-              running programmes, and its measure is simple: can a student who walks in with an
-              idea walk out having actually done it, in front of people.
+              Working on it taught me something the platform couldn't fix on its own. The
+              students I met weren't short of ability, and they weren't short of ambition.
+              They were short of structure — someone to hand them a project, a mentor, and a
+              stage, and then expect something of them.
             </p>
             <p>
-              SciPhyLabs came out of the same instinct two years later. Physics is taught as a
-              wall of formulas to be memorised, which is exactly backwards — you understand a
-              system by changing it and watching what happens. So I built somewhere you can do
-              that.
+              So in 2026 I founded the Peacemakers of Puducherry Council. It is deliberately
+              non-partisan, works through six pillars, and runs three programmes. Its measure
+              is simple: can a student who walks in with an idea walk out having actually done
+              it, in front of people.
             </p>
             <p className="text-ink">
-              Both are the same job in different clothes: give people the tools and the room,
-              then get out of the way.
+              The council is new, and I would rather it be judged on what it ships than on how
+              it describes itself.
             </p>
           </Reveal>
 

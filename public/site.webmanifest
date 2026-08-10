@@ -1,12 +1,12 @@
 {
-  "name": "Sreeram Venugopal — Founder, Author & Researcher of SciPhyLabs",
+  "name": "Sreeram Venugopal — Founder & Committee Leader, Peacemakers of Puducherry Council",
   "short_name": "Sreeram Venugopal",
-  "description": "Founder, author and researcher of SciPhyLabs — an interactive-first, research-backed physics ecosystem of 500+ simulations driving growth in STEM education and schools infrastructure.",
+  "description": "Founder and committee leader of the Peacemakers of Puducherry Council, a non-partisan student leadership council spanning 17 institutions in Puducherry, India, and founder of SciPhyLabs.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#faf8f5",
-  "theme_color": "#faf8f5",
+  "background_color": "#0d0b0a",
+  "theme_color": "#0d0b0a",
   "orientation": "portrait-primary",
   "icons": [
     {

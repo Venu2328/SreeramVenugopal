@@ -21,7 +21,7 @@ export const positions: Position[] = [
     office: 'Founder & Committee Leader',
     organisation: 'Peacemakers of Puducherry Council',
     abbr: 'POPC',
-    since: '2021',
+    since: '2026',
     location: 'Puducherry, India',
     mandate:
       'A non-partisan council that develops principled student leaders through education, service, innovation and collaboration.',

@@ -39,10 +39,18 @@ export const Council = () => {
           <blockquote className="border-l-2 border-red pl-6">
             <p className="text-xl leading-relaxed text-ink sm:text-2xl">{council.mission}</p>
           </blockquote>
+          <p className="mt-7 text-lg leading-relaxed text-ink-soft">
+            <span className="text-ink">{council.standing}</span>, spanning{' '}
+            {council.institutions} institutions with {council.members} registered members.{' '}
+            {council.backing}
+          </p>
+
           <div className="mt-7 flex flex-wrap items-center gap-x-8 gap-y-3">
             <span className="eyebrow text-muted">Founded {council.founded}</span>
             <span className="eyebrow text-muted">{council.location}</span>
             <span className="eyebrow text-muted">Non-partisan</span>
+            <span className="eyebrow text-muted">{council.institutions} institutions</span>
+            <span className="eyebrow text-muted">{council.members} members</span>
           </div>
         </Reveal>
 

@@ -66,23 +66,29 @@ export const Portrait = ({ src = '/founder15.png' }: { src?: string }) => {
           loading="eager"
           decoding="async"
           draggable={false}
-          className="h-full w-full object-cover opacity-[0.30] contrast-[1.35] saturate-0"
+          className="h-full w-full object-cover opacity-[0.80] contrast-[1.35] saturate-0"
           style={{
             filter: 'url(#duotone-red) contrast(1.3) brightness(0.92)',
             objectPosition: '64% 12%',
             transform: 'scale(2.05)',
             transformOrigin: '64% 14%',
+            // Wide solid core with a short falloff. The previous mask started
+            // fading at 8% and took until 78% to finish, which read as haze
+            // rather than as an edge — the image was never fully opaque
+            // anywhere. It now holds full strength out to 48%, including the
+            // area above the head, then releases quickly.
             maskImage:
-              'radial-gradient(70% 60% at 62% 34%, #000 8%, rgba(0,0,0,0.55) 46%, transparent 78%)',
+              'radial-gradient(80% 72% at 62% 30%, #000 48%, rgba(0,0,0,0.85) 70%, transparent 92%)',
             WebkitMaskImage:
-              'radial-gradient(70% 60% at 62% 34%, #000 8%, rgba(0,0,0,0.55) 46%, transparent 78%)',
+              'radial-gradient(80% 72% at 62% 30%, #000 48%, rgba(0,0,0,0.85) 70%, transparent 92%)',
           }}
         />
       </motion.div>
 
       {/* Sink the left edge so display type always has clean ground under it */}
       <div className="absolute inset-0 bg-gradient-to-r from-bg via-bg/85 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-bg/70" />
+      {/* Top stop lightened 70% → 60%: less ground laid over the area above the head */}
+      <div className="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-bg/60" />
     </div>
   );
 };
