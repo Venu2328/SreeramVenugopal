@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://sreeramvenugopal.com/</loc>
-    <lastmod>2026-08-11</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -11,5 +11,11 @@
       <image:title>Sreeram Venugopal — Founder &amp; Committee Leader, Peacemakers of Puducherry Council</image:title>
       <image:caption>Founder and committee leader of the Peacemakers of Puducherry Council, a non-partisan student leadership council spanning 17 institutions in Puducherry, India.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://sreeramvenugopal.com/ventures</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>

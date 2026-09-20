@@ -1,9 +1,9 @@
 import { motion, useScroll, useSpring } from 'motion/react';
 
 /**
- * A thin red reading-progress bar pinned to the top of the page, driven by
+ * A thin orange reading-progress rule pinned to the top of the page, driven by
  * overall scroll position and smoothed with a spring so it glides rather than
- * jumps. On a dark ground it doubles as the only always-visible light.
+ * jumps. It is the one piece of chrome that never leaves.
  */
 export const ScrollProgress = () => {
   const { scrollYProgress } = useScroll();
@@ -13,7 +13,7 @@ export const ScrollProgress = () => {
     <motion.div
       aria-hidden="true"
       style={{ scaleX }}
-      className="fixed top-0 left-0 right-0 z-[90] h-[3px] origin-left bg-red glow-red"
+      className="fixed top-0 left-0 right-0 z-[90] h-[3px] origin-left bg-orange"
     />
   );
 };

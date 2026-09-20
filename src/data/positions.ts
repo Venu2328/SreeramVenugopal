@@ -14,6 +14,12 @@ export type Position = {
   location: string;
   mandate: string;
   verify?: { label: string; href: string };
+  /**
+   * The organisation's device, as a white-on-transparent PNG in /public. It is
+   * printed in ink rather than in brand colour — see VentureStrip. An entry
+   * without one is set as a typographic monogram instead.
+   */
+  logo?: string;
 };
 
 export const positions: Position[] = [
@@ -34,6 +40,7 @@ export const positions: Position[] = [
     location: 'Puducherry, India',
     mandate:
       'An interactive physics platform built for students preparing for JEE, NEET, AP, SAT and CUET.',
+    logo: '/sciphylabs-logo2-sv.png',
     verify: { label: 'sciphylabs.vercel.app', href: 'https://sciphylabs.vercel.app' },
   },
 ];

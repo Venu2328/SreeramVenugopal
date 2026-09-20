@@ -2,41 +2,48 @@
 
 /*
  * ─────────────────────────────────────────────────────────────────────────
- *  SREERAM VENUGOPAL — dark cinematic
+ *  SREERAM VENUGOPAL — the broadsheet
  *
- *  A warm near-black ground, one varsity red used as the only source of
- *  light, and type doing the heavy lifting: Archivo set large and tight,
- *  Inter for reading, JetBrains Mono for anything that behaves like data.
+ *  A printed newspaper, not a website pretending to be one. Cream newsprint
+ *  ground, warm near-black ink, and Claude orange as the only colour on the
+ *  page — used the way a paper uses spot colour, sparingly enough that it
+ *  still means something when it appears.
  *
- *  The ground is deliberately warm (#0d0b0a, not #000) — cold black reads
- *  cheap and makes photography look grey. Depth comes from vignette, grain
- *  and hairlines, never from blurred drop shadows.
+ *  Structure comes from rules, not boxes: hairlines between columns, heavy
+ *  double rules under the masthead, and hard 90° corners everywhere. Nothing
+ *  on this page has a border radius except the interest chips, and nothing
+ *  floats on a blurred shadow except the certificate clippings, which are
+ *  meant to read as physical paper pinned to the page.
  *
- *  Red carries the accent through from the Peacemakers of Puducherry
- *  Council site so the two properties read as one identity.
+ *  Playfair Display does the shouting. Its didone contrast — hairline serifs
+ *  against heavy stems — is the single thing that makes a screen read as
+ *  print. Inter reads, JetBrains Mono behaves like a dateline stamp.
  * ─────────────────────────────────────────────────────────────────────────
  */
 
 @theme {
-  --font-display: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Playfair Display", ui-serif, Georgia, serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
-  --color-ground: #0a0908;      /* deepest — letterbox bands, footer */
-  --color-bg: #0d0b0a;          /* page ground */
-  --color-surface: #131010;     /* raised band */
-  --color-card: #171413;        /* card / panel */
-  --color-line: #272120;        /* hairline */
-  --color-line-strong: #3a312e; /* emphasised hairline */
+  --color-paper: #f4f0e6;        /* page ground — warm newsprint */
+  --color-paper-raised: #eae4d6; /* alternating band */
+  --color-paper-white: #fdfcf8;  /* clippings, photo mounts */
 
-  --color-ink: #f2ece3;         /* primary text — warm off-white */
-  --color-ink-soft: #b3a99f;    /* secondary text */
-  --color-muted: #7d736c;       /* labels, captions, data */
+  --color-ink: #1a1714;          /* headlines, body, heavy rules */
+  --color-ink-soft: #4a443b;     /* running body copy */
+  --color-muted: #8a8073;        /* datelines, captions, folios */
 
-  --color-red: #e0242a;         /* the single accent */
-  --color-red-bright: #ff3b40;  /* hover / glow */
-  --color-red-deep: #a8161b;    /* pressed */
-  --color-on-red: #fff6f2;      /* text on red */
+  --color-rule: #d5cdbc;         /* column hairline */
+  --color-rule-strong: #b5a893;  /* emphasised hairline */
+
+  --color-orange: #d97757;       /* the single accent */
+  --color-orange-deep: #bf5c39;  /* hover / pressed */
+  --color-on-orange: #fffaf6;    /* text on orange */
+
+  --color-slab: #26221c;         /* inverted bands */
+  --color-slab-deep: #1a1714;    /* footer */
+  --color-on-slab: #f4f0e6;      /* text on slab */
 }
 
 @layer base {
@@ -45,12 +52,12 @@
     -webkit-text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
-    color-scheme: dark;
-    background: var(--color-bg);
+    color-scheme: light;
+    background: var(--color-paper);
   }
 
   body {
-    @apply bg-bg text-ink font-sans;
+    @apply bg-paper text-ink font-sans;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
@@ -60,14 +67,14 @@
   }
 
   ::selection {
-    background: var(--color-red);
-    color: var(--color-on-red);
+    background: var(--color-orange);
+    color: var(--color-on-orange);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-red);
+    outline: 2px solid var(--color-orange);
     outline-offset: 3px;
-    border-radius: 2px;
+    border-radius: 0;
   }
 
   img, svg { max-width: 100%; height: auto; }
@@ -75,33 +82,38 @@
   a, button { -webkit-tap-highlight-color: transparent; }
 
   h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
 }
 
 @layer utilities {
   /* ── Type ─────────────────────────────────────────────────────────── */
 
-  .display {
+  /* The masthead and every headline. Tight, because newspaper headlines are
+     set to fill their measure rather than to breathe. */
+  .headline {
     font-family: var(--font-display);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    line-height: 1.02;
+    font-weight: 900;
+    letter-spacing: -0.021em;
+    line-height: 0.98;
   }
 
-  .display-tight { line-height: 0.94; }
+  .headline-tight { line-height: 0.9; }
 
-  /* Anything that behaves like data: labels, dates, counters, indices. */
+  /* Deck / standfirst — the line under a headline, always italic in print. */
+  .deck {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.32;
+  }
+
+  /* Anything that behaves like a dateline: kickers, folios, stats, stamps. */
   .eyebrow {
     font-family: var(--font-mono);
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.17em;
     font-size: 0.6875rem;
-  }
-
-  /* Section mastheads only — never definition labels. */
-  .eyebrow-dash::before {
-    content: "— ";
-    opacity: 0.55;
   }
 
   .mono {
@@ -109,66 +121,76 @@
     font-variant-numeric: tabular-nums;
   }
 
+  /* Body copy set in true newspaper columns. Hyphenation matters here —
+     a justified column without it opens rivers of white space. */
+  .column-copy {
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
+
+  /* The opening capital of the lead story. Floated three lines deep, the way
+     a paper actually sets one, rather than merely enlarged. */
+  .dropcap::first-letter {
+    font-family: var(--font-display);
+    font-weight: 900;
+    float: left;
+    font-size: 3.6em;
+    line-height: 0.82;
+    padding-right: 0.07em;
+    padding-top: 0.04em;
+    color: var(--color-orange);
+  }
+
   /* ── Structure ────────────────────────────────────────────────────── */
 
   .shell {
-    max-width: 1152px;
+    max-width: 1280px;
     margin-inline: auto;
     padding-inline: 1.25rem;
   }
   @media (min-width: 640px) { .shell { padding-inline: 2rem; } }
 
-  /* A hairline that reads as a film cut rather than a border. */
-  .filmline {
-    height: 1px;
-    background: linear-gradient(
-      to right,
-      transparent,
-      var(--color-line-strong) 12%,
-      var(--color-line-strong) 88%,
-      transparent
-    );
+  /* The classic masthead rule: one heavy line, a gap, one hairline. */
+  .rule-double {
+    border-top: 3px solid var(--color-ink);
+    border-bottom: 1px solid var(--color-ink);
+    height: 5px;
   }
 
-  /* ── Light sources ────────────────────────────────────────────────── */
+  .rule-heavy { border-top: 2px solid var(--color-ink); }
+  .rule-hair { border-top: 1px solid var(--color-rule); }
 
-  .glow-red {
-    box-shadow: 0 0 40px -8px rgb(224 36 42 / 0.55);
+  /* Vertical hairlines that separate columns of type, suppressed at the
+     wrap point where columns stack and a vertical rule would be nonsense. */
+  .col-rule > * + * { border-top: 1px solid var(--color-rule); padding-top: 2rem; margin-top: 2rem; }
+  @media (min-width: 1024px) {
+    .col-rule > * + * {
+      border-top: 0; padding-top: 0; margin-top: 0;
+      border-left: 1px solid var(--color-rule);
+      padding-left: 2.5rem;
+    }
   }
 
-  .text-glow {
-    text-shadow: 0 0 28px rgb(224 36 42 / 0.45);
+  /* ── Print texture ────────────────────────────────────────────────── */
+
+  /* A halftone dot screen. Laid over photographs at low opacity so they read
+     as something that went through a press rather than an image file. */
+  .halftone {
+    background-image: radial-gradient(var(--color-ink) 0.9px, transparent 1px);
+    background-size: 3.5px 3.5px;
   }
 
-  /* Radial pool of warmth — used behind heroes and the contact slab. */
-  .pool {
-    background:
-      radial-gradient(60% 60% at 50% 0%, rgb(224 36 42 / 0.10), transparent 70%),
-      radial-gradient(40% 50% at 85% 20%, rgb(224 36 42 / 0.06), transparent 70%);
-  }
-
-  .vignette {
-    background: radial-gradient(
-      ellipse 110% 85% at 50% 45%,
-      transparent 40%,
-      rgb(10 9 8 / 0.55) 78%,
-      var(--color-bg) 100%
-    );
-  }
-
-  /* 64px technical grid, faded out from the centre. */
-  .grid-lines {
-    background-image:
-      linear-gradient(to right, var(--color-line) 1px, transparent 1px),
-      linear-gradient(to bottom, var(--color-line) 1px, transparent 1px);
-    background-size: 64px 64px;
-    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 10%, transparent 75%);
-    mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 10%, transparent 75%);
+  /* Paper pinned to paper. The only real shadow on the site. */
+  .clipping {
+    background: var(--color-paper-white);
+    box-shadow:
+      0 1px 2px rgb(26 23 20 / 0.08),
+      0 8px 20px -10px rgb(26 23 20 / 0.22);
   }
 
   /* ── Controls ─────────────────────────────────────────────────────── */
 
-  /* Ghost button: a hairline that fills with light on hover. */
+  /* Hard-edged and black, the way a newspaper sets a call to action. */
   .btn {
     display: inline-flex;
     align-items: center;
@@ -178,44 +200,73 @@
     font-weight: 500;
     font-size: 0.6875rem;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
-    padding: 1rem 1.75rem;
-    border: 1px solid var(--color-line-strong);
+    letter-spacing: 0.17em;
+    padding: 0.95rem 1.6rem;
+    border: 1px solid var(--color-ink);
     color: var(--color-ink);
     background: transparent;
     border-radius: 0;
-    transition: background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-                border-color 0.35s, color 0.35s, box-shadow 0.35s;
+    transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.3s, color 0.3s;
   }
   .btn:hover {
-    border-color: var(--color-red);
-    background: rgb(224 36 42 / 0.08);
-    color: var(--color-ink);
+    background: var(--color-ink);
+    color: var(--color-paper);
   }
 
   .btn-solid {
-    background: var(--color-red);
-    border-color: var(--color-red);
-    color: var(--color-on-red);
+    background: var(--color-ink);
+    border-color: var(--color-ink);
+    color: var(--color-paper);
   }
   .btn-solid:hover {
-    background: var(--color-red-bright);
-    border-color: var(--color-red-bright);
-    color: var(--color-on-red);
-    box-shadow: 0 0 32px -6px rgb(224 36 42 / 0.6);
+    background: var(--color-orange);
+    border-color: var(--color-orange);
+    color: var(--color-on-orange);
   }
-  .btn-solid:active { background: var(--color-red-deep); }
 
-  /* Link with a red rule that draws in from the left. */
+  .btn-orange {
+    background: var(--color-orange);
+    border-color: var(--color-orange);
+    color: var(--color-on-orange);
+  }
+  .btn-orange:hover {
+    background: var(--color-orange-deep);
+    border-color: var(--color-orange-deep);
+    color: var(--color-on-orange);
+  }
+
+  /* On a dark slab the ghost button inverts. */
+  .btn-invert { border-color: var(--color-on-slab); color: var(--color-on-slab); }
+  .btn-invert:hover { background: var(--color-on-slab); color: var(--color-slab); }
+
+  /* Link with an orange rule that draws in from the left. */
   .link-draw {
-    background-image: linear-gradient(var(--color-red), var(--color-red));
+    background-image: linear-gradient(var(--color-orange), var(--color-orange));
     background-repeat: no-repeat;
     background-position: 0 100%;
     background-size: 0% 1px;
-    transition: background-size 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: background-size 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     padding-bottom: 2px;
   }
   .link-draw:hover { background-size: 100% 1px; }
+
+  /* Interest chips — the one rounded thing on the page, because they are
+     labels rather than structure. */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+    padding: 0.4rem 0.7rem;
+    border: 1px solid var(--color-rule-strong);
+    color: var(--color-ink-soft);
+    transition: border-color 0.25s, color 0.25s;
+  }
+  .chip:hover { border-color: var(--color-orange); color: var(--color-orange); }
 
   .sr-only {
     position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
@@ -228,7 +279,7 @@
 .skip-link {
   position: absolute; top: -100px; left: 1rem; z-index: 100;
   padding: 0.75rem 1.25rem;
-  background: var(--color-red); color: var(--color-on-red);
+  background: var(--color-ink); color: var(--color-paper);
   font-family: var(--font-mono); font-size: 0.75rem;
   text-transform: uppercase; letter-spacing: 0.15em;
   text-decoration: none; transition: top 0.2s ease;
@@ -236,13 +287,13 @@
 .skip-link:focus { top: 1rem; }
 
 ::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-track { background: var(--color-paper); }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-line-strong);
-  border: 3px solid var(--color-bg);
+  background: var(--color-rule-strong);
+  border: 3px solid var(--color-paper);
   border-radius: 9999px;
 }
-::-webkit-scrollbar-thumb:hover { background: var(--color-red-deep); }
+::-webkit-scrollbar-thumb:hover { background: var(--color-orange); }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

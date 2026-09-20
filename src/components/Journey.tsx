@@ -1,16 +1,18 @@
 import { useRef } from 'react';
 import { motion, useScroll, useSpring } from 'motion/react';
-import { SectionHeading } from './SectionHeading';
+import { SectionRule } from './paper/SectionRule';
 import { Accent } from './Accent';
 import { Reveal } from './motion/Reveal';
 
 /**
- * The record in chronological order.
+ * Journey
  *
- * Only dated, checkable events appear here. The previous version opened in
- * 2022 with unsourced research and claimed a library milestone in 2024; both
- * were removed. If more happened between 2023 and 2026 — cohorts run,
- * workshops hosted, campuses partnered — those belong here, with dates.
+ * The record in chronological order. Only dated, checkable events appear — if
+ * more happened between 2023 and 2026 (cohorts run, workshops hosted, campuses
+ * partnered) it belongs here, with a date.
+ *
+ * The orange rule down the left fills as you read, scrubbed to scroll position
+ * rather than triggered, so it reverses when you scroll back up.
  */
 const timeline = [
   {
@@ -44,34 +46,39 @@ export const Journey = () => {
   const lineScale = useSpring(scrollYProgress, { stiffness: 120, damping: 30, mass: 0.4 });
 
   return (
-    <section id="journey" aria-labelledby="journey-heading" className="scroll-mt-24 py-24 sm:py-32">
-      <div className="shell max-w-3xl">
-        <SectionHeading
-          index="07"
-          kicker="Timeline"
+    <section
+      id="timeline"
+      aria-labelledby="timeline-heading"
+      className="scroll-mt-20 border-b border-ink bg-paper-raised py-16 sm:py-24"
+    >
+      <div className="shell">
+        <SectionRule
+          kicker="The record"
+          mark="G"
+          id="timeline-heading"
           title={
-            <span id="journey-heading">
+            <>
               How it has <Accent>gone</Accent>.
-            </span>
+            </>
           }
         />
 
-        <ol ref={ref} className="relative mt-16 list-none p-0">
-          <span aria-hidden="true" className="absolute left-[5px] top-2 bottom-2 w-px bg-line" />
+        <ol ref={ref} className="relative mt-12 max-w-3xl list-none p-0">
+          <span aria-hidden="true" className="absolute left-[5px] top-2 bottom-2 w-px bg-rule-strong" />
           <motion.span
             aria-hidden="true"
             style={{ scaleY: lineScale }}
-            className="absolute left-[5px] top-2 bottom-2 w-px origin-top bg-red"
+            className="absolute left-[5px] top-2 bottom-2 w-px origin-top bg-orange"
           />
 
           {timeline.map((t, i) => (
-            <Reveal as="li" key={t.year} delay={i * 0.06} className="relative pb-12 pl-10 last:pb-0">
+            <Reveal as="li" key={t.year + t.title} delay={i * 0.06} className="relative pb-11 pl-10 last:pb-0">
               <span
                 aria-hidden="true"
-                className="absolute left-0 top-1.5 size-[11px] rounded-full border-2 border-red bg-bg"
+                className="absolute left-0 top-1.5 size-[11px] rounded-full border-2 border-orange bg-paper-raised"
               />
-              <span className="eyebrow mono text-red">{t.year}</span>
-              <h3 className="display mt-2 mb-2.5 text-2xl text-ink">{t.title}</h3>
+              <span className="eyebrow mono text-orange">{t.year}</span>
+              <h3 className="headline mt-2 mb-2.5 text-2xl text-ink">{t.title}</h3>
               <p className="leading-relaxed text-ink-soft">{t.desc}</p>
             </Reveal>
           ))}
