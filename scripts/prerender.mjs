@@ -35,9 +35,9 @@ const routes = [
     out: 'dist/ventures.html',
     head: {
       title:
-        'Ventures — SciPhyLabs & Peacemakers of Puducherry Council | Sreeram Venugopal',
+        'SciPhyLabs & POPC — the ventures of Sreeram Venugopal, Founder & Researcher',
       description:
-        'The two organisations founded by Sreeram Venugopal: SciPhyLabs, an interactive physics platform for JEE, NEET, AP, SAT and CUET students, and the Peacemakers of Puducherry Council, the largest student organisation in Puducherry — spanning 17 institutions with 112 registered members.',
+        'The two organisations founded by Sreeram Venugopal — founder, author and researcher at SciPhyLabs, an interactive physics platform for JEE, NEET, AP, SAT and CUET students, and founder of the Peacemakers of Puducherry Council, the largest student organisation in Puducherry, spanning 17 institutions with 112 registered members.',
       canonical: `${ORIGIN}/ventures`,
     },
   },

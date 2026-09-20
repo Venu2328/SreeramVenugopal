@@ -105,10 +105,10 @@ export const Masthead = ({
           </div>
 
           <p className="eyebrow mt-5 text-center text-muted">
-            Founder <span className="text-orange">·</span> Student Leader{' '}
-            <span className="text-orange">·</span> Physics Educator{' '}
+            Founder <span className="text-orange">·</span> Author{' '}
             <span className="text-orange">·</span> Researcher{' '}
-            <span className="text-orange">·</span> Builder
+            <span className="text-orange">·</span> Physics Educator{' '}
+            <span className="text-orange">·</span> Student Leader
           </p>
         </div>
 

@@ -22,7 +22,9 @@ const ease = [0.16, 1, 0.3, 1] as const;
  * counts that come from `council.ts` rather than being typed twice, so they can
  * never drift away from what the council's own site publishes.
  */
-const identity = ['Founder.', 'Student Leader.', 'Physics Educator.', 'Researcher.'];
+/* Mirrors the title tag. On-page text that corroborates the <title> is a
+   stronger signal than a title claiming something the page never says. */
+const identity = ['Founder.', 'Author.', 'Researcher.', 'Physics Educator.'];
 
 const interests = [
   'Physics',
