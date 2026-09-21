@@ -18,12 +18,12 @@ import { ArrowRight, Mail, Menu, X } from 'lucide-react';
  * from /ventures without every item silently pointing at nothing.
  */
 const sections = [
-  { name: 'About', href: '#about' },
   { name: 'Ventures', href: '/ventures', absolute: true },
   { name: 'Speaking', href: '/speaking', absolute: true },
   { name: 'Credentials', href: '/credentials', absolute: true },
-  { name: 'Author', href: '/author', absolute: true },
-  { name: 'Projects', href: '#projects' },
+  { name: 'Books', href: '/author', absolute: true },
+  { name: 'Research', href: '/research', absolute: true },
+  { name: 'Writing', href: '/writing', absolute: true },
   { name: 'Contact', href: '#contact' },
 ];
 
@@ -31,7 +31,7 @@ export const Masthead = ({
   page = 'home',
   edition,
 }: {
-  page?: 'home' | 'ventures' | 'speaking' | 'credentials' | 'author';
+  page?: 'home' | 'ventures' | 'speaking' | 'credentials' | 'author' | 'research' | 'writing';
   edition?: string;
 }) => {
   const [condensed, setCondensed] = useState(false);
@@ -95,8 +95,10 @@ export const Masthead = ({
               aria-label="Sreeram Venugopal — home"
               className="order-1 block text-center lg:order-2"
             >
+              {/* VENU set in the accent — the nameplate's one piece of colour,
+                  and the only place the accent touches the name itself. */}
               <h1 className="headline text-[clamp(2.1rem,8.2vw,6.25rem)] leading-none tracking-[-0.025em] text-ink">
-                SREERAM VENUGOPAL
+                SREERAM <span className="text-orange">VENU</span>GOPAL
               </h1>
             </a>
 

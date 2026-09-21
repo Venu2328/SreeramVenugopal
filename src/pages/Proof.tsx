@@ -3,7 +3,7 @@ import { Dateline } from '../components/paper/Dateline';
 import { LogoTicker } from '../components/paper/LogoTicker';
 import { Reveal } from '../components/motion/Reveal';
 import { CertificatePile } from '../components/proof/CertificatePile';
-import { CertificateStripe } from '../components/proof/CertificateStripe';
+import { CertificateReel } from '../components/proof/CertificateReel';
 import { Credentials } from '../components/Credentials';
 import { Contact } from '../components/Contact';
 import { Footer } from '../components/Footer';
@@ -29,11 +29,14 @@ export const Proof = () => (
       <section
         id="proof"
         aria-labelledby="proof-heading"
-        className="scroll-mt-20 border-b border-ink bg-paper"
+        className="relative scroll-mt-20 border-b border-ink bg-paper"
       >
         <LogoTicker />
 
-        <div className="shell py-14 sm:py-20">
+        {/* Runs the full height of the section, start to end. */}
+        <CertificateReel />
+
+        <div className="shell py-14 sm:py-20 xl:pr-[9.5rem]">
           <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-16">
             {/* ── The claim ───────────────────────────────────────────── */}
             <Reveal>
@@ -84,9 +87,8 @@ export const Proof = () => (
             </Reveal>
 
             {/* ── The evidence ────────────────────────────────────────── */}
-            <Reveal delay={0.12} className="space-y-12">
+            <Reveal delay={0.12}>
               <CertificatePile />
-              <CertificateStripe />
             </Reveal>
           </div>
         </div>

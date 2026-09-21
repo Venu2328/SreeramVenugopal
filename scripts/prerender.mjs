@@ -70,8 +70,29 @@ const routes = [
       title:
         'The G.O.A.T. Series — Physics books by Sreeram Venugopal, Author & Researcher',
       description:
-        'Sreeram Venugopal is authoring the G.O.A.T. Series — Guide Of All Time — academic physics books for Grade 11 and 12 students sitting national and international competitive exams, tied to interactive simulations and a PYQ vault. Plus published research papers, journals and conferences.',
+        'The G.O.A.T. Series — Guide Of All Time — academic physics books by Sreeram Venugopal for Grade 11 and 12, written against how modern Indian education teaches the subject and built around a Gen Z learning strategy, interactive simulations and a PYQ vault.',
       canonical: `${ORIGIN}/author`,
+    },
+  },
+  {
+    path: '/research',
+    out: 'dist/research.html',
+    head: {
+      title:
+        'Research Papers, Journals & Conferences — Sreeram Venugopal, Researcher',
+      description:
+        'Peer-reviewed research by Sreeram Venugopal on virtual laboratories and infrastructure in Indian school education, tested against the complete 2024-25 UDISE+ census. Indexed on ORCID, with the working record on GitHub.',
+      canonical: `${ORIGIN}/research`,
+    },
+  },
+  {
+    path: '/writing',
+    out: 'dist/writing.html',
+    head: {
+      title: 'Writing — Essays by Sreeram Venugopal on learning & physics',
+      description:
+        'Essays by Sreeram Venugopal on what is actually broken in exam preparation and what interactive-first learning does differently, published on Medium.',
+      canonical: `${ORIGIN}/writing`,
     },
   },
 ];

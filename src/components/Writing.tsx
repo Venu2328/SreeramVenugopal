@@ -1,6 +1,6 @@
-import { ExternalLink } from 'lucide-react';
+import { ArrowUpRight, ExternalLink } from 'lucide-react';
 import { SectionRule } from './paper/SectionRule';
-import { ClippingCard } from './paper/ClippingCard';
+import { PdfFrame } from './paper/PdfFrame';
 import { Accent } from './Accent';
 import { Reveal } from './motion/Reveal';
 import { articles, writingHome } from '../data/writing';
@@ -24,7 +24,7 @@ export const Writing = () => (
     <div className="shell">
       <SectionRule
         kicker="Writing"
-        mark="E"
+        mark="A"
         id="writing-heading"
         title={
           <>
@@ -48,21 +48,53 @@ export const Writing = () => (
       <ul className="mt-12 grid list-none gap-6 p-0 lg:grid-cols-2">
         {articles.map((post, i) => (
           <Reveal as="li" key={post.href} delay={i * 0.08}>
-            <ClippingCard
-              cover={post.cover}
-              coverAlt={`Opening page of ${post.title}`}
-              source="Medium"
-              stamp={post.display}
-              title={post.title}
-              body={post.note}
-              tags={post.tags}
-              action={{ label: 'Read essay', href: post.href }}
-              aside={
-                post.readTime && (
-                  <span className="eyebrow text-muted">{post.readTime}</span>
-                )
-              }
-            />
+            <figure className="flex h-full flex-col">
+              {post.cover && (
+                <PdfFrame
+                  src={post.cover}
+                  alt={post.title}
+                  label={`${post.href.split('/').pop()?.split('-').slice(0, -1).join('-') || 'essay'}.pdf`}
+                  meta={post.readTime}
+                  aspect="aspect-[16/11]"
+                />
+              )}
+
+              <figcaption className="mt-5 flex flex-1 flex-col border-t-2 border-ink pt-5">
+                <div className="flex items-baseline justify-between gap-4">
+                  <span className="eyebrow truncate text-orange">Medium</span>
+                  <time dateTime={post.date} className="eyebrow shrink-0 text-muted">
+                    {post.display}
+                  </time>
+                </div>
+
+                <h3 className="headline mt-3.5 text-xl leading-snug text-ink sm:text-2xl">
+                  {post.title}
+                </h3>
+
+                <p className="mt-3 flex-1 leading-relaxed text-ink-soft">{post.note}</p>
+
+                <ul className="mt-5 flex list-none flex-wrap gap-1.5 p-0">
+                  {post.tags.map((t) => (
+                    <li key={t}>
+                      <span className="chip">{t}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <a
+                  href={post.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-solid group mt-6 self-start"
+                >
+                  Read on Medium
+                  <ArrowUpRight
+                    className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    aria-hidden="true"
+                  />
+                </a>
+              </figcaption>
+            </figure>
           </Reveal>
         ))}
       </ul>

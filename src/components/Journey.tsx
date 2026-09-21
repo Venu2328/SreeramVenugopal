@@ -54,7 +54,7 @@ export const Journey = () => {
       <div className="shell">
         <SectionRule
           kicker="The record"
-          mark="D"
+          mark="B"
           id="timeline-heading"
           title={
             <>

@@ -135,8 +135,8 @@ export const LeadStory = () => (
             </p>
           </blockquote>
 
-          <a href="#about" className="btn btn-solid group mt-8 w-full">
-            Read the full story
+          <a href="#inside" className="btn btn-solid group mt-8 w-full">
+            See what&apos;s inside
             <ArrowRight
               className="size-3.5 transition-transform group-hover:translate-x-0.5"
               aria-hidden="true"

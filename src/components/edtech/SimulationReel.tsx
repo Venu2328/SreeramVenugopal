@@ -91,32 +91,52 @@ export const SimulationReel = () => {
 
       <p className="eyebrow mt-1 text-muted">
         {hasClips
-          ? `${clips.length} clip${clips.length === 1 ? '' : 's'} · drag to browse`
+          ? `${clips.length} in the rail · drag to browse`
           : 'Clips land here shortly'}
       </p>
     </div>
   );
 };
 
-const ClipSlot = ({ c }: { c: Clip }) => (
-  <figure className="w-[16rem] shrink-0 snap-start border border-ink bg-paper-white sm:w-[18rem]">
-    <video
-      src={c.src}
-      poster={c.poster}
-      autoPlay
-      muted
-      loop
-      playsInline
-      preload="metadata"
-      // A dragged rail should not also be arming a click on the video.
-      draggable={false}
-      className="pointer-events-none block aspect-[9/13] w-full bg-slab object-cover"
-    />
-    <figcaption className="border-t border-ink px-4 py-3">
-      <p className="eyebrow truncate text-ink">{c.title}</p>
-    </figcaption>
-  </figure>
-);
+/*
+ * Slots are landscape, because the app is. Screenshots and recorded
+ * simulations both come off a desktop viewport, and a portrait slot would crop
+ * the middle out of either one.
+ */
+const ClipSlot = ({ c }: { c: Clip }) => {
+  const isVideo = /\.(mp4|webm|mov)$/i.test(c.src);
+
+  return (
+    <figure className="w-[20rem] shrink-0 snap-start border border-ink bg-paper-white sm:w-[26rem]">
+      {isVideo ? (
+        <video
+          src={c.src}
+          poster={c.poster}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          // A dragged rail should not also be arming a click on the video.
+          draggable={false}
+          className="pointer-events-none block aspect-[16/10] w-full bg-slab object-cover"
+        />
+      ) : (
+        <img
+          src={c.src}
+          alt={c.title}
+          loading="lazy"
+          decoding="async"
+          draggable={false}
+          className="pointer-events-none block aspect-[16/10] w-full bg-slab object-cover object-top"
+        />
+      )}
+      <figcaption className="border-t border-ink px-4 py-3">
+        <p className="eyebrow truncate text-ink">{c.title}</p>
+      </figcaption>
+    </figure>
+  );
+};
 
 /** The shape of a clip, held open until there is one to put in it. */
 const ReservedSlot = () => (

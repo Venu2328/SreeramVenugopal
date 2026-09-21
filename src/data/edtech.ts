@@ -35,15 +35,28 @@ export const creed = [
  * kind of video a browser will start on its own.
  */
 export type Clip = {
-  /** What the simulation shows, e.g. 'Projectile motion'. */
+  /** What the slot shows, e.g. 'Projectile motion'. */
   title: string;
-  /** Path under /public, e.g. '/portfoliopage-2/projectile.mp4'. */
+  /**
+   * Path under /public. An `.mp4` plays silently on a loop; anything else is
+   * treated as a still, so screenshots of the app sit in the rail alongside
+   * recorded simulations without needing a separate component.
+   */
   src: string;
-  /** Optional still, e.g. '/portfoliopage-2/projectile.jpg'. */
+  /** Optional still for a clip, e.g. '/portfoliopage-2/projectile.jpg'. */
   poster?: string;
 };
 
-export const clips: Clip[] = [];
+export const clips: Clip[] = [
+  {
+    title: 'Physics, finally interactive',
+    src: '/sciphylabs/splmedia.png',
+  },
+  {
+    title: 'Inside the app',
+    src: '/sciphylabs/splmedia2.png',
+  },
+];
 
 /**
  * The app, and where to get it.

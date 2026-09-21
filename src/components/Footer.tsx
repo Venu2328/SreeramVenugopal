@@ -10,14 +10,13 @@ import { profiles } from '../data/profiles';
  */
 const sitemap = [
   { name: 'Home', href: '/' },
-  { name: 'About', href: '/#about' },
   { name: 'Ventures', href: '/ventures' },
   { name: 'SciPhyLabs', href: '/ventures#sciphylabs' },
   { name: 'Speaking', href: '/speaking' },
   { name: 'Credentials', href: '/credentials' },
-  { name: 'Author', href: '/author' },
-  { name: 'Journals', href: '/author#journals' },
-  { name: 'Projects', href: '/#projects' },
+  { name: 'Books', href: '/author' },
+  { name: 'Research', href: '/research' },
+  { name: 'Writing', href: '/writing' },
   { name: 'Contact', href: '/#contact' },
 ];
 
@@ -45,6 +44,18 @@ export const Footer = () => {
             className="link-draw inline-block pt-1 text-sm text-on-slab"
           >
             sreeram23db@gmail.com
+          </a>
+
+          {/* The projects section came off the front page; this is the pointer
+              it used to carry, kept because the repositories stay more current
+              than any list on this site could. */}
+          <a
+            href="https://github.com/Venu2328"
+            target="_blank"
+            rel="me noopener noreferrer"
+            className="eyebrow block pt-3 text-on-slab/65 transition-colors hover:text-orange"
+          >
+            See all 14+ projects on GitHub &#8599;
           </a>
         </div>
 

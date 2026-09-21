@@ -48,6 +48,7 @@ const supplements: Supplement[] = [
 
 export const VentureStrip = () => (
   <section
+    id="inside"
     aria-labelledby="ventures-strip-heading"
     className="border-b border-ink bg-paper-raised py-12 sm:py-16"
   >

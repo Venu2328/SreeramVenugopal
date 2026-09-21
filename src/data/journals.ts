@@ -28,7 +28,7 @@ export const papers: Paper[] = [
   {
     title:
       'The Role of Technology in Modern Indian Education Through Cloud-Based, Visual, Interactive Simulation and STEM',
-    note: 'My research take on how abstract concepts link to visual understanding. Data backed by SciPhyLabs.',
+    note: 'Virtual laboratories are widely proposed as a remedy for the shortage of physical science laboratories in Indian schools — on an untested premise: that schools lacking laboratories have the electricity, devices and connectivity to run a digital substitute. This study tests that premise against the complete 2024–25 UDISE+ census. Because a cloud-connected virtual laboratory needs all three at once while published statistics report only the three marginal distributions, sharp Fréchet–Hoeffding bounds are derived rather than independence assumed. Capacity and need are found to be inversely aligned.',
     cover: '/researchpage.png',
     status: 'In review',
     duration: '14 months',

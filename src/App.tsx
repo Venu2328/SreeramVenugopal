@@ -11,11 +11,13 @@ import { Ventures } from './pages/Ventures';
 import { Speaking } from './pages/Speaking';
 import { Proof } from './pages/Proof';
 import { Author } from './pages/Author';
+import { Research } from './pages/Research';
+import { WritingPage } from './pages/WritingPage';
 
 /**
  * Routing, such as it is.
  *
- * Five pages do not justify a router. Navigation is plain `<a href>`, which
+ * Seven pages do not justify a router. Navigation is plain `<a href>`, which
  * means every link is a real page load served from a real prerendered HTML
  * file — better for crawlers than client-side routing, and it keeps the
  * prerender step honest, since there is no route the build can silently miss.
@@ -46,6 +48,10 @@ export default function App({ path }: { path?: string }) {
         <Proof />
       ) : normalised === '/author' ? (
         <Author />
+      ) : normalised === '/research' ? (
+        <Research />
+      ) : normalised === '/writing' ? (
+        <WritingPage />
       ) : (
         <Home />
       )}

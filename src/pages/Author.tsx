@@ -4,7 +4,6 @@ import { Dateline } from '../components/paper/Dateline';
 import { Ticker } from '../components/paper/Ticker';
 import { Reveal } from '../components/motion/Reveal';
 import { BookShelf } from '../components/author/BookShelf';
-import { Journals } from '../components/Journals';
 import { Contact } from '../components/Contact';
 import { Footer } from '../components/Footer';
 import { books, bookstore, series } from '../data/books';
@@ -12,8 +11,9 @@ import { books, bookstore, series } from '../data/books';
 /**
  * The authoring supplement.
  *
- * Books first, then the papers — the two halves of "author and researcher",
- * which is the half of the title the other supplements do not cover.
+ * The books, and only the books — academic physics written for Grade 11 and 12
+ * against how Indian education actually teaches the subject. The papers have
+ * their own supplement.
  *
  * The claim in the nameplate is a large one, so everything under it is a
  * reason rather than a restatement: what the books do differently, who they
@@ -137,7 +137,6 @@ export const Author = () => (
         </div>
       </section>
 
-      <Journals />
       <Contact />
     </main>
 

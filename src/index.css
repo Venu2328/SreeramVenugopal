@@ -306,8 +306,37 @@
     to   { transform: translateX(0); }
   }
 
+  /* The vertical equivalent, for a strip that runs down a page edge rather
+     than across it. Same trick: the content is laid down twice and slid by
+     exactly half its own height, so the loop resets on an identical frame. */
+  .reel-track {
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+    animation: reel 60s linear infinite;
+  }
+  .marquee:hover .reel-track { animation-play-state: paused; }
+
+  @keyframes reel {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-50%); }
+  }
+
+  /* Sprocket holes down both edges of the reel. Two repeating gradients, one
+     per edge, so the strip reads as film stock rather than as a list. */
+  .reel-perf {
+    background-image:
+      repeating-linear-gradient(
+        to bottom,
+        var(--color-paper-white) 0 10px,
+        transparent 10px 22px
+      );
+    background-size: 7px 100%;
+    background-repeat: repeat-y;
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    .marquee-track, .marquee-track-reverse { animation: none; }
+    .marquee-track, .marquee-track-reverse, .reel-track { animation: none; }
   }
 
   .sr-only {

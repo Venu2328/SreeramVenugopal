@@ -2,11 +2,8 @@ import { Masthead } from '../components/paper/Masthead';
 import { Dateline } from '../components/paper/Dateline';
 import { LeadStory } from '../components/LeadStory';
 import { VentureStrip } from '../components/VentureStrip';
-import { About } from '../components/About';
 import { PullQuote } from '../components/PullQuote';
-import { Projects } from '../components/Projects';
 import { Journey } from '../components/Journey';
-import { Writing } from '../components/Writing';
 import { Contact } from '../components/Contact';
 import { Footer } from '../components/Footer';
 
@@ -22,11 +19,8 @@ export const Home = () => (
     <main id="main-content" tabIndex={-1}>
       <LeadStory />
       <VentureStrip />
-      <About />
       <PullQuote />
-      <Projects />
       <Journey />
-      <Writing />
       <Contact />
     </main>
 
