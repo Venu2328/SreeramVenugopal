@@ -49,7 +49,7 @@ export const Journey = () => {
     <section
       id="timeline"
       aria-labelledby="timeline-heading"
-      className="scroll-mt-20 border-b border-ink bg-paper-raised py-16 sm:py-24"
+      className="scroll-mt-20 border-b border-ink bg-paper-raised py-16 sm:py-24 flex min-h-[100svh] flex-col justify-center"
     >
       <div className="shell">
         <SectionRule

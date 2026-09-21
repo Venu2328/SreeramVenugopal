@@ -44,10 +44,10 @@ export const credentials: Credential[] = [
   },
   {
     title: 'Introduction to Robotics & STEM',
-    issuer: 'iRISE',
-    short: 'iRISE',
+    issuer: 'India STEM Foundation',
+    short: 'India STEM',
     logo: '/logos/Rise-india.png',
-    alt: 'iRISE',
+    alt: 'India STEM Foundation',
   },
   {
     title: 'English as a Second Language — for Tutors',

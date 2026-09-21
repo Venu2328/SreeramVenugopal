@@ -52,7 +52,7 @@ export const BooksSection = () => (
       <section
         id="books"
         aria-labelledby="books-heading"
-        className="scroll-mt-20 border-b border-ink bg-paper"
+        className="scroll-mt-20 border-b border-ink bg-paper flex min-h-[100svh] flex-col justify-center"
       >
         <Ticker words={ticker} />
 

@@ -89,7 +89,7 @@ export const CertificatePile = () => {
               /* Each sheet lifts a little on hover of the pile as a whole, the
                  outer ones further than the inner, so the stack fans rather
                  than sliding as one board. */
-              className="clipping absolute block aspect-[3/4] origin-center transition-transform duration-500 group-hover:-translate-y-1.5"
+              className="clipping absolute flex aspect-[4/3] items-center justify-center overflow-hidden p-1.5 origin-center transition-transform duration-500 group-hover:-translate-y-1.5"
             >
               {cert ? (
                 <img
@@ -97,7 +97,7 @@ export const CertificatePile = () => {
                   alt={`${cert.title} — ${cert.issuer}`}
                   loading="lazy"
                   decoding="async"
-                  className="size-full object-cover object-top"
+                  className="max-h-full max-w-full object-contain"
                 />
               ) : (
                 <BlankSheet />

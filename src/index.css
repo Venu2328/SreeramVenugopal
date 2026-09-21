@@ -328,10 +328,10 @@
     background-image:
       repeating-linear-gradient(
         to bottom,
-        var(--color-paper-white) 0 10px,
-        transparent 10px 22px
+        var(--color-ink) 0 14px,
+        transparent 14px 30px
       );
-    background-size: 7px 100%;
+    background-size: 11px 100%;
     background-repeat: repeat-y;
   }
 

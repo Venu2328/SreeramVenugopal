@@ -19,7 +19,7 @@ export const Writing = () => (
   <section
     id="writing"
     aria-labelledby="writing-heading"
-    className="scroll-mt-20 border-b border-ink bg-paper py-16 sm:py-24"
+    className="scroll-mt-20 border-b border-ink bg-paper py-16 sm:py-24 flex min-h-[100svh] flex-col justify-center"
   >
     <div className="shell">
       <SectionRule

@@ -24,35 +24,17 @@ export type Certificate = {
 
 export const certificates: Certificate[] = [
   {
+    title: 'Introduction to Robotics & STEM',
+    issuer: 'India STEM Foundation',
+    year: '2026',
+    src: '/certificates-images/INDIAstem-certificate.jpeg',
+  },
+  {
     title: 'Hindi Fortnight Celebrations — First prize, elocution',
     issuer: 'Jimper',
     year: '2023',
     src: '/certificates-images/jimper-certificate.jpeg',
   },
-
-  /*
-   * Two scans are held back rather than published.
-   *
-   * `iitm-certificate.jpg` is made out to DHANYASHRI of Amalorpavam Lourds
-   * Academy, and `google-fundamentalsofdm.jpeg` to Elizabeth Harrin. Neither is
-   * Sreeram's, and this page is headed "proof of work" — publishing somebody
-   * else's certificate under that heading is the one mistake it cannot afford.
-   *
-   * Replace the two files with the real ones and uncomment:
-   *
-   * {
-   *   title: 'CS in Data Science & AI',
-   *   issuer: 'IIT Madras',
-   *   year: '2024',
-   *   src: '/certificates-images/iitm-certificate.jpg',
-   * },
-   * {
-   *   title: 'Fundamentals of Digital Marketing',
-   *   issuer: 'Google Digital Garage',
-   *   year: '2023',
-   *   src: '/certificates-images/google-fundamentalsofdm.jpeg',
-   * },
-   */
 ];
 
 /** How many blank sheets the pile lays out before there are real ones. */

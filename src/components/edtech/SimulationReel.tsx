@@ -119,7 +119,7 @@ const ClipSlot = ({ c }: { c: Clip }) => {
           preload="metadata"
           // A dragged rail should not also be arming a click on the video.
           draggable={false}
-          className="pointer-events-none block aspect-[16/10] w-full bg-slab object-cover"
+          className="pointer-events-none block aspect-[16/10] w-full bg-paper-white object-contain"
         />
       ) : (
         <img
@@ -128,7 +128,7 @@ const ClipSlot = ({ c }: { c: Clip }) => {
           loading="lazy"
           decoding="async"
           draggable={false}
-          className="pointer-events-none block aspect-[16/10] w-full bg-slab object-cover object-top"
+          className="pointer-events-none block aspect-[16/10] w-full bg-paper-white object-contain"
         />
       )}
       <figcaption className="border-t border-ink px-4 py-3">

@@ -78,14 +78,14 @@ export const Masthead = ({
     <>
       {/* ── Ear strip ──────────────────────────────────────────────── */}
       <div className="bg-slab text-on-slab">
-        <div className="shell flex h-11 items-center justify-between gap-4">
-          <p className="eyebrow flex items-center gap-2.5 truncate text-on-slab/70">
+        <div className="shell flex h-14 items-center justify-between gap-4">
+          <p className="eyebrow flex items-center gap-2.5 truncate text-sm font-semibold tracking-[0.2em] text-on-slab">
             <Mail className="size-3.5 shrink-0 text-orange" aria-hidden="true" />
             <span className="truncate">Available for collaborations</span>
           </p>
           <a
             href={page === 'home' ? '#contact' : '/#contact'}
-            className="eyebrow group inline-flex shrink-0 items-center gap-2 border border-on-slab/35 px-3.5 py-1.5 text-on-slab transition-colors hover:border-orange hover:bg-orange hover:text-on-orange"
+            className="eyebrow group inline-flex shrink-0 items-center gap-2 border-2 border-orange bg-orange px-4 py-2 text-sm font-bold text-on-orange transition-colors hover:bg-orange-deep hover:border-orange-deep"
           >
             Get in touch
             <ArrowRight
@@ -97,36 +97,40 @@ export const Masthead = ({
       </div>
 
       {/* ── Nameplate ──────────────────────────────────────────────── */}
-      <header className="border-b border-ink bg-paper">
-        <div className="shell pt-8 pb-5 sm:pt-10">
-          <div className="grid items-center gap-3 lg:grid-cols-[1fr_auto_1fr]">
-            <p className="eyebrow order-2 whitespace-nowrap text-center text-muted lg:order-1 lg:text-left">
-              Puducherry, India
-            </p>
-
-            <a
-              href="/"
-              aria-label="Sreeram Venugopal — home"
-              className="order-1 block text-center lg:order-2"
-            >
-              {/* VENU set in the accent — the nameplate's one piece of colour,
-                  and the only place the accent touches the name itself. */}
-              <h1 className="headline text-[clamp(2.1rem,8.2vw,6.25rem)] leading-none tracking-[-0.025em] text-ink">
-                SREERAM <span className="text-orange">VENU</span>GOPAL
-              </h1>
-            </a>
-
-            <p className="eyebrow order-3 whitespace-nowrap text-center text-muted lg:text-right">
+      <header className="border-b-[3px] border-ink bg-paper">
+        <div className="shell pt-6 pb-4 sm:pt-8">
+          {/* Edition line, the way a front page carries one above the name. */}
+          <div className="flex items-center justify-between gap-4 border-b border-ink pb-3">
+            <p className="eyebrow hidden text-sm font-bold text-ink sm:block">
               Est. 2023
+            </p>
+            <p className="eyebrow text-center text-sm font-bold tracking-[0.3em] text-orange">
+              The Sreeram Venugopal Record
+            </p>
+            <p className="eyebrow hidden text-sm font-bold text-ink sm:block">
+              Puducherry
             </p>
           </div>
 
-          <p className="eyebrow mt-5 text-center text-muted">
-            Founder <span className="text-orange">·</span> Leader{' '}
-            <span className="text-orange">·</span> Speaker{' '}
-            <span className="text-orange">·</span> Researcher{' '}
-            <span className="text-orange">·</span> Author
-          </p>
+          <a href="/" aria-label="Sreeram Venugopal — home" className="mt-4 block">
+            {/*
+              The nameplate, set to fill its measure. A front-page name is not a
+              heading with a size — it is a block of type that runs wall to wall,
+              so it is tracked hard and let go as large as the column allows.
+            */}
+            <h1 className="headline text-center text-[clamp(2.4rem,11.5vw,10rem)] leading-[0.82] tracking-[-0.045em] text-ink">
+              SREERAM <span className="text-orange">VENU</span>GOPAL
+            </h1>
+          </a>
+
+          <div className="mt-5 border-t-[3px] border-b border-ink py-3">
+            <p className="eyebrow text-center text-sm font-bold tracking-[0.22em] text-ink sm:text-base">
+              Founder <span className="text-orange">★</span> Leader{' '}
+              <span className="text-orange">★</span> Speaker{' '}
+              <span className="text-orange">★</span> Researcher{' '}
+              <span className="text-orange">★</span> Author
+            </p>
+          </div>
         </div>
 
         {/* ── Navigation rule ──────────────────────────────────────── */}
@@ -136,13 +140,13 @@ export const Masthead = ({
               {links.map((l, i) => (
                 <li key={l.name} className="flex items-center">
                   {i > 0 && (
-                    <span aria-hidden="true" className="px-4 text-orange">
+                    <span aria-hidden="true" className="px-4 text-lg text-orange">
                       ·
                     </span>
                   )}
                   <a
                     href={l.absolute ? l.href : resolve(l)}
-                    className="eyebrow text-ink transition-colors hover:text-orange"
+                    className="eyebrow text-sm font-bold text-ink transition-colors hover:text-orange"
                   >
                     {l.name}
                   </a>
@@ -190,7 +194,7 @@ export const Masthead = ({
                     )}
                     <a
                       href={l.absolute ? l.href : resolve(l)}
-                      className="eyebrow text-ink transition-colors hover:text-orange"
+                      className="eyebrow text-sm font-bold text-ink transition-colors hover:text-orange"
                     >
                       {l.name}
                     </a>

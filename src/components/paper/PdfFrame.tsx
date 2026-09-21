@@ -77,7 +77,7 @@ export const PdfFrame = ({
               loading="lazy"
               decoding="async"
               onError={() => setFailed(true)}
-              className="size-full object-cover object-top"
+              className="size-full object-contain object-top"
             />
           )}
 

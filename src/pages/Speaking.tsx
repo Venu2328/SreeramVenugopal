@@ -32,7 +32,7 @@ export const SpeakingSection = () => (
       <section
         id="speaking"
         aria-labelledby="speaking-heading"
-        className="scroll-mt-20 border-b border-ink bg-paper"
+        className="scroll-mt-20 border-b border-ink bg-paper flex min-h-[100svh] flex-col justify-center"
       >
         <Ticker words={ticker} />
 

@@ -22,7 +22,7 @@ export const LogoTicker = () => {
 
   return (
     <div
-      className="marquee overflow-hidden border-y border-ink bg-orange"
+      className="marquee overflow-hidden border-y-[3px] border-ink bg-orange"
       role="marquee"
       aria-label="Issuing institutions"
     >
@@ -42,8 +42,8 @@ const Belt = ({ clone = false }: { clone?: boolean }) => (
     {institutions.map((inst) => (
       <li key={inst.name} className="flex items-center">
         <Mark inst={inst} clone={clone} />
-        <span aria-hidden="true" className="text-on-orange/45">
-          ✦
+        <span aria-hidden="true" className="text-[clamp(1rem,2vw,1.6rem)] text-on-orange/55">
+          ★
         </span>
       </li>
     ))}
@@ -61,7 +61,7 @@ const Mark = ({ inst, clone }: { inst: Institution; clone: boolean }) => {
            driving those to white would print a blank block where a logo should
            be; a tile takes transparent and opaque artwork alike, and reads as a
            stamp on the band. */
-        <span className="flex size-7 shrink-0 items-center justify-center bg-paper-white p-1">
+        <span className="flex size-14 shrink-0 items-center justify-center bg-paper-white p-2">
           <img
             src={inst.logo}
             alt=""
@@ -73,11 +73,13 @@ const Mark = ({ inst, clone }: { inst: Institution; clone: boolean }) => {
           />
         </span>
       )}
-      <span className="eyebrow whitespace-nowrap text-on-orange">{inst.name}</span>
+      <span className="headline whitespace-nowrap text-[clamp(1rem,2.2vw,1.7rem)] uppercase tracking-tight text-on-orange">
+        {inst.name}
+      </span>
     </>
   );
 
-  const shell = 'flex items-center gap-2.5 px-7 py-3';
+  const shell = 'flex items-center gap-4 px-8 py-4';
 
   return inst.href ? (
     <a

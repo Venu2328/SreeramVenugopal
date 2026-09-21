@@ -20,7 +20,7 @@ export const AdvancedEdtech = () => (
   <section
     id="edtech"
     aria-labelledby="edtech-heading"
-    className="scroll-mt-20 border-b border-ink bg-paper"
+    className="scroll-mt-20 border-b border-ink bg-paper flex min-h-[100svh] flex-col justify-center"
   >
     <Ticker words={ticker} />
 

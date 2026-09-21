@@ -45,7 +45,7 @@ const BookCard = ({ b }: { b: Book }) => {
             alt={`${b.title} — ${showBack ? 'back cover' : 'front cover'}`}
             loading="lazy"
             decoding="async"
-            className="block aspect-[1410/2000] w-full object-cover"
+            className="block aspect-[1410/2000] w-full object-contain"
           />
         ) : (
           /* No artwork yet: the card typesets its own rather than leaving a

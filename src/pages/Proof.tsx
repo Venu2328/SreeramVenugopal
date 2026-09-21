@@ -7,7 +7,8 @@ import { CertificateReel } from '../components/proof/CertificateReel';
 import { Credentials } from '../components/Credentials';
 import { Contact } from '../components/Contact';
 import { Footer } from '../components/Footer';
-import { institutions } from '../data/institutions';
+import { institutions, type Institution } from '../data/institutions';
+import { useState } from 'react';
 
 /**
  * The proof supplement.
@@ -26,7 +27,7 @@ export const ProofSection = () => (
       <section
         id="proof"
         aria-labelledby="proof-heading"
-        className="relative scroll-mt-20 border-b border-ink bg-paper"
+        className="relative scroll-mt-20 border-b border-ink bg-paper flex min-h-[100svh] flex-col justify-center"
       >
         <LogoTicker />
 
@@ -56,31 +57,23 @@ export const ProofSection = () => (
                 take my word for.
               </p>
 
-              <ol className="mt-9 list-none border-t-2 border-ink p-0">
+              {/*
+                Badges rather than a list. These are marks a reader recognises
+                on sight, and seven of them collected in a grid say "certified
+                by" faster than seven lines of type ever could.
+              */}
+              <p className="eyebrow mt-10 text-sm font-bold tracking-[0.25em] text-orange">
+                Certified by
+              </p>
+              <div className="rule-heavy mt-3" />
+
+              <ul className="mt-7 grid list-none grid-cols-2 gap-4 p-0 sm:grid-cols-3">
                 {institutions.map((inst, i) => (
                   <Reveal as="li" key={inst.name} delay={i * 0.05}>
-                    <div className="flex items-baseline gap-5 border-b border-rule py-4">
-                      <span className="eyebrow mono shrink-0 text-orange">
-                        {String(i + 1).padStart(2, '0')}
-                      </span>
-                      {inst.href ? (
-                        <a
-                          href={inst.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="link-draw headline text-xl text-ink sm:text-2xl"
-                        >
-                          {inst.name}
-                        </a>
-                      ) : (
-                        <span className="headline text-xl text-ink sm:text-2xl">
-                          {inst.name}
-                        </span>
-                      )}
-                    </div>
+                    <InstitutionBadge inst={inst} />
                   </Reveal>
                 ))}
-              </ol>
+              </ul>
             </Reveal>
 
             {/* ── The evidence ────────────────────────────────────────── */}
@@ -108,3 +101,57 @@ export const Proof = () => (
     <Footer />
   </>
 );
+
+/**
+ * InstitutionBadge
+ *
+ * A mark collected and pinned, big enough to be read across a room. The name is
+ * printed under it rather than left to the logo alone — half these bodies are
+ * ones a stranger will not recognise on sight, and a badge nobody can name is
+ * decoration rather than evidence.
+ *
+ * A missing image leaves only the name, which was always the part that mattered.
+ */
+const InstitutionBadge = ({ inst }: { inst: Institution }) => {
+  const [failed, setFailed] = useState(false);
+
+  const body = (
+    <>
+      <span className="flex h-16 w-full items-center justify-center">
+        {failed ? (
+          <span className="headline text-2xl text-ink/30">{inst.name.slice(0, 2)}</span>
+        ) : (
+          <img
+            src={inst.logo}
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            decoding="async"
+            onError={() => setFailed(true)}
+            /* Contained, never cropped — a trimmed logo is a damaged one. */
+            className="max-h-full max-w-full object-contain"
+          />
+        )}
+      </span>
+      <span className="eyebrow mt-4 block text-center text-xs font-bold leading-tight text-ink">
+        {inst.name}
+      </span>
+    </>
+  );
+
+  const shell =
+    'flex h-full flex-col items-center justify-center border-2 border-ink bg-paper-white p-5 transition-colors';
+
+  return inst.href ? (
+    <a
+      href={inst.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`${shell} hover:bg-orange`}
+    >
+      {body}
+    </a>
+  ) : (
+    <span className={shell}>{body}</span>
+  );
+};

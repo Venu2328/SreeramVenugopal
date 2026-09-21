@@ -56,7 +56,7 @@ export const SocialStrips = () => {
   return (
     <div className="marquee space-y-3">
       {belts.map((belt, i) => (
-        <div key={i} className="overflow-hidden border-y border-ink bg-paper-white">
+        <div key={i} className="overflow-hidden border-y-2 border-ink bg-orange">
           <div className={i === 0 ? 'marquee-track' : 'marquee-track-reverse'}>
             <Belt items={belt} />
             <Belt items={belt} clone />
@@ -83,10 +83,10 @@ const Belt = ({ items, clone = false }: { items: Profile[]; clone?: boolean }) =
             target="_blank"
             rel="me noopener noreferrer"
             tabIndex={clone ? -1 : undefined}
-            className="group flex items-center gap-2.5 whitespace-nowrap px-5 py-3.5 text-ink transition-colors hover:bg-ink hover:text-paper"
+            className="group flex items-center gap-3 whitespace-nowrap px-7 py-4 text-on-orange transition-colors hover:bg-ink hover:text-paper"
           >
-            <Icon className="size-4 shrink-0 text-orange transition-colors group-hover:text-paper" aria-hidden="true" />
-            <span className="eyebrow">{p.name}</span>
+            <Icon className="size-6 shrink-0 text-on-orange transition-colors group-hover:text-paper" aria-hidden="true" />
+            <span className="headline text-lg uppercase tracking-tight sm:text-xl">{p.name}</span>
           </a>
         </li>
       );

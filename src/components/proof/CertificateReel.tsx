@@ -4,8 +4,10 @@ import { certificates } from '../../data/certificates';
 /**
  * CertificateReel
  *
- * A strip of film running down the edge of the page, start to end — sprocket
- * holes on both sides, frames between them, turning slowly and continuously.
+ * A broad orange band running down the edge of the page, start to end, with
+ * sprocket holes punched down both sides and the certificates riding between
+ * them. Wide enough that the scans are legible in passing rather than being a
+ * texture — the point is the certificates, not the idea of a reel.
  *
  * It carries every certificate rather than the seven the pile shows, which is
  * the division of labour between them: the pile is the handful thrown on the
@@ -30,20 +32,20 @@ export const CertificateReel = () => {
       {frames.map((frame, i) => {
         const cert = has ? (frame as (typeof certificates)[number]) : undefined;
         return (
-          <li key={i} className="px-3 py-2">
+          <li key={i} className="px-7 py-3">
             {cert ? (
-              <figure className="bg-paper-white">
+              <figure className="flex aspect-[4/3] items-center justify-center border-2 border-ink bg-paper-white p-1.5">
                 <img
                   src={cert.src}
                   alt={clone ? '' : `${cert.title} — ${cert.issuer}`}
                   loading="lazy"
                   decoding="async"
-                  className="aspect-[3/4] w-full object-cover object-top"
+                  className="max-h-full max-w-full object-contain"
                 />
               </figure>
             ) : (
-              <div className="flex aspect-[3/4] w-full items-center justify-center bg-paper-white/70">
-                <FileText className="size-4 text-rule-strong" aria-hidden="true" />
+              <div className="flex aspect-[4/3] w-full items-center justify-center border-2 border-ink bg-paper-white/80">
+                <FileText className="size-6 text-rule-strong" aria-hidden="true" />
               </div>
             )}
           </li>
@@ -55,16 +57,16 @@ export const CertificateReel = () => {
   return (
     <div
       aria-label="Certificate reel"
-      className="marquee pointer-events-auto absolute inset-y-0 right-0 hidden w-[118px] overflow-hidden bg-slab xl:block"
+      className="marquee pointer-events-auto absolute inset-y-0 right-0 hidden w-[230px] overflow-hidden border-l-[3px] border-ink bg-orange xl:block"
     >
       {/* Sprocket holes, one edge each side of the frames. */}
       <span
         aria-hidden="true"
-        className="reel-perf pointer-events-none absolute inset-y-0 left-1 z-10 w-[7px] opacity-70"
+        className="reel-perf pointer-events-none absolute inset-y-0 left-2 z-10 w-[11px] opacity-90"
       />
       <span
         aria-hidden="true"
-        className="reel-perf pointer-events-none absolute inset-y-0 right-1 z-10 w-[7px] opacity-70"
+        className="reel-perf pointer-events-none absolute inset-y-0 right-2 z-10 w-[11px] opacity-90"
       />
 
       <div className="reel-track">

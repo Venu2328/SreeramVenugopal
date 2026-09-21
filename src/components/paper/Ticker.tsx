@@ -23,9 +23,11 @@ export const Ticker = ({ words }: { words: string[] }) => {
     >
       {words.map((w) => (
         <li key={w} className="flex items-center">
-          <span className="eyebrow whitespace-nowrap px-7 py-3 text-on-orange">{w}</span>
-          <span aria-hidden="true" className="text-on-orange/45">
-            ✦
+          <span className="headline whitespace-nowrap px-9 py-5 text-[clamp(1.1rem,2.4vw,1.9rem)] uppercase tracking-tight text-on-orange">
+            {w}
+          </span>
+          <span aria-hidden="true" className="text-[clamp(1rem,2vw,1.6rem)] text-on-orange/55">
+            ★
           </span>
         </li>
       ))}
@@ -34,7 +36,7 @@ export const Ticker = ({ words }: { words: string[] }) => {
 
   return (
     <div
-      className="marquee overflow-hidden border-y border-ink bg-orange"
+      className="marquee overflow-hidden border-y-[3px] border-ink bg-orange"
       role="marquee"
       aria-label="Highlights"
     >
