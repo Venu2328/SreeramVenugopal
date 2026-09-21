@@ -6,6 +6,7 @@
 import { MotionConfig } from 'motion/react';
 import { ScrollProgress } from './components/motion/ScrollProgress';
 import { Grain } from './components/effects/Grain';
+import { Cursor } from './components/effects/Cursor';
 import { Home } from './pages/Home';
 import { Ventures } from './pages/Ventures';
 import { Speaking } from './pages/Speaking';
@@ -39,6 +40,7 @@ export default function App({ path }: { path?: string }) {
       </a>
       <ScrollProgress />
       <Grain />
+      <Cursor />
 
       {normalised === '/ventures' ? (
         <Ventures />

@@ -345,6 +345,29 @@
   }
 }
 
+/*
+ * Custom cursor.
+ *
+ * The class is put on <html> by script and never from here, so a browser whose
+ * JavaScript did not run is never left without a pointer.
+ *
+ * It has to beat the `cursor-pointer`, `cursor-grab` and `cursor-zoom-in`
+ * utilities scattered through the components — those are more specific than an
+ * inherited value, and without this the native arrow would show through on
+ * exactly the elements the custom cursor is meant to react to. Hence the
+ * `!important`, which is scoped to a class that only exists when the custom
+ * cursor is actually on screen.
+ */
+html.cursor-custom,
+html.cursor-custom * {
+  cursor: none !important;
+}
+
+/* Except where the pointer's shape is information: a caret means editable. */
+html.cursor-custom :is(input, textarea, select, [contenteditable]) {
+  cursor: auto !important;
+}
+
 /* ── Chrome ───────────────────────────────────────────────────────────── */
 
 .skip-link {

@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Substitution Paradox — Sreeram Venugopal</title>
+<meta name="description" content="Preprint: Digital capacity for virtual science laboratories is lowest in the Indian schools that lack physical laboratories. A national analysis of 1,471,473 schools.">
+<meta name="author" content="Sreeram Venugopal">
+<meta name="citation_title" content="The Substitution Paradox: Digital Capacity for Virtual Science Laboratories Is Lowest in the Indian Schools That Lack Physical Laboratories">
+<meta name="citation_author" content="Venugopal, Sreeram">
+<meta name="citation_publication_date" content="2026/09/21">
+<meta name="citation_language" content="en">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Substitution Paradox">
+<meta property="og:description" content="Digital capacity for virtual science laboratories is lowest in the Indian schools that lack physical laboratories — a national analysis of 1,471,473 schools.">
+<meta name="twitter:card" content="summary_large_image">
+<style>:root{color-scheme:light dark}html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --paper:#FBFAF8; --ink:#14161A; --muted:#5E6167; --rule:#D9D6D0;
+    --seal:#8C1D2F; --seal-soft:rgba(140,29,47,.08); --panel:#F4F2EE;
+    --serif:"Spectral",Georgia,"Times New Roman",serif;
+    --sans:"IBM Plex Sans",system-ui,-apple-system,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --paper:#15171B; --ink:#EDEAE4; --muted:#9A9DA4; --rule:#2E3238;
+      --seal:#E0798C; --seal-soft:rgba(224,121,140,.12); --panel:#1D2025;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#15171B; --ink:#EDEAE4; --muted:#9A9DA4; --rule:#2E3238;
+    --seal:#E0798C; --seal-soft:rgba(224,121,140,.12); --panel:#1D2025;
+  }
+  *{box-sizing:border-box}
+  body{background:var(--paper);color:var(--ink);font-family:var(--serif);
+       margin:0;padding-inline:20px;padding-block:0;-webkit-font-smoothing:antialiased}
+  .sheet{max-width:780px;margin:0 auto;padding-block:clamp(32px,6vw,64px) 72px}
+  a{color:inherit}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--seal);outline-offset:3px;border-radius:2px}
+
+  /* ---- document control strip ---- */
+  .control{border-top:2px solid var(--ink);border-bottom:1px solid var(--rule);
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:4px 18px;
+    padding-block:12px;font-family:var(--mono);font-size:11px;letter-spacing:.04em}
+  .control div{display:flex;flex-direction:column;gap:3px;padding-block:3px}
+  .control dt,.k{color:var(--muted);text-transform:uppercase;font-size:9.5px;letter-spacing:.14em}
+  .control .v{color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums}
+
+  /* ---- title block ---- */
+  .titleblock{padding-block:40px 30px;border-bottom:1px solid var(--rule);position:relative}
+  .stamp{display:inline-block;font-family:var(--mono);font-size:10px;font-weight:600;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--seal);
+    border:1.5px solid var(--seal);background:var(--seal-soft);
+    padding:7px 12px;transform:rotate(-1.4deg);margin-bottom:26px;line-height:1.35;text-align:center}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(28px,5.2vw,42px);line-height:1.14;
+     margin:0 0 16px;letter-spacing:-.015em;text-wrap:balance}
+  .subtitle{font-family:var(--serif);font-style:italic;font-weight:300;
+     font-size:clamp(15px,2.4vw,19px);line-height:1.45;color:var(--muted);margin:0 0 30px;text-wrap:balance}
+  .byline{font-family:var(--sans);font-size:15px;line-height:1.6}
+  .byline .name{font-weight:600;font-size:17px}
+  .byline .aff{color:var(--muted);font-size:13.5px}
+  .byline .orcid{font-family:var(--mono);font-size:12px;color:var(--muted);
+     display:inline-flex;align-items:center;gap:6px;margin-top:6px;text-decoration:none}
+  .byline .orcid:hover{color:var(--seal)}
+  .orcid .dot{width:7px;height:7px;border-radius:50%;background:#A6CE39;flex:none}
+
+  /* ---- sections ---- */
+  section{padding-block:34px;border-bottom:1px solid var(--rule)}
+  h2{font-family:var(--sans);font-size:10.5px;font-weight:600;letter-spacing:.17em;
+     text-transform:uppercase;color:var(--seal);margin:0 0 16px}
+  p{margin:0 0 15px;line-height:1.68;font-size:16.5px;max-width:66ch}
+  p:last-child{margin-bottom:0}
+  .lede{font-size:17.5px}
+
+  /* ---- findings ---- */
+  .findings{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;
+    background:var(--rule);border:1px solid var(--rule);margin-top:4px}
+  .f{background:var(--paper);padding:20px 18px;display:flex;flex-direction:column;gap:7px}
+  .f .n{font-family:var(--mono);font-size:26px;font-weight:600;color:var(--seal);
+    letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1}
+  .f .lab{font-family:var(--sans);font-size:13px;line-height:1.45;color:var(--ink)}
+  .f .sub{font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.03em;line-height:1.4}
+
+  /* ---- scope notice ---- */
+  .notice{background:var(--panel);border-left:3px solid var(--seal);padding:18px 20px;margin-top:4px}
+  .notice p{font-size:15px;max-width:none;margin-bottom:10px}
+  .notice p:last-child{margin-bottom:0}
+  .notice strong{font-weight:600}
+
+  /* ---- declarations ---- */
+  dl.decl{margin:0;display:grid;gap:16px}
+  dl.decl dt{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+  dl.decl dd{margin:0;font-size:15px;line-height:1.6;max-width:66ch}
+
+  /* ---- citation ---- */
+  .cite{font-family:var(--mono);font-size:12.5px;line-height:1.75;background:var(--panel);
+    border:1px solid var(--rule);padding:16px 18px;overflow-x:auto;color:var(--ink)}
+  .copy{margin-top:12px;font-family:var(--sans);font-size:12.5px;font-weight:500;
+    background:none;border:1px solid var(--rule);color:var(--ink);padding:8px 14px;
+    cursor:pointer;border-radius:2px}
+  .copy:hover{border-color:var(--seal);color:var(--seal)}
+
+  /* ---- links ---- */
+  .links{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:12px}
+  .lk{display:flex;flex-direction:column;gap:5px;padding:16px 17px;border:1px solid var(--rule);
+    text-decoration:none;background:var(--paper);transition:border-color .15s,transform .15s}
+  .lk:hover{border-color:var(--seal);transform:translateY(-1px)}
+  .lk .t{font-family:var(--sans);font-size:14.5px;font-weight:600}
+  .lk .d{font-family:var(--sans);font-size:12.5px;color:var(--muted);line-height:1.45}
+  .lk[aria-disabled="true"]{opacity:.55;pointer-events:none}
+  .lk .pending{font-family:var(--mono);font-size:10px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--seal)}
+
+  footer{padding-block:30px 0;font-family:var(--mono);font-size:11px;color:var(--muted);
+    line-height:1.7;letter-spacing:.02em}
+  footer a{color:var(--muted)}
+  footer a:hover{color:var(--seal)}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+  @media (max-width:420px){ .stamp{font-size:9px;letter-spacing:.14em} }
+</style>
+
+<div class="sheet">
+
+  <dl class="control">
+    <div><dt class="k">Document type</dt><span class="v">Preprint</span></div>
+    <div><dt class="k">Version</dt><span class="v">1.0</span></div>
+    <div><dt class="k">Date</dt><span class="v">21 September 2026</span></div>
+    <div><dt class="k">Peer review</dt><span class="v">Not yet reviewed</span></div>
+    <div><dt class="k">DOI</dt><span class="v">Not yet assigned</span></div>
+    <div><dt class="k">Licence</dt><span class="v">CC BY 4.0</span></div>
+  </dl>
+
+  <header class="titleblock">
+    <div class="stamp">Preprint — not peer reviewed<br>Findings may change after review</div>
+    <h1>The Substitution Paradox</h1>
+    <p class="subtitle">Digital capacity for virtual science laboratories is lowest in the Indian schools that lack physical laboratories — a national analysis of 1,471,473 schools</p>
+    <div class="byline">
+      <div class="name">Sreeram Venugopal</div>
+      <div class="aff">Independent researcher · Puducherry, India</div>
+      <a class="orcid" href="https://orcid.org/0009-0009-2916-7633" target="_blank" rel="noopener">
+        <span class="dot" aria-hidden="true"></span>ORCID 0009-0009-2916-7633</a>
+    </div>
+  </header>
+
+  <section>
+    <h2>Abstract</h2>
+    <p class="lede">Virtual laboratories are widely proposed as a remedy for the shortage of physical science laboratories in Indian schools. The argument contains an untested empirical premise: that schools lacking laboratories possess the electricity, computing devices and connectivity needed to run a digital substitute.</p>
+    <p>This study tests that premise against the complete 2024–25 UDISE+ administrative census of Indian school education. Because running a cloud-connected virtual laboratory requires electricity <em>and</em> a device <em>and</em> internet simultaneously, while published statistics report only the three marginal distributions, the governing quantity is not point-identified; sharp Fréchet–Hoeffding bounds are derived rather than independence assumed.</p>
+    <p>Capacity and need are found to be inversely aligned, and the association survives adjustment for state income, exclusion of small territories, regional demeaning and every alternative definition of capacity examined. The conclusion is not that virtual laboratories fail to teach — the evidence that they support conceptual learning is substantial — but that their reach is bounded, and that aggregate claims about democratising laboratory science through cloud delivery are not supported by the infrastructure distribution.</p>
+  </section>
+
+  <section>
+    <h2>Principal findings</h2>
+    <div class="findings">
+      <div class="f"><span class="n">63.47%</span><span class="lab">Upper bound on schools able to run a cloud-connected virtual laboratory</span><span class="sub">Fréchet upper bound · assumption-free</span></div>
+      <div class="f"><span class="n">537,486</span><span class="lab">Schools that cannot, under any configuration consistent with the data</span><span class="sub">≥ 36.53% of all schools</span></div>
+      <div class="f"><span class="n">−0.553</span><span class="lab">Correlation between laboratory deficit and digital capacity ceiling</span><span class="sub">95% CI [−0.762, −0.278] · ρ = −0.523</span></div>
+      <div class="f"><span class="n">59.2%</span><span class="lab">Of all Indian schools sit in states below median on both physical and digital provision</span><span class="sub">13 states · 871,398 schools</span></div>
+      <div class="f"><span class="n">124,741</span><span class="lab">Secondary sections with no functional integrated science laboratory</span><span class="sub">42.9% of 290,950</span></div>
+      <div class="f"><span class="n">36</span><span class="lab">States and union territories analysed — a census, not a sample</span><span class="sub">UDISE+ 2024–25 · ref. 31 Mar 2025</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Scope and status</h2>
+    <div class="notice">
+      <p><strong>Study 1 — complete.</strong> The national infrastructure analysis above is finished, reproducible and verified. Every reported figure regenerates from the published raw tables, and 28 automated checks confirm the manuscript matches the computed values.</p>
+      <p><strong>Study 2 — protocol only.</strong> A preregistered cluster-randomised trial of conceptual learning is specified in full, with instruments and analysis code deposited in advance. <strong>No participant has been recruited, no datum collected and no ethics approval obtained.</strong> Nothing in that section may be cited as a finding.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Declarations</h2>
+    <dl class="decl">
+      <div><dt>Competing interests</dt><dd>The author is associated with SciPhyLabs, an interactive physics-learning platform. Study 1 uses only government administrative data and does not involve that platform. In the Study 2 protocol the platform appears solely as a delivery and logging environment, with simulation content specified to come from an independently developed third-party suite. No finding here is offered as evidence for any platform's effectiveness.</dd></div>
+      <div><dt>Ethics</dt><dd>Study 1 used only publicly available aggregate data concerning institutions, not individuals, and required no ethical review. Study 2 has not received ethical approval and has not begun.</dd></div>
+      <div><dt>Data and code</dt><dd>All data are public. Raw transcribed tables, the derived analysis panel, full provenance and every analysis script are openly available. The pipeline rebuilds all reported figures in under one minute.</dd></div>
+      <div><dt>AI assistance</dt><dd>Generative AI tools were used for literature search and screening support, drafting and editing assistance, and writing and checking analysis code. All statistical results were computed by the deposited scripts. All cited works were verified against publisher records; verification corrected seven author or year errors and removed four sources that could not be verified.</dd></div>
+    </dl>
+  </section>
+
+  <section>
+    <h2>How to cite</h2>
+    <p class="cite" id="citation">Venugopal, S. (2026). <em>The Substitution Paradox: Digital Capacity for Virtual Science Laboratories Is Lowest in the Indian Schools That Lack Physical Laboratories</em> (Version 1.0) [Preprint].</p>
+    <button class="copy" id="copyBtn" type="button">Copy citation</button>
+  </section>
+
+  <section>
+    <h2>Access</h2>
+    <div class="links" id="links"></div>
+  </section>
+
+  <footer>
+    <div>Sreeram Venugopal · Independent researcher, Puducherry, India</div>
+    <div>Data source: Unified District Information System for Education Plus (UDISE+) 2024–25, Ministry of Education, Government of India; per-capita NSDP, Ministry of Statistics and Programme Implementation.</div>
+    <div>Text and figures licensed <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>; analysis code MIT.</div>
+  </footer>
+</div>
+
+<script>
+/* ─────────────────────────────────────────────────────────────
+   EDIT THESE THREE LINES once the repository and preprint are live.
+   Leave a value as null and its card shows "link pending" instead
+   of sending a reader to a dead URL.
+   ───────────────────────────────────────────────────────────── */
+const LINKS = {
+  repository: null,   // e.g. "https://github.com/<user>/substitution-paradox"
+  manuscript: null,   // e.g. a direct link to the PDF or preprint server record
+  dataset:    null    // e.g. the Zenodo record once a DOI is minted
+};
+
+const CARDS = [
+  {key:"manuscript", t:"Full manuscript", d:"Complete paper: methods, results, limitations and verified bibliography"},
+  {key:"repository", t:"Repository", d:"Data, analysis code, instruments and audit trail — rebuilds every figure"},
+  {key:"dataset",    t:"Dataset", d:"State panel and raw transcribed government tables with full provenance"},
+  {key:"orcid",      t:"ORCID record", d:"Author identity and publication history", url:"https://orcid.org/0009-0009-2916-7633"}
+];
+
+document.getElementById("links").innerHTML = CARDS.map(c => {
+  const url = c.url || LINKS[c.key];
+  const tail = url
+    ? ""
+    : '<span class="pending">Link pending</span>';
+  return url
+    ? `<a class="lk" href="${url}" target="_blank" rel="noopener"><span class="t">${c.t}</span><span class="d">${c.d}</span></a>`
+    : `<div class="lk" aria-disabled="true"><span class="t">${c.t}</span><span class="d">${c.d}</span>${tail}</div>`;
+}).join("");
+
+const btn = document.getElementById("copyBtn");
+btn.addEventListener("click", async () => {
+  const text = document.getElementById("citation").innerText.trim();
+  try {
+    await navigator.clipboard.writeText(text);
+    btn.textContent = "Copied";
+  } catch {
+    const r = document.createRange(); r.selectNodeContents(document.getElementById("citation"));
+    const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+    btn.textContent = "Selected — press Ctrl/Cmd+C";
+  }
+  setTimeout(() => { btn.textContent = "Copy citation"; }, 2400);
+});
+</script>
+
+</body>
+</html>
