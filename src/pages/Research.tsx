@@ -37,7 +37,7 @@ export const ResearchSection = () => (
 
         <div className="shell py-14 sm:py-20">
           <Reveal>
-            <p className="eyebrow text-orange">Peer review · Published · Indexed</p>
+            <p className="eyebrow text-orange">Preprint · Open access · 1,471,473 schools</p>
 
             <h1
               id="research-heading"
@@ -130,8 +130,9 @@ export const ResearchSection = () => (
                   <PdfFrame
                     src={p.cover ?? ''}
                     alt={p.title}
-                    label="the-role-of-technology-in-modern-indian-education.pdf"
-                    meta="Abstract"
+                    href={p.href}
+                    label="the-substitution-paradox.pdf"
+                    meta="Preprint · 1,471,473 schools"
                     /* The scan is landscape (2408x1570); framing it portrait
                        cropped a third of the page away down both sides. */
                     aspect="aspect-[3/2]"

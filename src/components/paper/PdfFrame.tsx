@@ -7,10 +7,11 @@ import { Maximize2, X } from 'lucide-react';
  * A document shown the way a reader expects a document to be shown: a chrome
  * bar naming the file, then the page itself under it.
  *
- * Pressing it opens the page full-size in an overlay rather than navigating
- * away. That is deliberate — the artefact here is the page, and sending someone
- * to a separate viewer to look at an image they can already see costs them
- * their place on the page and gives nothing back. Escape closes it.
+ * Pressing it opens the real document when there is one to open, and otherwise
+ * enlarges the still in an overlay. The distinction matters: sending a reader to
+ * a separate viewer to look at an image they can already see costs them their
+ * place and gives nothing back — but sending them to the actual manuscript is
+ * the entire point of showing its first page.
  *
  * It takes an image rather than an embedded PDF. A real `<embed>` renders a
  * different viewer in every browser, refuses to load at all on several mobile
@@ -22,10 +23,13 @@ export const PdfFrame = ({
   alt,
   label,
   meta,
+  href,
   aspect = 'aspect-[4/3]',
 }: {
   src: string;
   alt: string;
+  /** The real document. Given one, the frame opens it instead of the still. */
+  href?: string;
   /** The filename printed in the chrome bar. */
   label: string;
   /** Anything else the bar should carry, e.g. 'Abstract · 1 page'. */
@@ -60,12 +64,7 @@ export const PdfFrame = ({
         </div>
 
         {/* ── The page ───────────────────────────────────────────────── */}
-        <button
-          type="button"
-          onClick={() => setOpen(true)}
-          aria-label={`Open: ${alt}`}
-          className={`group relative block w-full cursor-zoom-in bg-paper-white ${aspect}`}
-        >
+        <Face href={href} onEnlarge={() => setOpen(true)} alt={alt} aspect={aspect}>
           {failed ? (
             <span className="flex size-full items-center justify-center px-8 text-center">
               <span className="eyebrow text-muted">{label}</span>
@@ -88,12 +87,14 @@ export const PdfFrame = ({
             className="absolute inset-x-0 bottom-0 flex items-center justify-center gap-2 bg-gradient-to-t from-ink/80 to-transparent px-4 pb-4 pt-12 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
           >
             <Maximize2 className="size-3.5 text-paper" />
-            <span className="eyebrow text-paper">Click to open</span>
+            <span className="eyebrow text-paper">
+            {href ? 'Read the preprint' : 'Click to open'}
           </span>
-        </button>
+          </span>
+        </Face>
       </div>
 
-      {open && (
+      {open && !href && (
         <div
           role="dialog"
           aria-modal="true"
@@ -123,5 +124,46 @@ export const PdfFrame = ({
         </div>
       )}
     </>
+  );
+};
+
+/**
+ * The clickable face of the frame.
+ *
+ * A real document gets an anchor, because it is navigation and should behave
+ * like it — middle-click, open in a new tab, copy the address. Only the
+ * fallback, which merely enlarges an image in place, is a button.
+ */
+const Face = ({
+  href,
+  onEnlarge,
+  alt,
+  aspect,
+  children,
+}: {
+  href?: string;
+  onEnlarge: () => void;
+  alt: string;
+  aspect: string;
+  children: React.ReactNode;
+}) => {
+  const className = `group relative block w-full bg-paper-white ${aspect} ${
+    href ? 'cursor-pointer' : 'cursor-zoom-in'
+  }`;
+
+  return href ? (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Read: ${alt}`}
+      className={className}
+    >
+      {children}
+    </a>
+  ) : (
+    <button type="button" onClick={onEnlarge} aria-label={`Open: ${alt}`} className={className}>
+      {children}
+    </button>
   );
 };
