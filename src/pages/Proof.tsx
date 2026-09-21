@@ -20,12 +20,9 @@ import { institutions } from '../data/institutions';
  * evidence itself. The detailed record follows underneath as § A, so a reader
  * who wants course names and dates rather than scans still gets them.
  */
-export const Proof = () => (
+/** The supplement body, so the front page can run it inline. */
+export const ProofSection = () => (
   <>
-    <Masthead page="credentials" edition="Proof of Work" />
-    <Dateline centre="Certified · Trained · Recognised" edition="Credentials Supplement" />
-
-    <main id="main-content" tabIndex={-1}>
       <section
         id="proof"
         aria-labelledby="proof-heading"
@@ -94,7 +91,17 @@ export const Proof = () => (
         </div>
       </section>
 
-      <Credentials />
+    <Credentials />
+  </>
+);
+
+export const Proof = () => (
+  <>
+    <Masthead page="credentials" edition="Proof of Work" />
+    <Dateline centre="Certified · Trained · Recognised" edition="Credentials Supplement" />
+
+    <main id="main-content" tabIndex={-1}>
+      <ProofSection />
       <Contact />
     </main>
 

@@ -189,7 +189,7 @@ export const LeadStory = () => (
           </div>
 
           <a
-            href="/ventures"
+            href="#edtech"
             className="group mt-8 flex items-center justify-between gap-4 border border-ink bg-paper-raised px-5 py-4 transition-colors hover:bg-ink"
           >
             <span className="min-w-0">

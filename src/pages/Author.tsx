@@ -46,12 +46,9 @@ const claims = [
   },
 ];
 
-export const Author = () => (
+/** The supplement body, so the front page can run it inline. */
+export const BooksSection = () => (
   <>
-    <Masthead page="author" edition="Authoring" />
-    <Dateline centre={`${series.name} · Physics`} edition="Authoring Supplement" />
-
-    <main id="main-content" tabIndex={-1}>
       <section
         id="books"
         aria-labelledby="books-heading"
@@ -136,7 +133,16 @@ export const Author = () => (
           </div>
         </div>
       </section>
+  </>
+);
 
+export const Author = () => (
+  <>
+    <Masthead page="author" edition="Authoring" />
+    <Dateline centre={`${series.name} · Physics`} edition="Authoring Supplement" />
+
+    <main id="main-content" tabIndex={-1}>
+      <BooksSection />
       <Contact />
     </main>
 

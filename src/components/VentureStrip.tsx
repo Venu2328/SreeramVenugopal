@@ -4,13 +4,13 @@ import { Reveal } from './motion/Reveal';
 /**
  * VentureStrip
  *
- * The front page's pointer to its two supplements. It used to list
- * organisations; it now lists the pages themselves, because that is what a
- * front page actually does — it tells you what else is in the paper.
+ * The contents page. Every supplement runs further down this same document, so
+ * these are anchors rather than links — a reader can take the whole thing as
+ * one scroll and use this only to skip, which is what a contents page is for.
  *
  * Each card carries its own device: the startup gets its mark printed in ink,
- * the speaking page a typographic monogram, both set in the same well so the
- * pair keeps one rhythm.
+ * the rest a typographic monogram, all in the same well so the grid keeps one
+ * rhythm.
  */
 type Supplement = {
   kicker: string;
@@ -29,8 +29,8 @@ const supplements: Supplement[] = [
     title: 'Advanced EdTech',
     role: 'Founder · SciPhyLabs',
     blurb:
-      'An interactive physics platform built for students preparing for JEE, NEET, AP, SAT and CUET — 400+ simulations and an app past a thousand downloads.',
-    href: '/ventures',
+      'An interactive physics platform for JEE, NEET, AP, SAT and CUET — 400+ simulations and an app past a thousand downloads.',
+    href: '#edtech',
     since: '2023',
     logo: '/sciphylabs-logo2-sv.png',
   },
@@ -39,10 +39,50 @@ const supplements: Supplement[] = [
     title: 'Keynote Speaker & Leader',
     role: 'Halls · Panels · Debate',
     blurb:
-      'Unedited footage of arguments made in front of rooms that were free to disagree, and every profile where the record is kept.',
-    href: '/speaking',
+      'Unedited footage of arguments made in front of rooms that were free to disagree.',
+    href: '#speaking',
     since: 'Ongoing',
     monogram: 'SPK',
+  },
+  {
+    kicker: 'The evidence',
+    title: 'Proof of Work',
+    role: 'Certified · Trained · Recognised',
+    blurb:
+      'Coursework and recognition from IIT Madras, Google, iRISE, Saylor Academy, Duke and more — issued, dated and scanned.',
+    href: '#proof',
+    since: 'Since 2023',
+    monogram: 'PRF',
+  },
+  {
+    kicker: 'The books',
+    title: 'The G.O.A.T. Series',
+    role: 'Guide Of All Time · Grade 11 & 12',
+    blurb:
+      'Academic physics written against how Indian education actually teaches the subject.',
+    href: '#books',
+    since: 'In progress',
+    monogram: 'GOAT',
+  },
+  {
+    kicker: 'The research',
+    title: 'Papers & Journals',
+    role: 'Peer review · ORCID · GitHub',
+    blurb:
+      'Virtual-laboratory reach in Indian schools, tested against the complete 2024–25 UDISE+ census.',
+    href: '#research',
+    since: 'In review',
+    monogram: 'RES',
+  },
+  {
+    kicker: 'The writing',
+    title: 'Notes on Learning',
+    role: 'Essays · Medium',
+    blurb:
+      'What is actually broken in exam preparation, and what interactive-first learning does differently.',
+    href: '#writing',
+    since: 'Ongoing',
+    monogram: 'WRT',
   },
 ];
 
@@ -55,15 +95,9 @@ export const VentureStrip = () => (
     <div className="shell">
       <div className="flex items-baseline justify-between gap-6">
         <p className="eyebrow text-orange">
-          Inside<span className="ml-3 text-muted">§ A</span>
+          Inside this issue<span className="ml-3 text-muted">§ A</span>
         </p>
-        <a
-          href="/ventures"
-          className="link-draw eyebrow inline-flex items-center gap-2 text-ink"
-        >
-          Both supplements
-          <ArrowRight className="size-3.5 text-orange" aria-hidden="true" />
-        </a>
+        <span className="eyebrow text-muted">Six supplements · one scroll</span>
       </div>
 
       <div className="rule-heavy mt-3" />
@@ -72,7 +106,7 @@ export const VentureStrip = () => (
         Supplements
       </h2>
 
-      <ul className="mt-8 grid list-none gap-px border border-rule bg-rule p-0 md:grid-cols-2">
+      <ul className="mt-8 grid list-none gap-px border border-rule bg-rule p-0 sm:grid-cols-2 lg:grid-cols-3">
         {supplements.map((s, i) => (
           <Reveal as="li" key={s.href} delay={i * 0.08}>
             <a
@@ -119,7 +153,7 @@ export const VentureStrip = () => (
               <p className="mt-5 flex-1 leading-relaxed text-ink-soft">{s.blurb}</p>
 
               <span className="eyebrow mt-7 inline-flex items-center gap-2 text-ink">
-                Read the supplement
+                Jump to it
                 <ArrowRight
                   className="size-3.5 text-orange transition-transform group-hover:translate-x-1"
                   aria-hidden="true"

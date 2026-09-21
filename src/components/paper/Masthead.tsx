@@ -17,13 +17,22 @@ import { ArrowRight, Mail, Menu, X } from 'lucide-react';
  * absolute `/#section` links everywhere else, so the nav works identically
  * from /ventures without every item silently pointing at nothing.
  */
-const sections = [
-  { name: 'Ventures', href: '/ventures', absolute: true },
-  { name: 'Speaking', href: '/speaking', absolute: true },
-  { name: 'Credentials', href: '/credentials', absolute: true },
-  { name: 'Books', href: '/author', absolute: true },
-  { name: 'Research', href: '/research', absolute: true },
-  { name: 'Writing', href: '/writing', absolute: true },
+type NavLink = {
+  name: string;
+  href: string;
+  /** Where this entry points when the reader is away from the front page. */
+  page?: string;
+  /** True for entries that are always the same URL, wherever you are. */
+  absolute?: boolean;
+};
+
+const sections: NavLink[] = [
+  { name: 'EdTech', href: '#edtech', page: '/ventures' },
+  { name: 'Speaking', href: '#speaking', page: '/speaking' },
+  { name: 'Credentials', href: '#proof', page: '/credentials' },
+  { name: 'Books', href: '#books', page: '/author' },
+  { name: 'Research', href: '#research', page: '/research' },
+  { name: 'Writing', href: '#writing', page: '/writing' },
   { name: 'Contact', href: '#contact' },
 ];
 
@@ -51,14 +60,19 @@ export const Masthead = ({
     };
   }, [open]);
 
-  /** On /ventures a bare hash would resolve against the wrong document. */
-  const resolve = (href: string, absolute?: boolean) =>
-    absolute || page === 'home' ? href : `/${href}`;
+  /*
+   * The whole paper runs on the front page, so navigation there is in-page.
+   * Away from it a bare hash would resolve against the wrong document, so each
+   * entry falls back to its own supplement instead.
+   */
+  const resolve = (s: { href: string; page?: string }) =>
+    page === 'home' ? s.href : (s.page ?? `/${s.href}`);
 
-  const links = [
+  const links: NavLink[] = [
     { name: 'Home', href: '/', absolute: true },
-    ...sections.filter((s) => !(s.absolute && s.href === `/${page}`)),
+    ...sections,
   ];
+
 
   return (
     <>
@@ -70,7 +84,7 @@ export const Masthead = ({
             <span className="truncate">Available for collaborations</span>
           </p>
           <a
-            href={resolve('#contact')}
+            href={page === 'home' ? '#contact' : '/#contact'}
             className="eyebrow group inline-flex shrink-0 items-center gap-2 border border-on-slab/35 px-3.5 py-1.5 text-on-slab transition-colors hover:border-orange hover:bg-orange hover:text-on-orange"
           >
             Get in touch
@@ -127,7 +141,7 @@ export const Masthead = ({
                     </span>
                   )}
                   <a
-                    href={resolve(l.href, l.absolute)}
+                    href={l.absolute ? l.href : resolve(l)}
                     className="eyebrow text-ink transition-colors hover:text-orange"
                   >
                     {l.name}
@@ -175,7 +189,7 @@ export const Masthead = ({
                       </span>
                     )}
                     <a
-                      href={resolve(l.href, l.absolute)}
+                      href={l.absolute ? l.href : resolve(l)}
                       className="eyebrow text-ink transition-colors hover:text-orange"
                     >
                       {l.name}
@@ -228,7 +242,7 @@ export const Masthead = ({
               {links.map((l, i) => (
                 <motion.a
                   key={l.name}
-                  href={resolve(l.href, l.absolute)}
+                  href={l.absolute ? l.href : resolve(l)}
                   onClick={() => setOpen(false)}
                   initial={{ opacity: 0, x: -14 }}
                   animate={{ opacity: 1, x: 0 }}

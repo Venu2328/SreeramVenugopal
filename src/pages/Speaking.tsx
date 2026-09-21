@@ -26,12 +26,9 @@ const ticker = [
   'On the record',
 ];
 
-export const Speaking = () => (
+/** The supplement body, so the front page can run it inline. */
+export const SpeakingSection = () => (
   <>
-    <Masthead page="speaking" edition="Speaking" />
-    <Dateline centre="Keynotes · Debate · Panels" edition="Speaking Supplement" />
-
-    <main id="main-content" tabIndex={-1}>
       <section
         id="speaking"
         aria-labelledby="speaking-heading"
@@ -84,7 +81,16 @@ export const Speaking = () => (
           </div>
         </div>
       </section>
+  </>
+);
 
+export const Speaking = () => (
+  <>
+    <Masthead page="speaking" edition="Speaking" />
+    <Dateline centre="Keynotes · Debate · Panels" edition="Speaking Supplement" />
+
+    <main id="main-content" tabIndex={-1}>
+      <SpeakingSection />
       <Contact />
     </main>
 

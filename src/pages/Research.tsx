@@ -25,12 +25,9 @@ const ticker = [
   'Open data',
 ];
 
-export const Research = () => (
+/** The supplement body, so the front page can run it inline. */
+export const ResearchSection = () => (
   <>
-    <Masthead page="research" edition="Research" />
-    <Dateline centre="Papers · Journals · Conferences" edition="Research Supplement" />
-
-    <main id="main-content" tabIndex={-1}>
       <section
         id="research"
         aria-labelledby="research-heading"
@@ -165,7 +162,16 @@ export const Research = () => (
           </div>
         </div>
       </section>
+  </>
+);
 
+export const Research = () => (
+  <>
+    <Masthead page="research" edition="Research" />
+    <Dateline centre="Papers · Journals · Conferences" edition="Research Supplement" />
+
+    <main id="main-content" tabIndex={-1}>
+      <ResearchSection />
       <Contact />
     </main>
 
