@@ -20,9 +20,10 @@ import { ArrowRight, Mail, Menu, X } from 'lucide-react';
 const sections = [
   { name: 'About', href: '#about' },
   { name: 'Ventures', href: '/ventures', absolute: true },
-  { name: 'Journals', href: '#journals' },
+  { name: 'Speaking', href: '/speaking', absolute: true },
+  { name: 'Credentials', href: '/credentials', absolute: true },
+  { name: 'Author', href: '/author', absolute: true },
   { name: 'Projects', href: '#projects' },
-  { name: 'Media', href: '#media' },
   { name: 'Contact', href: '#contact' },
 ];
 
@@ -30,7 +31,7 @@ export const Masthead = ({
   page = 'home',
   edition,
 }: {
-  page?: 'home' | 'ventures';
+  page?: 'home' | 'ventures' | 'speaking' | 'credentials' | 'author';
   edition?: string;
 }) => {
   const [condensed, setCondensed] = useState(false);
@@ -56,7 +57,7 @@ export const Masthead = ({
 
   const links = [
     { name: 'Home', href: '/', absolute: true },
-    ...sections.filter((s) => !(page === 'ventures' && s.href === '/ventures')),
+    ...sections.filter((s) => !(s.absolute && s.href === `/${page}`)),
   ];
 
   return (
@@ -105,10 +106,10 @@ export const Masthead = ({
           </div>
 
           <p className="eyebrow mt-5 text-center text-muted">
-            Founder <span className="text-orange">·</span> Author{' '}
+            Founder <span className="text-orange">·</span> Leader{' '}
+            <span className="text-orange">·</span> Speaker{' '}
             <span className="text-orange">·</span> Researcher{' '}
-            <span className="text-orange">·</span> Physics Educator{' '}
-            <span className="text-orange">·</span> Student Leader
+            <span className="text-orange">·</span> Author
           </p>
         </div>
 

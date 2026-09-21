@@ -8,8 +8,8 @@ import App from './App';
  * The site is a client-rendered SPA: without this, everything a crawler
  * receives is an empty `<div id="root">`. Google will execute the JavaScript
  * eventually, but Bing, LinkedIn, Slack and most AI crawlers largely will not —
- * so the ventures, the council description and the institution count never
- * reach them. Rendering to a string at build time puts all of it in the initial
+ * so the ventures, the speaking record and the founder's own description
+ * never reach them. Rendering to a string at build time puts all of it in the initial
  * response at zero runtime cost.
  *
  * `url` selects the route, because the app resolves its page from the path and

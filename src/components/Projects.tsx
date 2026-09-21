@@ -25,7 +25,7 @@ export const Projects = () => (
     <div className="shell">
       <SectionRule
         kicker="Selected work"
-        mark="F"
+        mark="C"
         id="projects-heading"
         title={
           <>

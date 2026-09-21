@@ -1,40 +1,64 @@
 /**
- * Published journals and papers.
+ * Research — papers, journals and conferences.
  *
- * This list ships empty on purpose. The Research & Publications section still
- * prints while it is empty — it renders reserved slots rather than hiding
- * itself, because the section is a standing part of the paper.
+ * `cover` is a scan of the paper's own front page, in /public. A paper without
+ * one still prints: the card typesets a stand-in from the same metadata rather
+ * than leaving a hole where the document should be.
  *
- * To add a publication:
- *   1. Drop the PDF into `public/journals/` (e.g. public/journals/my-paper.pdf)
- *   2. Optionally drop a cover image — a screenshot of the paper's first page,
- *      which is what makes the card read as a clipping — into the same folder
- *   3. Add an entry below. `cover` and `doi` are both optional; a card with no
- *      cover prints a typeset stand-in built from the title and journal name.
- *
- * Nothing speculative or "forthcoming" belongs in this list — only work that
- * has actually been published, with a PDF a stranger can open.
+ * Nothing speculative belongs in `papers`. `status` is what keeps the section
+ * honest about where each one actually is.
  */
-export type Journal = {
-  /** Full title of the paper, exactly as published. */
+export type Paper = {
   title: string;
-  /** The journal that published it. */
-  journal: string;
-  /** Year of publication. */
-  year: string;
-  /** A few sentences on what the paper argues and what it found. */
-  abstract: string;
-  /** Path to the PDF in /public, e.g. '/journals/my-paper.pdf'. */
-  pdf: string;
-  /** Optional cover image — a screenshot of page one. */
+  /** What the paper argues, in the author's own words. */
+  note: string;
+  /** Scan of the front page, e.g. '/researchpage.png'. */
   cover?: string;
-  /** Optional DOI or publisher URL. */
-  doi?: string;
-  /** Short subject tags, uppercased on render. */
-  tags: string[];
+  /** Where it sits: 'In review', 'Published', and so on. */
+  status: string;
+  /** The journal or conference, once there is one. */
+  venue?: string;
+  /** Link to the paper or its DOI, once there is one. */
+  href?: string;
+  /** How long the original work took. */
+  duration?: string;
 };
 
-export const journals: Journal[] = [];
+export const papers: Paper[] = [
+  {
+    title:
+      'The Role of Technology in Modern Indian Education Through Cloud-Based, Visual, Interactive Simulation and STEM',
+    note: 'My research take on how abstract concepts link to visual understanding. Data backed by SciPhyLabs.',
+    cover: '/researchpage.png',
+    status: 'In review',
+    duration: '14 months',
+  },
+];
 
-/** Where the full list of publications lives, if it ever outgrows this page. */
+/**
+ * What stands behind the work. Printed as a numbered record beside the paper —
+ * the claims are about method and scrutiny, which is what a reader outside the
+ * field can actually judge.
+ */
+export const assurances = [
+  'Backed by researchers',
+  'Future trend analysis',
+  'Personal theses & big data collection',
+  'Original work took 14 months',
+  'Validated by top-tier researchers, scholars & PhD professors',
+  'Documented on GitHub',
+];
+
+/**
+ * Where the record is indexed. An entry with no `href` prints as a plain mark
+ * rather than a link to nowhere.
+ */
+export const indexes = [
+  { name: 'Peer review' },
+  { name: 'Published' },
+  { name: 'ORCID iD', href: 'https://orcid.org/0009-0009-2916-7633' },
+  { name: 'Google Scholar' },
+];
+
 export const orcid = 'https://orcid.org/0009-0009-2916-7633';
+export const github = 'https://github.com/Venu2328';

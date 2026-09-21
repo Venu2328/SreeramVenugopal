@@ -8,8 +8,8 @@ import { Reveal } from './motion/Reveal';
  * Journey
  *
  * The record in chronological order. Only dated, checkable events appear — if
- * more happened between 2023 and 2026 (cohorts run, workshops hosted, campuses
- * partnered) it belongs here, with a date.
+ * more happened between 2023 and 2026 (talks given, campuses reached, releases
+ * shipped) it belongs here, with a date.
  *
  * The orange rule down the left fills as you read, scrubbed to scroll position
  * rather than triggered, so it reverses when you scroll back up.
@@ -32,8 +32,8 @@ const timeline = [
   },
   {
     year: '2026',
-    title: 'Founded the council',
-    desc: 'Started the Peacemakers of Puducherry Council to give students in Puducherry structure, mentorship and somewhere to put their ambition.',
+    title: 'Took the platform to the stage',
+    desc: 'Began speaking and debating in front of schools, colleges and halls — carrying the argument for interactive learning to the people it is built for.',
   },
 ];
 
@@ -54,7 +54,7 @@ export const Journey = () => {
       <div className="shell">
         <SectionRule
           kicker="The record"
-          mark="G"
+          mark="D"
           id="timeline-heading"
           title={
             <>

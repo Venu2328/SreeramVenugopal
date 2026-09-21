@@ -6,15 +6,16 @@ import { Reveal } from './motion/Reveal';
  * About
  *
  * The full story, set as newspaper body columns — the piece the lead story's
- * "read the full story" pointer resolves to. Civic work is told second because
- * that is the order it happened in: the platform came first and produced the
- * observation that led to the council.
+ * "read the full story" pointer resolves to. The platform comes first because
+ * that is the order it happened in: building it is what produced everything
+ * that followed, including the reason to stand up and talk about it.
  */
 const facts = [
   ['Based in', 'Puducherry, India'],
-  ['Focus', 'Civic leadership, education'],
+  ['Focus', 'Physics education, research, speaking'],
   ['Languages', 'English, Tamil'],
-  ['Founded', 'SciPhyLabs (2023), POPC (2026)'],
+  ['Founded', 'SciPhyLabs (2023)'],
+  ['Speaks on', 'Learning, technology, civic life'],
 ];
 
 export const About = () => (
@@ -30,7 +31,7 @@ export const About = () => (
         id="about-heading"
         title={
           <>
-            First a platform, then a <Accent>council</Accent>.
+            First a platform, then a <Accent>podium</Accent>.
           </>
         }
       />
@@ -47,20 +48,21 @@ export const About = () => (
               the students sitting JEE, NEET, AP, SAT and CUET.
             </p>
             <p>
-              Working on it taught me something the platform couldn&apos;t fix on its own.
-              The students I met weren&apos;t short of ability, and they weren&apos;t short
-              of ambition. They were short of structure — someone to hand them a project, a
-              mentor, and a stage, and then expect something of them.
+              What started as a handful of simulations is now more than four hundred, with
+              an app past a thousand downloads. It reached students through schools and
+              colleges rather than through advertising, which meant standing in front of
+              halls of them and explaining why any of it was worth their evening.
             </p>
             <p>
-              So in 2026 I founded the Peacemakers of Puducherry Council. It is
-              deliberately non-partisan, works through six pillars, and runs three
-              programmes. Its measure is simple: can a student who walks in with an idea
-              walk out having actually done it, in front of people.
+              That turned out to be the other half of the work. Speaking is not a sideline
+              to building — it is how a thing built in private survives contact with people
+              who did not ask for it. I speak, I debate, and I argue positions in front of
+              rooms that may disagree, because an argument you will not defend in public is
+              not really a position.
             </p>
             <p className="text-ink">
-              The council is new, and I would rather it be judged on what it ships than on
-              how it describes itself.
+              I would rather be judged on what I ship and what I say than on how either is
+              described.
             </p>
           </div>
         </Reveal>

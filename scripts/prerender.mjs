@@ -35,10 +35,43 @@ const routes = [
     out: 'dist/ventures.html',
     head: {
       title:
-        'SciPhyLabs & POPC — the ventures of Sreeram Venugopal, Founder & Researcher',
+        'Advanced EdTech — SciPhyLabs by Sreeram Venugopal, Founder & Researcher',
       description:
-        'The two organisations founded by Sreeram Venugopal — founder, author and researcher at SciPhyLabs, an interactive physics platform for JEE, NEET, AP, SAT and CUET students, and founder of the Peacemakers of Puducherry Council, the largest student organisation in Puducherry, spanning 17 institutions with 112 registered members.',
+        'SciPhyLabs — interactive physics built by Sreeram Venugopal, with 400+ simulations for students preparing for JEE, NEET, AP, SAT and CUET. Founder background, the simulations themselves, and the app on Android and iOS.',
       canonical: `${ORIGIN}/ventures`,
+    },
+  },
+  {
+    path: '/speaking',
+    out: 'dist/speaking.html',
+    head: {
+      title:
+        'Active Keynote Speaker & Leader — Sreeram Venugopal | Talks, Debate & Panels',
+      description:
+        'Sreeram Venugopal speaks and debates at schools, colleges, panels and youth parliaments across India, arguing for interactive learning and civic engagement. Unedited footage of talks and debates, plus every verified profile where the record is kept.',
+      canonical: `${ORIGIN}/speaking`,
+    },
+  },
+  {
+    path: '/credentials',
+    out: 'dist/credentials.html',
+    head: {
+      title:
+        'Proof of Work & Credentials — Sreeram Venugopal | IIT Madras, Google, Duke',
+      description:
+        'The certificates behind the claims: coursework, training and recognition awarded to Sreeram Venugopal by IIT Madras, Google, iRISE, Saylor Academy, Duke, Jimper and the Government of India — each one issued, dated and scanned.',
+      canonical: `${ORIGIN}/credentials`,
+    },
+  },
+  {
+    path: '/author',
+    out: 'dist/author.html',
+    head: {
+      title:
+        'The G.O.A.T. Series — Physics books by Sreeram Venugopal, Author & Researcher',
+      description:
+        'Sreeram Venugopal is authoring the G.O.A.T. Series — Guide Of All Time — academic physics books for Grade 11 and 12 students sitting national and international competitive exams, tied to interactive simulations and a PYQ vault. Plus published research papers, journals and conferences.',
+      canonical: `${ORIGIN}/author`,
     },
   },
 ];

@@ -3,10 +3,7 @@ import { Dateline } from '../components/paper/Dateline';
 import { LeadStory } from '../components/LeadStory';
 import { VentureStrip } from '../components/VentureStrip';
 import { About } from '../components/About';
-import { Credentials } from '../components/Credentials';
 import { PullQuote } from '../components/PullQuote';
-import { Journals } from '../components/Journals';
-import { Media } from '../components/Media';
 import { Projects } from '../components/Projects';
 import { Journey } from '../components/Journey';
 import { Writing } from '../components/Writing';
@@ -26,10 +23,7 @@ export const Home = () => (
       <LeadStory />
       <VentureStrip />
       <About />
-      <Credentials />
       <PullQuote />
-      <Journals />
-      <Media />
       <Projects />
       <Journey />
       <Writing />

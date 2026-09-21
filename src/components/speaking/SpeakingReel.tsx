@@ -1,110 +1,41 @@
 import { useEffect, useState } from 'react';
 import { Pause, Play, VolumeX } from 'lucide-react';
-import { SectionRule } from './paper/SectionRule';
-import { Accent } from './Accent';
-import { Reveal } from './motion/Reveal';
-import { videos, type Video } from '../data/media';
+import { videos, type Video } from '../../data/media';
 
 /**
- * Media
+ * SpeakingReel
  *
- * The political feature: the clip on the left, the position it argues on the
- * right. This is the one section where the writing matters more than the
- * artefact — a ninety-second extract proves someone can speak, but it is the
- * column beside it that says what they were speaking for.
+ * The footage. One clip is set large as the lead; anything after it prints
+ * underneath in a row, the way a channel shows a feature and then its backlist.
  *
  * Clips are cued rather than embedded whole. Each entry carries `start` and
  * `end` in seconds, so the passage that matters opens on itself instead of
- * asking a reader to go looking for it inside an hour of footage.
+ * asking a viewer to go looking for it inside an hour of footage.
  */
-export const Media = () => {
+export const SpeakingReel = () => {
   if (videos.length === 0) return null;
 
+  const [lead, ...rest] = videos;
+
   return (
-    <section
-      id="media"
-      aria-labelledby="media-heading"
-      className="scroll-mt-20 border-b border-ink bg-paper py-16 sm:py-24"
-    >
-      <div className="shell">
-        <SectionRule
-          kicker="On the record"
-          mark="E"
-          id="media-heading"
-          title={
-            <>
-              Why I argued against the <Accent>Emergency</Accent>.
-            </>
-          }
-          lede="Debate is where I work out what I actually think. This is the position I would defend anywhere."
-        />
+    <div>
+      <p className="eyebrow text-muted">On the stage</p>
+      <div className="rule-hair mt-3" />
 
-        <div className="mt-12 grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-14">
-          <div className="space-y-8">
-            {videos.map((v, i) => (
-              <Reveal key={v.youtubeId + i} delay={i * 0.08}>
-                <VideoCard v={v} />
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal delay={0.12}>
-            <p className="eyebrow text-muted">The position</p>
-            <div className="rule-hair mt-3" />
-
-            <div className="column-copy mt-6 space-y-4 leading-relaxed text-ink-soft">
-              <p>
-                In June 1975 the Indian state suspended its own promises to its own
-                people. For twenty-one months elections were postponed, the press was
-                censored before it printed, and opposition politicians were detained
-                without trial. Almost all of it was, technically, legal.
-              </p>
-              <p>
-                That is the part I argued. The Emergency was not a coup. It was carried
-                out through the constitution&apos;s own machinery, by a government holding
-                a democratic mandate, and upheld at the time by the Supreme Court —
-                which is precisely why it should unsettle anyone who assumes a written
-                constitution is protection enough on its own.
-              </p>
-              <p>
-                Taking the opposition bench meant defending the harder proposition: that
-                efficiency is not a defence, that order bought with silence is not order,
-                and that a democracy is measured not by what it does while it feels
-                secure but by what it refuses to do when it is frightened.
-              </p>
-              <p className="text-ink">
-                I don&apos;t argue positions I wouldn&apos;t hold. That one I would take
-                again, in front of anybody.
-              </p>
-            </div>
-
-            <blockquote className="mt-8 border-l-2 border-orange pl-6">
-              <p className="deck text-xl leading-snug text-ink">
-                “Order bought with silence is not order.”
-              </p>
-            </blockquote>
-
-            <div className="mt-8 border-t border-rule pt-5">
-              <p className="eyebrow mb-3.5 text-muted">What I follow</p>
-              <ul className="flex list-none flex-wrap gap-1.5 p-0">
-                {[
-                  'Constitutional law',
-                  'Civil liberties',
-                  'Executive power',
-                  'Parliamentary debate',
-                  'Indian politics',
-                  'Non-partisan',
-                ].map((t) => (
-                  <li key={t}>
-                    <span className="chip">{t}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Reveal>
-        </div>
+      <div className="mt-6">
+        <VideoCard v={lead} />
       </div>
-    </section>
+
+      {rest.length > 0 && (
+        <ul className="mt-5 grid list-none gap-5 p-0 sm:grid-cols-2">
+          {rest.map((v, i) => (
+            <li key={v.youtubeId + i}>
+              <VideoCard v={v} compact />
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
   );
 };
 
@@ -115,7 +46,7 @@ const clock = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2,
  * An autoplaying clip, muted and cued.
  *
  * It starts as soon as the page loads rather than waiting to be scrolled to, so
- * the clip is already running by the time a reader arrives at the section.
+ * the clip is already running by the time a reader arrives at it.
  *
  * YouTube's own controls are suppressed, because they carry an unmute button
  * and this clip is meant to stay silent. Suppressing them would normally strand
@@ -123,9 +54,9 @@ const clock = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2,
  * control, which stops playback by unmounting the player outright.
  *
  * Playback begins on the client, never in the prerendered markup, so a crawler
- * receives the caption and the position rather than an embed it cannot read.
+ * receives the caption and the credit rather than an embed it cannot read.
  */
-const VideoCard = ({ v }: { v: Video }) => {
+const VideoCard = ({ v, compact = false }: { v: Video; compact?: boolean }) => {
   const [playing, setPlaying] = useState(false);
   /* Bumping this remounts the iframe, which is how the clip loops — see below. */
   const [cycle, setCycle] = useState(0);
@@ -186,7 +117,7 @@ const VideoCard = ({ v }: { v: Video }) => {
       <div className="relative aspect-video border-b border-ink bg-slab">
         {playing ? (
           /* The player is deliberately inert. Hovering a YouTube embed summons
-             its title bar, its related-video rail and — the thing this clip is
+             its title bar, its related-video rail and — the thing this card is
              specifically meant not to offer — an unmute button. Taking pointer
              events away from the frame removes all three at once, and the card
              supplies its own pause control below, outside the iframe. */
@@ -199,7 +130,7 @@ const VideoCard = ({ v }: { v: Video }) => {
           />
         ) : (
           /* The still is ours or it is nothing. YouTube's own thumbnail for a
-             recording of a whole debate is a frame of somebody else entirely,
+             recording of a whole event is a frame of somebody else entirely,
              so an entry without a `poster` is typeset instead of borrowing one. */
           <button
             type="button"
@@ -230,10 +161,7 @@ const VideoCard = ({ v }: { v: Video }) => {
                 <span className="headline text-2xl text-on-slab/90">{v.title}</span>
               </span>
             )}
-            <span
-              aria-hidden="true"
-              className="absolute inset-0 flex items-center justify-center"
-            >
+            <span aria-hidden="true" className="absolute inset-0 flex items-center justify-center">
               <span className="flex size-16 items-center justify-center bg-orange text-on-orange transition-transform duration-300 group-hover:scale-110">
                 <Play className="size-6 translate-x-0.5 fill-current" />
               </span>
@@ -248,7 +176,7 @@ const VideoCard = ({ v }: { v: Video }) => {
         </span>
       </div>
 
-      <figcaption className="flex flex-1 flex-col p-6 sm:p-7">
+      <figcaption className="flex flex-1 flex-col p-5 sm:p-6">
         <div className="flex items-baseline justify-between gap-4">
           <p className="eyebrow truncate text-orange">{v.outlet}</p>
           {v.start !== undefined && v.end !== undefined && (
@@ -258,11 +186,15 @@ const VideoCard = ({ v }: { v: Video }) => {
           )}
         </div>
 
-        <h3 className="headline mt-3.5 text-xl leading-snug text-ink sm:text-2xl">
+        <h3
+          className={`headline mt-3 leading-snug text-ink ${
+            compact ? 'text-lg' : 'text-xl sm:text-2xl'
+          }`}
+        >
           {v.title}
         </h3>
 
-        <p className="mt-2.5 flex-1 leading-relaxed text-ink-soft">{v.note}</p>
+        {!compact && <p className="mt-2.5 flex-1 leading-relaxed text-ink-soft">{v.note}</p>}
 
         <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3">
           <button

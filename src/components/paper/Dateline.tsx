@@ -13,7 +13,7 @@ const today = () =>
   new Date().toLocaleDateString('en-GB', { month: 'long', year: 'numeric' }).toUpperCase();
 
 export const Dateline = ({
-  centre = 'Peacemakers of Puducherry Council · Est. 2026',
+  centre = 'SciPhyLabs · Est. 2023 — Interactive physics',
   edition = 'Vol. I, Issue 1',
 }: {
   centre?: string;

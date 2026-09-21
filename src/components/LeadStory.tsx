@@ -3,7 +3,6 @@ import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { NewsPhoto } from './paper/NewsPhoto';
 import { Accent } from './Accent';
 import { CountUp } from './effects/CountUp';
-import { council } from '../data/council';
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -17,23 +16,19 @@ const ease = [0.16, 1, 0.3, 1] as const;
  * The columns are separated by hairlines rather than gaps, and they collapse to
  * a single stack below the large breakpoint — the vertical rules go with them,
  * because a rule between stacked blocks means nothing.
- *
- * The figures here are deliberately small and checkable. They are point-in-time
- * counts that come from `council.ts` rather than being typed twice, so they can
- * never drift away from what the council's own site publishes.
  */
-/* Mirrors the title tag. On-page text that corroborates the <title> is a
-   stronger signal than a title claiming something the page never says. */
-const identity = ['Founder.', 'Author.', 'Researcher.', 'Physics Educator.'];
+
+/* The four roles the whole paper is organised around — one supplement each for
+   the first three, and the research running under the fourth. */
+const identity = ['Founder.', 'Leader.', 'Speaker.', 'Researcher.'];
 
 const interests = [
   'Physics',
-  'Civic Leadership',
-  'Constitutional Law',
-  'Civil Liberties',
-  'Debate',
+  'Simulation',
   'Education',
+  'Public Speaking',
   'Research',
+  'Debate',
   'AI',
   'Building',
 ];
@@ -62,7 +57,7 @@ export const LeadStory = () => (
         className="headline headline-tight mt-4 text-[clamp(2.1rem,6.6vw,5rem)] text-ink"
       >
         Building at the intersection of <Accent>physics</Accent>, education &amp;
-        civic leadership.
+        the people it reaches.
       </motion.h2>
 
       <div className="rule-heavy mt-7" />
@@ -91,27 +86,25 @@ export const LeadStory = () => (
             <dl className="grid grid-cols-2 gap-x-6 gap-y-5">
               <div>
                 <dd className="headline text-3xl leading-none text-orange">
-                  <CountUp target={council.members} />
+                  <CountUp target={400} suffix="+" />
                 </dd>
                 <dt className="mt-2 text-xs leading-tight text-muted">
-                  Students registered
+                  Simulations built
                 </dt>
               </div>
               <div>
                 <dd className="headline text-3xl leading-none text-orange">
-                  <CountUp target={council.institutions} />
+                  <CountUp target={1000} suffix="+" />
                 </dd>
-                <dt className="mt-2 text-xs leading-tight text-muted">
-                  Institutions reached
-                </dt>
-              </div>
-              <div>
-                <dd className="headline text-3xl leading-none text-ink">2</dd>
-                <dt className="mt-2 text-xs leading-tight text-muted">Ventures founded</dt>
+                <dt className="mt-2 text-xs leading-tight text-muted">App downloads</dt>
               </div>
               <div>
                 <dd className="headline text-3xl leading-none text-ink">2023</dd>
                 <dt className="mt-2 text-xs leading-tight text-muted">Started building</dt>
+              </div>
+              <div>
+                <dd className="headline text-3xl leading-none text-ink">5</dd>
+                <dt className="mt-2 text-xs leading-tight text-muted">Exam syllabi covered</dt>
               </div>
             </dl>
           </div>
@@ -168,29 +161,19 @@ export const LeadStory = () => (
               rather than by memorising the formula that describes it.
             </p>
             <p>
-              Working on it taught me something the platform could not fix on its own. The
-              students I met were not short of ability or ambition. They were short of
-              structure — someone to hand them a project, a mentor, and a stage, and then
-              expect something of them.
+              It has grown into 400+ simulations and an app past a thousand downloads,
+              reaching students through schools and colleges rather than through
+              advertising. The work is the same as it was on day one: take a concept that
+              intimidates people, and hand them something they can move.
             </p>
             <p>
-              So in 2026 I founded the{' '}
-              <strong className="font-semibold text-ink">
-                Peacemakers of Puducherry Council
-              </strong>{' '}
-              — now the largest student organisation in Puducherry, spanning{' '}
-              {council.institutions} institutions with {council.members} registered
-              members, and backed by government, the public and the student community.
-            </p>
-            <p>
-              Outside both, I debate — most recently arguing the opposition case against
-              India&apos;s Emergency. Constitutional law and civil liberties are the
-              subjects I read for their own sake, and the council&apos;s non-partisan
-              footing is what forces me to argue them carefully rather than loudly.
+              The other half of the job is spoken aloud. I speak, I debate, and I take
+              positions in front of rooms that may not agree with me — because an argument
+              you will not defend in public is not really a position.
             </p>
             <p className="text-ink">
-              Both are still running. I would rather they be judged on what they ship than
-              on how they describe themselves.
+              I would rather be judged on what I ship and what I say than on how either is
+              described.
             </p>
           </div>
 
@@ -206,15 +189,13 @@ export const LeadStory = () => (
           </div>
 
           <a
-            href={council.href}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/ventures"
             className="group mt-8 flex items-center justify-between gap-4 border border-ink bg-paper-raised px-5 py-4 transition-colors hover:bg-ink"
           >
             <span className="min-w-0">
-              <span className="eyebrow block text-orange">The Council</span>
+              <span className="eyebrow block text-orange">Advanced EdTech</span>
               <span className="mt-1 block truncate text-sm text-ink transition-colors group-hover:text-paper">
-                Peacemakers of Puducherry Council
+                SciPhyLabs — the startup
               </span>
             </span>
             <ArrowUpRight

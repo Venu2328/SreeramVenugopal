@@ -1,5 +1,4 @@
 import { profiles } from '../data/profiles';
-import { council } from '../data/council';
 
 /**
  * Footer
@@ -14,8 +13,10 @@ const sitemap = [
   { name: 'About', href: '/#about' },
   { name: 'Ventures', href: '/ventures' },
   { name: 'SciPhyLabs', href: '/ventures#sciphylabs' },
-  { name: 'POPC', href: '/ventures#popc' },
-  { name: 'Journals', href: '/#journals' },
+  { name: 'Speaking', href: '/speaking' },
+  { name: 'Credentials', href: '/credentials' },
+  { name: 'Author', href: '/author' },
+  { name: 'Journals', href: '/author#journals' },
   { name: 'Projects', href: '/#projects' },
   { name: 'Contact', href: '/#contact' },
 ];
@@ -36,8 +37,8 @@ export const Footer = () => {
             Sreeram Venugopal<span className="text-orange">.</span>
           </p>
           <p className="max-w-sm text-sm leading-relaxed text-on-slab/65">
-            Founder &amp; Committee Leader of the {council.name}, and founder of
-            SciPhyLabs. This is my home on the web; everything below links back here.
+            Founder, author and researcher at SciPhyLabs, and an active keynote
+            speaker. This is my home on the web; everything below links back here.
           </p>
           <a
             href="mailto:sreeram23db@gmail.com"

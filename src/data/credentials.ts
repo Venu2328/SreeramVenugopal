@@ -23,7 +23,7 @@ export const credentials: Credential[] = [
     issuer: 'IIT Madras — School Connect',
     short: 'IIT Madras',
     year: '2024',
-    logo: '/iit-madras2.png',
+    logo: '/icons-institutions/iitm2sv.png',
     alt: 'Indian Institute of Technology Madras',
   },
   {
@@ -31,7 +31,7 @@ export const credentials: Credential[] = [
     issuer: 'IIT Madras — School Connect',
     short: 'IIT Madras',
     year: '2024',
-    logo: '/iit-madras2.png',
+    logo: '/icons-institutions/iitm2sv.png',
     alt: 'Indian Institute of Technology Madras',
   },
   {
@@ -39,7 +39,7 @@ export const credentials: Credential[] = [
     issuer: 'Google Digital Garage',
     short: 'Google',
     year: '2023',
-    logo: '/logos/google.svg',
+    logo: '/icons-institutions/google2sv.webp',
     alt: 'Google',
   },
   {
@@ -48,5 +48,26 @@ export const credentials: Credential[] = [
     short: 'iRISE',
     logo: '/logos/Rise-india.png',
     alt: 'iRISE',
+  },
+  {
+    title: 'English as a Second Language — for Tutors',
+    issuer: 'Saylor Academy',
+    short: 'Saylor Academy',
+    logo: '/icons-institutions/sayloracademy2sv.jpeg',
+    alt: 'Saylor Academy',
+  },
+  {
+    title: 'Python Fundamentals',
+    issuer: 'Duke University',
+    short: 'Duke',
+    logo: '/icons-institutions/duke2sv.jpeg',
+    alt: 'Duke University',
+  },
+  {
+    title: 'Awarded three times',
+    issuer: 'Jimper',
+    short: 'Jimper',
+    logo: '/icons-institutions/JIMPER2.png',
+    alt: 'Jimper',
   },
 ];

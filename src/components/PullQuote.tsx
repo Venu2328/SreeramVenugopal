@@ -16,7 +16,8 @@ export const PullQuote = () => (
 
         <blockquote className="mt-10">
           <p className="headline text-[clamp(1.9rem,5.6vw,4.25rem)] leading-[1.02] text-on-slab">
-            “Physics taught me how systems work. The council taught me that people are one.”
+            “Physics taught me how systems work. A room full of people taught me
+            they are one too.”
           </p>
         </blockquote>
 

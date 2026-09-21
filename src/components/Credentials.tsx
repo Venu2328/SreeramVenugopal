@@ -25,15 +25,15 @@ export const Credentials = () => (
   >
     <div className="shell">
       <SectionRule
-        kicker="Credentials"
-        mark="C"
+        kicker="The record"
+        mark="A"
         id="credentials-heading"
         title={
           <>
             Where I&apos;ve <Accent>trained</Accent>.
           </>
         }
-        lede="Coursework completed outside school, listed with the body that issued it and the year it was awarded."
+        lede="The same credentials as a written record — course, issuing body, and the year it was awarded."
       />
 
       <ul className="mt-12 grid list-none gap-6 p-0 sm:grid-cols-2 lg:grid-cols-4">

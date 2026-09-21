@@ -8,11 +8,14 @@ import { ScrollProgress } from './components/motion/ScrollProgress';
 import { Grain } from './components/effects/Grain';
 import { Home } from './pages/Home';
 import { Ventures } from './pages/Ventures';
+import { Speaking } from './pages/Speaking';
+import { Proof } from './pages/Proof';
+import { Author } from './pages/Author';
 
 /**
  * Routing, such as it is.
  *
- * Two pages do not justify a router. Navigation is plain `<a href>`, which
+ * Five pages do not justify a router. Navigation is plain `<a href>`, which
  * means every link is a real page load served from a real prerendered HTML
  * file — better for crawlers than client-side routing, and it keeps the
  * prerender step honest, since there is no route the build can silently miss.
@@ -35,7 +38,17 @@ export default function App({ path }: { path?: string }) {
       <ScrollProgress />
       <Grain />
 
-      {normalised === '/ventures' ? <Ventures /> : <Home />}
+      {normalised === '/ventures' ? (
+        <Ventures />
+      ) : normalised === '/speaking' ? (
+        <Speaking />
+      ) : normalised === '/credentials' ? (
+        <Proof />
+      ) : normalised === '/author' ? (
+        <Author />
+      ) : (
+        <Home />
+      )}
     </MotionConfig>
   );
 }
