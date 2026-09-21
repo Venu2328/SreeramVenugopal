@@ -20,6 +20,5 @@ export const institutions: Institution[] = [
   { name: 'Saylor Academy', logo: '/icons-institutions/sayloracademy2sv.jpeg', href: 'https://www.saylor.org/' },
   { name: 'Duke', logo: '/icons-institutions/duke2sv.jpeg', href: 'https://duke.edu/' },
   { name: 'Jimper', logo: '/icons-institutions/JIMPER2.png' },
-    // No mark supplied yet; the strip prints the name alone until there is one.
-  { name: 'Government of India', logo: '/icons-institutions/government-of-india.png' },
+    { name: 'Government of India', logo: '/icons-institutions/goi.svg' },
 ];

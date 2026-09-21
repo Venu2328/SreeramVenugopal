@@ -9,6 +9,11 @@ import { certificates, PILE_PLACEHOLDERS, type Certificate } from '../../data/ce
  * sheets at slight angles, each with the one real drop shadow on the site, so
  * they read as paper lying on paper.
  *
+ * A sheet has no aspect ratio of its own. Certificates arrive portrait,
+ * landscape and square, and forcing them all into one frame either crops them
+ * or strands them in white margins — so each sheet is given a width and the
+ * scan sets its own height. Nothing is trimmed and nothing is padded.
+ *
  * The box is square on purpose: a sheet is placed by its top edge, so with a
  * shallower box the lowest sheets in the fan hang out of the bottom and cover
  * the caption underneath.
@@ -89,7 +94,7 @@ export const CertificatePile = () => {
               /* Each sheet lifts a little on hover of the pile as a whole, the
                  outer ones further than the inner, so the stack fans rather
                  than sliding as one board. */
-              className="clipping absolute flex aspect-[4/3] items-center justify-center overflow-hidden p-1.5 origin-center transition-transform duration-500 group-hover:-translate-y-1.5"
+              className="clipping absolute block origin-center p-1.5 transition-transform duration-500 group-hover:-translate-y-1.5"
             >
               {cert ? (
                 <img
@@ -97,10 +102,13 @@ export const CertificatePile = () => {
                   alt={`${cert.title} — ${cert.issuer}`}
                   loading="lazy"
                   decoding="async"
-                  className="max-h-full max-w-full object-contain"
+                  /* Width from the placement, height from the scan itself. */
+                  className="block h-auto w-full"
                 />
               ) : (
-                <BlankSheet />
+                <span className="block aspect-[4/3]">
+                  <BlankSheet />
+                </span>
               )}
             </span>
           );

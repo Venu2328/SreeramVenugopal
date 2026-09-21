@@ -40,11 +40,30 @@ export const LeadStory = () => (
     className="border-b border-ink bg-paper py-10 sm:py-14"
   >
     <div className="shell">
-      <motion.p
+      {/*
+        The banner a front page runs above its lead — the one piece of news the
+        paper wants read before anything else, set on the accent so it cannot
+        be scrolled past.
+      */}
+      <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease }}
-        className="eyebrow text-orange"
+        className="flex flex-wrap items-center gap-x-5 gap-y-2 border-y-[3px] border-ink bg-orange px-5 py-4 sm:px-7"
+      >
+        <span className="eyebrow shrink-0 bg-ink px-3 py-1.5 text-sm font-bold text-paper">
+          Incoming
+        </span>
+        <p className="headline text-[clamp(1.1rem,2.6vw,2rem)] uppercase leading-tight tracking-tight text-on-orange">
+          IIT Madras — BS in Data Science &amp; Applications
+        </p>
+      </motion.div>
+
+      <motion.p
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.05, ease }}
+        className="eyebrow mt-8 text-orange"
       >
         Lead story
       </motion.p>
@@ -103,8 +122,10 @@ export const LeadStory = () => (
                 <dt className="mt-2 text-xs leading-tight text-muted">Started building</dt>
               </div>
               <div>
-                <dd className="headline text-3xl leading-none text-ink">5</dd>
-                <dt className="mt-2 text-xs leading-tight text-muted">Exam syllabi covered</dt>
+                <dd className="headline text-3xl leading-none text-ink">IITM</dd>
+                <dt className="mt-2 text-xs leading-tight text-muted">
+                  Incoming, BS Data Science
+                </dt>
               </div>
             </dl>
           </div>
@@ -155,25 +176,29 @@ export const LeadStory = () => (
 
           <div className="column-copy mt-5 space-y-4 leading-relaxed text-ink-soft">
             <p className="dropcap">
-              I founded <strong className="font-semibold text-ink">SciPhyLabs</strong> in
-              2023 — an interactive physics platform for students sitting JEE, NEET, AP,
-              SAT and CUET, built on the idea that you learn a system by changing it
-              rather than by memorising the formula that describes it.
+              I was fifteen when I got tired of physics being a wall of formulas nobody
+              explained the point of. So I built the thing I wanted instead —{' '}
+              <strong className="font-semibold text-ink">SciPhyLabs</strong>, 400+
+              simulations you can reach into and break, because you understand a system by
+              changing it, not by underlining it.
             </p>
             <p>
-              It has grown into 400+ simulations and an app past a thousand downloads,
-              reaching students through schools and colleges rather than through
-              advertising. The work is the same as it was on day one: take a concept that
-              intimidates people, and hand them something they can move.
+              Building something doesn&apos;t prove it works, though. So I went and checked.
+              I took the complete 2024–25 UDISE+ census — every school in India — and asked
+              whether the schools missing laboratories even have the electricity and
+              connectivity to run a virtual one. The answer was inconvenient for everyone
+              selling virtual labs, including me. I published it anyway.
             </p>
             <p>
-              The other half of the job is spoken aloud. I speak, I debate, and I take
-              positions in front of rooms that may not agree with me — because an argument
-              you will not defend in public is not really a position.
+              In between I started writing the textbook I wanted at fifteen, argued the
+              opposition case against the Emergency in front of a hall that was free to
+              disagree with me, and took first prize in Hindi elocution at JIPMER.
             </p>
             <p className="text-ink">
-              I would rather be judged on what I ship and what I say than on how either is
-              described.
+              I don&apos;t stay in one lane. I build the thing, write the book, run the
+              numbers, then stand up and defend all three — from Puducherry, not from
+              anyone&apos;s pipeline. Next: the BS in Data Science &amp; Applications at IIT
+              Madras, a full degree and not a certificate course.
             </p>
           </div>
 

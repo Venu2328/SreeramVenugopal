@@ -25,7 +25,7 @@ export const CertificateReel = () => {
   const has = certificates.length > 0;
   /* A short roll would show its join; repeating it gives the loop some length. */
   const source = has ? certificates : Array.from({ length: 4 });
-  const frames = source.length < 6 ? [...source, ...source, ...source] : source;
+  const frames = source.length < 4 ? [...source, ...source, ...source] : source;
 
   const Strip = ({ clone = false }: { clone?: boolean }) => (
     <ul aria-hidden={clone || undefined} className="list-none p-0">
@@ -34,13 +34,14 @@ export const CertificateReel = () => {
         return (
           <li key={i} className="px-7 py-3">
             {cert ? (
-              <figure className="flex aspect-[4/3] items-center justify-center border-2 border-ink bg-paper-white p-1.5">
+              <figure className="border-2 border-ink bg-paper-white p-1.5">
                 <img
                   src={cert.src}
                   alt={clone ? '' : `${cert.title} — ${cert.issuer}`}
                   loading="lazy"
                   decoding="async"
-                  className="max-h-full max-w-full object-contain"
+                  /* The frame takes the scan's shape; the scan is never cut. */
+                  className="block h-auto w-full"
                 />
               </figure>
             ) : (

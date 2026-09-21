@@ -24,6 +24,24 @@ export type Certificate = {
 
 export const certificates: Certificate[] = [
   {
+    title: 'ESL005: Business-Proficient English as a Second Language',
+    issuer: 'Saylor Academy',
+    year: '2025',
+    src: '/certificates-images/sayloracademy1sv.png',
+  },
+  {
+    title: 'CS105: Introduction to Python',
+    issuer: 'Saylor Academy',
+    year: '2025',
+    src: '/certificates-images/sayloracademysv2.png',
+  },
+  {
+    title: 'Fundamentals of Digital Marketing',
+    issuer: 'Google Digital Garage',
+    year: '2025',
+    src: '/certificates-images/googledigitalgarage-certified.png',
+  },
+  {
     title: 'Introduction to Robotics & STEM',
     issuer: 'India STEM Foundation',
     year: '2026',
