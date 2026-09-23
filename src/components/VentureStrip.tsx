@@ -106,7 +106,7 @@ export const VentureStrip = () => (
         Supplements
       </h2>
 
-      <ul className="mt-8 grid list-none gap-px border border-rule bg-rule p-0 sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="mt-8 grid list-none grid-cols-[minmax(0,1fr)] gap-px border border-rule bg-rule p-0 sm:grid-cols-2 lg:grid-cols-3">
         {supplements.map((s, i) => (
           <Reveal as="li" key={s.href} delay={i * 0.08}>
             <a

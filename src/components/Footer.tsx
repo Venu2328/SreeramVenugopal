@@ -30,7 +30,7 @@ export const Footer = () => {
       role="contentinfo"
       className="border-t-2 border-orange bg-slab-deep px-5 py-14 text-on-slab sm:px-8"
     >
-      <div className="mx-auto grid max-w-[1280px] gap-10 md:grid-cols-[1.6fr_1fr]">
+      <div className="mx-auto grid max-w-[1280px] grid-cols-[minmax(0,1fr)] gap-10 md:grid-cols-[1.6fr_1fr]">
         <div className="space-y-3.5">
           <p className="headline text-2xl">
             Sreeram Venugopal<span className="text-orange">.</span>
@@ -83,7 +83,7 @@ export const Footer = () => {
         <h2 id="find-me" className="eyebrow mb-6 text-on-slab/50">
           Find me online
         </h2>
-        <div className="grid gap-8 sm:grid-cols-3">
+        <div className="grid grid-cols-[minmax(0,1fr)] gap-8 sm:grid-cols-3">
           {groups.map((group) => (
             <div key={group} className="space-y-2.5">
               <h3 className="text-xs font-semibold text-on-slab">{group}</h3>

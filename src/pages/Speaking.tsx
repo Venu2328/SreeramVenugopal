@@ -60,7 +60,7 @@ export const SpeakingSection = () => (
             </p>
           </Reveal>
 
-          <div className="mt-14 grid gap-12 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:gap-14">
+          <div className="mt-14 grid grid-cols-[minmax(0,1fr)] gap-12 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:gap-14">
             <Reveal delay={0.12}>
               <SpeakingReel />
             </Reveal>

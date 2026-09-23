@@ -43,7 +43,7 @@ export const AdvancedEdtech = () => (
         </p>
       </Reveal>
 
-      <div className="mt-14 grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-16">
+      <div className="mt-14 grid grid-cols-[minmax(0,1fr)] gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-16">
         {/* ── The creed ───────────────────────────────────────────────── */}
         <Reveal delay={0.12}>
           <p className="eyebrow text-muted">The premise</p>

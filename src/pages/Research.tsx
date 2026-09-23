@@ -101,7 +101,7 @@ export const ResearchSection = () => (
             </div>
           </Reveal>
 
-          <div className="mt-14 grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-16">
+          <div className="mt-14 grid grid-cols-[minmax(0,1fr)] gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-16">
             {/* ── What stands behind it ──────────────────────────────── */}
             <Reveal delay={0.1}>
               <p className="eyebrow text-muted">What stands behind it</p>

@@ -45,7 +45,7 @@ export const Writing = () => (
         lede="Essays on what is actually broken in exam preparation, and what interactive-first learning does differently."
       />
 
-      <ul className="mt-12 grid list-none gap-6 p-0 lg:grid-cols-2">
+      <ul className="mt-12 grid list-none grid-cols-[minmax(0,1fr)] gap-6 p-0 lg:grid-cols-2">
         {articles.map((post, i) => (
           <Reveal as="li" key={post.href} delay={i * 0.08}>
             <figure className="flex h-full flex-col">

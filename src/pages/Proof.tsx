@@ -35,7 +35,7 @@ export const ProofSection = () => (
         <CertificateReel />
 
         <div className="shell py-14 sm:py-20 xl:pr-[9.5rem]">
-          <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-16">
+          <div className="grid grid-cols-[minmax(0,1fr)] gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-16">
             {/* ── The claim ───────────────────────────────────────────── */}
             <Reveal>
               <h1

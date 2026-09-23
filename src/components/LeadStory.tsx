@@ -82,7 +82,7 @@ export const LeadStory = () => (
       <div className="rule-heavy mt-7" />
 
       {/* Three columns, hairline-separated, stacking below lg */}
-      <div className="mt-9 grid gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.05fr)_minmax(0,1fr)] lg:gap-0">
+      <div className="mt-9 grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.05fr)_minmax(0,1fr)] lg:gap-0">
         {/* ── Column one: the standing identity ─────────────────────── */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}

@@ -20,7 +20,7 @@ export const Dateline = ({
   edition?: string;
 }) => (
   <div className="border-b border-rule bg-paper">
-    <div className="shell grid gap-1.5 py-3 text-center sm:grid-cols-3 sm:text-left">
+    <div className="shell grid grid-cols-[minmax(0,1fr)] gap-1.5 py-3 text-center sm:grid-cols-3 sm:text-left">
       <p className="eyebrow text-muted" suppressHydrationWarning>
         Puducherry, India — {today()}
       </p>

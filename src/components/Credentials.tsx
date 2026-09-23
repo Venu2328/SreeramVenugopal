@@ -36,7 +36,7 @@ export const Credentials = () => (
         lede="The same credentials as a written record — course, issuing body, and the year it was awarded."
       />
 
-      <ul className="mt-12 grid list-none gap-6 p-0 sm:grid-cols-2 lg:grid-cols-4">
+      <ul className="mt-12 grid list-none grid-cols-[minmax(0,1fr)] gap-6 p-0 sm:grid-cols-2 lg:grid-cols-4">
         {credentials.map((c, i) => (
           <Reveal as="li" key={c.title + i} delay={i * 0.07}>
             <CredentialClipping c={c} tilt={tilt[i % tilt.length]} />

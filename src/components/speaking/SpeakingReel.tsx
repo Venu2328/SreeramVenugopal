@@ -27,7 +27,7 @@ export const SpeakingReel = () => {
       </div>
 
       {rest.length > 0 && (
-        <ul className="mt-5 grid list-none gap-5 p-0 sm:grid-cols-2">
+        <ul className="mt-5 grid list-none grid-cols-[minmax(0,1fr)] gap-5 p-0 sm:grid-cols-2">
           {rest.map((v, i) => (
             <li key={v.youtubeId + i}>
               <VideoCard v={v} compact />
@@ -114,7 +114,14 @@ const VideoCard = ({ v, compact = false }: { v: Video; compact?: boolean }) => {
 
   return (
     <figure className="flex h-full flex-col border border-ink bg-paper-white">
-      <div className="relative aspect-video border-b border-ink bg-slab">
+      {/*
+        `w-full` is load-bearing. Without a definite width, `aspect-video`
+        resolves the other way round — it takes the height handed down by the
+        card's `h-full` and computes a width from it, which blew the frame out
+        to 2524px inside a 390px phone. Fixing the width makes the ratio derive
+        the height, which is the direction it was always meant to work.
+      */}
+      <div className="relative aspect-video w-full border-b border-ink bg-slab">
         {playing ? (
           /* The player is deliberately inert. Hovering a YouTube embed summons
              its title bar, its related-video rail and — the thing this card is
