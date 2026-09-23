@@ -1,4 +1,4 @@
-import { ArrowUpRight, Github } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Github } from 'lucide-react';
 import { Masthead } from '../components/paper/Masthead';
 import { Dateline } from '../components/paper/Dateline';
 import { Ticker } from '../components/paper/Ticker';
@@ -7,7 +7,7 @@ import { OrcidMark } from '../components/research/OrcidMark';
 import { Reveal } from '../components/motion/Reveal';
 import { Contact } from '../components/Contact';
 import { Footer } from '../components/Footer';
-import { assurances, github, indexes, orcid, papers } from '../data/journals';
+import { assurances, findings, github, indexes, orcid, papers } from '../data/journals';
 
 /**
  * The research supplement.
@@ -37,7 +37,7 @@ export const ResearchSection = () => (
 
         <div className="shell py-14 sm:py-20">
           <Reveal>
-            <p className="eyebrow text-orange">Preprint · Open access · 1,471,473 schools</p>
+            <p className="eyebrow text-orange">Research brief · Open access · 1,471,473 schools</p>
 
             <h1
               id="research-heading"
@@ -101,6 +101,21 @@ export const ResearchSection = () => (
             </div>
           </Reveal>
 
+          {/* The four figures the brief leads with. They are the argument;
+              everything below is the working. */}
+          <Reveal delay={0.08}>
+            <dl className="mt-12 grid grid-cols-2 gap-x-6 gap-y-7 border-y-2 border-ink py-7 lg:grid-cols-4">
+              {findings.map((f) => (
+                <div key={f.figure}>
+                  <dt className="headline text-[clamp(1.6rem,3.4vw,2.6rem)] leading-none text-orange">
+                    {f.figure}
+                  </dt>
+                  <dd className="mt-2.5 text-xs leading-tight text-muted">{f.label}</dd>
+                </div>
+              ))}
+            </dl>
+          </Reveal>
+
           <div className="mt-14 grid grid-cols-[minmax(0,1fr)] gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-16">
             {/* ── What stands behind it ──────────────────────────────── */}
             <Reveal delay={0.1}>
@@ -131,11 +146,10 @@ export const ResearchSection = () => (
                     src={p.cover ?? ''}
                     alt={p.title}
                     href={p.href}
-                    label="the-substitution-paradox.pdf"
-                    meta="Preprint · 1,471,473 schools"
-                    /* The scan is landscape (2408x1570); framing it portrait
-                       cropped a third of the page away down both sides. */
-                    aspect="aspect-[3/2]"
+                    label="Research-Whitepaper.pdf"
+                    meta="Research brief · 1,471,473 schools"
+                    /* The brief is a portrait page (1131x1600). */
+                    aspect="aspect-[3/4]"
                   />
 
                   <figcaption className="mt-6 border-t-2 border-ink pt-5">
@@ -156,6 +170,33 @@ export const ResearchSection = () => (
                     </h2>
 
                     <p className="mt-3 leading-relaxed text-ink-soft">{p.note}</p>
+
+                    <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+                      {p.href && (
+                        <a
+                          href={p.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn btn-solid group"
+                        >
+                          Read white paper
+                          <ArrowRight
+                            className="size-3.5 transition-transform group-hover:translate-x-1"
+                            aria-hidden="true"
+                          />
+                        </a>
+                      )}
+                      {p.preprint && (
+                        <a
+                          href={p.preprint}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="link-draw eyebrow text-muted transition-colors hover:text-ink"
+                        >
+                          The manuscript behind it
+                        </a>
+                      )}
+                    </div>
                   </figcaption>
                 </figure>
               ))}

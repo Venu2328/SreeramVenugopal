@@ -1,4 +1,5 @@
 import { Masthead } from '../components/paper/Masthead';
+import { PressRun } from '../components/paper/PressRun';
 import { Dateline } from '../components/paper/Dateline';
 import { LeadStory } from '../components/LeadStory';
 import { VentureStrip } from '../components/VentureStrip';
@@ -29,6 +30,7 @@ import { Footer } from '../components/Footer';
  */
 export const Home = () => (
   <>
+    <PressRun />
     <Masthead page="home" />
     <Dateline />
 

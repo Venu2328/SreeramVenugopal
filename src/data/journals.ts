@@ -18,22 +18,32 @@ export type Paper = {
   status: string;
   /** The journal or conference, once there is one. */
   venue?: string;
-  /** The manuscript itself. Given one, the frame opens it. */
+  /** The white paper. Given one, the frame opens it. */
   href?: string;
+  /** The manuscript behind the brief, if it is published separately. */
+  preprint?: string;
   /** How long the original work took. */
   duration?: string;
 };
 
 export const papers: Paper[] = [
   {
-    title:
-      'The Substitution Paradox: Digital Capacity for Virtual Science Laboratories Is Lowest in the Indian Schools That Lack Physical Laboratories',
-    note: 'Virtual laboratories are widely proposed as a remedy for the shortage of physical science laboratories in Indian schools — on an untested premise: that schools lacking laboratories have the electricity, devices and connectivity to run a digital substitute. This study tests that premise across all 1,471,473 schools in the complete 2024\u201325 UDISE+ census. Because a cloud-connected virtual laboratory needs all three at once while published statistics report only the three marginal distributions, sharp Fr\u00e9chet\u2013Hoeffding bounds are derived rather than independence assumed. Capacity and need are found to be inversely aligned.',
-    cover: '/researchpage.png',
-    status: 'Preprint',
+    title: 'Where Virtual Laboratories Cannot Reach',
+    note: 'At least 537,486 Indian schools cannot run a cloud-connected virtual science laboratory — and the schools that lack physical laboratories are disproportionately among them. An analysis of UDISE+ 2024–25 covering all 1,471,473 recognised schools, deriving sharp Fréchet–Hoeffding bounds rather than assuming the three infrastructure distributions are independent.',
+    cover: '/research-whitepaper-cover.png',
+    status: 'Research brief',
     duration: '14 months',
-    href: '/preprint.html',
+    href: '/Research-Whitepaper.pdf',
+    preprint: '/preprint.html',
   },
+];
+
+/** The findings the brief leads with, printed as a figure row. */
+export const findings = [
+  { figure: '63.5%', label: 'of schools can run a cloud-connected virtual laboratory — at most' },
+  { figure: '537,486', label: 'schools cannot, under any reading of the government data' },
+  { figure: '124,741', label: 'secondary schools have no functional science laboratory' },
+  { figure: '59.2%', label: 'of all schools are in states short of both' },
 ];
 
 /**

@@ -88,8 +88,8 @@ export const PdfFrame = ({
           >
             <Maximize2 className="size-3.5 text-paper" />
             <span className="eyebrow text-paper">
-            {href ? 'Read the preprint' : 'Click to open'}
-          </span>
+              {href ? 'Read white paper' : 'Click to open'}
+            </span>
           </span>
         </Face>
       </div>

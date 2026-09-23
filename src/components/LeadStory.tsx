@@ -1,7 +1,6 @@
 import { motion } from 'motion/react';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { NewsPhoto } from './paper/NewsPhoto';
-import { Accent } from './Accent';
 import { CountUp } from './effects/CountUp';
 
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -22,6 +21,25 @@ const ease = [0.16, 1, 0.3, 1] as const;
    the first three, and the research running under the fourth. */
 const identity = ['Founder.', 'Leader.', 'Speaker.', 'Researcher.'];
 
+/** The other stories on the front page, in the order a reader should meet them. */
+const secondary = [
+  {
+    kicker: 'Incoming',
+    head: 'IIT Madras — BS in Data Science & Applications',
+    sub: 'A full degree, not a certificate course.',
+  },
+  {
+    kicker: 'Research',
+    head: '537,486 schools cannot run a virtual laboratory',
+    sub: 'From the complete UDISE+ 2024–25 census of 1,471,473 schools.',
+  },
+  {
+    kicker: 'In production',
+    head: 'The G.O.A.T. Series enters its first volume',
+    sub: 'Academic physics for Grade 11 and 12, written against the syllabus.',
+  },
+];
+
 const interests = [
   'Physics',
   'Simulation',
@@ -41,43 +59,64 @@ export const LeadStory = () => (
   >
     <div className="shell">
       {/*
-        The banner a front page runs above its lead — the one piece of news the
-        paper wants read before anything else, set on the accent so it cannot
-        be scrolled past.
-      */}
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease }}
-        className="flex flex-wrap items-center gap-x-5 gap-y-2 border-y-[3px] border-ink bg-orange px-5 py-4 sm:px-7"
-      >
-        <span className="eyebrow shrink-0 bg-ink px-3 py-1.5 text-sm font-bold text-paper">
-          Incoming
-        </span>
-        <p className="headline text-[clamp(1.1rem,2.6vw,2rem)] uppercase leading-tight tracking-tight text-on-orange">
-          IIT Madras — BS in Data Science &amp; Applications
-        </p>
-      </motion.div>
+        A front page does not open with a name — it opens with the news. The
+        nameplate above is the paper; this is the story it is running today.
 
+        Set the way the papers this is modelled on set theirs: a hard declarative
+        headline in caps, a deck beneath it carrying the claim in full, and a row
+        of secondary heads across the foot so the page reads as an issue rather
+        than a single article.
+      */}
       <motion.p
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.05, ease }}
-        className="eyebrow mt-8 text-orange"
+        transition={{ duration: 0.7, ease }}
+        className="eyebrow text-orange"
       >
-        Lead story
+        Lead story <span className="ml-3 text-muted">Vol. I · No. 1</span>
       </motion.p>
 
       <motion.h2
         id="lead-heading"
         initial={{ opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9, delay: 0.08, ease }}
-        className="headline headline-tight mt-4 text-[clamp(2.1rem,6.6vw,5rem)] text-ink"
+        transition={{ duration: 0.9, delay: 0.06, ease }}
+        className="headline mt-4 text-[clamp(2.4rem,9.5vw,7.5rem)] uppercase leading-[0.86] tracking-[-0.035em] text-ink"
       >
-        Building at the intersection of <Accent>physics</Accent>, education &amp;
-        the people it reaches.
+        Physics, rebuilt
+        <br />
+        from <span className="text-orange">scratch</span>
       </motion.h2>
+
+      <div className="rule-double mt-7" />
+
+      <motion.p
+        initial={{ opacity: 0, y: 14 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.12, ease }}
+        className="deck mx-auto mt-6 max-w-4xl text-center text-[clamp(1.1rem,2.4vw,1.9rem)] leading-snug text-ink"
+      >
+        A fifteen-year-old built the laboratory his school did not have — then
+        proved 537,486 others could not run one either.
+      </motion.p>
+
+      {/* Secondary heads, the way a front page lines up its other stories. */}
+      <motion.ul
+        initial={{ opacity: 0, y: 14 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.18, ease }}
+        className="mt-9 grid list-none gap-px border-y-2 border-ink bg-rule p-0 sm:grid-cols-3"
+      >
+        {secondary.map((h) => (
+          <li key={h.head} className="bg-paper px-5 py-5">
+            <p className="eyebrow text-orange">{h.kicker}</p>
+            <h3 className="headline mt-2.5 text-lg leading-tight text-ink sm:text-xl">
+              {h.head}
+            </h3>
+            <p className="mt-2 text-sm leading-snug text-muted">{h.sub}</p>
+          </li>
+        ))}
+      </motion.ul>
 
       <div className="rule-heavy mt-7" />
 

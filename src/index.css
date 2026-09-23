@@ -383,6 +383,18 @@ html.cursor-custom :is(input, textarea, select, [contenteditable]) {
   cursor: auto !important;
 }
 
+/*
+ * The opening sequence locks scrolling from <html> rather than from the body.
+ *
+ * The masthead's mobile-menu effect writes `body.style.overflow` on mount and
+ * clears it, which silently undid an inline lock set on the same property. Two
+ * owners of one inline style is a race; a class on a different element is not.
+ */
+html.press-run,
+html.press-run body {
+  overflow: hidden;
+}
+
 /* ── Chrome ───────────────────────────────────────────────────────────── */
 
 .skip-link {
