@@ -23,11 +23,16 @@
 
     <link rel="canonical" href="https://sreeramvenugopal.com/" />
 
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2" />
-    <link rel="icon" type="image/x-icon" sizes="any" href="/favicon.ico?v=2" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2" />
-    <link rel="mask-icon" href="/favicon.svg?v=2" color="#d97757" />
+    <!--
+      Icons carry ?v=3 so browsers that cached the previous mark fetch the new
+      one; a favicon is among the most aggressively cached files a site serves.
+      There is no mask-icon: that slot takes a monochrome SVG, and this mark is
+      a full-colour raster.
+    -->
+    <link rel="icon" type="image/x-icon" sizes="any" href="/favicon.ico?v=3" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=3" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=3" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=3" />
     <link rel="manifest" href="/site.webmanifest" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
