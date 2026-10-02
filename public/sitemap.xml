@@ -3,49 +3,79 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://sreeramvenugopal.com/</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://sreeramvenugopal.com/og-image.png</image:loc>
-      <image:title>Sreeram Venugopal &#8212; Founder, Author &amp; Researcher at SciPhyLabs</image:title>
-      <image:caption>Founder, author and researcher at SciPhyLabs, an interactive physics platform for students preparing for JEE, NEET, AP, SAT and CUET.</image:caption>
+      <image:loc>https://sreeramvenugopal.com/og/home.png</image:loc>
+      <image:title>Sreeram Venugopal — Founder, Author &amp; Researcher at SciPhyLabs</image:title>
+      <image:caption>Incoming IIT Madras BS in Data Science &amp; Applications; founder of SciPhyLabs.</image:caption>
     </image:image>
   </url>
   <url>
     <loc>https://sreeramvenugopal.com/ventures</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://sreeramvenugopal.com/og/ventures.png</image:loc>
+      <image:title>Advanced EdTech — SciPhyLabs</image:title>
+      <image:caption>An interactive physics platform with 400+ simulations for JEE, NEET, AP, SAT and CUET.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://sreeramvenugopal.com/speaking</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://sreeramvenugopal.com/og/speaking.png</image:loc>
+      <image:title>Active Keynote Speaker &amp; Leader</image:title>
+      <image:caption>Talks, debates and panels, with unedited footage of arguments made in public.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://sreeramvenugopal.com/credentials</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://sreeramvenugopal.com/og/credentials.png</image:loc>
+      <image:title>Proof of Work &amp; Credentials</image:title>
+      <image:caption>Coursework and recognition from IIT Madras, Google, Saylor Academy and the India STEM Foundation.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://sreeramvenugopal.com/author</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://sreeramvenugopal.com/og/author.png</image:loc>
+      <image:title>The G.O.A.T. Series</image:title>
+      <image:caption>Academic physics books for Grade 11 and 12 under the Guide Of All Time series.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://sreeramvenugopal.com/research</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://sreeramvenugopal.com/og/research.png</image:loc>
+      <image:title>Where Virtual Laboratories Cannot Reach</image:title>
+      <image:caption>Analysis of UDISE+ 2024–25 across all 1,471,473 recognised Indian schools.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://sreeramvenugopal.com/writing</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://sreeramvenugopal.com/og/writing.png</image:loc>
+      <image:title>Notes on Learning</image:title>
+      <image:caption>Essays on exam preparation and interactive-first learning.</image:caption>
+    </image:image>
   </url>
 </urlset>

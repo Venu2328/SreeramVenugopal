@@ -117,10 +117,14 @@ export const Masthead = ({
               The nameplate, set to fill its measure. A front-page name is not a
               heading with a size — it is a block of type that runs wall to wall,
               so it is tracked hard and let go as large as the column allows.
+
+              A <p>, not an <h1>: it is the publication's title and it repeats on
+              all seven URLs. As a heading it told a crawler every page was about
+              the same subject. Each page's own headline carries the h1 instead.
             */}
-            <h1 className="headline text-center text-[clamp(2.4rem,11.5vw,10rem)] leading-[0.82] tracking-[-0.045em] text-ink">
+            <p className="headline text-center text-[clamp(2.4rem,11.5vw,10rem)] leading-[0.82] tracking-[-0.045em] text-ink">
               SREERAM <span className="text-orange">VENU</span>GOPAL
-            </h1>
+            </p>
           </a>
 
           <div className="mt-5 border-t-[3px] border-b border-ink py-3">

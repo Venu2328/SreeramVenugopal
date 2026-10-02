@@ -2,6 +2,7 @@ import { ArrowUpRight } from 'lucide-react';
 import { Masthead } from '../components/paper/Masthead';
 import { Dateline } from '../components/paper/Dateline';
 import { Ticker } from '../components/paper/Ticker';
+import { type ReactNode } from 'react';
 import { Reveal } from '../components/motion/Reveal';
 import { BookShelf } from '../components/author/BookShelf';
 import { Contact } from '../components/Contact';
@@ -47,7 +48,7 @@ const claims = [
 ];
 
 /** The supplement body, so the front page can run it inline. */
-export const BooksSection = () => (
+export const BooksSection = ({ lead = false }: { lead?: boolean }) => (
   <>
       <section
         id="books"
@@ -62,14 +63,14 @@ export const BooksSection = () => (
               Authoring academic books to solve Indian education&apos;s #1 problem
             </p>
 
-            <h1
+            <Head lead={lead}
               id="books-heading"
               className="headline mt-5 text-[clamp(2.5rem,9.5vw,7.5rem)] leading-[0.88] tracking-[-0.03em] text-ink"
             >
               THE MOST MODERN
               <br />
               <span className="text-orange">BOOKS EVER</span>
-            </h1>
+            </Head>
 
             <div className="rule-double mt-8" />
           </Reveal>
@@ -142,10 +143,21 @@ export const Author = () => (
     <Dateline centre={`${series.name} · Physics`} edition="Authoring Supplement" />
 
     <main id="main-content" tabIndex={-1}>
-      <BooksSection />
+      <BooksSection lead />
       <Contact />
     </main>
 
     <Footer />
   </>
 );
+
+/**
+ * The section's heading, promoted to <h1> only when the section is the whole
+ * page. Inline on the front page it is one story among seven, so it is an <h2>.
+ */
+const Head = ({
+  lead,
+  children,
+  ...rest
+}: { lead: boolean; children: ReactNode } & Record<string, unknown>) =>
+  lead ? <h1 {...rest}>{children}</h1> : <h2 {...rest}>{children}</h2>;

@@ -15,7 +15,7 @@ import { articles, writingHome } from '../data/writing';
  * Every card links to the article itself rather than to the profile, and
  * nothing appears here that has not actually been published.
  */
-export const Writing = () => (
+export const Writing = ({ lead = false }: { lead?: boolean }) => (
   <section
     id="writing"
     aria-labelledby="writing-heading"
@@ -23,6 +23,7 @@ export const Writing = () => (
   >
     <div className="shell">
       <SectionRule
+        lead={lead}
         kicker="Writing"
         mark="A"
         id="writing-heading"

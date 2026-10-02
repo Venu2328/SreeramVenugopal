@@ -24,7 +24,7 @@ export const Ventures = () => (
     />
 
     <main id="main-content" tabIndex={-1}>
-      <AdvancedEdtech />
+      <AdvancedEdtech lead />
       <Contact />
     </main>
 

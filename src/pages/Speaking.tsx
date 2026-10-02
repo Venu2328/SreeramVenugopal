@@ -1,6 +1,7 @@
 import { Masthead } from '../components/paper/Masthead';
 import { Dateline } from '../components/paper/Dateline';
 import { Ticker } from '../components/paper/Ticker';
+import { type ReactNode } from 'react';
 import { Reveal } from '../components/motion/Reveal';
 import { SpeakingReel } from '../components/speaking/SpeakingReel';
 import { SocialStrips } from '../components/speaking/SocialStrips';
@@ -27,7 +28,7 @@ const ticker = [
 ];
 
 /** The supplement body, so the front page can run it inline. */
-export const SpeakingSection = () => (
+export const SpeakingSection = ({ lead = false }: { lead?: boolean }) => (
   <>
       <section
         id="speaking"
@@ -38,14 +39,14 @@ export const SpeakingSection = () => (
 
         <div className="shell py-14 sm:py-20">
           <Reveal>
-            <h1
+            <Head lead={lead}
               id="speaking-heading"
               className="headline text-[clamp(2.4rem,10.5vw,8.5rem)] leading-[0.88] tracking-[-0.03em] text-ink"
             >
               ACTIVE KEYNOTE
               <br />
               SPEAKER &amp; <span className="text-orange">LEADER</span>
-            </h1>
+            </Head>
           </Reveal>
 
           <Reveal delay={0.08}>
@@ -90,10 +91,21 @@ export const Speaking = () => (
     <Dateline centre="Keynotes · Debate · Panels" edition="Speaking Supplement" />
 
     <main id="main-content" tabIndex={-1}>
-      <SpeakingSection />
+      <SpeakingSection lead />
       <Contact />
     </main>
 
     <Footer />
   </>
 );
+
+/**
+ * The section's heading, promoted to <h1> only when the section is the whole
+ * page. Inline on the front page it is one story among seven, so it is an <h2>.
+ */
+const Head = ({
+  lead,
+  children,
+  ...rest
+}: { lead: boolean; children: ReactNode } & Record<string, unknown>) =>
+  lead ? <h1 {...rest}>{children}</h1> : <h2 {...rest}>{children}</h2>;

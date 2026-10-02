@@ -29,7 +29,7 @@ export const WritingPage = () => (
       <div className="border-b border-ink">
         <Ticker words={ticker} />
       </div>
-      <Writing />
+      <Writing lead />
       <Contact />
     </main>
 

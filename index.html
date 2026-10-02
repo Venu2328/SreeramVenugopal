@@ -45,8 +45,8 @@
     <meta property="og:url" content="https://sreeramvenugopal.com/" />
     <meta property="og:title" content="Sreeram Venugopal — Founder, Author &amp; Researcher at SciPhyLabs" />
     <meta property="og:description" content="Incoming IIT Madras BS, Data Science & Applications. Founder, author and researcher at SciPhyLabs — interactive physics for JEE, NEET, AP, SAT and CUET." />
-    <meta property="og:image" content="https://sreeramvenugopal.com/og-image.png" />
-    <meta property="og:image:secure_url" content="https://sreeramvenugopal.com/og-image.png" />
+    <meta property="og:image" content="https://sreeramvenugopal.com/og/home.png" />
+    <meta property="og:image:secure_url" content="https://sreeramvenugopal.com/og/home.png" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -60,7 +60,7 @@
     <meta name="twitter:url" content="https://sreeramvenugopal.com/" />
     <meta name="twitter:title" content="Sreeram Venugopal — Founder, Author &amp; Researcher at SciPhyLabs" />
     <meta name="twitter:description" content="Incoming IIT Madras BS, Data Science & Applications. Founder, author and researcher at SciPhyLabs — interactive physics for JEE, NEET, AP, SAT and CUET." />
-    <meta name="twitter:image" content="https://sreeramvenugopal.com/og-image.png" />
+    <meta name="twitter:image" content="https://sreeramvenugopal.com/og/home.png" />
     <meta name="twitter:image:alt" content="Sreeram Venugopal — Founder, Author &amp; Researcher at SciPhyLabs" />
     <meta name="twitter:creator" content="@sreeram23_" />
     <meta name="twitter:site" content="@sreeram23_" />
@@ -83,7 +83,7 @@
       "url": "https://sreeramvenugopal.com/",
       "image": {
         "@type": "ImageObject",
-        "url": "https://sreeramvenugopal.com/og-image.png",
+        "url": "https://sreeramvenugopal.com/og/home.png",
         "caption": "Sreeram Venugopal — Founder, Author & Researcher at SciPhyLabs"
       },
       "jobTitle": "Founder, Author & Researcher at SciPhyLabs",
@@ -343,12 +343,24 @@
   <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <div id="root"></div>
+    <!--
+      Without JavaScript the page is still fully present — it is prerendered at
+      build time — but the scroll reveals ship their opening state inline, which
+      leaves those blocks at opacity 0 with nothing to animate them back. This
+      hands them straight to their finished state, so a reader with scripting off
+      gets the whole paper rather than a page with holes in it.
+
+      It also replaces the stale banner this used to be: that claimed the site
+      required JavaScript, used dark-theme colours the site stopped using, and
+      repeated a top-level heading that every page already carries.
+    -->
     <noscript>
-      <div style="padding:2rem;text-align:center;color:#f2ece3;background:#0d0b0a;font-family:system-ui,sans-serif;">
-        <h1>Sreeram Venugopal</h1>
-        <p>Founder, author and researcher at SciPhyLabs, and an active keynote speaker. Puducherry, India.</p>
-        <p>This site requires JavaScript. Reach me at <a style="color:#e0242a" href="mailto:sreeram23db@gmail.com">sreeram23db@gmail.com</a>.</p>
-      </div>
+      <style>
+        [style*="opacity:0"] {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      </style>
     </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>

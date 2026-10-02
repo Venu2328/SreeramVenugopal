@@ -19,6 +19,7 @@ export const SectionRule = ({
   lede,
   action,
   id,
+  lead = false,
   className = '',
 }: {
   kicker: string;
@@ -29,6 +30,11 @@ export const SectionRule = ({
   action?: ReactNode;
   /** Applied to the heading so `aria-labelledby` can point at it. */
   id?: string;
+  /**
+   * True when this section is the whole page. The heading is then the page's
+   * h1; inline on the front page it is one story among several, so it is an h2.
+   */
+  lead?: boolean;
   className?: string;
 }) => (
   <Reveal className={className}>
@@ -42,9 +48,15 @@ export const SectionRule = ({
     <div className="rule-heavy mt-3" />
 
     <div className="mt-6 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
-      <h2 id={id} className="headline text-[clamp(2rem,5.5vw,3.75rem)] text-ink">
-        {title}
-      </h2>
+      {lead ? (
+        <h1 id={id} className="headline text-[clamp(2rem,5.5vw,3.75rem)] text-ink">
+          {title}
+        </h1>
+      ) : (
+        <h2 id={id} className="headline text-[clamp(2rem,5.5vw,3.75rem)] text-ink">
+          {title}
+        </h2>
+      )}
       {action && <div className="shrink-0">{action}</div>}
     </div>
 

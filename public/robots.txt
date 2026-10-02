@@ -28,7 +28,7 @@ Allow: /
 # Deliberately allowed. A growing share of "who is Sreeram Venugopal"
 # queries is answered by assistants rather than a results page, and a
 # blocked crawler cannot cite what it cannot read. Allowing these is
-# what lets them state the council role correctly rather than guess.
+# what lets them state the record correctly rather than guess at it.
 
 User-agent: GPTBot
 Allow: /

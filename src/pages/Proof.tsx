@@ -1,6 +1,7 @@
 import { Masthead } from '../components/paper/Masthead';
 import { Dateline } from '../components/paper/Dateline';
 import { LogoTicker } from '../components/paper/LogoTicker';
+import { type ReactNode } from 'react';
 import { Reveal } from '../components/motion/Reveal';
 import { CertificatePile } from '../components/proof/CertificatePile';
 import { CertificateReel } from '../components/proof/CertificateReel';
@@ -22,7 +23,7 @@ import { useState } from 'react';
  * who wants course names and dates rather than scans still gets them.
  */
 /** The supplement body, so the front page can run it inline. */
-export const ProofSection = () => (
+export const ProofSection = ({ lead = false }: { lead?: boolean }) => (
   <>
       <section
         id="proof"
@@ -38,7 +39,7 @@ export const ProofSection = () => (
           <div className="grid grid-cols-[minmax(0,1fr)] gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-16">
             {/* ── The claim ───────────────────────────────────────────── */}
             <Reveal>
-              <h1
+              <Head lead={lead}
                 id="proof-heading"
                 className="headline text-[clamp(2.4rem,7.5vw,5.5rem)] leading-[0.92] tracking-[-0.025em] text-ink"
               >
@@ -47,7 +48,7 @@ export const ProofSection = () => (
                 <span className="text-orange">PROOF OF WORK</span>
                 <br />
                 &amp; credentials.
-              </h1>
+              </Head>
 
               <div className="rule-double mt-8" />
 
@@ -94,7 +95,7 @@ export const Proof = () => (
     <Dateline centre="Certified · Trained · Recognised" edition="Credentials Supplement" />
 
     <main id="main-content" tabIndex={-1}>
-      <ProofSection />
+      <ProofSection lead />
       <Contact />
     </main>
 
@@ -155,3 +156,14 @@ const InstitutionBadge = ({ inst }: { inst: Institution }) => {
     <span className={shell}>{body}</span>
   );
 };
+
+/**
+ * The section's heading, promoted to <h1> only when the section is the whole
+ * page. Inline on the front page it is one story among seven, so it is an <h2>.
+ */
+const Head = ({
+  lead,
+  children,
+  ...rest
+}: { lead: boolean; children: ReactNode } & Record<string, unknown>) =>
+  lead ? <h1 {...rest}>{children}</h1> : <h2 {...rest}>{children}</h2>;

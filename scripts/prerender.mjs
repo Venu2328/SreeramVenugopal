@@ -39,6 +39,7 @@ const routes = [
       description:
         'SciPhyLabs — interactive physics built by Sreeram Venugopal, with 400+ simulations for students preparing for JEE, NEET, AP, SAT and CUET. Founder background, the simulations themselves, and the app on Android and iOS.',
       canonical: `${ORIGIN}/ventures`,
+      card: 'ventures',
     },
   },
   {
@@ -50,6 +51,7 @@ const routes = [
       description:
         'Sreeram Venugopal speaks and debates at schools, colleges, panels and youth parliaments across India, arguing for interactive learning and civic engagement. Unedited footage of talks and debates, plus every verified profile where the record is kept.',
       canonical: `${ORIGIN}/speaking`,
+      card: 'speaking',
     },
   },
   {
@@ -61,6 +63,7 @@ const routes = [
       description:
         'The certificates behind the claims: coursework, training and recognition awarded to Sreeram Venugopal by IIT Madras, Google, iRISE, Saylor Academy, Duke, Jimper and the Government of India — each one issued, dated and scanned.',
       canonical: `${ORIGIN}/credentials`,
+      card: 'credentials',
     },
   },
   {
@@ -72,6 +75,7 @@ const routes = [
       description:
         'The G.O.A.T. Series — Guide Of All Time — academic physics books by Sreeram Venugopal for Grade 11 and 12, written against how modern Indian education teaches the subject and built around a Gen Z learning strategy, interactive simulations and a PYQ vault.',
       canonical: `${ORIGIN}/author`,
+      card: 'author',
     },
   },
   {
@@ -83,6 +87,7 @@ const routes = [
       description:
         'Peer-reviewed research by Sreeram Venugopal on virtual laboratories and infrastructure in Indian school education, tested against the complete 2024-25 UDISE+ census. Indexed on ORCID, with the working record on GitHub.',
       canonical: `${ORIGIN}/research`,
+      card: 'research',
     },
   },
   {
@@ -93,9 +98,171 @@ const routes = [
       description:
         'Essays by Sreeram Venugopal on what is actually broken in exam preparation and what interactive-first learning does differently, published on Medium.',
       canonical: `${ORIGIN}/writing`,
+      card: 'writing',
     },
   },
 ];
+
+/**
+ * Per-route structured data.
+ *
+ * Every route used to inherit index.html's graph wholesale, which meant seven
+ * URLs each declaring themselves the ProfilePage for the front page, and seven
+ * copies of one FAQPage and one ItemList. That contradicts each page's own
+ * canonical and is a textbook duplicate signal — the likeliest reason the
+ * supplements were not being indexed.
+ *
+ * Now the shared entities (Person, SciPhyLabs, WebSite) stay on every page,
+ * because they are facts about the site rather than about the page, while the
+ * page-specific blocks are swapped for one that says what this URL is.
+ */
+const crumb = (name, path) => ({
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${ORIGIN}/` },
+    { '@type': 'ListItem', position: 2, name, item: `${ORIGIN}${path}` },
+  ],
+});
+
+const page = (path, name, description, extra = {}) => ({
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': `${ORIGIN}${path}#webpage`,
+  url: `${ORIGIN}${path}`,
+  name,
+  description,
+  isPartOf: { '@id': `${ORIGIN}/#website` },
+  about: { '@id': `${ORIGIN}/#person` },
+  primaryImageOfPage: { '@id': `${ORIGIN}${path}#primaryimage` },
+  inLanguage: 'en-US',
+  breadcrumb: crumb(name, path),
+  ...extra,
+});
+
+const schemaFor = {
+  '/ventures': [
+    page('/ventures', 'Advanced EdTech — SciPhyLabs',
+      'SciPhyLabs, the interactive physics platform founded by Sreeram Venugopal.',
+      { mainEntity: { '@id': `${ORIGIN}/#sciphylab` } }),
+    {
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: 'SciPhyLabs',
+      applicationCategory: 'EducationalApplication',
+      operatingSystem: 'Android, iOS, Web',
+      url: 'https://sciphylabs.vercel.app',
+      author: { '@id': `${ORIGIN}/#person` },
+      description:
+        'An interactive physics platform with 400+ simulations, aligned to the JEE, NEET, AP, SAT and CUET syllabi.',
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' },
+    },
+  ],
+  '/speaking': [
+    page('/speaking', 'Active Keynote Speaker & Leader',
+      'Talks, debates and panels by Sreeram Venugopal, with unedited footage.'),
+    {
+      '@context': 'https://schema.org',
+      '@type': 'VideoObject',
+      name: 'Taking the floor — Youth Parliament, opposition bench',
+      description:
+        'Ninety seconds of a case argued in front of a hall, unscripted and on the record.',
+      thumbnailUrl: `${ORIGIN}/thumbnail-yt1.png`,
+      uploadDate: '2026-09-20',
+      embedUrl: 'https://www.youtube-nocookie.com/embed/mUIMg18RI4U',
+      contentUrl: 'https://www.youtube.com/watch?v=mUIMg18RI4U',
+      author: { '@id': `${ORIGIN}/#person` },
+    },
+  ],
+  '/credentials': [
+    page('/credentials', 'Proof of Work & Credentials',
+      'Coursework, training and recognition awarded to Sreeram Venugopal, each one scanned.'),
+    {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      '@id': `${ORIGIN}/credentials#credentials`,
+      name: 'Credentials held by Sreeram Venugopal',
+      itemListElement: [
+        ['CS in Data Science & AI', 'IIT Madras', '2024'],
+        ['Economic Finance & Money Matters', 'IIT Madras', '2024'],
+        ['Fundamentals of Digital Marketing', 'Google Digital Garage', '2025'],
+        ['Introduction to Robotics & STEM', 'India STEM Foundation', '2026'],
+        ['ESL005: Business-Proficient English as a Second Language', 'Saylor Academy', '2025'],
+        ['CS105: Introduction to Python', 'Saylor Academy', '2025'],
+      ].map(([name, issuer, year], i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        item: {
+          '@type': 'EducationalOccupationalCredential',
+          name,
+          credentialCategory: 'certificate',
+          dateCreated: year,
+          recognizedBy: { '@type': 'Organization', name: issuer },
+          about: { '@id': `${ORIGIN}/#person` },
+        },
+      })),
+    },
+  ],
+  '/author': [
+    page('/author', 'The G.O.A.T. Series',
+      'Academic physics books for Grade 11 and 12, written by Sreeram Venugopal.'),
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Book',
+      name: 'Physics Masterbook — for Grade 11 & 12',
+      author: { '@id': `${ORIGIN}/#person` },
+      inLanguage: 'en',
+      bookEdition: 'The G.O.A.T. Series',
+      about: ['Physics', 'JEE', 'NEET', 'CUET', 'Competitive exam preparation'],
+      publisher: { '@id': `${ORIGIN}/#sciphylab` },
+      image: `${ORIGIN}/books/PHYSICS (1) sv.png`,
+    },
+  ],
+  '/research': [
+    page('/research', 'Research Papers, Journals & Conferences',
+      'Peer-review-pending research by Sreeram Venugopal on virtual laboratories in Indian schools.'),
+    {
+      '@context': 'https://schema.org',
+      '@type': 'ScholarlyArticle',
+      '@id': `${ORIGIN}/research#paper`,
+      headline:
+        'Where Virtual Laboratories Cannot Reach: digital capacity for virtual science laboratories is lowest in the Indian schools that lack physical laboratories',
+      name: 'Where Virtual Laboratories Cannot Reach',
+      author: { '@id': `${ORIGIN}/#person` },
+      datePublished: '2026-09-21',
+      inLanguage: 'en',
+      license: 'https://creativecommons.org/licenses/by/4.0/',
+      creativeWorkStatus: 'Preprint',
+      url: `${ORIGIN}/research`,
+      sameAs: `${ORIGIN}/preprint.html`,
+      abstract:
+        'At least 537,486 Indian schools cannot run a cloud-connected virtual science laboratory, and the schools that lack physical laboratories are disproportionately among them. An analysis of the complete UDISE+ 2024-25 census covering all 1,471,473 recognised schools, deriving sharp Frechet-Hoeffding bounds rather than assuming independence.',
+      keywords:
+        'virtual laboratories, Indian school education, UDISE+, STEM infrastructure, educational technology, Frechet-Hoeffding bounds',
+      encoding: { '@type': 'MediaObject', contentUrl: `${ORIGIN}/Research-Whitepaper.pdf`, encodingFormat: 'application/pdf' },
+    },
+  ],
+  '/writing': [
+    page('/writing', 'Writing — Notes on learning',
+      'Essays by Sreeram Venugopal on exam preparation and interactive-first learning.'),
+  ],
+};
+
+/**
+ * Blocks that belong to the front page alone. A supplement carrying these is
+ * claiming to be the profile page, and repeating one FAQ across seven URLs is
+ * how a site teaches a crawler to ignore its FAQ entirely.
+ */
+const HOME_ONLY = ['"@type": "ProfilePage"', '"@type": "FAQPage"', '"@type": "ItemList"'];
+
+/** Drops the <script> block containing a given marker. */
+const dropBlock = (html, marker) => {
+  const at = html.indexOf(marker);
+  if (at === -1) return html;
+  const open = html.lastIndexOf('<script type="application/ld+json">', at);
+  const close = html.indexOf('</script>', at) + '</script>'.length;
+  if (open === -1 || close < open) return html;
+  return html.slice(0, open) + html.slice(close);
+};
 
 if (!existsSync(serverEntry)) {
   console.error(`[prerender] SSR bundle missing at ${serverEntry}`);
@@ -164,6 +331,41 @@ for (const route of routes) {
       `<link rel="canonical" href="${canonical}"`,
       'canonical',
     );
+
+    /*
+     * Its own card. Seven URLs sharing one image is a duplicate signal and a
+     * wasted impression — a card naming the page is what earns the click.
+     */
+    if (route.head.card) {
+      const card = `${ORIGIN}/og/${route.head.card}.png`;
+      for (const attr of ['property="og:image"', 'property="og:image:secure_url"', 'name="twitter:image"']) {
+        html = swap(html, new RegExp(`<meta ${attr} content="[^"]*"`), `<meta ${attr} content="${card}"`, attr);
+      }
+      for (const attr of ['property="og:image:alt"', 'name="twitter:image:alt"']) {
+        html = swap(html, new RegExp(`<meta ${attr} content="[^"]*"`), `<meta ${attr} content="${esc(title)}"`, attr);
+      }
+    }
+
+    /* A supplement is an article, not somebody's profile. */
+    html = swap(
+      html,
+      /<meta property="og:type" content="[^"]*"/,
+      '<meta property="og:type" content="article"',
+      'og:type',
+    );
+
+    /* Strip the front page's own blocks, then state what this URL is. */
+    for (const marker of HOME_ONLY) html = dropBlock(html, marker);
+
+    const blocks = schemaFor[route.path];
+    if (!blocks) {
+      console.error(`[prerender] no structured data defined for ${route.path}`);
+      process.exit(1);
+    }
+    const injected = blocks
+      .map((b) => `<script type="application/ld+json">\n${JSON.stringify(b, null, 2)}\n</script>`)
+      .join('\n    ');
+    html = html.replace('</head>', `  ${injected}\n  </head>`);
 
     for (const attr of ['property="og:url"', 'name="twitter:url"']) {
       html = swap(

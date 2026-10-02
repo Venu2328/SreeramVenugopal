@@ -1,3 +1,4 @@
+import { type ReactNode } from 'react';
 import { Reveal } from '../motion/Reveal';
 import { Ticker } from '../paper/Ticker';
 import { SimulationReel } from './SimulationReel';
@@ -16,7 +17,7 @@ import { creed, ticker } from '../../data/edtech';
  * is the only type on the site set larger than the site's own masthead, and
  * that is deliberate: on this page, the product is the paper.
  */
-export const AdvancedEdtech = () => (
+export const AdvancedEdtech = ({ lead = false }: { lead?: boolean }) => (
   <section
     id="edtech"
     aria-labelledby="edtech-heading"
@@ -26,14 +27,14 @@ export const AdvancedEdtech = () => (
 
     <div className="shell py-14 sm:py-20">
       <Reveal>
-        <h1
+        <Head lead={lead}
           id="edtech-heading"
           className="headline text-[clamp(2.6rem,12.5vw,10rem)] leading-[0.86] tracking-[-0.03em] text-ink"
         >
           ADVANCED
           <br />
           EDTECH
-        </h1>
+        </Head>
       </Reveal>
 
       <Reveal delay={0.08}>
@@ -77,3 +78,14 @@ export const AdvancedEdtech = () => (
     </div>
   </section>
 );
+
+/**
+ * The section's heading, promoted to <h1> only when the section is the whole
+ * page. Inline on the front page it is one story among seven, so it is an <h2>.
+ */
+const Head = ({
+  lead,
+  children,
+  ...rest
+}: { lead: boolean; children: ReactNode } & Record<string, unknown>) =>
+  lead ? <h1 {...rest}>{children}</h1> : <h2 {...rest}>{children}</h2>;

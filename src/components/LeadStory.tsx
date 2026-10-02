@@ -76,7 +76,7 @@ export const LeadStory = () => (
         Lead story <span className="ml-3 text-muted">Vol. I · No. 1</span>
       </motion.p>
 
-      <motion.h2
+      <motion.h1
         id="lead-heading"
         initial={{ opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
@@ -86,7 +86,7 @@ export const LeadStory = () => (
         Physics, rebuilt
         <br />
         from <span className="text-orange">scratch</span>
-      </motion.h2>
+      </motion.h1>
 
       <div className="rule-double mt-7" />
 

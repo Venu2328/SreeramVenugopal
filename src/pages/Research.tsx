@@ -4,6 +4,7 @@ import { Dateline } from '../components/paper/Dateline';
 import { Ticker } from '../components/paper/Ticker';
 import { PdfFrame } from '../components/paper/PdfFrame';
 import { OrcidMark } from '../components/research/OrcidMark';
+import { type ReactNode } from 'react';
 import { Reveal } from '../components/motion/Reveal';
 import { Contact } from '../components/Contact';
 import { Footer } from '../components/Footer';
@@ -26,7 +27,7 @@ const ticker = [
 ];
 
 /** The supplement body, so the front page can run it inline. */
-export const ResearchSection = () => (
+export const ResearchSection = ({ lead = false }: { lead?: boolean }) => (
   <>
       <section
         id="research"
@@ -39,7 +40,7 @@ export const ResearchSection = () => (
           <Reveal>
             <p className="eyebrow text-orange">Research brief · Open access · 1,471,473 schools</p>
 
-            <h1
+            <Head lead={lead}
               id="research-heading"
               className="headline mt-5 text-[clamp(2.2rem,8vw,6.5rem)] leading-[0.9] tracking-[-0.03em] text-ink"
             >
@@ -47,7 +48,7 @@ export const ResearchSection = () => (
               <br />
               JOURNALS &amp;{' '}
               <span className="text-orange">CONFERENCES</span>
-            </h1>
+            </Head>
 
             <div className="rule-double mt-8" />
           </Reveal>
@@ -213,10 +214,21 @@ export const Research = () => (
     <Dateline centre="Papers · Journals · Conferences" edition="Research Supplement" />
 
     <main id="main-content" tabIndex={-1}>
-      <ResearchSection />
+      <ResearchSection lead />
       <Contact />
     </main>
 
     <Footer />
   </>
 );
+
+/**
+ * The section's heading, promoted to <h1> only when the section is the whole
+ * page. Inline on the front page it is one story among seven, so it is an <h2>.
+ */
+const Head = ({
+  lead,
+  children,
+  ...rest
+}: { lead: boolean; children: ReactNode } & Record<string, unknown>) =>
+  lead ? <h1 {...rest}>{children}</h1> : <h2 {...rest}>{children}</h2>;
