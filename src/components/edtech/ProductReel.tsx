@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Pause, Play, VolumeX } from 'lucide-react';
-import { reel } from '../../data/edtech';
+import { channel, reels } from '../../data/edtech';
 
 /**
  * ProductReel
@@ -8,22 +8,29 @@ import { reel } from '../../data/edtech';
  * The app, running. One take of the product in use, standing on one side of the
  * page the way a press photograph stands beside a story.
  *
- * It is a vertical Short, so it is framed as one — a phone-shaped column rather
- * than a letterbox with bars down both sides. The height is capped against the
- * viewport rather than the width against the column, because a 9:16 clip given
- * a full column would be taller than the screen on its own.
+ * The reels are vertical, so the frame is built around 9:16 — a letterbox would
+ * put bars down both sides of a phone recording. The height is capped against
+ * the viewport rather than the width against the column, because a 9:16 clip
+ * given a full column would be taller than the screen on its own.
+ *
+ * Several reels share the one frame. Stacking them would double the height of a
+ * section meant to be read in a single screen, so they are switched instead and
+ * the frame never changes size.
  *
  * Playback starts when the frame reaches the screen, not on load. Mounting a
  * YouTube iframe at the top of the document would have the page fetching a
- * player for a reader who may never scroll this far, and it would hand YouTube
- * a request from someone who never asked to watch anything.
+ * player for a reader who may never scroll this far, and would hand YouTube a
+ * request from someone who never asked to watch anything.
  *
  * Silent, as everywhere else on this site: a browser refuses to start a video
  * carrying sound, so muted is the only kind that can begin on its own.
  */
 export const ProductReel = () => {
   const ref = useRef<HTMLDivElement>(null);
+  const [index, setIndex] = useState(0);
   const [playing, setPlaying] = useState(false);
+
+  const reel = reels[index];
 
   useEffect(() => {
     const el = ref.current;
@@ -48,6 +55,12 @@ export const ProductReel = () => {
     io.observe(el);
     return () => io.disconnect();
   }, []);
+
+  /* Choosing a reel is choosing to watch it. */
+  const choose = (i: number) => {
+    setIndex(i);
+    setPlaying(true);
+  };
 
   /*
    * No `loop`. YouTube's own loop needs the video named as a single-item
@@ -74,7 +87,30 @@ export const ProductReel = () => {
     <figure>
       <div className="flex items-baseline justify-between gap-4">
         <p className="eyebrow text-muted">The app, running</p>
-        <p className="eyebrow text-muted">{reel.label}</p>
+
+        {reels.length > 1 ? (
+          <div className="flex items-center gap-1.5" role="tablist" aria-label="Reels">
+            {reels.map((r, i) => (
+              <button
+                key={r.id}
+                type="button"
+                role="tab"
+                aria-selected={i === index}
+                aria-label={r.title}
+                onClick={() => choose(i)}
+                className={`eyebrow mono border px-2.5 py-1 transition-colors ${
+                  i === index
+                    ? 'border-ink bg-ink text-paper'
+                    : 'border-rule-strong text-muted hover:border-ink hover:text-ink'
+                }`}
+              >
+                {String(i + 1).padStart(2, '0')}
+              </button>
+            ))}
+          </div>
+        ) : (
+          <p className="eyebrow text-muted">Screen recording</p>
+        )}
       </div>
 
       <div className="rule-hair mt-3" />
@@ -89,10 +125,14 @@ export const ProductReel = () => {
             /* Inert on purpose. Hovering a YouTube embed summons its title bar,
                its related-video rail and an unmute button; taking pointer events
                away removes all three, and the control below sits outside the
-               frame where it still works. */
+               frame where it still works.
+
+               Keyed by id so switching reels remounts the player rather than
+               leaving the previous one running behind a new src. */
             <iframe
+              key={reel.id}
               src={embed}
-              title={`SciPhyLabs — ${reel.note}`}
+              title={`SciPhyLabs — ${reel.title}`}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               className="pointer-events-none absolute inset-0 size-full"
             />
@@ -100,7 +140,7 @@ export const ProductReel = () => {
             <button
               type="button"
               onClick={() => setPlaying(true)}
-              aria-label="Play the reel"
+              aria-label={`Play: ${reel.title}`}
               className="group absolute inset-0 flex items-center justify-center"
             >
               <span className="flex size-16 items-center justify-center bg-orange text-on-orange transition-transform duration-300 group-hover:scale-110">
@@ -116,10 +156,11 @@ export const ProductReel = () => {
         </div>
       </div>
 
-      <figcaption className="mt-5 flex flex-wrap items-center justify-between gap-x-6 gap-y-3 border-t border-rule pt-4">
-        <p className="min-w-0 text-sm leading-snug text-ink-soft">{reel.note}</p>
+      <figcaption className="mt-5 border-t border-rule pt-4">
+        <p className="headline text-base leading-snug text-ink">{reel.title}</p>
+        <p className="mt-1.5 text-sm leading-snug text-ink-soft">{reel.note}</p>
 
-        <div className="flex shrink-0 items-center gap-x-6">
+        <div className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2">
           {/* Pausing unmounts the player, which is the only way to stop one
               whose own controls have been suppressed. */}
           <button
@@ -147,6 +188,15 @@ export const ProductReel = () => {
             className="link-draw eyebrow text-muted transition-colors hover:text-ink"
           >
             Watch with sound
+          </a>
+
+          <a
+            href={channel}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link-draw eyebrow text-muted transition-colors hover:text-ink"
+          >
+            The channel
           </a>
         </div>
       </figcaption>

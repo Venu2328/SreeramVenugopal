@@ -24,21 +24,43 @@ export const creed = [
 ];
 
 /**
- * The product reel — one take of the app in use.
+ * The product reels — the app in use, from the SciPhyLabs channel.
  *
- * A YouTube Short rather than a file in /public. The master was a 173MB,
- * two-minute vertical recording; even encoded down to 5MB it was a payload the
- * page had to carry and Vercel had to bill on every view. YouTube serves it,
- * transcodes it for the viewer's connection, and costs this repo nothing.
+ * YouTube Shorts rather than files in /public. The first arrived as a 173MB,
+ * two-minute master; GitHub refuses anything over 100MB and everything under
+ * public/ is copied into the build, so self-hosting was never going to work.
+ * YouTube serves them, transcodes per connection, and costs this repo nothing.
  *
  * `id` is the part after /shorts/ in the URL. A Short embeds exactly like any
  * other video — it is simply vertical, so the frame is built around 9:16.
+ *
+ * They share one frame rather than stacking. Two phone-shaped players down a
+ * column would double the height of a section that is meant to be read in a
+ * single screen; one frame with a switch costs nothing and carries both.
  */
-export const reel = {
-  id: '-faxcHitg-4',
-  label: 'Screen recording',
-  note: 'Simulations, notes and practice, as a student actually meets them.',
+export type Reel = {
+  id: string;
+  /** The title as published, so the page and the channel never disagree. */
+  title: string;
+  /** One line on what the clip shows. */
+  note: string;
 };
+
+export const reels: Reel[] = [
+  {
+    id: '-faxcHitg-4',
+    title: 'SciPhyLabs for students',
+    note: 'Simulations, notes and practice, as a student actually meets them.',
+  },
+  {
+    id: 'oSQPEV-XNmM',
+    title: 'Is physics back to life again?',
+    note: 'The pitch, in ninety seconds — what the platform is actually for.',
+  },
+];
+
+/** The channel both reels come from. */
+export const channel = 'https://www.youtube.com/@sciphylabs';
 
 /**
  * The app, and where to get it.
