@@ -6,3 +6,10 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# Source media kept out of the repo and out of the deploy.
+# The SciPhyLabs reel arrived as a 173MB master. GitHub refuses any file over
+# 100MB, and anything under public/ is copied into the build, so it lives here
+# instead — untracked, on disk, and never shipped. The site plays the Short from
+# YouTube, so nothing in this folder is needed at runtime.
+media-masters/

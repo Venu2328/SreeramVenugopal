@@ -1,7 +1,7 @@
 import { type ReactNode } from 'react';
 import { Reveal } from '../motion/Reveal';
 import { Ticker } from '../paper/Ticker';
-import { SimulationReel } from './SimulationReel';
+import { ProductReel } from './ProductReel';
 import { AppCta } from './AppCta';
 import { creed, ticker } from '../../data/edtech';
 
@@ -25,11 +25,11 @@ export const AdvancedEdtech = ({ lead = false }: { lead?: boolean }) => (
   >
     <Ticker words={ticker} />
 
-    <div className="shell py-14 sm:py-20">
+    <div className="shell py-10 sm:py-14">
       <Reveal>
         <Head lead={lead}
           id="edtech-heading"
-          className="headline text-[clamp(2.6rem,12.5vw,10rem)] leading-[0.86] tracking-[-0.03em] text-ink"
+          className="headline text-[clamp(2.2rem,8.5vw,6.5rem)] leading-[0.86] tracking-[-0.03em] text-ink"
         >
           ADVANCED
           <br />
@@ -38,26 +38,26 @@ export const AdvancedEdtech = ({ lead = false }: { lead?: boolean }) => (
       </Reveal>
 
       <Reveal delay={0.08}>
-        <div className="rule-double mt-8" />
-        <p className="deck mt-6 text-[clamp(1.1rem,2.2vw,1.6rem)] text-ink-soft">
+        <div className="rule-double mt-6" />
+        <p className="deck mt-5 text-[clamp(1.05rem,1.9vw,1.35rem)] text-ink-soft">
           Founder background &amp; startup on news headlines.
         </p>
       </Reveal>
 
-      <div className="mt-14 grid grid-cols-[minmax(0,1fr)] gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-16">
+      <div className="mt-10 grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-12">
         {/* ── The creed ───────────────────────────────────────────────── */}
         <Reveal delay={0.12}>
           <p className="eyebrow text-muted">The premise</p>
           <div className="rule-hair mt-3" />
 
-          <ul className="mt-8 list-none space-y-9 p-0">
+          <ul className="mt-6 list-none space-y-6 p-0">
             {creed.map((c, i) => (
               <Reveal as="li" key={c.land} delay={0.1 + i * 0.09}>
                 <div className="flex gap-5">
                   <span className="eyebrow mono shrink-0 pt-2 text-orange">
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <p className="headline text-[clamp(1.5rem,3.4vw,2.5rem)] leading-[1.06] text-ink">
+                  <p className="headline text-[clamp(1.3rem,2.7vw,1.95rem)] leading-[1.08] text-ink">
                     {c.lead}{' '}
                     {/* The landing word is the line — it gets the colour and the
                         extra tracking that makes it read as a stamp. */}
@@ -70,8 +70,8 @@ export const AdvancedEdtech = ({ lead = false }: { lead?: boolean }) => (
         </Reveal>
 
         {/* ── The product ─────────────────────────────────────────────── */}
-        <Reveal delay={0.16} className="space-y-12">
-          <SimulationReel />
+        <Reveal delay={0.16} className="space-y-8">
+          <ProductReel />
           <AppCta />
         </Reveal>
       </div>

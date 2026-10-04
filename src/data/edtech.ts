@@ -24,39 +24,21 @@ export const creed = [
 ];
 
 /**
- * Simulation clips, shown in the reel on the right.
+ * The product reel — one take of the app in use.
  *
- * Ships empty: the reel prints reserved slots until there are files. Drop MP4s
- * into `public/portfoliopage-2/` and add an entry each. A `poster` is optional
- * but worth having — without one the slot is blank until the video decodes its
- * first frame.
+ * A YouTube Short rather than a file in /public. The master was a 173MB,
+ * two-minute vertical recording; even encoded down to 5MB it was a payload the
+ * page had to carry and Vercel had to bill on every view. YouTube serves it,
+ * transcodes it for the viewer's connection, and costs this repo nothing.
  *
- * Keep them short and silent. They play muted and on a loop, which is the only
- * kind of video a browser will start on its own.
+ * `id` is the part after /shorts/ in the URL. A Short embeds exactly like any
+ * other video — it is simply vertical, so the frame is built around 9:16.
  */
-export type Clip = {
-  /** What the slot shows, e.g. 'Projectile motion'. */
-  title: string;
-  /**
-   * Path under /public. An `.mp4` plays silently on a loop; anything else is
-   * treated as a still, so screenshots of the app sit in the rail alongside
-   * recorded simulations without needing a separate component.
-   */
-  src: string;
-  /** Optional still for a clip, e.g. '/portfoliopage-2/projectile.jpg'. */
-  poster?: string;
+export const reel = {
+  id: '-faxcHitg-4',
+  label: 'Screen recording',
+  note: 'Simulations, notes and practice, as a student actually meets them.',
 };
-
-export const clips: Clip[] = [
-  {
-    title: 'Physics, finally interactive',
-    src: '/sciphylabs/splmedia.png',
-  },
-  {
-    title: 'Inside the app',
-    src: '/sciphylabs/splmedia2.png',
-  },
-];
 
 /**
  * The app, and where to get it.

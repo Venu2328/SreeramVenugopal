@@ -12,7 +12,7 @@ import { appLogo, sciphylabs, stores, type Store } from '../../data/edtech';
  * `url` in `src/data/edtech.ts` turns each badge into a real link on its own.
  */
 export const AppCta = () => (
-  <div className="border-t-2 border-ink pt-8">
+  <div className="border-t-2 border-ink pt-6">
     <div className="flex flex-wrap items-center gap-5">
       <a
         href={sciphylabs}
@@ -40,7 +40,7 @@ export const AppCta = () => (
       </div>
     </div>
 
-    <ul className="mt-7 flex list-none flex-wrap gap-4 p-0">
+    <ul className="mt-5 flex list-none flex-wrap gap-3 p-0">
       {stores.map((s) => (
         <li key={s.name}>
           <StoreBadge s={s} />
@@ -48,7 +48,7 @@ export const AppCta = () => (
       ))}
     </ul>
 
-    <p className="deck mt-8 max-w-md text-xl leading-snug text-ink">
+    <p className="deck mt-6 max-w-md text-lg leading-snug text-ink">
       Be the first to tell your group about us. Get SciPhyLabs.
     </p>
   </div>
