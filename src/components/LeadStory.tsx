@@ -52,6 +52,7 @@ const secondary = [
  */
 const sheets = [
   {
+    folio: 'The build',
     paras: [
       'I was fifteen when I got tired of physics being a wall of formulas nobody explained the point of. So I built the thing I wanted instead — SciPhyLabs, 400+ simulations you can reach into and break, because you understand a system by changing it, not by underlining it.',
       'Building something doesn\u2019t prove it works, though. So I went and checked. I took the complete 2024\u201325 UDISE+ census — every school in India — and asked whether the schools missing laboratories even have the electricity and connectivity to run a virtual one. The answer was inconvenient for everyone selling virtual labs, including me. I published it anyway.',

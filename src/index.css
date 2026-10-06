@@ -25,6 +25,9 @@
   --font-display: "Playfair Display", ui-serif, Georgia, serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  /* The blackletter a masthead is cut in. Used on one word, deliberately: a
+     whole page of it is a costume, one word of it is a nameplate. */
+  --font-black-letter: "UnifrakturMaguntia", "Playfair Display", ui-serif, serif;
 
   --color-paper: #f4f0e6;        /* page ground — warm newsprint */
   --color-paper-raised: #eae4d6; /* alternating band */
@@ -201,6 +204,30 @@
     box-shadow:
       0 1px 2px rgb(26 23 20 / 0.08),
       0 8px 20px -10px rgb(26 23 20 / 0.22);
+  }
+
+  /*
+   * A word cut the way a nineteenth-century nameplate was cut: blackletter,
+   * leaning, and given back the letter-spacing the display face has taken away
+   * — a Fraktur set tight is a Fraktur you cannot read.
+   *
+   * Capital and lower case, never full caps. Blackletter capitals are ornamental
+   * forms meant to open a word, and eight of them in a row stop being a word at
+   * all; every masthead actually set this way does the same.
+   *
+   * The lean is a skew rather than an italic, because this face has no italic
+   * cut and the browser would otherwise invent one.
+   */
+  .nameplate-gothic {
+    display: inline-block;
+    font-family: var(--font-black-letter);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    transform: skewX(-7deg);
+    /* The face sits small on its body beside the display caps, and its
+       descenders run long; both are corrected here rather than at the call. */
+    font-size: 1.22em;
+    line-height: 0.92;
   }
 
   /* ── Marks, as a press prints them ────────────────────────────────── */

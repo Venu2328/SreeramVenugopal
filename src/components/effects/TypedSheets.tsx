@@ -1,17 +1,17 @@
-import { useEffect, useLayoutEffect, useMemo, useState } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
-/* ~225 characters a second: quick enough not to be a wait, slow enough to read
-   along with. Struck in small groups rather than one at a time, because a single
-   character per frame is both slower than reading and more work than it needs
-   to be. */
-const TICK = 22;
-const STEP = 5;
+/* ~115 characters a second — half the pace it ran at, which is about the speed
+   of reading along rather than the speed of a machine. Struck in small groups
+   rather than one at a time, because one character a frame is both slower than
+   reading and more work than it needs to be. */
+const TICK = 26;
+const STEP = 3;
 
 /** How long a finished sheet stands before the next one lands on top of it. */
-const HOLD = 1400;
+const HOLD = 2600;
 
 /** The opening animation holds the screen for 2.15s. Nothing types behind it. */
 const OPENING = 2300;
@@ -34,9 +34,11 @@ export type Sheet = {
 /**
  * TypedSheets
  *
- * A column of type that is struck out rather than simply being there: the first
- * sheet types itself, stands for a moment, and then a second sheet drops onto
- * the stack and types itself in turn.
+ * A short stack of notes beside the portrait. The top sheet types itself out,
+ * stands long enough to be read, and then the next one is laid on top of it and
+ * types in turn — round and round, so the column is never finished and never
+ * still. The sheets underneath show at the corners, which is what makes it a
+ * stack rather than a panel that swaps its contents.
  *
  * Every word is real text in the document from the very first byte. The server
  * renders the sheets finished, one after another, and the typing only takes the
@@ -54,16 +56,30 @@ export type Sheet = {
  * settled at the first paint and never changes again.
  *
  * The sheets are stacked in a single grid cell rather than following one
- * another, so the column is as tall as its tallest sheet from the start, and a
- * sheet landing on the stack covers the one beneath it the way paper does.
+ * another, so the column is as tall as its tallest sheet from the start. They
+ * are positioned and given levels, because grid items merely in flow do not
+ * layer as units: every background in a cell is painted before any of the text
+ * in it, and an unpositioned sheet would lay its paper down only for the one
+ * beneath to print straight through it.
+ *
+ * Nothing runs while the column is off screen. A loop with no end would
+ * otherwise keep striking characters into a part of the page nobody is looking
+ * at, for as long as the tab stayed open.
  */
 export const TypedSheets = ({ sheets }: { sheets: Sheet[] }) => {
+  const ref = useRef<HTMLDivElement>(null);
   /* Whether the typing owns the column at all. */
   const [live, setLive] = useState(false);
   /* Whether it has started striking — the paper may still be opening. */
   const [running, setRunning] = useState(false);
-  const [active, setActive] = useState(0);
+  /* Whether anyone can see it. */
+  const [onScreen, setOnScreen] = useState(true);
+  /* Counts up for ever; which sheet is on top is this modulo the stack. */
+  const [turn, setTurn] = useState(0);
   const [struck, setStruck] = useState(0);
+
+  const count = sheets.length;
+  const active = turn % count;
 
   const totals = useMemo(
     () => sheets.map((s) => s.paras.reduce((n, p) => n + p.length, 0)),
@@ -89,7 +105,18 @@ export const TypedSheets = ({ sheets }: { sheets: Sheet[] }) => {
   }, [live]);
 
   useEffect(() => {
-    if (!running) return;
+    const el = ref.current;
+    if (!live || !el) return;
+    const io = new IntersectionObserver(
+      ([e]) => setOnScreen(e.isIntersecting),
+      { threshold: 0.08 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [live]);
+
+  useEffect(() => {
+    if (!running || !onScreen) return;
     const total = totals[active];
 
     if (struck < total) {
@@ -100,95 +127,115 @@ export const TypedSheets = ({ sheets }: { sheets: Sheet[] }) => {
       return () => window.clearTimeout(t);
     }
 
-    /* The last sheet stays up. There is nothing to turn to. */
-    if (active >= sheets.length - 1) return;
-
+    /* Round to the next sheet — and round again, for as long as anyone is
+       reading. A stack of notes being worked through does not stop at the
+       bottom of the pile; it goes back to the top. */
     const t = window.setTimeout(() => {
-      setActive((a) => a + 1);
+      setTurn((n) => n + 1);
       setStruck(0);
     }, HOLD);
     return () => window.clearTimeout(t);
-  }, [running, struck, active, totals, sheets.length]);
+  }, [running, onScreen, struck, active, totals]);
 
   /* The plain column: what the server sends, and what a reader who has asked
-     for less motion keeps. */
+     for less motion keeps. Still a stack of notes, simply all of them at once. */
   if (!live) {
     return (
-      <div className="space-y-4">
+      <div className="space-y-5">
         {sheets.map((sheet, si) => (
-          <div key={si} className="space-y-4">
-            {sheet.folio && <p className="eyebrow text-orange">{sheet.folio}</p>}
-            {sheet.paras.map((text, pi) => (
-              <p key={pi} className={si === 0 && pi === 0 ? 'dropcap' : undefined}>
-                {text}
-              </p>
-            ))}
-          </div>
+          <article key={si} className={`${PAPER} relative`}>
+            <Head sheet={sheet} si={si} count={count} />
+            <div className="space-y-4">
+              {sheet.paras.map((text, pi) => (
+                <p key={pi} className={si === 0 && pi === 0 ? 'dropcap' : undefined}>
+                  {text}
+                </p>
+              ))}
+            </div>
+          </article>
         ))}
       </div>
     );
   }
 
   return (
-    <div className="grid">
+    /* A little room around the cell, so the corners of the sheets below the top
+       one are not clipped away by the column they sit in. */
+    <div ref={ref} className="grid p-1.5">
       {sheets.map((sheet, si) => {
-        const done = si < active;
-        const shown = done ? totals[si] : si === active ? struck : 0;
+        /* The turn this sheet was last laid down on. Below zero means it has
+           not been laid down yet, which only happens on the first pass. */
+        const laid = turn - ((((turn - si) % count) + count) % count);
+        const top = si === active;
+        const shown = top ? struck : totals[si];
         let offset = 0;
 
         return (
-          <motion.div
-            key={si}
-            /* No entrance on mount: the first sheet is already lying there, and
-               the ones above it are already off the top of the stack. */
-            initial={false}
-            animate={
-              si <= active
-                ? { opacity: 1, y: 0, rotate: 0 }
-                : { opacity: 0, y: -22, rotate: -0.9 }
-            }
-            transition={{ duration: 0.55, ease }}
-            /* Positioned, and stacked in order. Grid items that are merely in
-               flow do not layer as units: every background in the cell is
-               painted before any of the text in it, so an unpositioned sheet
-               lays its paper down and then the sheet underneath prints straight
-               through it. Giving each one a position and a level makes each
-               sheet paint as a whole, which is the only way paper behaves. */
-            style={{ zIndex: si }}
-            className={`relative col-start-1 row-start-1 space-y-4 bg-paper ${
-              /* A sheet above the first one casts a little shade along its top
-                 edge, which is what makes it read as paper over paper rather
-                 than as text being replaced. */
-              si > 0 ? 'shadow-[0_-12px_26px_-16px_rgb(26_23_20/0.4)]' : ''
-            } ${si === active ? '' : 'pointer-events-none'}`}
+          <motion.article
+            /* Re-keyed each time it comes back to the top, so the sheet is laid
+               down again rather than merely fading up where it was. */
+            key={`${si}:${laid}`}
+            initial={{ opacity: 0, y: -26, rotate: si % 2 ? 2.2 : -2.2 }}
+            animate={{
+              opacity: laid < 0 ? 0 : 1,
+              y: 0,
+              /* The sheet being read sits square; the ones under it lie askew,
+                 which is the only reason you can tell there are any. */
+              rotate: top ? 0 : si % 2 ? 1.1 : -1.1,
+            }}
+            transition={{ duration: 0.6, ease }}
+            /* Levels follow the order they were last laid in, not the order
+               they are written in — otherwise the first sheet could never come
+               back to the top of its own stack. */
+            style={{ zIndex: laid + 1 }}
+            className={`${PAPER} col-start-1 row-start-1 ${
+              top ? '' : 'pointer-events-none'
+            }`}
           >
-            {sheet.folio && <p className="eyebrow text-orange">{sheet.folio}</p>}
+            <Head sheet={sheet} si={si} count={count} />
 
-            {sheet.paras.map((text, pi) => {
-              const start = offset;
-              offset += text.length;
-              const count = Math.max(0, Math.min(text.length, shown - start));
-              /* The caret belongs to whichever paragraph the cursor is sitting
-                 in — including when it has just reached the end of one. */
-              const caret =
-                si === active && shown > 0 && shown >= start && shown <= offset;
+            <div className="space-y-4">
+              {sheet.paras.map((text, pi) => {
+                const start = offset;
+                offset += text.length;
+                const n = Math.max(0, Math.min(text.length, shown - start));
+                /* The caret belongs to whichever paragraph the cursor is
+                   sitting in — including when it has just reached the end. */
+                const caret =
+                  top && shown > 0 && shown >= start && shown <= offset;
 
-              return (
-                <Line
-                  key={pi}
-                  text={text}
-                  count={count}
-                  caret={caret}
-                  drop={si === 0 && pi === 0}
-                />
-              );
-            })}
-          </motion.div>
+                return (
+                  <Line
+                    key={pi}
+                    text={text}
+                    count={n}
+                    caret={caret}
+                    drop={si === 0 && pi === 0}
+                  />
+                );
+              })}
+            </div>
+          </motion.article>
         );
       })}
     </div>
   );
 };
+
+/* Paper pinned to paper: a white sheet, a hairline edge and the one real
+   shadow on this site. */
+const PAPER =
+  'clipping relative border border-rule px-5 py-5 sm:px-6 sm:py-6';
+
+/** The head of a sheet: what it is, and where it falls in the stack. */
+const Head = ({ sheet, si, count }: { sheet: Sheet; si: number; count: number }) => (
+  <div className="mb-4 flex items-baseline justify-between gap-4 border-b border-rule pb-2.5">
+    <p className="eyebrow text-orange">{sheet.folio ?? `Note ${si + 1}`}</p>
+    <p className="eyebrow mono text-muted">
+      {String(si + 1).padStart(2, '0')} / {String(count).padStart(2, '0')}
+    </p>
+  </div>
+);
 
 /**
  * One paragraph, printed twice: the paragraph itself holding the shape of the

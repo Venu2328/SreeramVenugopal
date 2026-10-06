@@ -31,7 +31,11 @@ export const AdvancedEdtech = ({ lead = false }: { lead?: boolean }) => (
           id="edtech-heading"
           className="headline text-[clamp(2.2rem,8.5vw,6.5rem)] leading-[0.86] tracking-[-0.03em] text-ink"
         >
-          ADVANCED
+          {/* Cut in blackletter and leaning, the way a nameplate was cut before
+              anyone set type with a machine. EDTECH stays in the paper's own
+              display face underneath it: the contrast between the two is the
+              whole idea — the old trade and the thing being announced. */}
+          <span className="nameplate-gothic">Advanced</span>
           <br />
           EDTECH
         </Head>
@@ -67,12 +71,19 @@ export const AdvancedEdtech = ({ lead = false }: { lead?: boolean }) => (
               </Reveal>
             ))}
           </ul>
+
+          {/* The three lines make the case; this is what to do about it. It
+              belongs under them rather than under the reels — the reels are the
+              evidence, and a reader who has just read the argument should not
+              have to cross the page to act on it. */}
+          <div className="mt-10">
+            <AppCta />
+          </div>
         </Reveal>
 
         {/* ── The product ─────────────────────────────────────────────── */}
-        <Reveal delay={0.16} className="space-y-8">
+        <Reveal delay={0.16}>
           <ProductReel />
-          <AppCta />
         </Reveal>
       </div>
     </div>
