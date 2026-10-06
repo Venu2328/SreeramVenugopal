@@ -3,6 +3,8 @@ import { Dateline } from '../components/paper/Dateline';
 import { Ticker } from '../components/paper/Ticker';
 import { type ReactNode } from 'react';
 import { Reveal } from '../components/motion/Reveal';
+import { SketchLayer } from '../components/sketch/Sketch';
+import { Audience } from '../components/sketch/figures';
 import { SpeakingReel } from '../components/speaking/SpeakingReel';
 import { SocialStrips } from '../components/speaking/SocialStrips';
 import { Contact } from '../components/Contact';
@@ -33,11 +35,17 @@ export const SpeakingSection = ({ lead = false }: { lead?: boolean }) => (
       <section
         id="speaking"
         aria-labelledby="speaking-heading"
-        className="scroll-mt-20 border-b border-ink bg-paper flex min-h-[100svh] flex-col justify-center"
+        className="relative scroll-mt-20 overflow-hidden border-b border-ink bg-paper flex min-h-[100svh] flex-col justify-center"
       >
         <Ticker words={ticker} />
 
-        <div className="shell py-14 sm:py-20">
+        {/* The hall, from where I stand in it — drawn the full width of the
+            page, because the room is the point of the section. */}
+        <SketchLayer className="inset-x-0 bottom-0 w-full opacity-[0.11]">
+          <Audience />
+        </SketchLayer>
+
+        <div className="shell relative z-10 py-14 sm:py-20">
           <Reveal>
             <Head lead={lead}
               id="speaking-heading"

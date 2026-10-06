@@ -207,27 +207,29 @@
   }
 
   /*
-   * A word cut the way a nineteenth-century nameplate was cut: blackletter,
-   * leaning, and given back the letter-spacing the display face has taken away
-   * — a Fraktur set tight is a Fraktur you cannot read.
+   * The blackletter a nameplate is cut in. Two classes, because the paper wants
+   * it both ways: the masthead stands upright the way a masthead does, and the
+   * one word on the EdTech page leans.
    *
-   * Capital and lower case, never full caps. Blackletter capitals are ornamental
-   * forms meant to open a word, and eight of them in a row stop being a word at
-   * all; every masthead actually set this way does the same.
+   * Capital and lower case, never full caps. Blackletter capitals are
+   * ornamental forms meant to open a word, and eight of them in a row stop
+   * being a word at all; every masthead actually set this way does the same.
    *
-   * The lean is a skew rather than an italic, because this face has no italic
-   * cut and the browser would otherwise invent one.
+   * It is given back the letter-spacing the display face has taken away — a
+   * Fraktur set tight is a Fraktur you cannot read.
    */
-  .nameplate-gothic {
-    display: inline-block;
+  .gothic {
     font-family: var(--font-black-letter);
     font-weight: 400;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.015em;
+    line-height: 0.95;
+  }
+
+  /* The lean is a skew rather than an italic, because this face has no italic
+     cut and the browser would otherwise invent one. */
+  .gothic-lean {
+    display: inline-block;
     transform: skewX(-7deg);
-    /* The face sits small on its body beside the display caps, and its
-       descenders run long; both are corrected here rather than at the call. */
-    font-size: 1.22em;
-    line-height: 0.92;
   }
 
   /* ── Marks, as a press prints them ────────────────────────────────── */
@@ -244,7 +246,62 @@
    * undone by deleting one class.
    */
   .press-mark {
-    filter: grayscale(1) contrast(1.15) brightness(0.97);
+    /* Not a desaturation. A photograph that has been through a press has true
+       blacks and clean whites, which is a tonal range and not an absence of
+       colour — so the grey is stretched back out afterwards, in the same
+       register the portraits on this site are set in. */
+    filter: grayscale(1) contrast(1.32) brightness(1.04);
+  }
+
+  /* ── The drawn layer ──────────────────────────────────────────────── */
+
+  /*
+   * The sketches that stand behind the sections. Ink on paper and nothing else:
+   * no fill, no grey, no colour — the whole figure is line, the way a staff
+   * artist drew one for a page that could only be printed in black.
+   *
+   * They are decoration in the strict sense. Nothing here is announced, nothing
+   * is reachable, and nothing moves under a pointer.
+   */
+  .sketch {
+    position: absolute;
+    pointer-events: none;
+    color: var(--color-ink);
+  }
+
+  .sketch svg {
+    width: 100%;
+    height: auto;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /*
+   * A shape that is solid rather than open. Drawn in the paper's own colour, so
+   * it covers whatever is behind it and nothing else — which is how a sheet
+   * thrown on a pile hides the one underneath, and how the front row of a hall
+   * hides the row behind it. Without this the figures are a tangle of lines
+   * with no front and no back.
+   */
+  .sketch svg .solid { fill: var(--color-paper); }
+
+  /*
+   * A belt of marks drifting one way for ever, behind everything. Slower and
+   * longer than the tickers, because this one is scenery rather than a strip
+   * being read — and untouchable, so it never stops.
+   */
+  .drift {
+    display: flex;
+    width: max-content;
+    animation: marquee 64s linear infinite;
+  }
+  .drift-slow { animation-duration: 96s; }
+  .drift-fast { animation-duration: 48s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .drift { animation: none; }
   }
 
   /* ── The typed column ─────────────────────────────────────────────── */

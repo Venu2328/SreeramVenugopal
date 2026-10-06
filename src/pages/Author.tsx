@@ -4,6 +4,8 @@ import { Dateline } from '../components/paper/Dateline';
 import { Ticker } from '../components/paper/Ticker';
 import { type ReactNode } from 'react';
 import { Reveal } from '../components/motion/Reveal';
+import { SketchLayer } from '../components/sketch/Sketch';
+import { BookShelves } from '../components/sketch/figures';
 import { BookShelf } from '../components/author/BookShelf';
 import { Contact } from '../components/Contact';
 import { Footer } from '../components/Footer';
@@ -53,11 +55,16 @@ export const BooksSection = ({ lead = false }: { lead?: boolean }) => (
       <section
         id="books"
         aria-labelledby="books-heading"
-        className="scroll-mt-20 border-b border-ink bg-paper flex min-h-[100svh] flex-col justify-center"
+        className="relative scroll-mt-20 overflow-hidden border-b border-ink bg-paper flex min-h-[100svh] flex-col justify-center"
       >
         <Ticker words={ticker} />
 
-        <div className="shell py-14 sm:py-20">
+        {/* The shelf these are written to end up on. */}
+        <SketchLayer className="-right-14 bottom-0 w-[28rem] opacity-[0.12] sm:-right-8 sm:w-[36rem] lg:w-[42rem]">
+          <BookShelves />
+        </SketchLayer>
+
+        <div className="shell relative z-10 py-14 sm:py-20">
           <Reveal>
             <p className="eyebrow text-orange">
               Authoring academic books to solve Indian education&apos;s #1 problem
@@ -75,7 +82,7 @@ export const BooksSection = ({ lead = false }: { lead?: boolean }) => (
             <div className="rule-double mt-8" />
           </Reveal>
 
-          <div className="mt-12 grid grid-cols-[minmax(0,1fr)] gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-16">
+          <div className="mt-12 grid grid-cols-[minmax(0,1fr)] gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.45fr)] lg:gap-14">
             {/* ── Why they exist ──────────────────────────────────────── */}
             <Reveal delay={0.1}>
               <p className="eyebrow text-muted">What makes them different</p>

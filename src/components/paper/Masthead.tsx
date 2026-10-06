@@ -122,8 +122,8 @@ export const Masthead = ({
               all seven URLs. As a heading it told a crawler every page was about
               the same subject. Each page's own headline carries the h1 instead.
             */}
-            <p className="headline text-center text-[clamp(2.4rem,11.5vw,10rem)] leading-[0.82] tracking-[-0.045em] text-ink">
-              SREERAM <span className="text-orange">VENU</span>GOPAL
+            <p className="gothic text-center text-[clamp(2.3rem,10.5vw,9rem)] text-ink">
+              Sreeram <span className="text-orange">Venu</span>gopal
             </p>
           </a>
 

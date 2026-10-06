@@ -6,6 +6,8 @@ import { PdfFrame } from '../components/paper/PdfFrame';
 import { OrcidMark } from '../components/research/OrcidMark';
 import { type ReactNode } from 'react';
 import { Reveal } from '../components/motion/Reveal';
+import { SketchLayer } from '../components/sketch/Sketch';
+import { ScatteredPapers } from '../components/sketch/figures';
 import { Contact } from '../components/Contact';
 import { Footer } from '../components/Footer';
 import { assurances, findings, github, indexes, orcid, papers } from '../data/journals';
@@ -32,11 +34,16 @@ export const ResearchSection = ({ lead = false }: { lead?: boolean }) => (
       <section
         id="research"
         aria-labelledby="research-heading"
-        className="scroll-mt-20 border-b border-ink bg-paper flex min-h-[100svh] flex-col justify-center"
+        className="relative scroll-mt-20 overflow-hidden border-b border-ink bg-paper flex min-h-[100svh] flex-col justify-center"
       >
         <Ticker words={ticker} />
 
-        <div className="shell py-14 sm:py-20">
+        {/* 1,471,473 schools, as the pile of paper that actually was. */}
+        <SketchLayer className="-left-20 bottom-0 w-[26rem] opacity-[0.12] sm:-left-12 sm:w-[34rem] lg:w-[40rem]">
+          <ScatteredPapers />
+        </SketchLayer>
+
+        <div className="shell relative z-10 py-14 sm:py-20">
           <Reveal>
             <p className="eyebrow text-orange">Research brief · Open access · 1,471,473 schools</p>
 
@@ -117,7 +124,7 @@ export const ResearchSection = ({ lead = false }: { lead?: boolean }) => (
             </dl>
           </Reveal>
 
-          <div className="mt-14 grid grid-cols-[minmax(0,1fr)] gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-16">
+          <div className="mt-14 grid grid-cols-[minmax(0,1fr)] gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.45fr)] lg:gap-14">
             {/* ── What stands behind it ──────────────────────────────── */}
             <Reveal delay={0.1}>
               <p className="eyebrow text-muted">What stands behind it</p>
@@ -142,7 +149,17 @@ export const ResearchSection = ({ lead = false }: { lead?: boolean }) => (
             {/* ── The paper ──────────────────────────────────────────── */}
             <Reveal delay={0.14} className="space-y-12">
               {papers.map((p) => (
-                <figure key={p.title}>
+                /*
+                 * The brief stands to the right of what is said about it, not
+                 * above it. A portrait page with its caption underneath runs the
+                 * section well past a screen, and the measure beside the
+                 * document was empty the whole time.
+                 */
+                <figure
+                  key={p.title}
+                  className="grid grid-cols-[minmax(0,1fr)] gap-7 sm:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] sm:items-start sm:gap-9"
+                >
+                  <div className="sm:order-2">
                   <PdfFrame
                     src={p.cover ?? ''}
                     alt={p.title}
@@ -152,8 +169,9 @@ export const ResearchSection = ({ lead = false }: { lead?: boolean }) => (
                     /* The brief is a portrait page (1131x1600). */
                     aspect="aspect-[3/4]"
                   />
+                  </div>
 
-                  <figcaption className="mt-6 border-t-2 border-ink pt-5">
+                  <figcaption className="border-t-2 border-ink pt-5 sm:order-1 sm:border-t-0 sm:pt-0">
                     <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
                       <span className="eyebrow bg-ink px-2.5 py-1 text-paper">
                         {p.status}

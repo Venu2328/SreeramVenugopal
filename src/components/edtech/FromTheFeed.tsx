@@ -1,6 +1,7 @@
 import { ArrowUpRight, Instagram } from 'lucide-react';
 import { Reveal } from '../motion/Reveal';
 import { instagram, posts } from '../../data/posts';
+import { LogoDrift } from '../sketch/LogoDrift';
 
 /**
  * FromTheFeed
@@ -31,9 +32,14 @@ export const FromTheFeed = () => {
     <section
       id="feed"
       aria-labelledby="feed-heading"
-      className="scroll-mt-20 border-b border-ink bg-paper py-14 sm:py-20"
+      className="relative scroll-mt-20 overflow-hidden border-b border-ink bg-paper py-14 sm:py-20"
     >
-      <div className="shell">
+      {/* The places these went out to, drifting past behind them. */}
+      <div className="absolute inset-0 opacity-[0.11]">
+        <LogoDrift />
+      </div>
+
+      <div className="shell relative z-10">
         <Reveal>
           <p className="eyebrow text-orange">From the feed</p>
           <h2

@@ -1,8 +1,11 @@
-import { ArrowUpRight, ExternalLink } from 'lucide-react';
+import { ArrowUpRight, ExternalLink, FileText } from 'lucide-react';
 import { SectionRule } from './paper/SectionRule';
 import { PdfFrame } from './paper/PdfFrame';
 import { Accent } from './Accent';
 import { Reveal } from './motion/Reveal';
+import { SketchLayer } from './sketch/Sketch';
+import { PencilAndPins } from './sketch/figures';
+import { DemoReel } from './writing/DemoReel';
 import { articles, writingHome } from '../data/writing';
 
 /**
@@ -19,9 +22,14 @@ export const Writing = ({ lead = false }: { lead?: boolean }) => (
   <section
     id="writing"
     aria-labelledby="writing-heading"
-    className="scroll-mt-20 border-b border-ink bg-paper py-16 sm:py-24 flex min-h-[100svh] flex-col justify-center"
+    className="relative scroll-mt-20 overflow-hidden border-b border-ink bg-paper py-16 sm:py-24 flex min-h-[100svh] flex-col justify-center"
   >
-    <div className="shell">
+    {/* The desk these were written at, drawn across the foot of the page. */}
+    <SketchLayer className="-right-16 bottom-0 w-[30rem] opacity-[0.13] sm:-right-10 sm:w-[40rem] lg:w-[46rem]">
+      <PencilAndPins />
+    </SketchLayer>
+
+    <div className="shell relative z-10">
       <SectionRule
         lead={lead}
         kicker="Writing"
@@ -46,29 +54,61 @@ export const Writing = ({ lead = false }: { lead?: boolean }) => (
         lede="Essays on what is actually broken in exam preparation, and what interactive-first learning does differently."
       />
 
-      <ul className="mt-12 grid list-none grid-cols-[minmax(0,1fr)] gap-6 p-0 lg:grid-cols-2">
-        {articles.map((post, i) => (
-          <Reveal as="li" key={post.href} delay={i * 0.08}>
-            <figure className="flex h-full flex-col">
-              {post.cover && (
-                <PdfFrame
-                  src={post.cover}
-                  alt={post.title}
-                  label={`${post.href.split('/').pop()?.split('-').slice(0, -1).join('-') || 'essay'}.pdf`}
-                  meta={post.readTime}
-                  aspect="aspect-[16/11]"
-                />
-              )}
+      <Reveal delay={0.06} className="mt-12">
+        <DemoReel />
+      </Reveal>
 
-              <figcaption className="mt-5 flex flex-1 flex-col border-t-2 border-ink pt-5">
-                <div className="flex items-baseline justify-between gap-4">
-                  <span className="eyebrow truncate text-orange">Medium</span>
+      {/*
+        The essays, set as cards rather than as a column of figures.
+        Each one is a bordered panel that opens on its own kind and date — the
+        way a resource index lists what it holds — then the article's own
+        opening page, then the headline, the argument and its tags. The whole
+        card is the link; the button at the foot is there for anyone who wants
+        something to aim at rather than a region.
+      */}
+      <ul className="mt-14 grid list-none grid-cols-[minmax(0,1fr)] gap-6 p-0 lg:grid-cols-2 lg:gap-7">
+        {articles.map((post, i) => (
+          <Reveal as="li" key={post.href} delay={i * 0.08} className="min-w-0">
+            <article className="group flex h-full flex-col border-2 border-ink bg-paper-raised transition-colors hover:bg-paper-white">
+              {/* The kind, and when. A resource index says what a thing is
+                  before it says what it is called. */}
+              <div className="flex items-center justify-between gap-4 border-b border-rule px-5 py-3.5">
+                <span className="flex items-center gap-2.5">
+                  <FileText className="size-4 shrink-0 text-orange" aria-hidden="true" />
+                  <span className="eyebrow text-muted">Article</span>
+                </span>
+                <span className="flex items-center gap-4">
+                  {post.readTime && (
+                    <span className="eyebrow hidden text-muted sm:inline">
+                      {post.readTime}
+                    </span>
+                  )}
                   <time dateTime={post.date} className="eyebrow shrink-0 text-muted">
                     {post.display}
                   </time>
-                </div>
+                </span>
+              </div>
 
-                <h3 className="headline mt-3.5 text-xl leading-snug text-ink sm:text-2xl">
+              {post.cover && (
+                <div className="border-b border-rule p-5 pb-0">
+                  <PdfFrame
+                    src={post.cover}
+                    alt={post.title}
+                    label={`${
+                      post.href.split('/').pop()?.split('-').slice(0, -1).join('-') ||
+                      'essay'
+                    }.pdf`}
+                    /* The card's own head already carries the reading time;
+                       printing it again on the document strip just says the
+                       same thing twice, two centimetres apart. */
+                    aspect="aspect-[16/11]"
+                  />
+                  <div className="h-5" />
+                </div>
+              )}
+
+              <div className="flex flex-1 flex-col px-5 py-6">
+                <h3 className="headline text-xl leading-snug text-ink sm:text-2xl">
                   {post.title}
                 </h3>
 
@@ -86,7 +126,7 @@ export const Writing = ({ lead = false }: { lead?: boolean }) => (
                   href={post.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btn-solid group mt-6 self-start"
+                  className="btn btn-solid mt-6 self-start"
                 >
                   Read on Medium
                   <ArrowUpRight
@@ -94,8 +134,8 @@ export const Writing = ({ lead = false }: { lead?: boolean }) => (
                     aria-hidden="true"
                   />
                 </a>
-              </figcaption>
-            </figure>
+              </div>
+            </article>
           </Reveal>
         ))}
       </ul>

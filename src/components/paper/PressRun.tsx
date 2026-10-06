@@ -84,8 +84,8 @@ export const PressRun = () => {
           <p className="eyebrow text-sm font-bold tracking-[0.3em] text-orange">
             The Sreeram Venugopal Record
           </p>
-          <p className="headline mt-4 text-[clamp(2.2rem,10vw,7rem)] leading-[0.85] tracking-[-0.04em] text-ink">
-            SREERAM <span className="text-orange">VENU</span>GOPAL
+          <p className="gothic mt-4 text-[clamp(2.1rem,9.5vw,6.6rem)] text-ink">
+            Sreeram <span className="text-orange">Venu</span>gopal
           </p>
           <p className="eyebrow mt-5 text-sm font-bold tracking-[0.22em] text-muted">
             Puducherry · Est. 2023
