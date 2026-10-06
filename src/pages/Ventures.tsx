@@ -1,6 +1,7 @@
 import { Masthead } from '../components/paper/Masthead';
 import { Dateline } from '../components/paper/Dateline';
 import { AdvancedEdtech } from '../components/edtech/AdvancedEdtech';
+import { FromTheFeed } from '../components/edtech/FromTheFeed';
 import { Contact } from '../components/Contact';
 import { Footer } from '../components/Footer';
 
@@ -25,6 +26,7 @@ export const Ventures = () => (
 
     <main id="main-content" tabIndex={-1}>
       <AdvancedEdtech lead />
+      <FromTheFeed />
       <Contact />
     </main>
 

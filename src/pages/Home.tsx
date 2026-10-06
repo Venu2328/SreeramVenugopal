@@ -4,6 +4,7 @@ import { Dateline } from '../components/paper/Dateline';
 import { LeadStory } from '../components/LeadStory';
 import { VentureStrip } from '../components/VentureStrip';
 import { AdvancedEdtech } from '../components/edtech/AdvancedEdtech';
+import { FromTheFeed } from '../components/edtech/FromTheFeed';
 import { SpeakingSection } from './Speaking';
 import { ProofSection } from './Proof';
 import { BooksSection } from './Author';
@@ -39,6 +40,7 @@ export const Home = () => (
       <VentureStrip />
 
       <AdvancedEdtech />
+      <FromTheFeed />
       <SpeakingSection />
       <ProofSection />
       <BooksSection />
