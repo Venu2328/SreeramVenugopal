@@ -129,8 +129,10 @@ const InstitutionBadge = ({ inst }: { inst: Institution }) => {
             loading="lazy"
             decoding="async"
             onError={() => setFailed(true)}
-            /* Contained, never cropped — a trimmed logo is a damaged one. */
-            className="max-h-full max-w-full object-contain"
+            /* Contained, never cropped — a trimmed logo is a damaged one.
+               Printed as ink, like every other mark on the page, and handing
+               back its own colours when you put the cursor on it. */
+            className="press-mark max-h-full max-w-full object-contain transition-[filter] duration-500 hover:[filter:none]"
           />
         )}
       </span>

@@ -203,6 +203,46 @@
       0 8px 20px -10px rgb(26 23 20 / 0.22);
   }
 
+  /* ── Marks, as a press prints them ────────────────────────────────── */
+
+  /*
+   * A newspaper has one ink. Brand artwork arrives in seven different palettes,
+   * and a row of full-colour logos is the single thing that gives a printed
+   * page away as a web page. Anything that is a mark rather than a photograph
+   * goes through this: knocked to grey, then pushed for contrast so a mid-tone
+   * logo still reads as ink on paper rather than as a smudge.
+   *
+   * A filter, not a pre-made greyscale file. The artwork on disk stays the
+   * artwork the institution issued, and nothing is baked in that cannot be
+   * undone by deleting one class.
+   */
+  .press-mark {
+    filter: grayscale(1) contrast(1.15) brightness(0.97);
+  }
+
+  /* ── The typed column ─────────────────────────────────────────────── */
+
+  /*
+   * The caret, drawn as the right-hand border of the last character typed and
+   * then pulled back by its own width so it occupies no space at all. A caret
+   * that took space would reflow the untyped characters standing invisibly to
+   * its right, and the paragraph would change height on every keystroke.
+   */
+  .press-caret {
+    border-right: 0.09em solid var(--color-orange);
+    margin-right: -0.09em;
+    animation: caret 1.1s step-end infinite;
+  }
+
+  @keyframes caret {
+    0%, 100% { border-right-color: var(--color-orange); }
+    50%      { border-right-color: transparent; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .press-caret { animation: none; }
+  }
+
   /* ── Controls ─────────────────────────────────────────────────────── */
 
   /* Hard-edged and black, the way a newspaper sets a call to action. */

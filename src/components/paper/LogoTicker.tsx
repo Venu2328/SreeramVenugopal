@@ -15,7 +15,9 @@ import { institutions, type Institution } from '../../data/institutions';
  *
  * Each mark sits on a small white tile, which is what lets artwork with an
  * opaque background sit on an orange band without printing as a coloured
- * rectangle — and gives seven different brand palettes a common frame.
+ * rectangle — and gives seven different brand palettes a common frame. The
+ * marks themselves go through the press as ink: a row of full-colour logos is
+ * the one thing that gives a printed page away as a web page.
  */
 export const LogoTicker = () => {
   if (institutions.length === 0) return null;
@@ -69,7 +71,7 @@ const Mark = ({ inst, clone }: { inst: Institution; clone: boolean }) => {
             loading="lazy"
             decoding="async"
             onError={() => setFailed(true)}
-            className="size-full object-contain"
+            className="press-mark size-full object-contain"
           />
         </span>
       )}

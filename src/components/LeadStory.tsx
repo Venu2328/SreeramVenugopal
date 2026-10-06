@@ -2,6 +2,7 @@ import { motion } from 'motion/react';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { NewsPhoto } from './paper/NewsPhoto';
 import { CountUp } from './effects/CountUp';
+import { TypedSheets } from './effects/TypedSheets';
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -37,6 +38,31 @@ const secondary = [
     kicker: 'In production',
     head: 'The G.O.A.T. Series enters its first volume',
     sub: 'Academic physics for Grade 11 and 12, written against the syllabus.',
+  },
+];
+
+/*
+ * The column beside the portrait, in two sheets.
+ *
+ * It is struck out a character at a time and then turned, so it is kept here as
+ * plain strings rather than as markup: a sentence that has to be typed cannot
+ * carry a <strong> through the middle of itself without the emphasis arriving
+ * letter by letter too. Nothing is lost — the weight was decoration, and the
+ * claims are the point.
+ */
+const sheets = [
+  {
+    paras: [
+      'I was fifteen when I got tired of physics being a wall of formulas nobody explained the point of. So I built the thing I wanted instead — SciPhyLabs, 400+ simulations you can reach into and break, because you understand a system by changing it, not by underlining it.',
+      'Building something doesn\u2019t prove it works, though. So I went and checked. I took the complete 2024\u201325 UDISE+ census — every school in India — and asked whether the schools missing laboratories even have the electricity and connectivity to run a virtual one. The answer was inconvenient for everyone selling virtual labs, including me. I published it anyway.',
+    ],
+  },
+  {
+    folio: 'Continued',
+    paras: [
+      'In between I started writing the textbook I wanted at fifteen, argued the opposition case against the Emergency in front of a hall that was free to disagree with me, and took first prize in Hindi elocution at JIPMER.',
+      'I don\u2019t stay in one lane. I build the thing, write the book, run the numbers, then stand up and defend all three — from Puducherry, not from anyone\u2019s pipeline. Next: the BS in Data Science & Applications at IIT Madras, a full degree and not a certificate course.',
+    ],
   },
 ];
 
@@ -213,32 +239,8 @@ export const LeadStory = () => (
         >
           <p className="eyebrow text-muted">By Sreeram Venugopal</p>
 
-          <div className="column-copy mt-5 space-y-4 leading-relaxed text-ink-soft">
-            <p className="dropcap">
-              I was fifteen when I got tired of physics being a wall of formulas nobody
-              explained the point of. So I built the thing I wanted instead —{' '}
-              <strong className="font-semibold text-ink">SciPhyLabs</strong>, 400+
-              simulations you can reach into and break, because you understand a system by
-              changing it, not by underlining it.
-            </p>
-            <p>
-              Building something doesn&apos;t prove it works, though. So I went and checked.
-              I took the complete 2024–25 UDISE+ census — every school in India — and asked
-              whether the schools missing laboratories even have the electricity and
-              connectivity to run a virtual one. The answer was inconvenient for everyone
-              selling virtual labs, including me. I published it anyway.
-            </p>
-            <p>
-              In between I started writing the textbook I wanted at fifteen, argued the
-              opposition case against the Emergency in front of a hall that was free to
-              disagree with me, and took first prize in Hindi elocution at JIPMER.
-            </p>
-            <p className="text-ink">
-              I don&apos;t stay in one lane. I build the thing, write the book, run the
-              numbers, then stand up and defend all three — from Puducherry, not from
-              anyone&apos;s pipeline. Next: the BS in Data Science &amp; Applications at IIT
-              Madras, a full degree and not a certificate course.
-            </p>
+          <div className="column-copy mt-5 leading-relaxed text-ink-soft">
+            <TypedSheets sheets={sheets} />
           </div>
 
           <div className="mt-8 border-t border-rule pt-5">

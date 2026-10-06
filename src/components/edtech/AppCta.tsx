@@ -28,7 +28,7 @@ export const AppCta = () => (
           height="64"
           loading="lazy"
           decoding="async"
-          className="size-full object-contain"
+          className="press-mark size-full object-contain"
         />
       </a>
 
@@ -63,7 +63,7 @@ const StoreBadge = ({ s }: { s: Store }) => {
         aria-hidden="true"
         loading="lazy"
         decoding="async"
-        className={`${s.markClass} shrink-0 object-contain`}
+        className={`press-mark ${s.markClass} shrink-0 object-contain`}
       />
       <span className="min-w-0">
         <span className="eyebrow block text-muted">

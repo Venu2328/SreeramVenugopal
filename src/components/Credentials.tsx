@@ -85,7 +85,7 @@ const CredentialClipping = ({ c, tilt }: { c: Credential; tilt: string }) => {
             loading="lazy"
             decoding="async"
             onError={() => setFailed(true)}
-            className="max-h-12 w-auto object-contain"
+            className="press-mark max-h-12 w-auto object-contain"
           />
         )}
       </div>
