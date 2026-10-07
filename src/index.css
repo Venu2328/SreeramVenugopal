@@ -221,11 +221,8 @@
   .gothic {
     font-family: var(--font-black-letter);
     font-weight: 400;
-    /* Given back the letter-spacing a display face takes away — a Fraktur set
-       tight is a Fraktur you cannot read. Leading is deliberately not set here:
-       it belongs to whatever this is setting, so swapping the face can never
-       change how much room a block of type takes up. */
     letter-spacing: 0.015em;
+    line-height: 0.95;
   }
 
   /* The lean is a skew rather than an italic, because this face has no italic
