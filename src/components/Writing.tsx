@@ -158,6 +158,9 @@ const Card = ({ post, lead }: { post: Article; lead: boolean }) => {
 /** The headline, the argument, what it is filed under, and the way in. */
 const Body = ({ post, lead }: { post: Article; lead: boolean }) => (
   <div className="flex min-w-0 flex-1 flex-col">
+    {/* The headline is the way in. A card in an index does not need a slab of
+        a button under it as well — the piece's own name is the thing a reader
+        aims at, and the arrow says where it goes. */}
     <h3
       className={`headline text-ink ${
         lead
@@ -165,7 +168,18 @@ const Body = ({ post, lead }: { post: Article; lead: boolean }) => (
           : 'text-xl leading-snug sm:text-2xl'
       }`}
     >
-      {post.title}
+      <a
+        href={post.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group/in transition-colors hover:text-orange"
+      >
+        {post.title}
+        <ArrowUpRight
+          className="ml-2 inline size-[0.62em] text-orange transition-transform group-hover/in:translate-x-0.5 group-hover/in:-translate-y-0.5"
+          aria-hidden="true"
+        />
+      </a>
     </h3>
 
     <p className={`leading-relaxed text-ink-soft ${lead ? 'mt-4 max-w-xl' : 'mt-3 text-sm'}`}>
@@ -192,17 +206,5 @@ const Body = ({ post, lead }: { post: Article; lead: boolean }) => (
       ))}
     </ul>
 
-    <a
-      href={post.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`btn btn-solid self-start ${lead ? 'mt-8' : 'mt-6'}`}
-    >
-      Read on Medium
-      <ArrowUpRight
-        className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-        aria-hidden="true"
-      />
-    </a>
   </div>
 );
