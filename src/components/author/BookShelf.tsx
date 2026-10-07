@@ -37,17 +37,7 @@ const BookCard = ({ b }: { b: Book }) => {
   const face = showBack ? b.back : b.cover;
 
   return (
-    /*
-     * The text stands beside the cover rather than under it. A caption set
-     * below a portrait-shaped cover pushes the whole section past the height of
-     * a screen for no reason — the measure to the left of the book was empty
-     * the entire time.
-     *
-     * The cover is still first in the document, because a figure is a picture
-     * and then what the picture is; only the order on the page is turned round.
-     */
-    <figure className="grid grid-cols-[minmax(0,1fr)] gap-7 sm:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] sm:items-start sm:gap-9">
-      <div className="sm:order-2">
+    <figure className="flex h-full flex-col">
       <div className="clipping relative">
         {face ? (
           <img
@@ -80,9 +70,8 @@ const BookCard = ({ b }: { b: Book }) => {
           {showBack ? 'Show front cover' : 'Show back cover'}
         </button>
       )}
-      </div>
 
-      <figcaption className="flex flex-col border-t-2 border-ink pt-5 sm:order-1 sm:border-t-0 sm:pt-0">
+      <figcaption className="mt-5 flex flex-1 flex-col border-t-2 border-ink pt-5">
         <h3 className="headline text-2xl leading-tight text-ink">{b.title}</h3>
         {b.subtitle && <p className="deck mt-1.5 text-lg text-orange">{b.subtitle}</p>}
         {/* Status sits in the caption rather than stamped across the cover —
@@ -92,7 +81,7 @@ const BookCard = ({ b }: { b: Book }) => {
           <span className="eyebrow bg-ink px-2.5 py-1 text-paper">{b.status}</span>
         </div>
 
-        <p className="mt-4 leading-relaxed text-ink-soft">{b.blurb}</p>
+        <p className="mt-4 flex-1 leading-relaxed text-ink-soft">{b.blurb}</p>
 
         {b.features && b.features.length > 0 && (
           <ul className="mt-5 flex list-none flex-wrap gap-1.5 p-0">

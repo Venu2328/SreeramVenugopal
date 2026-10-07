@@ -124,7 +124,7 @@ export const ResearchSection = ({ lead = false }: { lead?: boolean }) => (
             </dl>
           </Reveal>
 
-          <div className="mt-14 grid grid-cols-[minmax(0,1fr)] gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.45fr)] lg:gap-14">
+          <div className="mt-14 grid grid-cols-[minmax(0,1fr)] gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-16">
             {/* ── What stands behind it ──────────────────────────────── */}
             <Reveal delay={0.1}>
               <p className="eyebrow text-muted">What stands behind it</p>
@@ -149,17 +149,7 @@ export const ResearchSection = ({ lead = false }: { lead?: boolean }) => (
             {/* ── The paper ──────────────────────────────────────────── */}
             <Reveal delay={0.14} className="space-y-12">
               {papers.map((p) => (
-                /*
-                 * The brief stands to the right of what is said about it, not
-                 * above it. A portrait page with its caption underneath runs the
-                 * section well past a screen, and the measure beside the
-                 * document was empty the whole time.
-                 */
-                <figure
-                  key={p.title}
-                  className="grid grid-cols-[minmax(0,1fr)] gap-7 sm:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] sm:items-start sm:gap-9"
-                >
-                  <div className="sm:order-2">
+                <figure key={p.title}>
                   <PdfFrame
                     src={p.cover ?? ''}
                     alt={p.title}
@@ -169,9 +159,8 @@ export const ResearchSection = ({ lead = false }: { lead?: boolean }) => (
                     /* The brief is a portrait page (1131x1600). */
                     aspect="aspect-[3/4]"
                   />
-                  </div>
 
-                  <figcaption className="border-t-2 border-ink pt-5 sm:order-1 sm:border-t-0 sm:pt-0">
+                  <figcaption className="mt-6 border-t-2 border-ink pt-5">
                     <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
                       <span className="eyebrow bg-ink px-2.5 py-1 text-paper">
                         {p.status}

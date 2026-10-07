@@ -82,7 +82,7 @@ export const BooksSection = ({ lead = false }: { lead?: boolean }) => (
             <div className="rule-double mt-8" />
           </Reveal>
 
-          <div className="mt-12 grid grid-cols-[minmax(0,1fr)] gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.45fr)] lg:gap-14">
+          <div className="mt-12 grid grid-cols-[minmax(0,1fr)] gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-16">
             {/* ── Why they exist ──────────────────────────────────────── */}
             <Reveal delay={0.1}>
               <p className="eyebrow text-muted">What makes them different</p>
