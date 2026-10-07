@@ -137,7 +137,11 @@ const Card = ({ post, lead }: { post: Article; lead: boolean }) => {
       {lead ? (
         <div className="grid flex-1 grid-cols-[minmax(0,1fr)] gap-8 px-5 py-7 sm:px-7 sm:py-9 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-11">
           <Body post={post} lead />
-          {page && <div className="min-w-0 lg:self-center">{page}</div>}
+          {/* Stacked on a phone, the page comes first — same order as every
+              other card, rather than arriving after the way in. */}
+          {page && (
+            <div className="order-first min-w-0 lg:order-none lg:self-center">{page}</div>
+          )}
         </div>
       ) : (
         <div className="flex flex-1 flex-col">
@@ -169,8 +173,17 @@ const Body = ({ post, lead }: { post: Article; lead: boolean }) => (
     </p>
 
     {/* Filed under. Set as a row of marks rather than as boxes — a card that
-        ends in eight bordered chips ends in a fence. */}
-    <ul className={`flex list-none flex-wrap gap-x-5 gap-y-2 p-0 ${lead ? 'mt-6' : 'mt-5'}`}>
+        ends in eight bordered chips ends in a fence.
+
+        Pushed to the foot of the card by the margin that eats whatever space is
+        left over. Cards in a row are all as tall as the tallest, and without
+        this the shorter one's filing and its way in float in the middle of it
+        with a hole underneath. */}
+    <ul
+      className={`mt-auto flex list-none flex-wrap gap-x-5 gap-y-2 p-0 ${
+        lead ? 'pt-8' : 'pt-6'
+      }`}
+    >
       {post.tags.map((t) => (
         <li key={t} className="flex items-center gap-1.5">
           <Hash className="size-3 shrink-0 text-orange" aria-hidden="true" />
