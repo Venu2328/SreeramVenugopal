@@ -35,7 +35,7 @@ export const AdvancedEdtech = ({ lead = false }: { lead?: boolean }) => (
               anyone set type with a machine. EDTECH stays in the paper's own
               display face underneath it: the contrast between the two is the
               whole idea — the old trade and the thing being announced. */}
-          <span className="gothic gothic-lean text-[1.22em]">Advanced</span>
+          <span className="gothic gothic-lean">Advanced</span>
           <br />
           EDTECH
         </Head>

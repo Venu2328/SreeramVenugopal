@@ -84,7 +84,7 @@ export const PressRun = () => {
           <p className="eyebrow text-sm font-bold tracking-[0.3em] text-orange">
             The Sreeram Venugopal Record
           </p>
-          <p className="gothic mt-4 text-[clamp(2.1rem,9.5vw,6.6rem)] text-ink">
+          <p className="gothic mt-4 text-[clamp(2.1rem,9.5vw,6.6rem)] leading-[0.95] text-ink">
             Sreeram <span className="text-orange">Venu</span>gopal
           </p>
           <p className="eyebrow mt-5 text-sm font-bold tracking-[0.22em] text-muted">
