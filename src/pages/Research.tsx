@@ -144,23 +144,12 @@ export const ResearchSection = ({ lead = false }: { lead?: boolean }) => (
                   </Reveal>
                 ))}
               </ol>
-            </Reveal>
 
-            {/* ── The paper ──────────────────────────────────────────── */}
-            <Reveal delay={0.14} className="space-y-12">
+              {/* What the brief says, moved out from under it. A caption set
+                  below a portrait-shaped page adds its whole height to the
+                  section, and this column had the room already. */}
               {papers.map((p) => (
-                <figure key={p.title}>
-                  <PdfFrame
-                    src={p.cover ?? ''}
-                    alt={p.title}
-                    href={p.href}
-                    label="Research-Whitepaper.pdf"
-                    meta="Research brief · 1,471,473 schools"
-                    /* The brief is a portrait page (1131x1600). */
-                    aspect="aspect-[3/4]"
-                  />
-
-                  <figcaption className="mt-6 border-t-2 border-ink pt-5">
+                <div key={p.title} className="mt-12 border-t-2 border-ink pt-5">
                     <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
                       <span className="eyebrow bg-ink px-2.5 py-1 text-paper">
                         {p.status}
@@ -205,8 +194,23 @@ export const ResearchSection = ({ lead = false }: { lead?: boolean }) => (
                         </a>
                       )}
                     </div>
-                  </figcaption>
-                </figure>
+                </div>
+              ))}
+            </Reveal>
+
+            {/* ── The brief itself ───────────────────────────────────── */}
+            <Reveal delay={0.14} className="space-y-12">
+              {papers.map((p) => (
+                <PdfFrame
+                  key={p.title}
+                  src={p.cover ?? ''}
+                  alt={p.title}
+                  href={p.href}
+                  label="Research-Whitepaper.pdf"
+                  meta="Research brief · 1,471,473 schools"
+                  /* The brief is a portrait page (1131x1600). */
+                  aspect="aspect-[3/4]"
+                />
               ))}
             </Reveal>
           </div>

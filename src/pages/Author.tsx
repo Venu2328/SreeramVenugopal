@@ -6,7 +6,7 @@ import { type ReactNode } from 'react';
 import { Reveal } from '../components/motion/Reveal';
 import { SketchLayer } from '../components/sketch/Sketch';
 import { BookShelves } from '../components/sketch/figures';
-import { BookShelf } from '../components/author/BookShelf';
+import { BookShelf, BookDetails } from '../components/author/BookShelf';
 import { Contact } from '../components/Contact';
 import { Footer } from '../components/Footer';
 import { books, bookstore, series } from '../data/books';
@@ -121,6 +121,13 @@ export const BooksSection = ({ lead = false }: { lead?: boolean }) => (
                     aria-hidden="true"
                   />
                 </a>
+              </Reveal>
+
+              {/* What the book is, moved out from under its cover. A caption
+                  set below a portrait-shaped cover adds its whole height to
+                  the section, and this column had the room already. */}
+              <Reveal delay={0.24} className="mt-12">
+                <BookDetails />
               </Reveal>
             </Reveal>
 

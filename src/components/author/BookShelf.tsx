@@ -4,6 +4,20 @@ import { Reveal } from '../motion/Reveal';
 import { books, bookstore, type Book } from '../../data/books';
 
 /**
+ * The books, in two pieces that sit in different columns of the page.
+ *
+ * `BookShelf` is the covers; `BookDetails` is everything the covers cannot say
+ * for themselves. They are split rather than stacked because a caption set
+ * under a portrait-shaped cover adds its whole height to the section for no
+ * reason — the measure to the left of the book was empty the entire time.
+ *
+ * Splitting them rather than putting the text beside the cover inside one
+ * column is the point: the cover keeps the full width of its column, at
+ * exactly the size it has always been, and the words move to the column that
+ * was already there.
+ */
+
+/**
  * BookShelf
  *
  * The covers, shown the way a book is actually shown: front first, with the
@@ -26,13 +40,13 @@ export const BookShelf = () => (
   >
     {books.map((b, i) => (
       <Reveal as="li" key={b.title} delay={i * 0.08}>
-        <BookCard b={b} />
+        <BookCover b={b} />
       </Reveal>
     ))}
   </ul>
 );
 
-const BookCard = ({ b }: { b: Book }) => {
+const BookCover = ({ b }: { b: Book }) => {
   const [showBack, setShowBack] = useState(false);
   const face = showBack ? b.back : b.cover;
 
@@ -57,7 +71,6 @@ const BookCard = ({ b }: { b: Book }) => {
             <p className="eyebrow mt-2 text-muted">Cover to come</p>
           </div>
         )}
-
       </div>
 
       {b.back && (
@@ -70,18 +83,31 @@ const BookCard = ({ b }: { b: Book }) => {
           {showBack ? 'Show front cover' : 'Show back cover'}
         </button>
       )}
+    </figure>
+  );
+};
 
-      <figcaption className="mt-5 flex flex-1 flex-col border-t-2 border-ink pt-5">
+/**
+ * BookDetails
+ *
+ * What each book is, who it is for and where it will be sold — set in the
+ * column to the left of the covers.
+ */
+export const BookDetails = () => (
+  <div className="space-y-10">
+    {books.map((b) => (
+      <div key={b.title} className="border-t-2 border-ink pt-5">
         <h3 className="headline text-2xl leading-tight text-ink">{b.title}</h3>
         {b.subtitle && <p className="deck mt-1.5 text-lg text-orange">{b.subtitle}</p>}
-        {/* Status sits in the caption rather than stamped across the cover —
-            the cover is artwork, and a badge laid over it hides the imprint. */}
+
+        {/* Status sits here rather than stamped across the cover — the cover is
+            artwork, and a badge laid over it hides the imprint. */}
         <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
           {b.audience && <span className="eyebrow text-muted">{b.audience}</span>}
           <span className="eyebrow bg-ink px-2.5 py-1 text-paper">{b.status}</span>
         </div>
 
-        <p className="mt-4 flex-1 leading-relaxed text-ink-soft">{b.blurb}</p>
+        <p className="mt-4 leading-relaxed text-ink-soft">{b.blurb}</p>
 
         {b.features && b.features.length > 0 && (
           <ul className="mt-5 flex list-none flex-wrap gap-1.5 p-0">
@@ -97,7 +123,7 @@ const BookCard = ({ b }: { b: Book }) => {
           href={bookstore}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn btn-solid group mt-6 self-start"
+          className="btn btn-solid group mt-6"
         >
           The bookstore
           <ArrowUpRight
@@ -105,7 +131,7 @@ const BookCard = ({ b }: { b: Book }) => {
             aria-hidden="true"
           />
         </a>
-      </figcaption>
-    </figure>
-  );
-};
+      </div>
+    ))}
+  </div>
+);
